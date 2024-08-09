@@ -1,380 +1,111 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 6 Análisis Cluster | Herramientas… MBA</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 6 Análisis Cluster | Herramientas… MBA" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 6 Análisis Cluster | Herramientas… MBA" />
-  
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-
-<meta name="author" content="Fernando López   Manuel Reuz" />
-
-
-<meta name="date" content="2024-08-09" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="análisis-de-componentes-principales.html"/>
-<link rel="next" href="métodos-basados-en-árboles.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 6 Análisis Cluster | Herramientas… MBA</title>
+<meta name="author" content="Fernando López   Manuel Reuz">
+<meta name="description" content="El análisis clúster es un conjunto amplio de técnicas para encontrar subgrupos de observaciones dentro de un conjunto de datos. Cuando agrupamos observaciones, queremos que las observaciones en el...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="Capítulo 6 Análisis Cluster | Herramientas… MBA">
+<meta property="og:type" content="book">
+<meta property="og:description" content="El análisis clúster es un conjunto amplio de técnicas para encontrar subgrupos de observaciones dentro de un conjunto de datos. Cuando agrupamos observaciones, queremos que las observaciones en el...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 6 Análisis Cluster | Herramientas… MBA">
+<meta name="twitter:description" content="El análisis clúster es un conjunto amplio de técnicas para encontrar subgrupos de observaciones dentro de un conjunto de datos. Cuando agrupamos observaciones, queremos que las observaciones en el...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><script>
+        $(function() {
+            $("#toc h2").html("En este tema");
+        });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Presentación</a></li>
-<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
-<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#el-lenguaje-r"><i class="fa fa-check"></i><b>2.2</b> El lenguaje R</a></li>
-<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#por-qué-aprender-r"><i class="fa fa-check"></i><b>2.3</b> ¿Por qué aprender R?</a></li>
-<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#rstudio"><i class="fa fa-check"></i><b>2.4</b> RStudio</a></li>
-<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-cosas-hago-con-r"><i class="fa fa-check"></i><b>2.5</b> Qué cosas hago con R</a></li>
-<li class="chapter" data-level="2.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#creando-el-entorno-de-trabajo-en-rstudio."><i class="fa fa-check"></i><b>2.6</b> Creando el entorno de trabajo en RStudio.</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consola"><i class="fa fa-check"></i><b>2.6.1</b> Consola</a></li>
-<li class="chapter" data-level="2.6.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#scripts"><i class="fa fa-check"></i><b>2.6.2</b> Scripts</a></li>
-<li class="chapter" data-level="2.6.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#entorno"><i class="fa fa-check"></i><b>2.6.3</b> Entorno</a></li>
-<li class="chapter" data-level="2.6.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#miscelánea-archivos-gráficos-paquetes-ayuda-visor"><i class="fa fa-check"></i><b>2.6.4</b> Miscelánea: Archivos, Gráficos, Paquetes, Ayuda, Visor</a></li>
-<li class="chapter" data-level="2.6.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#configuración-del-directorio-de-trabajo."><i class="fa fa-check"></i><b>2.6.5</b> Configuración del directorio de trabajo.</a></li>
-<li class="chapter" data-level="2.6.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#instalar-y-cargar-paquetes."><i class="fa fa-check"></i><b>2.6.6</b> Instalar y cargar paquetes.</a></li>
-<li class="chapter" data-level="2.6.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ayuda-en-r."><i class="fa fa-check"></i><b>2.6.7</b> Ayuda en R.</a></li>
-</ul></li>
-<li class="chapter" data-level="2.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#primeros-pasos"><i class="fa fa-check"></i><b>2.7</b> Primeros pasos</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#script-básico-para-apreder-r"><i class="fa fa-check"></i><b>2.7.1</b> Script básico para apreder R</a></li>
-<li class="chapter" data-level="2.7.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#tipos-de-datos-en-r"><i class="fa fa-check"></i><b>2.7.2</b> Tipos de Datos en R</a></li>
-<li class="chapter" data-level="2.7.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#la-importancia-de-los-objetos-en-r"><i class="fa fa-check"></i><b>2.7.3</b> La Importancia de los Objetos en R</a></li>
-<li class="chapter" data-level="2.7.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#dataframes-en-r"><i class="fa fa-check"></i><b>2.7.4</b> DataFrames en R</a></li>
-<li class="chapter" data-level="2.7.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ejemplo-de-dataframe"><i class="fa fa-check"></i><b>2.7.5</b> Ejemplo de DataFrame</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="introducción-a-r.html"><a href="introducción-a-r.html#un-for-en-r"><i class="fa fa-check"></i><b>2.8</b> Un <code>for</code> en R</a></li>
-<li class="chapter" data-level="2.9" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-excel"><i class="fa fa-check"></i><b>2.9</b> Leer un Excel</a>
-<ul>
-<li class="chapter" data-level="2.9.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#datos-empleados"><i class="fa fa-check"></i><b>2.9.1</b> Datos Empleados</a></li>
-<li class="chapter" data-level="2.9.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-csv"><i class="fa fa-check"></i><b>2.9.2</b> Leer un csv</a></li>
-</ul></li>
-<li class="chapter" data-level="2.10" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-1"><i class="fa fa-check"></i><b>2.10</b> Actividad 1:</a></li>
-<li class="chapter" data-level="2.11" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-2"><i class="fa fa-check"></i><b>2.11</b> Actividad 2:</a></li>
-<li class="chapter" data-level="2.12" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-3"><i class="fa fa-check"></i><b>2.12</b> Actividad 3:</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="estadística-con-r.html"><a href="estadística-con-r.html"><i class="fa fa-check"></i><b>3</b> Estadística con R</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>3.1</b> Resumen estadístico</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-posición-central"><i class="fa fa-check"></i><b>3.1.1</b> Medidas de posición central</a></li>
-<li class="chapter" data-level="3.1.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-dispersión-absolutas"><i class="fa fa-check"></i><b>3.1.2</b> Medidas de dispersión absolutas</a></li>
-<li class="chapter" data-level="3.1.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-asimetría-y-curtosis"><i class="fa fa-check"></i><b>3.1.3</b> Medidas de asimetría y curtosis</a></li>
-<li class="chapter" data-level="3.1.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#la-función-summary"><i class="fa fa-check"></i><b>3.1.4</b> La función ‘summary()’</a></li>
-<li class="chapter" data-level="3.1.5" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad"><i class="fa fa-check"></i><b>3.1.5</b> Actividad</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#gráficos-con-r"><i class="fa fa-check"></i><b>3.2</b> Gráficos con R</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> ggplot2</a></li>
-<li class="chapter" data-level="3.2.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad-4"><i class="fa fa-check"></i><b>3.2.2</b> Actividad</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-hipótesis"><i class="fa fa-check"></i><b>3.3</b> Test Hipótesis</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.3.1</b> Un simple t-test de igualdad de medias</a></li>
-<li class="chapter" data-level="3.3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias-pareadas"><i class="fa fa-check"></i><b>3.3.2</b> Un simple t-test de igualdad de medias pareadas</a></li>
-<li class="chapter" data-level="3.3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-de-normalidad-paramétricos"><i class="fa fa-check"></i><b>3.3.3</b> Test de normalidad paramétricos</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#distribuciones-bivariadas"><i class="fa fa-check"></i><b>3.4</b> Distribuciones bivariadas</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>3.4.1</b> Tablas de contingencia</a></li>
-<li class="chapter" data-level="3.4.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#algo-de-test-de-independencia"><i class="fa fa-check"></i><b>3.4.2</b> Algo de test de independencia</a></li>
-<li class="chapter" data-level="3.4.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#correlaciones"><i class="fa fa-check"></i><b>3.4.3</b> Correlaciones</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html"><i class="fa fa-check"></i><b>4</b> Regresión Lineal Múltiple</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados."><i class="fa fa-check"></i><b>4.1</b> Estimación de los parámetros. Método de los mínimos cuadrados.</a></li>
-<li class="chapter" data-level="4.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#descomposición-de-la-varianza-y-bondad-del-ajuste."><i class="fa fa-check"></i><b>4.2</b> Descomposición de la Varianza y bondad del ajuste.</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-y-correlación."><i class="fa fa-check"></i><b>4.2.1</b> Coeficientes de determinación y correlación.</a></li>
-<li class="chapter" data-level="4.2.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-semi-parcial-y-parcial"><i class="fa fa-check"></i><b>4.2.2</b> Coeficientes de determinación semi-parcial y parcial</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#ejemplo-de-regresión-lineal-múltiple-con-r"><i class="fa fa-check"></i><b>4.3</b> Ejemplo de regresión lineal múltiple con R</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>5</b> Análisis de Componentes Principales</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
-<li class="chapter" data-level="5.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#antes-de-empezar"><i class="fa fa-check"></i><b>5.2</b> Antes de empezar</a></li>
-<li class="chapter" data-level="5.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-acp"><i class="fa fa-check"></i><b>5.3</b> El ACP</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#escalado-de-las-variables"><i class="fa fa-check"></i><b>5.3.1</b> Escalado de las variables</a></li>
-<li class="chapter" data-level="5.3.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#influencia-de-outliers"><i class="fa fa-check"></i><b>5.3.2</b> Influencia de outliers</a></li>
-<li class="chapter" data-level="5.3.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-varianza-explicada"><i class="fa fa-check"></i><b>5.3.3</b> Proporción de varianza explicada</a></li>
-<li class="chapter" data-level="5.3.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#número-óptimo-de-componentes-principales"><i class="fa fa-check"></i><b>5.3.4</b> Número óptimo de componentes principales</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-iniciales"><i class="fa fa-check"></i><b>5.4</b> Test iniciales</a>
-<ul>
-<li class="chapter" data-level="5.4.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#pruebas-esfericidad-de-bartlett"><i class="fa fa-check"></i><b>5.4.1</b> Pruebas esfericidad de Bartlett</a></li>
-<li class="chapter" data-level="5.4.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#prueba-del-kmo"><i class="fa fa-check"></i><b>5.4.2</b> Prueba del KMO</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#una-aplicación-con-datos-de-empleados"><i class="fa fa-check"></i><b>5.5</b> Una aplicación con “Datos de Empleados”</a></li>
-<li class="chapter" data-level="5.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#paquetes-de-r-para-el-acp"><i class="fa fa-check"></i><b>5.6</b> Paquetes de R para el ACP</a></li>
-<li class="chapter" data-level="5.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-la-varianza-explicada"><i class="fa fa-check"></i><b>5.7</b> Proporción de la varianza explicada</a></li>
-<li class="chapter" data-level="5.8" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-gráfico-de-sedimentación"><i class="fa fa-check"></i><b>5.8</b> El gráfico de sedimentación</a></li>
-<li class="chapter" data-level="5.9" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#las-componentes"><i class="fa fa-check"></i><b>5.9</b> Las componentes</a></li>
-<li class="chapter" data-level="5.10" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#ejercicio-acp-como-indicador-sintético"><i class="fa fa-check"></i><b>5.10</b> Ejercicio: ACP como indicador sintético</a>
-<ul>
-<li class="chapter" data-level="5.10.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#los-datos"><i class="fa fa-check"></i><b>5.10.1</b> Los datos</a></li>
-</ul></li>
-<li class="chapter" data-level="5.11" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#aplicación-regresión-y-acp"><i class="fa fa-check"></i><b>5.11</b> Aplicación: Regresión y ACP</a>
-<ul>
-<li class="chapter" data-level="5.11.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#lectura-y-sumario-de-los-datos"><i class="fa fa-check"></i><b>5.11.1</b> Lectura y sumario de los datos</a></li>
-<li class="chapter" data-level="5.11.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#eliminación-de-datos-perdidos"><i class="fa fa-check"></i><b>5.11.2</b> Eliminación de datos perdidos</a></li>
-<li class="chapter" data-level="5.11.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#un-modelo-de-regresión-básico"><i class="fa fa-check"></i><b>5.11.3</b> Un modelo de regresión básico</a></li>
-<li class="chapter" data-level="5.11.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#evaluamos-matriz-de-correlaciones"><i class="fa fa-check"></i><b>5.11.4</b> Evaluamos matriz de correlaciones</a></li>
-<li class="chapter" data-level="5.11.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-de-adecuación-del-acp"><i class="fa fa-check"></i><b>5.11.5</b> Test de adecuación del ACP</a></li>
-<li class="chapter" data-level="5.11.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#cálculo-de-las-componentes"><i class="fa fa-check"></i><b>5.11.6</b> Cálculo de las componentes</a></li>
-<li class="chapter" data-level="5.11.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#interpretación-de-las-cps"><i class="fa fa-check"></i><b>5.11.7</b> Interpretación de las CPs</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="análisis-cluster.html"><a href="análisis-cluster.html"><i class="fa fa-check"></i><b>6</b> Análisis Cluster</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#medidas-de-distancia"><i class="fa fa-check"></i><b>6.1</b> Medidas de distancia</a></li>
-<li class="chapter" data-level="6.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-cluster-con-el-algoritmo-k-medias."><i class="fa fa-check"></i><b>6.2</b> Análisis cluster con el algoritmo K-medias.</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#k-medias"><i class="fa fa-check"></i><b>6.2.1</b> K-medias</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#un-ejemplo-de-análisis-clúster-con-r"><i class="fa fa-check"></i><b>6.3</b> Un ejemplo de análisis clúster con R</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#funciones-básicas-de-r-para-usar-k-medias"><i class="fa fa-check"></i><b>6.3.1</b> Funciones básicas de R para usar K-medias</a></li>
-<li class="chapter" data-level="6.3.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#selección-del-número-de-clústeres"><i class="fa fa-check"></i><b>6.3.2</b> Selección del número de clústeres</a></li>
-<li class="chapter" data-level="6.3.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#visualización-del-clúster-óptimo"><i class="fa fa-check"></i><b>6.3.3</b> Visualización del clúster óptimo</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="análisis-cluster.html"><a href="análisis-cluster.html#comentarios-finales-sobre-el-algoritmo-k-medias"><i class="fa fa-check"></i><b>6.4</b> Comentarios finales sobre el algoritmo k-medias</a></li>
-<li class="chapter" data-level="6.5" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-clúster-jerárquico"><i class="fa fa-check"></i><b>6.5</b> Análisis clúster jerárquico</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análsis-clúster-jerárquico-con-r"><i class="fa fa-check"></i><b>6.5.1</b> Análsis clúster jerárquico con R</a></li>
-<li class="chapter" data-level="6.5.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#trabajando-con-dendrogramas"><i class="fa fa-check"></i><b>6.5.2</b> Trabajando con dendrogramas</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html"><i class="fa fa-check"></i><b>7</b> Métodos basados en árboles</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#introducción-1"><i class="fa fa-check"></i><b>7.1</b> Introducción</a></li>
-<li class="chapter" data-level="7.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#origen-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.2</b> Origen de los Árboles de Decisión</a></li>
-<li class="chapter" data-level="7.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#los-árboles-de-decisión-en-las-técnicas-de-machine-learning"><i class="fa fa-check"></i><b>7.3</b> Los Árboles de Decisión en las técnicas de Machine Learning</a></li>
-<li class="chapter" data-level="7.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-regresión"><i class="fa fa-check"></i><b>7.4</b> Árboles de regresión</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#un-ejemplo-de-juguete"><i class="fa fa-check"></i><b>7.4.1</b> Un ejemplo de juguete</a></li>
-<li class="chapter" data-level="7.4.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#sec:terminologia"><i class="fa fa-check"></i><b>7.4.2</b> Terminología</a></li>
-<li class="chapter" data-level="7.4.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#como-se-crea-un-árbol"><i class="fa fa-check"></i><b>7.4.3</b> Como se crea un árbol</a></li>
-<li class="chapter" data-level="7.4.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#evitar-el-overfitting"><i class="fa fa-check"></i><b>7.4.4</b> Evitar el overfitting</a></li>
-<li class="chapter" data-level="7.4.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#validación-cruzada"><i class="fa fa-check"></i><b>7.4.5</b> Validación cruzada</a></li>
-<li class="chapter" data-level="7.4.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#algoritmo-para-crear-un-árbol-de-regresión-con-pruning"><i class="fa fa-check"></i><b>7.4.6</b> Algoritmo para crear un árbol de regresión con pruning</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-clasificación"><i class="fa fa-check"></i><b>7.5</b> Árboles de clasificación</a>
-<ul>
-<li class="chapter" data-level="7.5.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#cómo-se-crea-un-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.5.1</b> Cómo se crea un árbol de clasificación</a></li>
-<li class="chapter" data-level="7.5.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-del-árbol"><i class="fa fa-check"></i><b>7.5.2</b> Predicción del árbol</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-y-desventajas-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.6</b> Ventajas y desventajas de los Árboles de Decisión</a>
-<ul>
-<li class="chapter" data-level="7.6.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-algunas"><i class="fa fa-check"></i><b>7.6.1</b> Ventajas (algunas)</a></li>
-<li class="chapter" data-level="7.6.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#desventajas-algunas"><i class="fa fa-check"></i><b>7.6.2</b> Desventajas (algunas)</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#paquetes-de-r"><i class="fa fa-check"></i><b>7.7</b> Paquetes de R</a></li>
-<li class="chapter" data-level="7.8" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.8</b> Ejemplo Árbol de Clasificación</a>
-<ul>
-<li class="chapter" data-level="7.8.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#pre-podado"><i class="fa fa-check"></i><b>7.8.1</b> Pre-podado</a></li>
-<li class="chapter" data-level="7.8.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#entrenamiento-y-test"><i class="fa fa-check"></i><b>7.8.2</b> Entrenamiento y test</a></li>
-</ul></li>
-<li class="chapter" data-level="7.9" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-regresión"><i class="fa fa-check"></i><b>7.9</b> Ejemplo Árbol de Regresión</a>
-<ul>
-<li class="chapter" data-level="7.9.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#datos"><i class="fa fa-check"></i><b>7.9.1</b> Datos</a></li>
-<li class="chapter" data-level="7.9.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ajuste-del-modelo-con-la-librería-tree"><i class="fa fa-check"></i><b>7.9.2</b> Ajuste del modelo con la librería ‘tree’</a></li>
-<li class="chapter" data-level="7.9.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#podado-del-árbol-pruning"><i class="fa fa-check"></i><b>7.9.3</b> Podado del árbol (pruning)</a></li>
-<li class="chapter" data-level="7.9.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-y-evaluación-del-modelo"><i class="fa fa-check"></i><b>7.9.4</b> Predicción y evaluación del modelo</a></li>
-</ul></li>
-<li class="chapter" data-level="7.10" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#webs"><i class="fa fa-check"></i><b>7.10</b> Webs</a></li>
-<li class="chapter" data-level="7.11" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#referencias"><i class="fa fa-check"></i><b>7.11</b> Referencias</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Herramientas… MBA</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Herramientas… MBA</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Presentación</a></li>
+<li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">2</span> Introducción a R</a></li>
+<li><a class="" href="estad%C3%ADstica-con-r.html"><span class="header-section-number">3</span> Estadística con R</a></li>
+<li><a class="" href="regresi%C3%B3n-lineal-m%C3%BAltiple.html"><span class="header-section-number">4</span> Regresión Lineal Múltiple</a></li>
+<li><a class="" href="an%C3%A1lisis-de-componentes-principales.html"><span class="header-section-number">5</span> Análisis de Componentes Principales</a></li>
+<li><a class="active" href="an%C3%A1lisis-cluster.html"><span class="header-section-number">6</span> Análisis Cluster</a></li>
+<li><a class="" href="m%C3%A9todos-basados-en-%C3%A1rboles.html"><span class="header-section-number">7</span> Métodos basados en árboles</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="análisis-cluster" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">Capítulo 6</span> Análisis Cluster<a href="análisis-cluster.html#análisis-cluster" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="análisis-cluster" class="section level1" number="6">
+<h1>
+<span class="header-section-number">Capítulo 6</span> Análisis Cluster<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-cluster"><i class="fas fa-link"></i></a>
+</h1>
 <p>El análisis clúster es un conjunto amplio de técnicas para encontrar subgrupos de observaciones dentro de un conjunto de datos. Cuando agrupamos observaciones, queremos que las observaciones en el mismo grupo sean similares y que las observaciones en diferentes grupos sean diferentes. Dado que no hay una variable de respuesta, este es un método no supervisado, lo que implica que busca encontrar relaciones entre las <span class="math inline">\(n\)</span> observaciones sin ser entrenado por una variable de respuesta. El agrupamiento nos permite identificar qué observaciones son similares y potencialmente categorizarlas como tales. El agrupamiento K-medias (K-means) es el método de agrupamiento más simple y comúnmente utilizado para dividir un conjunto de datos en un conjunto de k grupos o clusters.</p>
 <div class="float">
-<img src="Figures/clusters.JPG" style="width:90.0%" alt="Ejemplo de tres cluster en un conjunto de datos" />
-<div class="figcaption">Ejemplo de tres cluster en un conjunto de datos</div>
+<img src="Figures/clusters.JPG" style="width:90.0%" alt="Ejemplo de tres cluster en un conjunto de datos"><div class="figcaption">Ejemplo de tres cluster en un conjunto de datos</div>
 </div>
 <p>Para realizar un análisis de clúster en R, por lo general, los datos deben estar preparados de la siguiente manera:</p>
 <p>1.- Las filas representan observaciones (individuos) y las columnas representan variables.</p>
 <p>2.- Cualquier caso con valor omitido en los datos debe ser eliminado o estimado.</p>
 <p>3.- Los datos deben estar estandarizados para hacer que las variables sean comparables. Recuerde que la estandarización consiste en transformar las variables de manera que tengan una media cero y una desviación estándar de uno.</p>
 <p>Estas son las tres librerias de R que necesitaremos</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="análisis-cluster.html#cb89-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)  <span class="co">#  Manipulación de datos</span></span>
-<span id="cb89-2"><a href="análisis-cluster.html#cb89-2" tabindex="-1"></a><span class="fu">library</span>(cluster)    <span class="co">#  Algoritmos de clustering </span></span>
-<span id="cb89-3"><a href="análisis-cluster.html#cb89-3" tabindex="-1"></a><span class="fu">library</span>(factoextra) <span class="co">#  Algoritmos de clustering y visualización</span></span></code></pre></div>
-<div id="medidas-de-distancia" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Medidas de distancia<a href="análisis-cluster.html#medidas-de-distancia" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>  <span class="co">#  Manipulación de datos</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://svn.r-project.org/R-packages/trunk/cluster/">cluster</a></span><span class="op">)</span>    <span class="co">#  Algoritmos de clustering </span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.sthda.com/english/rpkgs/factoextra">factoextra</a></span><span class="op">)</span> <span class="co">#  Algoritmos de clustering y visualización</span></span></code></pre></div>
+<div id="medidas-de-distancia" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Medidas de distancia<a class="anchor" aria-label="anchor" href="#medidas-de-distancia"><i class="fas fa-link"></i></a>
+</h2>
 <p>La clasificación de observaciones en grupos requiere algunos métodos para calcular la distancia o la (dis)similitud entre cada par de observaciones. El resultado de este cálculo se conoce como una matriz de disimilitud o distancia. Existen muchos métodos para calcular esta distancia. La elección de las medidas de distancia es un paso crítico en el agrupamiento lod datos y afectará la forma de los grupos o clusters. Los métodos clásicos para las medidas de distancia son las distancias Euclidea y Manhattan, aunque también existen otras distancias basadas en correlaciones:</p>
 <p><strong>Distancia Euclidea</strong>
 <span class="math display">\[d_E(x,y)=\sqrt{\sum\limits_{i=1}^n(x_i-y_i)^2}\]</span></p>
@@ -385,10 +116,12 @@ div.csl-indent {
 <strong>Distancia Correlación de Spearman</strong>
 <span class="math display">\[d_S(x,y)=1-\frac{\sum\limits_{i=1}^n(\tilde{x}_i-\bar{\tilde{x}})(\tilde{y}_i-\bar{\tilde{y}})}{\sqrt{\sum\limits_{i=1}^n(\tilde{x}_i-\bar{\tilde{x}})^2\sum\limits_{i=1}^n(\tilde{y}_i-\bar{\tilde{y}})^2}}\]</span>
 donde hemos denotado por <span class="math inline">\(\tilde{x}_i=rank(x_i)\)</span> el rango de la observación <span class="math inline">\(x_i\)</span>.</p>
-<p>Para el caso en el que los datos a clusterizar sean secuencias de caracteres (tipo categóricos), tambien se puede calcular la <strong>Distancia de Hamming</strong> que se calcula contando el número de posiciones en las que los caracteres correspondientes son diferentes. Se utiliza principalmente en secuencias binarias. Por ejemplo, dadas las secuencias <span class="math inline">\(&quot;1010101&quot;\)</span> y <span class="math inline">\(&quot;1001001&quot;\)</span> la distancia de Hamming sería 3, ya que hay tres posiciones donde son diferentes.</p>
+<p>Para el caso en el que los datos a clusterizar sean secuencias de caracteres (tipo categóricos), tambien se puede calcular la <strong>Distancia de Hamming</strong> que se calcula contando el número de posiciones en las que los caracteres correspondientes son diferentes. Se utiliza principalmente en secuencias binarias. Por ejemplo, dadas las secuencias <span class="math inline">\("1010101"\)</span> y <span class="math inline">\("1001001"\)</span> la distancia de Hamming sería 3, ya que hay tres posiciones donde son diferentes.</p>
 </div>
-<div id="análisis-cluster-con-el-algoritmo-k-medias." class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Análisis cluster con el algoritmo K-medias.<a href="análisis-cluster.html#análisis-cluster-con-el-algoritmo-k-medias." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="análisis-cluster-con-el-algoritmo-k-medias." class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Análisis cluster con el algoritmo K-medias.<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-cluster-con-el-algoritmo-k-medias."><i class="fas fa-link"></i></a>
+</h2>
 <p>El análsis clúster K-medias es el algoritmo de aprendizaje automático no supervisado más comúnmente utilizado para dividir un conjunto de datos en un conjunto de <span class="math inline">\(k\)</span> grupos (es decir, <span class="math inline">\(k\)</span> clústeres), donde <span class="math inline">\(k\)</span> representa el número de grupos predefinido por el analista. La clasificacion de los individuos se hace de tal manera que dentro del mismo clúster son tan similares como sea posible, mientras que los individuos de diferentes clústeres son tan diferentes como sea posible. Cada clúster está representado por su centro (o centroide), que corresponde a la media de los puntos asignados al clúster.</p>
 <p>La idea básica detrás de la del algoritmo k-medias consiste en definir grupos de manera que la variación total intra-cluster (conocida como variación total dentro del grupo) se minimice.</p>
 <p>Existen varios algoritmos de k-nedias disponibles. El algoritmo estándar es el algoritmo de Hartigan-Wong (Hartigan y Wong 1979), que define la variación total dentro del grupo como la suma de las distancias euclidianas al cuadrado entre los elementos y el centroide correspondiente:
@@ -397,8 +130,10 @@ donde <span class="math inline">\(x_i\)</span> es el dato perteneciente al clust
 <p>Cada punto <span class="math inline">\(x_i\)</span> se asocia al clúster que verifica que la suma de los cuadrados de las distancias de cada observación al centro de su cluster asignado (valor medio <span class="math inline">\(\mu_k\)</span>) sea mínimo.</p>
 <p>Se define la variación total dentro de clúster como <span class="math display">\[VTDC=\sum_{i=1}^KW(C_k)=\sum_{i=1}^K\sum\limits_{x_i\in C_k}(x_i-\mu_k)^2\]</span></p>
 <p><span class="math inline">\(VTDC\)</span> mide la compacidad (es decir, la calidad) del agrupamiento y queremos que sea lo más pequeña posible.</p>
-<div id="k-medias" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> K-medias<a href="análisis-cluster.html#k-medias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="k-medias" class="section level3" number="6.2.1">
+<h3>
+<span class="header-section-number">6.2.1</span> K-medias<a class="anchor" aria-label="anchor" href="#k-medias"><i class="fas fa-link"></i></a>
+</h3>
 <p>El primer paso al utilizar el algoritmo k-medias es indicar el número de grupos/clústeres <span class="math inline">\(k\)</span> que se generarán en la solución final. El algoritmo comienza seleccionando aleatoriamente <span class="math inline">\(k\)</span> individuos del conjunto de datos para que sirvan como los centros iniciales de los clústeres. Los individuos seleccionados también se conocen como medias o centroides del clúster. A continuación, a cada uno de los objetos restantes se le asigna su centroide más cercano, donde “más cercano” se define usando la distancia utilizada entre el objeto y la media del grupo. Este paso se llama “paso de asignación de clúster”. Después del paso de asignación, el algoritmo calcula el nuevo valor medio de cada clúster. El término “actualización del centroide del clúster” se utiliza para designar este paso. Ahora que los centros han sido recalculados, se vuelve a verificar cada observación para ver si podría estar más cerca de un grupo diferente. Todos los objetos se vuelven a asignar utilizando las medias actualizadas del grupo. Los pasos de asignación de grupo y actualización del centroide se repiten de forma iterativa hasta que las asignaciones de grupo dejan de cambiar (es decir, hasta que se alcanza la convergencia). Es decir, los grupos formados en la iteración actual son los mismos que los obtenidos en la iteración anterior.</p>
 <p>El algoritmo <span class="math inline">\(K\)</span>-medias se puede resumir de la siguiente manera:</p>
 <ol style="list-style-type: decimal">
@@ -410,52 +145,56 @@ donde <span class="math inline">\(x_i\)</span> es el dato perteneciente al clust
 </ol>
 </div>
 </div>
-<div id="un-ejemplo-de-análisis-clúster-con-r" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Un ejemplo de análisis clúster con R<a href="análisis-cluster.html#un-ejemplo-de-análisis-clúster-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="un-ejemplo-de-análisis-clúster-con-r" class="section level2" number="6.3">
+<h2>
+<span class="header-section-number">6.3</span> Un ejemplo de análisis clúster con R<a class="anchor" aria-label="anchor" href="#un-ejemplo-de-an%C3%A1lisis-cl%C3%BAster-con-r"><i class="fas fa-link"></i></a>
+</h2>
 <p>En esta sección seleccionamos las librerias a utilizar y explicamos las funciones básicas para realizar un análsis cluster por k-medias</p>
-<div id="funciones-básicas-de-r-para-usar-k-medias" class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Funciones básicas de R para usar K-medias<a href="análisis-cluster.html#funciones-básicas-de-r-para-usar-k-medias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="funciones-básicas-de-r-para-usar-k-medias" class="section level3" number="6.3.1">
+<h3>
+<span class="header-section-number">6.3.1</span> Funciones básicas de R para usar K-medias<a class="anchor" aria-label="anchor" href="#funciones-b%C3%A1sicas-de-r-para-usar-k-medias"><i class="fas fa-link"></i></a>
+</h3>
 <p>Para realizar un análisis cluster con R necesitamos cargar algunas librerias esenciales.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="análisis-cluster.html#cb90-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
-<span id="cb90-2"><a href="análisis-cluster.html#cb90-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(magrittr)</span>
-<span id="cb90-3"><a href="análisis-cluster.html#cb90-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(plyr)</span>
-<span id="cb90-4"><a href="análisis-cluster.html#cb90-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
-<span id="cb90-5"><a href="análisis-cluster.html#cb90-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(plotly)</span>
-<span id="cb90-6"><a href="análisis-cluster.html#cb90-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)  <span class="co"># data manipulation</span></span>
-<span id="cb90-7"><a href="análisis-cluster.html#cb90-7" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(cluster)    <span class="co"># clustering algorithms</span></span>
-<span id="cb90-8"><a href="análisis-cluster.html#cb90-8" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># install.packages(&quot;factoextra&quot;)</span></span>
-<span id="cb90-9"><a href="análisis-cluster.html#cb90-9" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(factoextra) <span class="co"># clustering algorithms &amp; visualization</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="an%C3%A1lisis-cluster.html#cb90-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
+<span id="cb90-2"><a href="an%C3%A1lisis-cluster.html#cb90-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(magrittr)</span>
+<span id="cb90-3"><a href="an%C3%A1lisis-cluster.html#cb90-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(plyr)</span>
+<span id="cb90-4"><a href="an%C3%A1lisis-cluster.html#cb90-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb90-5"><a href="an%C3%A1lisis-cluster.html#cb90-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(plotly)</span>
+<span id="cb90-6"><a href="an%C3%A1lisis-cluster.html#cb90-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)  <span class="co"># data manipulation</span></span>
+<span id="cb90-7"><a href="an%C3%A1lisis-cluster.html#cb90-7" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(cluster)    <span class="co"># clustering algorithms</span></span>
+<span id="cb90-8"><a href="an%C3%A1lisis-cluster.html#cb90-8" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># install.packages("factoextra")</span></span>
+<span id="cb90-9"><a href="an%C3%A1lisis-cluster.html#cb90-9" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(factoextra) <span class="co"># clustering algorithms &amp; visualization</span></span></code></pre></div>
 <p>El fichero de datos que vamos a trabajar es <strong>CarSales.xlsx</strong> que contine datos de estimaciones de ventas, precios de catálogo y especificaciones físicas hipotéticas de varias marcas y modelos de vehículos.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="análisis-cluster.html#cb91-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(readxl)     <span class="co"># read xlsx files</span></span>
-<span id="cb91-2"><a href="análisis-cluster.html#cb91-2" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;Datos/CarSales.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="an%C3%A1lisis-cluster.html#cb91-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(readxl)     <span class="co"># read xlsx files</span></span>
+<span id="cb91-2"><a href="an%C3%A1lisis-cluster.html#cb91-2" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">"Datos/CarSales.xlsx"</span>)</span></code></pre></div>
 <p>Seleccionamos aquellas variables del fichero de datos que son numéricas para realizar el análsis cluster en funcion de ellas guardandolas en el objeto de R del tipo data frame llamado <strong>datos</strong>. Seguidamente tipifico los datos (acción que consiste en quitar la media y dividir por la desciación tipica) para normalizar las variables a que tengan media 0 y desviación típica 1 y elimino los NAN de la base de datos.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="análisis-cluster.html#cb92-1" tabindex="-1"></a><span class="sc">&gt;</span> datos<span class="ot">=</span><span class="fu">as.data.frame</span>(data[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">14</span>)])<span class="co"># selecciono aquellos elementos utilizados para la clusterización</span></span>
-<span id="cb92-2"><a href="análisis-cluster.html#cb92-2" tabindex="-1"></a><span class="sc">&gt;</span> df<span class="ot">=</span><span class="fu">as.data.frame</span>(<span class="fu">scale</span>(<span class="fu">na.omit</span>(datos)))<span class="co"># tipifico los datos, elimino los Nan y lo guardo en el data frame df</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="an%C3%A1lisis-cluster.html#cb92-1" tabindex="-1"></a><span class="sc">&gt;</span> datos<span class="ot">=</span><span class="fu">as.data.frame</span>(data[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">14</span>)])<span class="co"># selecciono aquellos elementos utilizados para la clusterización</span></span>
+<span id="cb92-2"><a href="an%C3%A1lisis-cluster.html#cb92-2" tabindex="-1"></a><span class="sc">&gt;</span> df<span class="ot">=</span><span class="fu">as.data.frame</span>(<span class="fu">scale</span>(<span class="fu">na.omit</span>(datos)))<span class="co"># tipifico los datos, elimino los Nan y lo guardo en el data frame df</span></span></code></pre></div>
 <p>Dentro de R, es sencillo calcular y visualizar la matriz de distancias utilizando las funciones <strong>get_dist</strong> y <strong>fviz_dist</strong> del paquete R <em>factoextra</em>.</p>
 <p><em>get_dist</em>: para calcular una matriz de distancias entre las filas de una matriz de datos. La distancia predeterminada calculada es la Euclidiana; sin embargo, get_dist también admite otras distancias como las descritas anteriormente, entre otras.</p>
 <p><em>fviz_dist</em>: para visualizar una matriz de distancias.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="análisis-cluster.html#cb93-1" tabindex="-1"></a><span class="sc">&gt;</span> distance <span class="ot">&lt;-</span> <span class="fu">get_dist</span>(df)</span>
-<span id="cb93-2"><a href="análisis-cluster.html#cb93-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_dist</span>(distance, <span class="at">gradient =</span> <span class="fu">list</span>(<span class="at">low =</span> <span class="st">&quot;#00AFBB&quot;</span>, <span class="at">mid =</span> <span class="st">&quot;white&quot;</span>, <span class="at">high =</span> <span class="st">&quot;#FC4E07&quot;</span>))</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="an%C3%A1lisis-cluster.html#cb93-1" tabindex="-1"></a><span class="sc">&gt;</span> distance <span class="ot">&lt;-</span> <span class="fu">get_dist</span>(df)</span>
+<span id="cb93-2"><a href="an%C3%A1lisis-cluster.html#cb93-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_dist</span>(distance, <span class="at">gradient =</span> <span class="fu">list</span>(<span class="at">low =</span> <span class="st">"#00AFBB"</span>, <span class="at">mid =</span> <span class="st">"white"</span>, <span class="at">high =</span> <span class="st">"#FC4E07"</span>))</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
 <p>En R, podemos emplear la función <strong>kmeans</strong> para llevar a cabo el análisis de k-medias. En el ejemplo que vamos a realizar, se organizarán los datos en dos grupos <strong>centers = 2</strong>. Además, la función kmeans cuenta con una opción llamada <strong>nstart</strong> que realiza intentos con múltiples configuraciones iniciales y registra la mejor de ellas. Por ejemplo, al incluir <strong>nstart = 25</strong> se generarán 25 configuraciones iniciales. Este método se sugiere con frecuencia.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="análisis-cluster.html#cb94-1" tabindex="-1"></a><span class="sc">&gt;</span> k2 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">2</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="an%C3%A1lisis-cluster.html#cb94-1" tabindex="-1"></a><span class="sc">&gt;</span> k2 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">2</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span></code></pre></div>
 <p>Para mostrar la estructura interna del objeto <strong>k2</strong> generado al realizar el algoritmo k-medias en el ejemplo anterior podemos utilizar la funcion <strong>str</strong></p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="análisis-cluster.html#cb95-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(k2)</span>
-<span id="cb95-2"><a href="análisis-cluster.html#cb95-2" tabindex="-1"></a><span class="co">#&gt; List of 9</span></span>
-<span id="cb95-3"><a href="análisis-cluster.html#cb95-3" tabindex="-1"></a><span class="co">#&gt;  $ cluster     : Named int [1:117] 2 1 1 2 1 1 2 1 1 1 ...</span></span>
-<span id="cb95-4"><a href="análisis-cluster.html#cb95-4" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;names&quot;)= chr [1:117] &quot;1&quot; &quot;2&quot; &quot;4&quot; &quot;5&quot; ...</span></span>
-<span id="cb95-5"><a href="análisis-cluster.html#cb95-5" tabindex="-1"></a><span class="co">#&gt;  $ centers     : num [1:2, 1:11] -0.0426 0.0434 0.4457 -0.4533 0.5622 ...</span></span>
-<span id="cb95-6"><a href="análisis-cluster.html#cb95-6" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, &quot;dimnames&quot;)=List of 2</span></span>
-<span id="cb95-7"><a href="análisis-cluster.html#cb95-7" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr [1:2] &quot;1&quot; &quot;2&quot;</span></span>
-<span id="cb95-8"><a href="análisis-cluster.html#cb95-8" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr [1:11] &quot;ventas&quot; &quot;reventa&quot; &quot;precio&quot; &quot;motor_s&quot; ...</span></span>
-<span id="cb95-9"><a href="análisis-cluster.html#cb95-9" tabindex="-1"></a><span class="co">#&gt;  $ totss       : num 1276</span></span>
-<span id="cb95-10"><a href="análisis-cluster.html#cb95-10" tabindex="-1"></a><span class="co">#&gt;  $ withinss    : num [1:2] 558 261</span></span>
-<span id="cb95-11"><a href="análisis-cluster.html#cb95-11" tabindex="-1"></a><span class="co">#&gt;  $ tot.withinss: num 819</span></span>
-<span id="cb95-12"><a href="análisis-cluster.html#cb95-12" tabindex="-1"></a><span class="co">#&gt;  $ betweenss   : num 457</span></span>
-<span id="cb95-13"><a href="análisis-cluster.html#cb95-13" tabindex="-1"></a><span class="co">#&gt;  $ size        : int [1:2] 59 58</span></span>
-<span id="cb95-14"><a href="análisis-cluster.html#cb95-14" tabindex="-1"></a><span class="co">#&gt;  $ iter        : int 1</span></span>
-<span id="cb95-15"><a href="análisis-cluster.html#cb95-15" tabindex="-1"></a><span class="co">#&gt;  $ ifault      : int 0</span></span>
-<span id="cb95-16"><a href="análisis-cluster.html#cb95-16" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;class&quot;)= chr &quot;kmeans&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="an%C3%A1lisis-cluster.html#cb95-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(k2)</span>
+<span id="cb95-2"><a href="an%C3%A1lisis-cluster.html#cb95-2" tabindex="-1"></a><span class="co">#&gt; List of 9</span></span>
+<span id="cb95-3"><a href="an%C3%A1lisis-cluster.html#cb95-3" tabindex="-1"></a><span class="co">#&gt;  $ cluster     : Named int [1:117] 1 2 2 1 2 2 1 2 2 2 ...</span></span>
+<span id="cb95-4"><a href="an%C3%A1lisis-cluster.html#cb95-4" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, "names")= chr [1:117] "1" "2" "4" "5" ...</span></span>
+<span id="cb95-5"><a href="an%C3%A1lisis-cluster.html#cb95-5" tabindex="-1"></a><span class="co">#&gt;  $ centers     : num [1:2, 1:11] 0.0434 -0.0426 -0.4533 0.4457 -0.5719 ...</span></span>
+<span id="cb95-6"><a href="an%C3%A1lisis-cluster.html#cb95-6" tabindex="-1"></a><span class="co">#&gt;   ..- attr(*, "dimnames")=List of 2</span></span>
+<span id="cb95-7"><a href="an%C3%A1lisis-cluster.html#cb95-7" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr [1:2] "1" "2"</span></span>
+<span id="cb95-8"><a href="an%C3%A1lisis-cluster.html#cb95-8" tabindex="-1"></a><span class="co">#&gt;   .. ..$ : chr [1:11] "ventas" "reventa" "precio" "motor_s" ...</span></span>
+<span id="cb95-9"><a href="an%C3%A1lisis-cluster.html#cb95-9" tabindex="-1"></a><span class="co">#&gt;  $ totss       : num 1276</span></span>
+<span id="cb95-10"><a href="an%C3%A1lisis-cluster.html#cb95-10" tabindex="-1"></a><span class="co">#&gt;  $ withinss    : num [1:2] 261 558</span></span>
+<span id="cb95-11"><a href="an%C3%A1lisis-cluster.html#cb95-11" tabindex="-1"></a><span class="co">#&gt;  $ tot.withinss: num 819</span></span>
+<span id="cb95-12"><a href="an%C3%A1lisis-cluster.html#cb95-12" tabindex="-1"></a><span class="co">#&gt;  $ betweenss   : num 457</span></span>
+<span id="cb95-13"><a href="an%C3%A1lisis-cluster.html#cb95-13" tabindex="-1"></a><span class="co">#&gt;  $ size        : int [1:2] 58 59</span></span>
+<span id="cb95-14"><a href="an%C3%A1lisis-cluster.html#cb95-14" tabindex="-1"></a><span class="co">#&gt;  $ iter        : int 1</span></span>
+<span id="cb95-15"><a href="an%C3%A1lisis-cluster.html#cb95-15" tabindex="-1"></a><span class="co">#&gt;  $ ifault      : int 0</span></span>
+<span id="cb95-16"><a href="an%C3%A1lisis-cluster.html#cb95-16" tabindex="-1"></a><span class="co">#&gt;  - attr(*, "class")= chr "kmeans"</span></span></code></pre></div>
 <p>La función kmeans produce como resultado una lista con información diversa, siendo los elementos más relevantes:</p>
 <p>1.- <strong>cluster</strong>: Un vector de números enteros (del 1 al k), que indica el clúster al que se asigna cada punto.</p>
 <p>2.- <strong>centers</strong>: Una matriz que contiene los centros de los clústeres.</p>
@@ -465,100 +204,105 @@ donde <span class="math inline">\(x_i\)</span> es el dato perteneciente al clust
 <p>6.- <strong>betweenss</strong>: La suma de cuadrados entre clústeres, calculada como <strong>totss - tot.withinss</strong>.</p>
 <p>7.- <strong>size</strong>: El número de puntos en cada clúster.</p>
 <p>Al imprimir los resultados, observaremos que nuestras agrupaciones generaron clústeres con tamaños de 61 y 56, respectivamente.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="análisis-cluster.html#cb96-1" tabindex="-1"></a><span class="sc">&gt;</span> k2</span>
-<span id="cb96-2"><a href="análisis-cluster.html#cb96-2" tabindex="-1"></a><span class="co">#&gt; K-means clustering with 2 clusters of sizes 59, 58</span></span>
-<span id="cb96-3"><a href="análisis-cluster.html#cb96-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb96-4"><a href="análisis-cluster.html#cb96-4" tabindex="-1"></a><span class="co">#&gt; Cluster means:</span></span>
-<span id="cb96-5"><a href="análisis-cluster.html#cb96-5" tabindex="-1"></a><span class="co">#&gt;        ventas    reventa     precio    motor_s   caballos</span></span>
-<span id="cb96-6"><a href="análisis-cluster.html#cb96-6" tabindex="-1"></a><span class="co">#&gt; 1 -0.04264890  0.4456548  0.5621683  0.6911197  0.6746937</span></span>
-<span id="cb96-7"><a href="análisis-cluster.html#cb96-7" tabindex="-1"></a><span class="co">#&gt; 2  0.04338422 -0.4533385 -0.5718609 -0.7030355 -0.6863263</span></span>
-<span id="cb96-8"><a href="análisis-cluster.html#cb96-8" tabindex="-1"></a><span class="co">#&gt;   BaseNeumatico    anchura   longitud peso_revestimiento</span></span>
-<span id="cb96-9"><a href="análisis-cluster.html#cb96-9" tabindex="-1"></a><span class="co">#&gt; 1     0.5217784  0.6563562  0.5944363          0.7700351</span></span>
-<span id="cb96-10"><a href="análisis-cluster.html#cb96-10" tabindex="-1"></a><span class="co">#&gt; 2    -0.5307746 -0.6676727 -0.6046852         -0.7833115</span></span>
-<span id="cb96-11"><a href="análisis-cluster.html#cb96-11" tabindex="-1"></a><span class="co">#&gt;   tapón_combustible        kpl</span></span>
-<span id="cb96-12"><a href="análisis-cluster.html#cb96-12" tabindex="-1"></a><span class="co">#&gt; 1         0.6509841 -0.5620632</span></span>
-<span id="cb96-13"><a href="análisis-cluster.html#cb96-13" tabindex="-1"></a><span class="co">#&gt; 2        -0.6622080  0.5717540</span></span>
-<span id="cb96-14"><a href="análisis-cluster.html#cb96-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb96-15"><a href="análisis-cluster.html#cb96-15" tabindex="-1"></a><span class="co">#&gt; Clustering vector:</span></span>
-<span id="cb96-16"><a href="análisis-cluster.html#cb96-16" tabindex="-1"></a><span class="co">#&gt;   1   2   4   5   6   7   9  10  11  12  13  14  15  17  18 </span></span>
-<span id="cb96-17"><a href="análisis-cluster.html#cb96-17" tabindex="-1"></a><span class="co">#&gt;   2   1   1   2   1   1   2   1   1   1   1   1   1   1   1 </span></span>
-<span id="cb96-18"><a href="análisis-cluster.html#cb96-18" tabindex="-1"></a><span class="co">#&gt;  20  21  22  23  24  25  26  27  29  30  31  32  33  36  37 </span></span>
-<span id="cb96-19"><a href="análisis-cluster.html#cb96-19" tabindex="-1"></a><span class="co">#&gt;   2   2   2   1   1   1   2   2   2   2   1   2   1   2   2 </span></span>
-<span id="cb96-20"><a href="análisis-cluster.html#cb96-20" tabindex="-1"></a><span class="co">#&gt;  38  40  41  42  43  44  46  47  48  49  50  52  53  54  55 </span></span>
-<span id="cb96-21"><a href="análisis-cluster.html#cb96-21" tabindex="-1"></a><span class="co">#&gt;   2   1   1   1   1   1   1   2   2   2   2   1   1   1   1 </span></span>
-<span id="cb96-22"><a href="análisis-cluster.html#cb96-22" tabindex="-1"></a><span class="co">#&gt;  56  57  58  59  60  61  62  63  64  65  66  68  69  70  71 </span></span>
-<span id="cb96-23"><a href="análisis-cluster.html#cb96-23" tabindex="-1"></a><span class="co">#&gt;   2   1   2   2   2   1   1   2   2   2   1   2   2   1   1 </span></span>
-<span id="cb96-24"><a href="análisis-cluster.html#cb96-24" tabindex="-1"></a><span class="co">#&gt;  72  74  77  78  80  81  82  83  84  85  86  87  88  89  90 </span></span>
-<span id="cb96-25"><a href="análisis-cluster.html#cb96-25" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   2   2   2   1   2   1   2   2   2   2   1 </span></span>
-<span id="cb96-26"><a href="análisis-cluster.html#cb96-26" tabindex="-1"></a><span class="co">#&gt;  91  92  93  94  95  96 102 103 104 105 106 109 112 113 114 </span></span>
-<span id="cb96-27"><a href="análisis-cluster.html#cb96-27" tabindex="-1"></a><span class="co">#&gt;   1   1   2   1   1   1   2   2   1   1   1   2   1   1   1 </span></span>
-<span id="cb96-28"><a href="análisis-cluster.html#cb96-28" tabindex="-1"></a><span class="co">#&gt; 115 116 117 119 120 121 122 123 125 126 127 130 131 132 137 </span></span>
-<span id="cb96-29"><a href="análisis-cluster.html#cb96-29" tabindex="-1"></a><span class="co">#&gt;   2   2   1   2   2   1   1   1   2   1   1   2   2   2   2 </span></span>
-<span id="cb96-30"><a href="análisis-cluster.html#cb96-30" tabindex="-1"></a><span class="co">#&gt; 138 139 140 141 143 144 145 146 147 148 149 150 </span></span>
-<span id="cb96-31"><a href="análisis-cluster.html#cb96-31" tabindex="-1"></a><span class="co">#&gt;   2   1   2   2   2   2   1   2   2   2   2   2 </span></span>
-<span id="cb96-32"><a href="análisis-cluster.html#cb96-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb96-33"><a href="análisis-cluster.html#cb96-33" tabindex="-1"></a><span class="co">#&gt; Within cluster sum of squares by cluster:</span></span>
-<span id="cb96-34"><a href="análisis-cluster.html#cb96-34" tabindex="-1"></a><span class="co">#&gt; [1] 557.6675 261.4993</span></span>
-<span id="cb96-35"><a href="análisis-cluster.html#cb96-35" tabindex="-1"></a><span class="co">#&gt;  (between_SS / total_SS =  35.8 %)</span></span>
-<span id="cb96-36"><a href="análisis-cluster.html#cb96-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb96-37"><a href="análisis-cluster.html#cb96-37" tabindex="-1"></a><span class="co">#&gt; Available components:</span></span>
-<span id="cb96-38"><a href="análisis-cluster.html#cb96-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb96-39"><a href="análisis-cluster.html#cb96-39" tabindex="-1"></a><span class="co">#&gt; [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;       </span></span>
-<span id="cb96-40"><a href="análisis-cluster.html#cb96-40" tabindex="-1"></a><span class="co">#&gt; [4] &quot;withinss&quot;     &quot;tot.withinss&quot; &quot;betweenss&quot;   </span></span>
-<span id="cb96-41"><a href="análisis-cluster.html#cb96-41" tabindex="-1"></a><span class="co">#&gt; [7] &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="an%C3%A1lisis-cluster.html#cb96-1" tabindex="-1"></a><span class="sc">&gt;</span> k2</span>
+<span id="cb96-2"><a href="an%C3%A1lisis-cluster.html#cb96-2" tabindex="-1"></a><span class="co">#&gt; K-means clustering with 2 clusters of sizes 58, 59</span></span>
+<span id="cb96-3"><a href="an%C3%A1lisis-cluster.html#cb96-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb96-4"><a href="an%C3%A1lisis-cluster.html#cb96-4" tabindex="-1"></a><span class="co">#&gt; Cluster means:</span></span>
+<span id="cb96-5"><a href="an%C3%A1lisis-cluster.html#cb96-5" tabindex="-1"></a><span class="co">#&gt;        ventas    reventa     precio    motor_s   caballos</span></span>
+<span id="cb96-6"><a href="an%C3%A1lisis-cluster.html#cb96-6" tabindex="-1"></a><span class="co">#&gt; 1  0.04338422 -0.4533385 -0.5718609 -0.7030355 -0.6863263</span></span>
+<span id="cb96-7"><a href="an%C3%A1lisis-cluster.html#cb96-7" tabindex="-1"></a><span class="co">#&gt; 2 -0.04264890  0.4456548  0.5621683  0.6911197  0.6746937</span></span>
+<span id="cb96-8"><a href="an%C3%A1lisis-cluster.html#cb96-8" tabindex="-1"></a><span class="co">#&gt;   BaseNeumatico    anchura   longitud peso_revestimiento</span></span>
+<span id="cb96-9"><a href="an%C3%A1lisis-cluster.html#cb96-9" tabindex="-1"></a><span class="co">#&gt; 1    -0.5307746 -0.6676727 -0.6046852         -0.7833115</span></span>
+<span id="cb96-10"><a href="an%C3%A1lisis-cluster.html#cb96-10" tabindex="-1"></a><span class="co">#&gt; 2     0.5217784  0.6563562  0.5944363          0.7700351</span></span>
+<span id="cb96-11"><a href="an%C3%A1lisis-cluster.html#cb96-11" tabindex="-1"></a><span class="co">#&gt;   tapón_combustible        kpl</span></span>
+<span id="cb96-12"><a href="an%C3%A1lisis-cluster.html#cb96-12" tabindex="-1"></a><span class="co">#&gt; 1        -0.6622080  0.5717540</span></span>
+<span id="cb96-13"><a href="an%C3%A1lisis-cluster.html#cb96-13" tabindex="-1"></a><span class="co">#&gt; 2         0.6509841 -0.5620632</span></span>
+<span id="cb96-14"><a href="an%C3%A1lisis-cluster.html#cb96-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb96-15"><a href="an%C3%A1lisis-cluster.html#cb96-15" tabindex="-1"></a><span class="co">#&gt; Clustering vector:</span></span>
+<span id="cb96-16"><a href="an%C3%A1lisis-cluster.html#cb96-16" tabindex="-1"></a><span class="co">#&gt;   1   2   4   5   6   7   9  10  11  12  13  14  15  17  18 </span></span>
+<span id="cb96-17"><a href="an%C3%A1lisis-cluster.html#cb96-17" tabindex="-1"></a><span class="co">#&gt;   1   2   2   1   2   2   1   2   2   2   2   2   2   2   2 </span></span>
+<span id="cb96-18"><a href="an%C3%A1lisis-cluster.html#cb96-18" tabindex="-1"></a><span class="co">#&gt;  20  21  22  23  24  25  26  27  29  30  31  32  33  36  37 </span></span>
+<span id="cb96-19"><a href="an%C3%A1lisis-cluster.html#cb96-19" tabindex="-1"></a><span class="co">#&gt;   1   1   1   2   2   2   1   1   1   1   2   1   2   1   1 </span></span>
+<span id="cb96-20"><a href="an%C3%A1lisis-cluster.html#cb96-20" tabindex="-1"></a><span class="co">#&gt;  38  40  41  42  43  44  46  47  48  49  50  52  53  54  55 </span></span>
+<span id="cb96-21"><a href="an%C3%A1lisis-cluster.html#cb96-21" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   2   2   2   1   1   1   1   2   2   2   2 </span></span>
+<span id="cb96-22"><a href="an%C3%A1lisis-cluster.html#cb96-22" tabindex="-1"></a><span class="co">#&gt;  56  57  58  59  60  61  62  63  64  65  66  68  69  70  71 </span></span>
+<span id="cb96-23"><a href="an%C3%A1lisis-cluster.html#cb96-23" tabindex="-1"></a><span class="co">#&gt;   1   2   1   1   1   2   2   1   1   1   2   1   1   2   2 </span></span>
+<span id="cb96-24"><a href="an%C3%A1lisis-cluster.html#cb96-24" tabindex="-1"></a><span class="co">#&gt;  72  74  77  78  80  81  82  83  84  85  86  87  88  89  90 </span></span>
+<span id="cb96-25"><a href="an%C3%A1lisis-cluster.html#cb96-25" tabindex="-1"></a><span class="co">#&gt;   2   2   2   2   1   1   1   2   1   2   1   1   1   1   2 </span></span>
+<span id="cb96-26"><a href="an%C3%A1lisis-cluster.html#cb96-26" tabindex="-1"></a><span class="co">#&gt;  91  92  93  94  95  96 102 103 104 105 106 109 112 113 114 </span></span>
+<span id="cb96-27"><a href="an%C3%A1lisis-cluster.html#cb96-27" tabindex="-1"></a><span class="co">#&gt;   2   2   1   2   2   2   1   1   2   2   2   1   2   2   2 </span></span>
+<span id="cb96-28"><a href="an%C3%A1lisis-cluster.html#cb96-28" tabindex="-1"></a><span class="co">#&gt; 115 116 117 119 120 121 122 123 125 126 127 130 131 132 137 </span></span>
+<span id="cb96-29"><a href="an%C3%A1lisis-cluster.html#cb96-29" tabindex="-1"></a><span class="co">#&gt;   1   1   2   1   1   2   2   2   1   2   2   1   1   1   1 </span></span>
+<span id="cb96-30"><a href="an%C3%A1lisis-cluster.html#cb96-30" tabindex="-1"></a><span class="co">#&gt; 138 139 140 141 143 144 145 146 147 148 149 150 </span></span>
+<span id="cb96-31"><a href="an%C3%A1lisis-cluster.html#cb96-31" tabindex="-1"></a><span class="co">#&gt;   1   2   1   1   1   1   2   1   1   1   1   1 </span></span>
+<span id="cb96-32"><a href="an%C3%A1lisis-cluster.html#cb96-32" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb96-33"><a href="an%C3%A1lisis-cluster.html#cb96-33" tabindex="-1"></a><span class="co">#&gt; Within cluster sum of squares by cluster:</span></span>
+<span id="cb96-34"><a href="an%C3%A1lisis-cluster.html#cb96-34" tabindex="-1"></a><span class="co">#&gt; [1] 261.4993 557.6675</span></span>
+<span id="cb96-35"><a href="an%C3%A1lisis-cluster.html#cb96-35" tabindex="-1"></a><span class="co">#&gt;  (between_SS / total_SS =  35.8 %)</span></span>
+<span id="cb96-36"><a href="an%C3%A1lisis-cluster.html#cb96-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb96-37"><a href="an%C3%A1lisis-cluster.html#cb96-37" tabindex="-1"></a><span class="co">#&gt; Available components:</span></span>
+<span id="cb96-38"><a href="an%C3%A1lisis-cluster.html#cb96-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb96-39"><a href="an%C3%A1lisis-cluster.html#cb96-39" tabindex="-1"></a><span class="co">#&gt; [1] "cluster"      "centers"      "totss"       </span></span>
+<span id="cb96-40"><a href="an%C3%A1lisis-cluster.html#cb96-40" tabindex="-1"></a><span class="co">#&gt; [4] "withinss"     "tot.withinss" "betweenss"   </span></span>
+<span id="cb96-41"><a href="an%C3%A1lisis-cluster.html#cb96-41" tabindex="-1"></a><span class="co">#&gt; [7] "size"         "iter"         "ifault"</span></span></code></pre></div>
 <p>También es posible visualizar los resultados utilizando la función <strong>fviz_cluster</strong>. Esto proporciona una representación visual atractiva de los clústeres. En el caso de que haya más de dos dimensiones (variables), <strong>fviz_cluster</strong> llevará a cabo un análisis de componentes principales (PCA) y representará los puntos de datos en función de los dos primeros componentes principales que explican la mayor parte de la variabilidad.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="análisis-cluster.html#cb97-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_cluster</span>(k2, <span class="at">data =</span> df)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="an%C3%A1lisis-cluster.html#cb97-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_cluster</span>(k2, <span class="at">data =</span> df)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
 <p>Alternativamente, puedes utilizar gráficos de dispersión clásicos por pares para ilustrar los clústeres en comparación con las variables originales.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="análisis-cluster.html#cb98-1" tabindex="-1"></a><span class="sc">&gt;</span> data_sin_NAN<span class="ot">=</span><span class="fu">na.omit</span>(data)</span>
-<span id="cb98-2"><a href="análisis-cluster.html#cb98-2" tabindex="-1"></a><span class="sc">&gt;</span> modelo<span class="ot">=</span>data_sin_NAN<span class="sc">$</span>modelo</span>
-<span id="cb98-3"><a href="análisis-cluster.html#cb98-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb98-4"><a href="análisis-cluster.html#cb98-4" tabindex="-1"></a><span class="er">&gt;</span> df <span class="sc">%&gt;%</span></span>
-<span id="cb98-5"><a href="análisis-cluster.html#cb98-5" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb98-6"><a href="análisis-cluster.html#cb98-6" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">cluster =</span> k2<span class="sc">$</span>cluster,</span>
-<span id="cb98-7"><a href="análisis-cluster.html#cb98-7" tabindex="-1"></a><span class="sc">+</span>          <span class="at">Modelo =</span>modelo) <span class="sc">%&gt;%</span></span>
-<span id="cb98-8"><a href="análisis-cluster.html#cb98-8" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(precio, caballos, <span class="at">color =</span> <span class="fu">factor</span>(cluster), <span class="at">label =</span> modelo)) <span class="sc">+</span></span>
-<span id="cb98-9"><a href="análisis-cluster.html#cb98-9" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_text</span>()</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-10-1.png" width="672" />
-También podemos visualizar las variables y sus medias para cada cluster y así poder visualizar el peso de cada variable en el cluster y cuando ayuda en la clasificación.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="análisis-cluster.html#cb99-1" tabindex="-1"></a><span class="sc">&gt;</span> df2<span class="ot">=</span><span class="fu">as.data.frame</span>(<span class="fu">scale</span>(<span class="fu">na.omit</span>(datos)))<span class="co">#vuelvo a cargar los datos</span></span>
-<span id="cb99-2"><a href="análisis-cluster.html#cb99-2" tabindex="-1"></a><span class="sc">&gt;</span> df2<span class="sc">$</span>clus<span class="ot">=</span><span class="fu">as.factor</span>(k2<span class="sc">$</span>cluster)<span class="co">#defino una nueva columna de pertenencia a clúster</span></span>
-<span id="cb99-3"><a href="análisis-cluster.html#cb99-3" tabindex="-1"></a><span class="sc">&gt;</span> df2<span class="sc">$</span>clus<span class="ot">=</span><span class="fu">factor</span>(df2<span class="sc">$</span>clus)<span class="co">#lo defino como un factor </span></span>
-<span id="cb99-4"><a href="análisis-cluster.html#cb99-4" tabindex="-1"></a><span class="sc">&gt;</span> data_long<span class="ot">=</span><span class="fu">gather</span>(df2,caracteristica,valor,ventas<span class="sc">:</span>kpl,<span class="at">factor_key=</span><span class="cn">TRUE</span>)<span class="co">#apilo los datos</span></span>
-<span id="cb99-5"><a href="análisis-cluster.html#cb99-5" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb99-6"><a href="análisis-cluster.html#cb99-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">ggplot</span>(data_long,<span class="fu">aes</span>(<span class="fu">as.factor</span>(<span class="at">x=</span>caracteristica),<span class="at">y=</span>valor, <span class="at">group=</span>clus,<span class="at">colour=</span>clus))<span class="sc">+</span></span>
-<span id="cb99-7"><a href="análisis-cluster.html#cb99-7" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">&quot;pointrange&quot;</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
-<span id="cb99-8"><a href="análisis-cluster.html#cb99-8" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_summary</span>(<span class="at">geom=</span><span class="st">&quot;line&quot;</span>)<span class="sc">+</span></span>
-<span id="cb99-9"><a href="análisis-cluster.html#cb99-9" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span>clus))</span>
-<span id="cb99-10"><a href="análisis-cluster.html#cb99-10" tabindex="-1"></a><span class="co">#&gt; No summary function supplied, defaulting to `mean_se()`</span></span>
-<span id="cb99-11"><a href="análisis-cluster.html#cb99-11" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing missing values</span></span>
-<span id="cb99-12"><a href="análisis-cluster.html#cb99-12" tabindex="-1"></a><span class="co">#&gt; (`geom_segment()`).</span></span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="an%C3%A1lisis-cluster.html#cb98-1" tabindex="-1"></a><span class="sc">&gt;</span> data_sin_NAN<span class="ot">=</span><span class="fu">na.omit</span>(data)</span>
+<span id="cb98-2"><a href="an%C3%A1lisis-cluster.html#cb98-2" tabindex="-1"></a><span class="sc">&gt;</span> modelo<span class="ot">=</span>data_sin_NAN<span class="sc">$</span>modelo</span>
+<span id="cb98-3"><a href="an%C3%A1lisis-cluster.html#cb98-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb98-4"><a href="an%C3%A1lisis-cluster.html#cb98-4" tabindex="-1"></a><span class="er">&gt;</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb98-5"><a href="an%C3%A1lisis-cluster.html#cb98-5" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb98-6"><a href="an%C3%A1lisis-cluster.html#cb98-6" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">cluster =</span> k2<span class="sc">$</span>cluster,</span>
+<span id="cb98-7"><a href="an%C3%A1lisis-cluster.html#cb98-7" tabindex="-1"></a><span class="sc">+</span>          <span class="at">Modelo =</span>modelo) <span class="sc">%&gt;%</span></span>
+<span id="cb98-8"><a href="an%C3%A1lisis-cluster.html#cb98-8" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(precio, caballos, <span class="at">color =</span> <span class="fu">factor</span>(cluster), <span class="at">label =</span> modelo)) <span class="sc">+</span></span>
+<span id="cb98-9"><a href="an%C3%A1lisis-cluster.html#cb98-9" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_text</span>()</span></code></pre></div>
+<div class="inline-figure">
+<img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-10-1.png" width="672">
+También podemos visualizar las variables y sus medias para cada cluster y así poder visualizar el peso de cada variable en el cluster y cuando ayuda en la clasificación.</div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="an%C3%A1lisis-cluster.html#cb99-1" tabindex="-1"></a><span class="sc">&gt;</span> df2<span class="ot">=</span><span class="fu">as.data.frame</span>(<span class="fu">scale</span>(<span class="fu">na.omit</span>(datos)))<span class="co">#vuelvo a cargar los datos</span></span>
+<span id="cb99-2"><a href="an%C3%A1lisis-cluster.html#cb99-2" tabindex="-1"></a><span class="sc">&gt;</span> df2<span class="sc">$</span>clus<span class="ot">=</span><span class="fu">as.factor</span>(k2<span class="sc">$</span>cluster)<span class="co">#defino una nueva columna de pertenencia a clúster</span></span>
+<span id="cb99-3"><a href="an%C3%A1lisis-cluster.html#cb99-3" tabindex="-1"></a><span class="sc">&gt;</span> df2<span class="sc">$</span>clus<span class="ot">=</span><span class="fu">factor</span>(df2<span class="sc">$</span>clus)<span class="co">#lo defino como un factor </span></span>
+<span id="cb99-4"><a href="an%C3%A1lisis-cluster.html#cb99-4" tabindex="-1"></a><span class="sc">&gt;</span> data_long<span class="ot">=</span><span class="fu">gather</span>(df2,caracteristica,valor,ventas<span class="sc">:</span>kpl,<span class="at">factor_key=</span><span class="cn">TRUE</span>)<span class="co">#apilo los datos</span></span>
+<span id="cb99-5"><a href="an%C3%A1lisis-cluster.html#cb99-5" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb99-6"><a href="an%C3%A1lisis-cluster.html#cb99-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">ggplot</span>(data_long,<span class="fu">aes</span>(<span class="fu">as.factor</span>(<span class="at">x=</span>caracteristica),<span class="at">y=</span>valor, <span class="at">group=</span>clus,<span class="at">colour=</span>clus))<span class="sc">+</span></span>
+<span id="cb99-7"><a href="an%C3%A1lisis-cluster.html#cb99-7" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_summary</span>(<span class="at">fun=</span>mean,<span class="at">geom=</span><span class="st">"pointrange"</span>,<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb99-8"><a href="an%C3%A1lisis-cluster.html#cb99-8" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">stat_summary</span>(<span class="at">geom=</span><span class="st">"line"</span>)<span class="sc">+</span></span>
+<span id="cb99-9"><a href="an%C3%A1lisis-cluster.html#cb99-9" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">shape=</span>clus))</span>
+<span id="cb99-10"><a href="an%C3%A1lisis-cluster.html#cb99-10" tabindex="-1"></a><span class="co">#&gt; No summary function supplied, defaulting to `mean_se()`</span></span>
+<span id="cb99-11"><a href="an%C3%A1lisis-cluster.html#cb99-11" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 22 rows containing missing values</span></span>
+<span id="cb99-12"><a href="an%C3%A1lisis-cluster.html#cb99-12" tabindex="-1"></a><span class="co">#&gt; (`geom_segment()`).</span></span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
 </div>
-<div id="selección-del-número-de-clústeres" class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Selección del número de clústeres<a href="análisis-cluster.html#selección-del-número-de-clústeres" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="selección-del-número-de-clústeres" class="section level3" number="6.3.2">
+<h3>
+<span class="header-section-number">6.3.2</span> Selección del número de clústeres<a class="anchor" aria-label="anchor" href="#selecci%C3%B3n-del-n%C3%BAmero-de-cl%C3%BAsteres"><i class="fas fa-link"></i></a>
+</h3>
 <p>Dado que el número de clústeres (<span class="math inline">\(k\)</span>) debe establecerse antes de iniciar el algoritmo, a menudo es ventajoso utilizar varios valores diferentes de <span class="math inline">\(k\)</span> y examinar las diferencias en los resultados. Podemos ejecutar el mismo proceso para 3, 4 y 5 clústeres, y los resultados se muestran en la figura:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="análisis-cluster.html#cb100-1" tabindex="-1"></a><span class="sc">&gt;</span> k3 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
-<span id="cb100-2"><a href="análisis-cluster.html#cb100-2" tabindex="-1"></a><span class="sc">&gt;</span> k4 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">4</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
-<span id="cb100-3"><a href="análisis-cluster.html#cb100-3" tabindex="-1"></a><span class="sc">&gt;</span> k5 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">5</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
-<span id="cb100-4"><a href="análisis-cluster.html#cb100-4" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb100-5"><a href="análisis-cluster.html#cb100-5" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Gráficos para comparar</span></span>
-<span id="cb100-6"><a href="análisis-cluster.html#cb100-6" tabindex="-1"></a><span class="er">&gt;</span> p1 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k2, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>, <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;k = 2&quot;</span>)</span>
-<span id="cb100-7"><a href="análisis-cluster.html#cb100-7" tabindex="-1"></a><span class="sc">&gt;</span> p2 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k3, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,  <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;k = 3&quot;</span>)</span>
-<span id="cb100-8"><a href="análisis-cluster.html#cb100-8" tabindex="-1"></a><span class="sc">&gt;</span> p3 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k4, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,  <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;k = 4&quot;</span>)</span>
-<span id="cb100-9"><a href="análisis-cluster.html#cb100-9" tabindex="-1"></a><span class="sc">&gt;</span> p4 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k5, <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,  <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&quot;k = 5&quot;</span>)</span>
-<span id="cb100-10"><a href="análisis-cluster.html#cb100-10" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb100-11"><a href="análisis-cluster.html#cb100-11" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(gridExtra)</span>
-<span id="cb100-12"><a href="análisis-cluster.html#cb100-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb100-13"><a href="análisis-cluster.html#cb100-13" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;gridExtra&#39;</span></span>
-<span id="cb100-14"><a href="análisis-cluster.html#cb100-14" tabindex="-1"></a><span class="co">#&gt; The following object is masked from &#39;package:dplyr&#39;:</span></span>
-<span id="cb100-15"><a href="análisis-cluster.html#cb100-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb100-16"><a href="análisis-cluster.html#cb100-16" tabindex="-1"></a><span class="co">#&gt;     combine</span></span>
-<span id="cb100-17"><a href="análisis-cluster.html#cb100-17" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">grid.arrange</span>(p1, p2, p3, p4, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="an%C3%A1lisis-cluster.html#cb100-1" tabindex="-1"></a><span class="sc">&gt;</span> k3 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb100-2"><a href="an%C3%A1lisis-cluster.html#cb100-2" tabindex="-1"></a><span class="sc">&gt;</span> k4 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">4</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb100-3"><a href="an%C3%A1lisis-cluster.html#cb100-3" tabindex="-1"></a><span class="sc">&gt;</span> k5 <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">5</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb100-4"><a href="an%C3%A1lisis-cluster.html#cb100-4" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb100-5"><a href="an%C3%A1lisis-cluster.html#cb100-5" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Gráficos para comparar</span></span>
+<span id="cb100-6"><a href="an%C3%A1lisis-cluster.html#cb100-6" tabindex="-1"></a><span class="er">&gt;</span> p1 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k2, <span class="at">geom =</span> <span class="st">"point"</span>, <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"k = 2"</span>)</span>
+<span id="cb100-7"><a href="an%C3%A1lisis-cluster.html#cb100-7" tabindex="-1"></a><span class="sc">&gt;</span> p2 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k3, <span class="at">geom =</span> <span class="st">"point"</span>,  <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"k = 3"</span>)</span>
+<span id="cb100-8"><a href="an%C3%A1lisis-cluster.html#cb100-8" tabindex="-1"></a><span class="sc">&gt;</span> p3 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k4, <span class="at">geom =</span> <span class="st">"point"</span>,  <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"k = 4"</span>)</span>
+<span id="cb100-9"><a href="an%C3%A1lisis-cluster.html#cb100-9" tabindex="-1"></a><span class="sc">&gt;</span> p4 <span class="ot">&lt;-</span> <span class="fu">fviz_cluster</span>(k5, <span class="at">geom =</span> <span class="st">"point"</span>,  <span class="at">data =</span> df) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"k = 5"</span>)</span>
+<span id="cb100-10"><a href="an%C3%A1lisis-cluster.html#cb100-10" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb100-11"><a href="an%C3%A1lisis-cluster.html#cb100-11" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(gridExtra)</span>
+<span id="cb100-12"><a href="an%C3%A1lisis-cluster.html#cb100-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb100-13"><a href="an%C3%A1lisis-cluster.html#cb100-13" tabindex="-1"></a><span class="co">#&gt; Attaching package: 'gridExtra'</span></span>
+<span id="cb100-14"><a href="an%C3%A1lisis-cluster.html#cb100-14" tabindex="-1"></a><span class="co">#&gt; The following object is masked from 'package:dplyr':</span></span>
+<span id="cb100-15"><a href="an%C3%A1lisis-cluster.html#cb100-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb100-16"><a href="an%C3%A1lisis-cluster.html#cb100-16" tabindex="-1"></a><span class="co">#&gt;     combine</span></span>
+<span id="cb100-17"><a href="an%C3%A1lisis-cluster.html#cb100-17" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">grid.arrange</span>(p1, p2, p3, p4, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
 <p>Estos gráficos nos permiten ver las diferentes configuraciones para diferente número de clústeres y nos dan una intuición sobre el número óptimo de clústeres. Para facilitar al analista la determinación de este numero óptimo, a continuación se explican los tres métodos más comunes para determinarlo, <strong>Elbow</strong>, <strong>Silhouette</strong> y el estadístico <strong>Gap</strong></p>
-<div id="método-elbow" class="section level4 hasAnchor" number="6.3.2.1">
-<h4><span class="header-section-number">6.3.2.1</span> Método Elbow<a href="análisis-cluster.html#método-elbow" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="método-elbow" class="section level4" number="6.3.2.1">
+<h4>
+<span class="header-section-number">6.3.2.1</span> Método Elbow<a class="anchor" aria-label="anchor" href="#m%C3%A9todo-elbow"><i class="fas fa-link"></i></a>
+</h4>
 <p>Recordad que la idea que utiliza el algoritmo k-medias para identificar los clústeres es minimizar la variación total dentro de clúster</p>
 <p><span class="math display">\[VTDC=\sum_{i=1}^KW(C_k)=\sum_{i=1}^K\sum\limits_{x_i\in C_k}(x_i-\mu_k)^2\]</span></p>
 <p>La suma <span class="math inline">\(VTDC\)</span>, mide cuanto de compacto es el agrupamiento, y buscamos minimizar esta medida. Por tanto, podemos seguir el siguiente procedimiento para determinar el número óptimo de clústeres.</p>
@@ -567,23 +311,25 @@ También podemos visualizar las variables y sus medias para cada cluster y así 
 <p>3.- Representar gráficamente la curva de valores de <span class="math inline">\(VTDC\)</span> en función del número de clústeres k.</p>
 <p>4.-El punto en el gráfico donde se observa un quiebre (codo) se considera comúnmente como un indicador del número apropiado de clústeres.</p>
 <p>Podemos llevar a cabo este procedimiento en R con el siguiente código. Los resultados sugieren que 3 es el número óptimo de clústeres, ya que se observa el codo.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="análisis-cluster.html#cb101-1" tabindex="-1"></a><span class="sc">&gt;</span> nk<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb101-2"><a href="análisis-cluster.html#cb101-2" tabindex="-1"></a><span class="sc">&gt;</span> pares<span class="ot">=</span><span class="fu">matrix</span>(<span class="dv">0</span>,nk,<span class="dv">2</span>)<span class="co"># definimos la matriz donde guardar los pares (nº cluster, VTDC) para valores de k=1:nk</span></span>
-<span id="cb101-3"><a href="análisis-cluster.html#cb101-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nk){</span>
-<span id="cb101-4"><a href="análisis-cluster.html#cb101-4" tabindex="-1"></a><span class="sc">+</span>   pares[k,]<span class="ot">=</span><span class="fu">c</span>(k,<span class="fu">kmeans</span>(df, k, <span class="at">nstart =</span> <span class="dv">10</span> )<span class="sc">$</span>tot.withinss)<span class="co"># calculamos (nº cluster, VTDC)</span></span>
-<span id="cb101-5"><a href="análisis-cluster.html#cb101-5" tabindex="-1"></a><span class="sc">+</span> }</span>
-<span id="cb101-6"><a href="análisis-cluster.html#cb101-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(pares[,<span class="dv">1</span>], pares[,<span class="dv">2</span>],</span>
-<span id="cb101-7"><a href="análisis-cluster.html#cb101-7" tabindex="-1"></a><span class="sc">+</span>        <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb101-8"><a href="análisis-cluster.html#cb101-8" tabindex="-1"></a><span class="sc">+</span>        <span class="at">xlab=</span><span class="st">&quot;Número de clústeres K&quot;</span>,</span>
-<span id="cb101-9"><a href="análisis-cluster.html#cb101-9" tabindex="-1"></a><span class="sc">+</span>        <span class="at">ylab=</span><span class="st">&quot;Variación total dentro del clúster VTDC&quot;</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="an%C3%A1lisis-cluster.html#cb101-1" tabindex="-1"></a><span class="sc">&gt;</span> nk<span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb101-2"><a href="an%C3%A1lisis-cluster.html#cb101-2" tabindex="-1"></a><span class="sc">&gt;</span> pares<span class="ot">=</span><span class="fu">matrix</span>(<span class="dv">0</span>,nk,<span class="dv">2</span>)<span class="co"># definimos la matriz donde guardar los pares (nº cluster, VTDC) para valores de k=1:nk</span></span>
+<span id="cb101-3"><a href="an%C3%A1lisis-cluster.html#cb101-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nk){</span>
+<span id="cb101-4"><a href="an%C3%A1lisis-cluster.html#cb101-4" tabindex="-1"></a><span class="sc">+</span>   pares[k,]<span class="ot">=</span><span class="fu">c</span>(k,<span class="fu">kmeans</span>(df, k, <span class="at">nstart =</span> <span class="dv">10</span> )<span class="sc">$</span>tot.withinss)<span class="co"># calculamos (nº cluster, VTDC)</span></span>
+<span id="cb101-5"><a href="an%C3%A1lisis-cluster.html#cb101-5" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb101-6"><a href="an%C3%A1lisis-cluster.html#cb101-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(pares[,<span class="dv">1</span>], pares[,<span class="dv">2</span>],</span>
+<span id="cb101-7"><a href="an%C3%A1lisis-cluster.html#cb101-7" tabindex="-1"></a><span class="sc">+</span>        <span class="at">type=</span><span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb101-8"><a href="an%C3%A1lisis-cluster.html#cb101-8" tabindex="-1"></a><span class="sc">+</span>        <span class="at">xlab=</span><span class="st">"Número de clústeres K"</span>,</span>
+<span id="cb101-9"><a href="an%C3%A1lisis-cluster.html#cb101-9" tabindex="-1"></a><span class="sc">+</span>        <span class="at">ylab=</span><span class="st">"Variación total dentro del clúster VTDC"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>El método Elbow tambien se puede realizar con la función de R <strong>fviz_nbclust</strong> de la siguiente forma:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="análisis-cluster.html#cb102-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb102-2"><a href="análisis-cluster.html#cb102-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_nbclust</span>(df, kmeans, <span class="at">method =</span> <span class="st">&quot;wss&quot;</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="an%C3%A1lisis-cluster.html#cb102-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb102-2"><a href="an%C3%A1lisis-cluster.html#cb102-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_nbclust</span>(df, kmeans, <span class="at">method =</span> <span class="st">"wss"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 </div>
-<div id="método-silhouette" class="section level4 hasAnchor" number="6.3.2.2">
-<h4><span class="header-section-number">6.3.2.2</span> Método Silhouette<a href="análisis-cluster.html#método-silhouette" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="método-silhouette" class="section level4" number="6.3.2.2">
+<h4>
+<span class="header-section-number">6.3.2.2</span> Método Silhouette<a class="anchor" aria-label="anchor" href="#m%C3%A9todo-silhouette"><i class="fas fa-link"></i></a>
+</h4>
 <p>El método Silhouette evalúa la calidad de un agrupamiento, es decir, determina como de bien cada individuo se encuentra dentro del clúster.
 Pasamos ahora a definir la silueta de un individuo <span class="math inline">\(i\)</span> que pertenece al clúster <span class="math inline">\(C_I\)</span> como <span class="math inline">\(s(i)=0\)</span> si <span class="math inline">\(|C_I|=1\)</span> y
 <span class="math display">\[s(i)=\frac{b(i)-a(i)}{\max\{a(i),b(i)\}}\mbox{ si }\quad |C_I|&gt;1\]</span>
@@ -597,42 +343,50 @@ En este contexto se define el coeficiente Silhouette como
 <span class="math display">\[SC=\max_{k}\bar{s}(k)\]</span>
 donde <span class="math inline">\(\bar{s}(k)\)</span> denota la media de <span class="math inline">\(s(i)\)</span> para todos los <span class="math inline">\(i\in C_k\)</span>.</p>
 <p>Para llevar a cabo este enfoque, podemos utilizar la función <strong>silhouette</strong> del paquete <strong>cluster</strong> para calcular el ancho promedio de Silhouette. El siguiente código implementa este método para 2-<span class="math inline">\(n_k\)</span> clústeres.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="análisis-cluster.html#cb103-1" tabindex="-1"></a><span class="sc">&gt;</span> nk<span class="ot">=</span><span class="dv">10</span></span>
-<span id="cb103-2"><a href="análisis-cluster.html#cb103-2" tabindex="-1"></a><span class="sc">&gt;</span> Spares<span class="ot">=</span><span class="fu">matrix</span>(<span class="dv">0</span>,nk<span class="dv">-1</span>,<span class="dv">2</span>)<span class="co"># definimos la matriz donde guardar los pares (nº cluster, VTDC) para valores de k=1:nk</span></span>
-<span id="cb103-3"><a href="análisis-cluster.html#cb103-3" tabindex="-1"></a><span class="sc">&gt;</span> cont<span class="ot">=</span><span class="dv">0</span></span>
-<span id="cb103-4"><a href="análisis-cluster.html#cb103-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>nk){</span>
-<span id="cb103-5"><a href="análisis-cluster.html#cb103-5" tabindex="-1"></a><span class="sc">+</span>   cont<span class="ot">=</span>cont<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb103-6"><a href="análisis-cluster.html#cb103-6" tabindex="-1"></a><span class="sc">+</span>   resultado<span class="ot">&lt;-</span><span class="fu">kmeans</span>(df, k, <span class="at">nstart =</span> <span class="dv">10</span>)</span>
-<span id="cb103-7"><a href="análisis-cluster.html#cb103-7" tabindex="-1"></a><span class="sc">+</span>   ss<span class="ot">&lt;-</span><span class="fu">silhouette</span>(resultado<span class="sc">$</span>cluster,<span class="fu">dist</span>(df))</span>
-<span id="cb103-8"><a href="análisis-cluster.html#cb103-8" tabindex="-1"></a><span class="sc">+</span>   Spares[cont,]<span class="ot">=</span><span class="fu">c</span>(k,<span class="fu">mean</span>(ss[,<span class="dv">3</span>]))<span class="co"># calculamos (nº cluster, VTDC)</span></span>
-<span id="cb103-9"><a href="análisis-cluster.html#cb103-9" tabindex="-1"></a><span class="sc">+</span> }</span>
-<span id="cb103-10"><a href="análisis-cluster.html#cb103-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(Spares[,<span class="dv">1</span>], Spares[,<span class="dv">2</span>],</span>
-<span id="cb103-11"><a href="análisis-cluster.html#cb103-11" tabindex="-1"></a><span class="sc">+</span>        <span class="at">type=</span><span class="st">&quot;b&quot;</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb103-12"><a href="análisis-cluster.html#cb103-12" tabindex="-1"></a><span class="sc">+</span>        <span class="at">xlab=</span><span class="st">&quot;Número de clústeres K&quot;</span>,</span>
-<span id="cb103-13"><a href="análisis-cluster.html#cb103-13" tabindex="-1"></a><span class="sc">+</span>        <span class="at">ylab=</span><span class="st">&quot;Silueta  promedio&quot;</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-15-1.png" width="672" />
-Los resultados muestran que 3 clústeres maximizan los valores medio de silueta, y que 5 clústeres son el segundo número óptimo.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="an%C3%A1lisis-cluster.html#cb103-1" tabindex="-1"></a><span class="sc">&gt;</span> nk<span class="ot">=</span><span class="dv">10</span></span>
+<span id="cb103-2"><a href="an%C3%A1lisis-cluster.html#cb103-2" tabindex="-1"></a><span class="sc">&gt;</span> Spares<span class="ot">=</span><span class="fu">matrix</span>(<span class="dv">0</span>,nk<span class="dv">-1</span>,<span class="dv">2</span>)<span class="co"># definimos la matriz donde guardar los pares (nº cluster, VTDC) para valores de k=1:nk</span></span>
+<span id="cb103-3"><a href="an%C3%A1lisis-cluster.html#cb103-3" tabindex="-1"></a><span class="sc">&gt;</span> cont<span class="ot">=</span><span class="dv">0</span></span>
+<span id="cb103-4"><a href="an%C3%A1lisis-cluster.html#cb103-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (k <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>nk){</span>
+<span id="cb103-5"><a href="an%C3%A1lisis-cluster.html#cb103-5" tabindex="-1"></a><span class="sc">+</span>   cont<span class="ot">=</span>cont<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb103-6"><a href="an%C3%A1lisis-cluster.html#cb103-6" tabindex="-1"></a><span class="sc">+</span>   resultado<span class="ot">&lt;-</span><span class="fu">kmeans</span>(df, k, <span class="at">nstart =</span> <span class="dv">10</span>)</span>
+<span id="cb103-7"><a href="an%C3%A1lisis-cluster.html#cb103-7" tabindex="-1"></a><span class="sc">+</span>   ss<span class="ot">&lt;-</span><span class="fu">silhouette</span>(resultado<span class="sc">$</span>cluster,<span class="fu">dist</span>(df))</span>
+<span id="cb103-8"><a href="an%C3%A1lisis-cluster.html#cb103-8" tabindex="-1"></a><span class="sc">+</span>   Spares[cont,]<span class="ot">=</span><span class="fu">c</span>(k,<span class="fu">mean</span>(ss[,<span class="dv">3</span>]))<span class="co"># calculamos (nº cluster, VTDC)</span></span>
+<span id="cb103-9"><a href="an%C3%A1lisis-cluster.html#cb103-9" tabindex="-1"></a><span class="sc">+</span> }</span>
+<span id="cb103-10"><a href="an%C3%A1lisis-cluster.html#cb103-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(Spares[,<span class="dv">1</span>], Spares[,<span class="dv">2</span>],</span>
+<span id="cb103-11"><a href="an%C3%A1lisis-cluster.html#cb103-11" tabindex="-1"></a><span class="sc">+</span>        <span class="at">type=</span><span class="st">"b"</span>, <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb103-12"><a href="an%C3%A1lisis-cluster.html#cb103-12" tabindex="-1"></a><span class="sc">+</span>        <span class="at">xlab=</span><span class="st">"Número de clústeres K"</span>,</span>
+<span id="cb103-13"><a href="an%C3%A1lisis-cluster.html#cb103-13" tabindex="-1"></a><span class="sc">+</span>        <span class="at">ylab=</span><span class="st">"Silueta  promedio"</span>)</span></code></pre></div>
+<div class="inline-figure">
+<img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-15-1.png" width="672">
+Los resultados muestran que 3 clústeres maximizan los valores medio de silueta, y que 5 clústeres son el segundo número óptimo.</div>
 </div>
 </div>
-<div id="visualización-del-clúster-óptimo" class="section level3 hasAnchor" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Visualización del clúster óptimo<a href="análisis-cluster.html#visualización-del-clúster-óptimo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="visualización-del-clúster-óptimo" class="section level3" number="6.3.3">
+<h3>
+<span class="header-section-number">6.3.3</span> Visualización del clúster óptimo<a class="anchor" aria-label="anchor" href="#visualizaci%C3%B3n-del-cl%C3%BAster-%C3%B3ptimo"><i class="fas fa-link"></i></a>
+</h3>
 <p>Con los resultados obtenidos en las secciones anteriores indican que <span class="math inline">\(k=3\)</span> es el número optimo de clústeres, realizaremos el algoritmo k-medias para k=3 y lo representaremos con las función <strong>fviz_cluster</strong>.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="análisis-cluster.html#cb104-1" tabindex="-1"></a><span class="sc">&gt;</span> ClusterOpt <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
-<span id="cb104-2"><a href="análisis-cluster.html#cb104-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_cluster</span>(ClusterOpt, <span class="at">data =</span> df)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="an%C3%A1lisis-cluster.html#cb104-1" tabindex="-1"></a><span class="sc">&gt;</span> ClusterOpt <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(df, <span class="at">centers =</span> <span class="dv">3</span>, <span class="at">nstart =</span> <span class="dv">25</span>)</span>
+<span id="cb104-2"><a href="an%C3%A1lisis-cluster.html#cb104-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_cluster</span>(ClusterOpt, <span class="at">data =</span> df)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
 </div>
 </div>
-<div id="comentarios-finales-sobre-el-algoritmo-k-medias" class="section level2 hasAnchor" number="6.4">
-<h2><span class="header-section-number">6.4</span> Comentarios finales sobre el algoritmo k-medias<a href="análisis-cluster.html#comentarios-finales-sobre-el-algoritmo-k-medias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="comentarios-finales-sobre-el-algoritmo-k-medias" class="section level2" number="6.4">
+<h2>
+<span class="header-section-number">6.4</span> Comentarios finales sobre el algoritmo k-medias<a class="anchor" aria-label="anchor" href="#comentarios-finales-sobre-el-algoritmo-k-medias"><i class="fas fa-link"></i></a>
+</h2>
 <p>El algoritmo k-medias es un algoritmo muy sencillo y rápido que puede manejar grandes conjuntos de datos eficientemente. Sin embargo, presenta algunas debilidades.</p>
 <p>Una posible limitación de k-medias es que requiere que especifiquemos previamente el número de clústeres. La agrupación jerárquica es una alternativa que no exige comprometerse con una cantidad específica de clústeres. Además, la agrupación jerárquica tiene la ventaja de generar una representación visual atractiva de las observaciones en forma de un dendrograma.</p>
 <p>Otra desventaja del algoritmo k-medias es su sensibilidad a valores atípicos, lo que puede resultar en diferentes resultados al cambiar el orden de los datos.</p>
 </div>
-<div id="análisis-clúster-jerárquico" class="section level2 hasAnchor" number="6.5">
-<h2><span class="header-section-number">6.5</span> Análisis clúster jerárquico<a href="análisis-cluster.html#análisis-clúster-jerárquico" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="análisis-clúster-jerárquico" class="section level2" number="6.5">
+<h2>
+<span class="header-section-number">6.5</span> Análisis clúster jerárquico<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-cl%C3%BAster-jer%C3%A1rquico"><i class="fas fa-link"></i></a>
+</h2>
 <p>El análisis clúster jerárquico es un enfoque alternativo al algoritmo k-medias para identificar grupos en el conjunto de datos. No requiere que especifiquemos previamente el número de clústeres a generar, como lo exige el enfoque k-medias. Además, el análisis jerárquico tiene una ventaja adicional sobre k-medias que resulta en una atractiva representación gráfica basada en árbol de las observaciones, llamada dendrograma.</p>
 <p>Requeriremos el siguiente paquete adicional</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="análisis-cluster.html#cb105-1" tabindex="-1"></a><span class="fu">library</span>(dendextend) <span class="co"># Para comparar dos dendrogramas</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://talgalili.github.io/dendextend/">dendextend</a></span><span class="op">)</span> <span class="co"># Para comparar dos dendrogramas</span></span></code></pre></div>
 <p>El análisis clúster jerárquico se clasifica en dos tipos principales: aglomerativo y divisivo.</p>
 <p><strong>Aglomerativo</strong>: También conocido como AGNES (Agglomerative Nesting). En este enfoque, el proceso comienza desde la parte inferior, donde inicialmente cada individuo se considera un clúster individual (hoja). En cada paso, se combinan los dos clústeres más similares en uno más grande (nodo). Este procedimiento se repite hasta que todos los puntos forman parte de un único clúster grande (raíz), y el resultado se visualiza como un dendrograma.</p>
 <p><strong>Divisivo</strong>: También conocido como DIANA (Divise Analysis). Aquí, el proceso se desarrolla de arriba hacia abajo. Comienza desde la raíz, donde todos los objetos están en un solo clúster. En cada iteración, el clúster más heterogéneo se divide en dos. Este proceso se repite hasta que cada objeto tiene su propio clúster.</p>
@@ -643,241 +397,238 @@ Los resultados muestran que 3 clústeres maximizan los valores medio de silueta,
 <p><strong>Mean or average linkage clustering</strong>: Calcula todas las diferencias entre los elementos del clúster 1 y los elementos del clúster 2, y toma el promedio de estas diferencias como la distancia entre los dos clústeres.</p>
 <p><strong>Centroid linkage clustering</strong>: Calcula la diferencia entre el centroide del clúster 1 (un vector promedio de longitud p variables) y el centroide del clúster 2.</p>
 <p><strong>Ward’s minimum variance method</strong>: Minimiza la varianza total dentro del clúster. En cada paso, se fusionan los pares de clústeres con la mínima distancia entre clústeres.</p>
-<div id="análsis-clúster-jerárquico-con-r" class="section level3 hasAnchor" number="6.5.1">
-<h3><span class="header-section-number">6.5.1</span> Análsis clúster jerárquico con R<a href="análisis-cluster.html#análsis-clúster-jerárquico-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="análsis-clúster-jerárquico-con-r" class="section level3" number="6.5.1">
+<h3>
+<span class="header-section-number">6.5.1</span> Análsis clúster jerárquico con R<a class="anchor" aria-label="anchor" href="#an%C3%A1lsis-cl%C3%BAster-jer%C3%A1rquico-con-r"><i class="fas fa-link"></i></a>
+</h3>
 <p>Existen varias funciones de R para realizar análsis clúster jerárquico, pero las más comunes son <strong>hclust</strong> y <strong>agnes</strong> para clúster jerárquico aglomerativo y <strong>diana</strong> para clúster jerárquico divisivo.</p>
-<div id="análisis-clúster-jerárquico-aglomerativo" class="section level4 hasAnchor" number="6.5.1.1">
-<h4><span class="header-section-number">6.5.1.1</span> Análisis clúster jerárquico aglomerativo<a href="análisis-cluster.html#análisis-clúster-jerárquico-aglomerativo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="análisis-clúster-jerárquico-aglomerativo" class="section level4" number="6.5.1.1">
+<h4>
+<span class="header-section-number">6.5.1.1</span> Análisis clúster jerárquico aglomerativo<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-cl%C3%BAster-jer%C3%A1rquico-aglomerativo"><i class="fas fa-link"></i></a>
+</h4>
 <p>Podemos realizar el análisis jerárquico aglomerativo con la función <strong>hclust</strong>. En primer lugar calculamos ma matriz de disimilaridad con <strong>dist</strong> y lo introducimos en <strong>hclust</strong> y especificamos el método de aglomeración que queremos utilizar (i.e. “complete”, “average”, “single”, “ward.D”). Una vez realizado esto podemos realizar el dendrograma.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="análisis-cluster.html#cb106-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Matriz de disimilaridad</span></span>
-<span id="cb106-2"><a href="análisis-cluster.html#cb106-2" tabindex="-1"></a><span class="er">&gt;</span> d <span class="ot">&lt;-</span> <span class="fu">dist</span>(df, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb106-3"><a href="análisis-cluster.html#cb106-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb106-4"><a href="análisis-cluster.html#cb106-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Clúster jerárquico usando Complete Linkage</span></span>
-<span id="cb106-5"><a href="análisis-cluster.html#cb106-5" tabindex="-1"></a><span class="er">&gt;</span> hc1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;complete&quot;</span> )</span>
-<span id="cb106-6"><a href="análisis-cluster.html#cb106-6" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb106-7"><a href="análisis-cluster.html#cb106-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Graficamos el dendrograma</span></span>
-<span id="cb106-8"><a href="análisis-cluster.html#cb106-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(hc1, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="an%C3%A1lisis-cluster.html#cb106-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Matriz de disimilaridad</span></span>
+<span id="cb106-2"><a href="an%C3%A1lisis-cluster.html#cb106-2" tabindex="-1"></a><span class="er">&gt;</span> d <span class="ot">&lt;-</span> <span class="fu">dist</span>(df, <span class="at">method =</span> <span class="st">"euclidean"</span>)</span>
+<span id="cb106-3"><a href="an%C3%A1lisis-cluster.html#cb106-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb106-4"><a href="an%C3%A1lisis-cluster.html#cb106-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Clúster jerárquico usando Complete Linkage</span></span>
+<span id="cb106-5"><a href="an%C3%A1lisis-cluster.html#cb106-5" tabindex="-1"></a><span class="er">&gt;</span> hc1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">"complete"</span> )</span>
+<span id="cb106-6"><a href="an%C3%A1lisis-cluster.html#cb106-6" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb106-7"><a href="an%C3%A1lisis-cluster.html#cb106-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Graficamos el dendrograma</span></span>
+<span id="cb106-8"><a href="an%C3%A1lisis-cluster.html#cb106-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(hc1, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-18-1.png" width="672">
 Alternativamente, podemos utilizar la función <strong>agnes</strong>. Estas funciones se comportan de manera muy similar, sin embargo, con la función <strong>agnes</strong>, también puedes obtener el coeficiente aglomerativo, que mide la cantidad de estructura de agrupamiento encontrada (valores más cercanos a 1 sugieren una estructura de agrupamiento fuerte).</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="análisis-cluster.html#cb107-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Calculado con agnes</span></span>
-<span id="cb107-2"><a href="análisis-cluster.html#cb107-2" tabindex="-1"></a><span class="er">&gt;</span> hc2 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(df, <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span>
-<span id="cb107-3"><a href="análisis-cluster.html#cb107-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb107-4"><a href="análisis-cluster.html#cb107-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Coeficiente aglomerativo</span></span>
-<span id="cb107-5"><a href="análisis-cluster.html#cb107-5" tabindex="-1"></a><span class="er">&gt;</span> hc2<span class="sc">$</span>ac</span>
-<span id="cb107-6"><a href="análisis-cluster.html#cb107-6" tabindex="-1"></a><span class="co">#&gt; [1] 0.9061342</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="an%C3%A1lisis-cluster.html#cb107-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Calculado con agnes</span></span>
+<span id="cb107-2"><a href="an%C3%A1lisis-cluster.html#cb107-2" tabindex="-1"></a><span class="er">&gt;</span> hc2 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(df, <span class="at">method =</span> <span class="st">"complete"</span>)</span>
+<span id="cb107-3"><a href="an%C3%A1lisis-cluster.html#cb107-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb107-4"><a href="an%C3%A1lisis-cluster.html#cb107-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Coeficiente aglomerativo</span></span>
+<span id="cb107-5"><a href="an%C3%A1lisis-cluster.html#cb107-5" tabindex="-1"></a><span class="er">&gt;</span> hc2<span class="sc">$</span>ac</span>
+<span id="cb107-6"><a href="an%C3%A1lisis-cluster.html#cb107-6" tabindex="-1"></a><span class="co">#&gt; [1] 0.9061342</span></span></code></pre></div>
 <p>Esto nos permite determinar que método de agrupación jerarquico obtiene estructuras de agrupación más fuertes. A continuacion calculamos el coeficiente aglomerativo para 4 métodos diferentes obteniendo que el método Ward es el mejor.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="análisis-cluster.html#cb108-1" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">&quot;average&quot;</span>, <span class="st">&quot;single&quot;</span>, <span class="st">&quot;complete&quot;</span>, <span class="st">&quot;ward&quot;</span>)</span>
-<span id="cb108-2"><a href="análisis-cluster.html#cb108-2" tabindex="-1"></a><span class="sc">&gt;</span> results<span class="ot">=</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>)</span>
-<span id="cb108-3"><a href="análisis-cluster.html#cb108-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
-<span id="cb108-4"><a href="análisis-cluster.html#cb108-4" tabindex="-1"></a><span class="sc">+</span>   results[,i]<span class="ot">=</span><span class="fu">c</span>(m[i],<span class="fu">agnes</span>(df, <span class="at">method =</span> m[i])<span class="sc">$</span>ac)</span>
-<span id="cb108-5"><a href="análisis-cluster.html#cb108-5" tabindex="-1"></a><span class="sc">+</span>   }</span>
-<span id="cb108-6"><a href="análisis-cluster.html#cb108-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(results)</span>
-<span id="cb108-7"><a href="análisis-cluster.html#cb108-7" tabindex="-1"></a><span class="co">#&gt;      [,1]                [,2]               </span></span>
-<span id="cb108-8"><a href="análisis-cluster.html#cb108-8" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;average&quot;           &quot;single&quot;           </span></span>
-<span id="cb108-9"><a href="análisis-cluster.html#cb108-9" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;0.843969754548982&quot; &quot;0.723129823717284&quot;</span></span>
-<span id="cb108-10"><a href="análisis-cluster.html#cb108-10" tabindex="-1"></a><span class="co">#&gt;      [,3]               [,4]               </span></span>
-<span id="cb108-11"><a href="análisis-cluster.html#cb108-11" tabindex="-1"></a><span class="co">#&gt; [1,] &quot;complete&quot;         &quot;ward&quot;             </span></span>
-<span id="cb108-12"><a href="análisis-cluster.html#cb108-12" tabindex="-1"></a><span class="co">#&gt; [2,] &quot;0.90613423703583&quot; &quot;0.949958399929762&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="an%C3%A1lisis-cluster.html#cb108-1" tabindex="-1"></a><span class="sc">&gt;</span> m <span class="ot">&lt;-</span> <span class="fu">c</span>( <span class="st">"average"</span>, <span class="st">"single"</span>, <span class="st">"complete"</span>, <span class="st">"ward"</span>)</span>
+<span id="cb108-2"><a href="an%C3%A1lisis-cluster.html#cb108-2" tabindex="-1"></a><span class="sc">&gt;</span> results<span class="ot">=</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">4</span>)</span>
+<span id="cb108-3"><a href="an%C3%A1lisis-cluster.html#cb108-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>){</span>
+<span id="cb108-4"><a href="an%C3%A1lisis-cluster.html#cb108-4" tabindex="-1"></a><span class="sc">+</span>   results[,i]<span class="ot">=</span><span class="fu">c</span>(m[i],<span class="fu">agnes</span>(df, <span class="at">method =</span> m[i])<span class="sc">$</span>ac)</span>
+<span id="cb108-5"><a href="an%C3%A1lisis-cluster.html#cb108-5" tabindex="-1"></a><span class="sc">+</span>   }</span>
+<span id="cb108-6"><a href="an%C3%A1lisis-cluster.html#cb108-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(results)</span>
+<span id="cb108-7"><a href="an%C3%A1lisis-cluster.html#cb108-7" tabindex="-1"></a><span class="co">#&gt;      [,1]                [,2]               </span></span>
+<span id="cb108-8"><a href="an%C3%A1lisis-cluster.html#cb108-8" tabindex="-1"></a><span class="co">#&gt; [1,] "average"           "single"           </span></span>
+<span id="cb108-9"><a href="an%C3%A1lisis-cluster.html#cb108-9" tabindex="-1"></a><span class="co">#&gt; [2,] "0.843969754548982" "0.723129823717284"</span></span>
+<span id="cb108-10"><a href="an%C3%A1lisis-cluster.html#cb108-10" tabindex="-1"></a><span class="co">#&gt;      [,3]               [,4]               </span></span>
+<span id="cb108-11"><a href="an%C3%A1lisis-cluster.html#cb108-11" tabindex="-1"></a><span class="co">#&gt; [1,] "complete"         "ward"             </span></span>
+<span id="cb108-12"><a href="an%C3%A1lisis-cluster.html#cb108-12" tabindex="-1"></a><span class="co">#&gt; [2,] "0.90613423703583" "0.949958399929762"</span></span></code></pre></div>
 <p>De forma analoga a lo realizado anteriormente podemo visualizar el dendrograma.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="análisis-cluster.html#cb109-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Clúster jerárquico usando Complete Linkage</span></span>
-<span id="cb109-2"><a href="análisis-cluster.html#cb109-2" tabindex="-1"></a><span class="er">&gt;</span> hc3 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;ward.D&quot;</span> )</span>
-<span id="cb109-3"><a href="análisis-cluster.html#cb109-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb109-4"><a href="análisis-cluster.html#cb109-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Graficamos el dendrograma</span></span>
-<span id="cb109-5"><a href="análisis-cluster.html#cb109-5" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(hc3, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">main=</span><span class="st">&quot;Dendrograma agnes&quot;</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="an%C3%A1lisis-cluster.html#cb109-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Clúster jerárquico usando Complete Linkage</span></span>
+<span id="cb109-2"><a href="an%C3%A1lisis-cluster.html#cb109-2" tabindex="-1"></a><span class="er">&gt;</span> hc3 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">"ward.D"</span> )</span>
+<span id="cb109-3"><a href="an%C3%A1lisis-cluster.html#cb109-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb109-4"><a href="an%C3%A1lisis-cluster.html#cb109-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Graficamos el dendrograma</span></span>
+<span id="cb109-5"><a href="an%C3%A1lisis-cluster.html#cb109-5" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">plot</span>(hc3, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">main=</span><span class="st">"Dendrograma agnes"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
 </div>
-<div id="análisis-clúster-jerárquico-divisivo" class="section level4 hasAnchor" number="6.5.1.2">
-<h4><span class="header-section-number">6.5.1.2</span> Análisis clúster jerárquico divisivo<a href="análisis-cluster.html#análisis-clúster-jerárquico-divisivo" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="análisis-clúster-jerárquico-divisivo" class="section level4" number="6.5.1.2">
+<h4>
+<span class="header-section-number">6.5.1.2</span> Análisis clúster jerárquico divisivo<a class="anchor" aria-label="anchor" href="#an%C3%A1lisis-cl%C3%BAster-jer%C3%A1rquico-divisivo"><i class="fas fa-link"></i></a>
+</h4>
 <p>La funcion de R <strong>diana</strong> proporcionada en el paquete <strong>cluster</strong> nos permite realizar el análisis cluster jerarquico divisivo, el cual funciona similar que <strong>agnes</strong> perono hay método que proporcionar.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="análisis-cluster.html#cb110-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Calculamos el análisis cluster jerarquico divisivo</span></span>
-<span id="cb110-2"><a href="análisis-cluster.html#cb110-2" tabindex="-1"></a><span class="er">&gt;</span> hc4 <span class="ot">&lt;-</span> <span class="fu">diana</span>(df)</span>
-<span id="cb110-3"><a href="análisis-cluster.html#cb110-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># El coeficiente de  división; Cantidad de estructura de agrupamiento encontrada</span></span>
-<span id="cb110-4"><a href="análisis-cluster.html#cb110-4" tabindex="-1"></a><span class="er">&gt;</span> hc4<span class="sc">$</span>dc</span>
-<span id="cb110-5"><a href="análisis-cluster.html#cb110-5" tabindex="-1"></a><span class="co">#&gt; [1] 0.89846</span></span>
-<span id="cb110-6"><a href="análisis-cluster.html#cb110-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># plot dendrogram</span></span>
-<span id="cb110-7"><a href="análisis-cluster.html#cb110-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">pltree</span>(hc4, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">&quot;Dendrograma de diana&quot;</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="an%C3%A1lisis-cluster.html#cb110-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Calculamos el análisis cluster jerarquico divisivo</span></span>
+<span id="cb110-2"><a href="an%C3%A1lisis-cluster.html#cb110-2" tabindex="-1"></a><span class="er">&gt;</span> hc4 <span class="ot">&lt;-</span> <span class="fu">diana</span>(df)</span>
+<span id="cb110-3"><a href="an%C3%A1lisis-cluster.html#cb110-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># El coeficiente de  división; Cantidad de estructura de agrupamiento encontrada</span></span>
+<span id="cb110-4"><a href="an%C3%A1lisis-cluster.html#cb110-4" tabindex="-1"></a><span class="er">&gt;</span> hc4<span class="sc">$</span>dc</span>
+<span id="cb110-5"><a href="an%C3%A1lisis-cluster.html#cb110-5" tabindex="-1"></a><span class="co">#&gt; [1] 0.89846</span></span>
+<span id="cb110-6"><a href="an%C3%A1lisis-cluster.html#cb110-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># plot dendrogram</span></span>
+<span id="cb110-7"><a href="an%C3%A1lisis-cluster.html#cb110-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">pltree</span>(hc4, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">hang =</span> <span class="sc">-</span><span class="dv">1</span>, <span class="at">main =</span> <span class="st">"Dendrograma de diana"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
 </div>
 </div>
-<div id="trabajando-con-dendrogramas" class="section level3 hasAnchor" number="6.5.2">
-<h3><span class="header-section-number">6.5.2</span> Trabajando con dendrogramas<a href="análisis-cluster.html#trabajando-con-dendrogramas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="trabajando-con-dendrogramas" class="section level3" number="6.5.2">
+<h3>
+<span class="header-section-number">6.5.2</span> Trabajando con dendrogramas<a class="anchor" aria-label="anchor" href="#trabajando-con-dendrogramas"><i class="fas fa-link"></i></a>
+</h3>
 <p>En el dendrograma que se muestra arriba, cada hoja representa una observación. Al ascender por el árbol, las observaciones similares se combinan en ramas, las cuales a su vez se fusionan a una mayor altura.</p>
 <p>La altura de la fusión, indicada en el eje vertical, refleja la (des)similitud entre dos observaciones. A mayor altura de fusión, menor similitud entre las observaciones. <em>Es importante señalar que las conclusiones sobre la proximidad de dos observaciones se derivan únicamente de la altura donde las ramas que contienen esas dos observaciones se fusionan inicialmente. No podemos usar la proximidad a lo largo del eje horizontal como criterio de similitud</em>.</p>
 <p>El valor de la altura del corte en el dendrograma determina el número de clústeres obtenidos y desempeña un papel similar a la <em>k</em> en la agrupación k-medias. Para identificar subgrupos (clústeres), podemos realizar un corte en el dendrograma utilizando la función <strong>cutree</strong>.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="análisis-cluster.html#cb111-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Método de  Ward</span></span>
-<span id="cb111-2"><a href="análisis-cluster.html#cb111-2" tabindex="-1"></a><span class="er">&gt;</span> hc5 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">&quot;ward.D2&quot;</span> )</span>
-<span id="cb111-3"><a href="análisis-cluster.html#cb111-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb111-4"><a href="análisis-cluster.html#cb111-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Cortamos el árbol en 3 grupos</span></span>
-<span id="cb111-5"><a href="análisis-cluster.html#cb111-5" tabindex="-1"></a><span class="er">&gt;</span> sub_grp <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc5, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb111-6"><a href="análisis-cluster.html#cb111-6" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb111-7"><a href="análisis-cluster.html#cb111-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Numero de miembros  en cada grupo</span></span>
-<span id="cb111-8"><a href="análisis-cluster.html#cb111-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">table</span>(sub_grp)</span>
-<span id="cb111-9"><a href="análisis-cluster.html#cb111-9" tabindex="-1"></a><span class="co">#&gt; sub_grp</span></span>
-<span id="cb111-10"><a href="análisis-cluster.html#cb111-10" tabindex="-1"></a><span class="co">#&gt;  1  2  3 </span></span>
-<span id="cb111-11"><a href="análisis-cluster.html#cb111-11" tabindex="-1"></a><span class="co">#&gt; 23 62 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="an%C3%A1lisis-cluster.html#cb111-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Método de  Ward</span></span>
+<span id="cb111-2"><a href="an%C3%A1lisis-cluster.html#cb111-2" tabindex="-1"></a><span class="er">&gt;</span> hc5 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(d, <span class="at">method =</span> <span class="st">"ward.D2"</span> )</span>
+<span id="cb111-3"><a href="an%C3%A1lisis-cluster.html#cb111-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb111-4"><a href="an%C3%A1lisis-cluster.html#cb111-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Cortamos el árbol en 3 grupos</span></span>
+<span id="cb111-5"><a href="an%C3%A1lisis-cluster.html#cb111-5" tabindex="-1"></a><span class="er">&gt;</span> sub_grp <span class="ot">&lt;-</span> <span class="fu">cutree</span>(hc5, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb111-6"><a href="an%C3%A1lisis-cluster.html#cb111-6" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb111-7"><a href="an%C3%A1lisis-cluster.html#cb111-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Numero de miembros  en cada grupo</span></span>
+<span id="cb111-8"><a href="an%C3%A1lisis-cluster.html#cb111-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">table</span>(sub_grp)</span>
+<span id="cb111-9"><a href="an%C3%A1lisis-cluster.html#cb111-9" tabindex="-1"></a><span class="co">#&gt; sub_grp</span></span>
+<span id="cb111-10"><a href="an%C3%A1lisis-cluster.html#cb111-10" tabindex="-1"></a><span class="co">#&gt;  1  2  3 </span></span>
+<span id="cb111-11"><a href="an%C3%A1lisis-cluster.html#cb111-11" tabindex="-1"></a><span class="co">#&gt; 23 62 32</span></span></code></pre></div>
 <p>Podemos añadir a la base de datos la pertenencia al cluster de cada individuo de la siguiente forma</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="análisis-cluster.html#cb112-1" tabindex="-1"></a><span class="sc">&gt;</span> BaseDatos<span class="ot">=</span>df</span>
-<span id="cb112-2"><a href="análisis-cluster.html#cb112-2" tabindex="-1"></a><span class="sc">&gt;</span> BaseDatos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cluster =</span> sub_grp) <span class="sc">%&gt;%</span>  head</span>
-<span id="cb112-3"><a href="análisis-cluster.html#cb112-3" tabindex="-1"></a><span class="co">#&gt;       ventas    reventa     precio    motor_s   caballos</span></span>
-<span id="cb112-4"><a href="análisis-cluster.html#cb112-4" tabindex="-1"></a><span class="co">#&gt; 1 -0.5621358 -0.1440282 -0.3158715 -1.1834292 -0.7045706</span></span>
-<span id="cb112-5"><a href="análisis-cluster.html#cb112-5" tabindex="-1"></a><span class="co">#&gt; 2 -0.2628377  0.1588420  0.1717713  0.1433723  0.7461447</span></span>
-<span id="cb112-6"><a href="análisis-cluster.html#cb112-6" tabindex="-1"></a><span class="co">#&gt; 4 -0.6731286  1.0075678  1.1329225  0.4276869  0.4901361</span></span>
-<span id="cb112-7"><a href="análisis-cluster.html#cb112-7" tabindex="-1"></a><span class="co">#&gt; 5 -0.5157989  0.3639148 -0.1398961 -1.1834292 -0.5338982</span></span>
-<span id="cb112-8"><a href="análisis-cluster.html#cb112-8" tabindex="-1"></a><span class="co">#&gt; 6 -0.5373420  0.4759294  0.5640058 -0.2357138  0.3194637</span></span>
-<span id="cb112-9"><a href="análisis-cluster.html#cb112-9" tabindex="-1"></a><span class="co">#&gt; 7 -0.7691598  1.8067488  2.5463801  1.0910877  2.1968600</span></span>
-<span id="cb112-10"><a href="análisis-cluster.html#cb112-10" tabindex="-1"></a><span class="co">#&gt;   BaseNeumatico     anchura   longitud peso_revestimiento</span></span>
-<span id="cb112-11"><a href="análisis-cluster.html#cb112-11" tabindex="-1"></a><span class="co">#&gt; 1   -0.76099980 -1.10186337 -1.1059950         -1.1471500</span></span>
-<span id="cb112-12"><a href="análisis-cluster.html#cb112-12" tabindex="-1"></a><span class="co">#&gt; 2    0.09608047 -0.25204126  0.3741573          0.3231015</span></span>
-<span id="cb112-13"><a href="análisis-cluster.html#cb112-13" tabindex="-1"></a><span class="co">#&gt; 4    0.90347493  0.05956018  0.6413068          0.8807254</span></span>
-<span id="cb112-14"><a href="análisis-cluster.html#cb112-14" tabindex="-1"></a><span class="co">#&gt; 5   -0.58709946 -0.84691674 -0.7016607         -0.5459879</span></span>
-<span id="cb112-15"><a href="análisis-cluster.html#cb112-15" tabindex="-1"></a><span class="co">#&gt; 6    0.17060919  1.39094816  0.3091750          0.3967816</span></span>
-<span id="cb112-16"><a href="análisis-cluster.html#cb112-16" tabindex="-1"></a><span class="co">#&gt; 7    0.70473168  0.79607268  0.7568308          0.9678018</span></span>
-<span id="cb112-17"><a href="análisis-cluster.html#cb112-17" tabindex="-1"></a><span class="co">#&gt;   tapón_combustible        kpl cluster</span></span>
-<span id="cb112-18"><a href="análisis-cluster.html#cb112-18" tabindex="-1"></a><span class="co">#&gt; 1       -1.21562468  0.8810010       1</span></span>
-<span id="cb112-19"><a href="análisis-cluster.html#cb112-19" tabindex="-1"></a><span class="co">#&gt; 2       -0.16149767  0.1998747       2</span></span>
-<span id="cb112-20"><a href="análisis-cluster.html#cb112-20" tabindex="-1"></a><span class="co">#&gt; 4        0.04932774 -0.4812516       2</span></span>
-<span id="cb112-21"><a href="análisis-cluster.html#cb112-21" tabindex="-1"></a><span class="co">#&gt; 5       -0.37232307  0.6539589       2</span></span>
-<span id="cb112-22"><a href="análisis-cluster.html#cb112-22" tabindex="-1"></a><span class="co">#&gt; 6        0.18109362 -0.4812516       3</span></span>
-<span id="cb112-23"><a href="análisis-cluster.html#cb112-23" tabindex="-1"></a><span class="co">#&gt; 7        1.55145874 -0.7082937       3</span></span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="an%C3%A1lisis-cluster.html#cb112-1" tabindex="-1"></a><span class="sc">&gt;</span> BaseDatos<span class="ot">=</span>df</span>
+<span id="cb112-2"><a href="an%C3%A1lisis-cluster.html#cb112-2" tabindex="-1"></a><span class="sc">&gt;</span> BaseDatos <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">cluster =</span> sub_grp) <span class="sc">%&gt;%</span>  head</span>
+<span id="cb112-3"><a href="an%C3%A1lisis-cluster.html#cb112-3" tabindex="-1"></a><span class="co">#&gt;       ventas    reventa     precio    motor_s   caballos</span></span>
+<span id="cb112-4"><a href="an%C3%A1lisis-cluster.html#cb112-4" tabindex="-1"></a><span class="co">#&gt; 1 -0.5621358 -0.1440282 -0.3158715 -1.1834292 -0.7045706</span></span>
+<span id="cb112-5"><a href="an%C3%A1lisis-cluster.html#cb112-5" tabindex="-1"></a><span class="co">#&gt; 2 -0.2628377  0.1588420  0.1717713  0.1433723  0.7461447</span></span>
+<span id="cb112-6"><a href="an%C3%A1lisis-cluster.html#cb112-6" tabindex="-1"></a><span class="co">#&gt; 4 -0.6731286  1.0075678  1.1329225  0.4276869  0.4901361</span></span>
+<span id="cb112-7"><a href="an%C3%A1lisis-cluster.html#cb112-7" tabindex="-1"></a><span class="co">#&gt; 5 -0.5157989  0.3639148 -0.1398961 -1.1834292 -0.5338982</span></span>
+<span id="cb112-8"><a href="an%C3%A1lisis-cluster.html#cb112-8" tabindex="-1"></a><span class="co">#&gt; 6 -0.5373420  0.4759294  0.5640058 -0.2357138  0.3194637</span></span>
+<span id="cb112-9"><a href="an%C3%A1lisis-cluster.html#cb112-9" tabindex="-1"></a><span class="co">#&gt; 7 -0.7691598  1.8067488  2.5463801  1.0910877  2.1968600</span></span>
+<span id="cb112-10"><a href="an%C3%A1lisis-cluster.html#cb112-10" tabindex="-1"></a><span class="co">#&gt;   BaseNeumatico     anchura   longitud peso_revestimiento</span></span>
+<span id="cb112-11"><a href="an%C3%A1lisis-cluster.html#cb112-11" tabindex="-1"></a><span class="co">#&gt; 1   -0.76099980 -1.10186337 -1.1059950         -1.1471500</span></span>
+<span id="cb112-12"><a href="an%C3%A1lisis-cluster.html#cb112-12" tabindex="-1"></a><span class="co">#&gt; 2    0.09608047 -0.25204126  0.3741573          0.3231015</span></span>
+<span id="cb112-13"><a href="an%C3%A1lisis-cluster.html#cb112-13" tabindex="-1"></a><span class="co">#&gt; 4    0.90347493  0.05956018  0.6413068          0.8807254</span></span>
+<span id="cb112-14"><a href="an%C3%A1lisis-cluster.html#cb112-14" tabindex="-1"></a><span class="co">#&gt; 5   -0.58709946 -0.84691674 -0.7016607         -0.5459879</span></span>
+<span id="cb112-15"><a href="an%C3%A1lisis-cluster.html#cb112-15" tabindex="-1"></a><span class="co">#&gt; 6    0.17060919  1.39094816  0.3091750          0.3967816</span></span>
+<span id="cb112-16"><a href="an%C3%A1lisis-cluster.html#cb112-16" tabindex="-1"></a><span class="co">#&gt; 7    0.70473168  0.79607268  0.7568308          0.9678018</span></span>
+<span id="cb112-17"><a href="an%C3%A1lisis-cluster.html#cb112-17" tabindex="-1"></a><span class="co">#&gt;   tapón_combustible        kpl cluster</span></span>
+<span id="cb112-18"><a href="an%C3%A1lisis-cluster.html#cb112-18" tabindex="-1"></a><span class="co">#&gt; 1       -1.21562468  0.8810010       1</span></span>
+<span id="cb112-19"><a href="an%C3%A1lisis-cluster.html#cb112-19" tabindex="-1"></a><span class="co">#&gt; 2       -0.16149767  0.1998747       2</span></span>
+<span id="cb112-20"><a href="an%C3%A1lisis-cluster.html#cb112-20" tabindex="-1"></a><span class="co">#&gt; 4        0.04932774 -0.4812516       2</span></span>
+<span id="cb112-21"><a href="an%C3%A1lisis-cluster.html#cb112-21" tabindex="-1"></a><span class="co">#&gt; 5       -0.37232307  0.6539589       2</span></span>
+<span id="cb112-22"><a href="an%C3%A1lisis-cluster.html#cb112-22" tabindex="-1"></a><span class="co">#&gt; 6        0.18109362 -0.4812516       3</span></span>
+<span id="cb112-23"><a href="an%C3%A1lisis-cluster.html#cb112-23" tabindex="-1"></a><span class="co">#&gt; 7        1.55145874 -0.7082937       3</span></span></code></pre></div>
 <p>También es posible dibujar el dendrograma con un rectángulo marcando cada cluster. El argumento <strong>border</strong> se usa para especificar el color de cada rectangulo</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="análisis-cluster.html#cb113-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">require</span>(graphics)</span>
-<span id="cb113-2"><a href="análisis-cluster.html#cb113-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(hc5, <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
-<span id="cb113-3"><a href="análisis-cluster.html#cb113-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rect.hclust</span>(hc5, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">border =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="an%C3%A1lisis-cluster.html#cb113-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">require</span>(graphics)</span>
+<span id="cb113-2"><a href="an%C3%A1lisis-cluster.html#cb113-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(hc5, <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
+<span id="cb113-3"><a href="an%C3%A1lisis-cluster.html#cb113-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rect.hclust</span>(hc5, <span class="at">k =</span> <span class="dv">3</span>, <span class="at">border =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
 <p>Podemos usar la función <strong>fviz_cluster</strong> del paquete <strong>factoextra</strong> para visualizar el resultado.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="análisis-cluster.html#cb114-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_cluster</span>(<span class="fu">list</span>(<span class="at">data =</span> df, <span class="at">cluster =</span> sub_grp))</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="an%C3%A1lisis-cluster.html#cb114-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">fviz_cluster</span>(<span class="fu">list</span>(<span class="at">data =</span> df, <span class="at">cluster =</span> sub_grp))</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-26-1.png" width="672"></div>
 <p>Para usar <strong>cutree</strong> con <strong>agnes</strong> y <strong>diana</strong> haremos lo siguiente:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="análisis-cluster.html#cb115-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Corta el árbol agnes() en 3 grupos</span></span>
-<span id="cb115-2"><a href="análisis-cluster.html#cb115-2" tabindex="-1"></a><span class="er">&gt;</span> hc_a <span class="ot">&lt;-</span> <span class="fu">agnes</span>(df, <span class="at">method =</span> <span class="st">&quot;ward&quot;</span>)</span>
-<span id="cb115-3"><a href="análisis-cluster.html#cb115-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cutree</span>(<span class="fu">as.hclust</span>(hc_a), <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb115-4"><a href="análisis-cluster.html#cb115-4" tabindex="-1"></a><span class="co">#&gt;   1   2   4   5   6   7   9  10  11  12  13  14  15  17  18 </span></span>
-<span id="cb115-5"><a href="análisis-cluster.html#cb115-5" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   3   3   2   2   2   2   3   2   3   3   2 </span></span>
-<span id="cb115-6"><a href="análisis-cluster.html#cb115-6" tabindex="-1"></a><span class="co">#&gt;  20  21  22  23  24  25  26  27  29  30  31  32  33  36  37 </span></span>
-<span id="cb115-7"><a href="análisis-cluster.html#cb115-7" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   2   3   1   1   2   2   2   2   3   1   2 </span></span>
-<span id="cb115-8"><a href="análisis-cluster.html#cb115-8" tabindex="-1"></a><span class="co">#&gt;  38  40  41  42  43  44  46  47  48  49  50  52  53  54  55 </span></span>
-<span id="cb115-9"><a href="análisis-cluster.html#cb115-9" tabindex="-1"></a><span class="co">#&gt;   2   3   3   3   3   3   3   1   2   2   2   3   2   3   3 </span></span>
-<span id="cb115-10"><a href="análisis-cluster.html#cb115-10" tabindex="-1"></a><span class="co">#&gt;  56  57  58  59  60  61  62  63  64  65  66  68  69  70  71 </span></span>
-<span id="cb115-11"><a href="análisis-cluster.html#cb115-11" tabindex="-1"></a><span class="co">#&gt;   2   3   1   2   2   2   3   1   1   2   2   2   2   2   2 </span></span>
-<span id="cb115-12"><a href="análisis-cluster.html#cb115-12" tabindex="-1"></a><span class="co">#&gt;  72  74  77  78  80  81  82  83  84  85  86  87  88  89  90 </span></span>
-<span id="cb115-13"><a href="análisis-cluster.html#cb115-13" tabindex="-1"></a><span class="co">#&gt;   2   3   3   3   1   2   2   2   2   2   2   2   2   2   3 </span></span>
-<span id="cb115-14"><a href="análisis-cluster.html#cb115-14" tabindex="-1"></a><span class="co">#&gt;  91  92  93  94  95  96 102 103 104 105 106 109 112 113 114 </span></span>
-<span id="cb115-15"><a href="análisis-cluster.html#cb115-15" tabindex="-1"></a><span class="co">#&gt;   2   3   2   2   3   3   1   2   2   3   2   2   3   2   3 </span></span>
-<span id="cb115-16"><a href="análisis-cluster.html#cb115-16" tabindex="-1"></a><span class="co">#&gt; 115 116 117 119 120 121 122 123 125 126 127 130 131 132 137 </span></span>
-<span id="cb115-17"><a href="análisis-cluster.html#cb115-17" tabindex="-1"></a><span class="co">#&gt;   1   2   3   2   2   2   2   2   2   3   3   1   1   1   1 </span></span>
-<span id="cb115-18"><a href="análisis-cluster.html#cb115-18" tabindex="-1"></a><span class="co">#&gt; 138 139 140 141 143 144 145 146 147 148 149 150 </span></span>
-<span id="cb115-19"><a href="análisis-cluster.html#cb115-19" tabindex="-1"></a><span class="co">#&gt;   2   2   1   1   1   2   3   1   1   2   1   1</span></span>
-<span id="cb115-20"><a href="análisis-cluster.html#cb115-20" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb115-21"><a href="análisis-cluster.html#cb115-21" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Corta el árbol diana() en 3 grupos</span></span>
-<span id="cb115-22"><a href="análisis-cluster.html#cb115-22" tabindex="-1"></a><span class="er">&gt;</span> hc_d <span class="ot">&lt;-</span> <span class="fu">diana</span>(df)</span>
-<span id="cb115-23"><a href="análisis-cluster.html#cb115-23" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cutree</span>(<span class="fu">as.hclust</span>(hc_d), <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb115-24"><a href="análisis-cluster.html#cb115-24" tabindex="-1"></a><span class="co">#&gt;   1   2   4   5   6   7   9  10  11  12  13  14  15  17  18 </span></span>
-<span id="cb115-25"><a href="análisis-cluster.html#cb115-25" tabindex="-1"></a><span class="co">#&gt;   1   1   2   1   1   2   1   1   1   1   2   1   2   2   1 </span></span>
-<span id="cb115-26"><a href="análisis-cluster.html#cb115-26" tabindex="-1"></a><span class="co">#&gt;  20  21  22  23  24  25  26  27  29  30  31  32  33  36  37 </span></span>
-<span id="cb115-27"><a href="análisis-cluster.html#cb115-27" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   1   2   1   1   1   1   1   1   1   1   1 </span></span>
-<span id="cb115-28"><a href="análisis-cluster.html#cb115-28" tabindex="-1"></a><span class="co">#&gt;  38  40  41  42  43  44  46  47  48  49  50  52  53  54  55 </span></span>
-<span id="cb115-29"><a href="análisis-cluster.html#cb115-29" tabindex="-1"></a><span class="co">#&gt;   1   2   3   2   2   1   1   1   1   1   1   2   1   2   2 </span></span>
-<span id="cb115-30"><a href="análisis-cluster.html#cb115-30" tabindex="-1"></a><span class="co">#&gt;  56  57  58  59  60  61  62  63  64  65  66  68  69  70  71 </span></span>
-<span id="cb115-31"><a href="análisis-cluster.html#cb115-31" tabindex="-1"></a><span class="co">#&gt;   1   3   1   1   1   1   2   1   1   1   1   1   1   1   1 </span></span>
-<span id="cb115-32"><a href="análisis-cluster.html#cb115-32" tabindex="-1"></a><span class="co">#&gt;  72  74  77  78  80  81  82  83  84  85  86  87  88  89  90 </span></span>
-<span id="cb115-33"><a href="análisis-cluster.html#cb115-33" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   1   1   1   1   1   2   1   1   1   1   2 </span></span>
-<span id="cb115-34"><a href="análisis-cluster.html#cb115-34" tabindex="-1"></a><span class="co">#&gt;  91  92  93  94  95  96 102 103 104 105 106 109 112 113 114 </span></span>
-<span id="cb115-35"><a href="análisis-cluster.html#cb115-35" tabindex="-1"></a><span class="co">#&gt;   1   1   1   2   2   2   1   1   1   1   1   1   2   1   2 </span></span>
-<span id="cb115-36"><a href="análisis-cluster.html#cb115-36" tabindex="-1"></a><span class="co">#&gt; 115 116 117 119 120 121 122 123 125 126 127 130 131 132 137 </span></span>
-<span id="cb115-37"><a href="análisis-cluster.html#cb115-37" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   1   1   1   1   1   2   2   1   1   1   1 </span></span>
-<span id="cb115-38"><a href="análisis-cluster.html#cb115-38" tabindex="-1"></a><span class="co">#&gt; 138 139 140 141 143 144 145 146 147 148 149 150 </span></span>
-<span id="cb115-39"><a href="análisis-cluster.html#cb115-39" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   1   1   2   1   1   1   1   1</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="an%C3%A1lisis-cluster.html#cb115-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Corta el árbol agnes() en 3 grupos</span></span>
+<span id="cb115-2"><a href="an%C3%A1lisis-cluster.html#cb115-2" tabindex="-1"></a><span class="er">&gt;</span> hc_a <span class="ot">&lt;-</span> <span class="fu">agnes</span>(df, <span class="at">method =</span> <span class="st">"ward"</span>)</span>
+<span id="cb115-3"><a href="an%C3%A1lisis-cluster.html#cb115-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cutree</span>(<span class="fu">as.hclust</span>(hc_a), <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb115-4"><a href="an%C3%A1lisis-cluster.html#cb115-4" tabindex="-1"></a><span class="co">#&gt;   1   2   4   5   6   7   9  10  11  12  13  14  15  17  18 </span></span>
+<span id="cb115-5"><a href="an%C3%A1lisis-cluster.html#cb115-5" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   3   3   2   2   2   2   3   2   3   3   2 </span></span>
+<span id="cb115-6"><a href="an%C3%A1lisis-cluster.html#cb115-6" tabindex="-1"></a><span class="co">#&gt;  20  21  22  23  24  25  26  27  29  30  31  32  33  36  37 </span></span>
+<span id="cb115-7"><a href="an%C3%A1lisis-cluster.html#cb115-7" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   2   3   1   1   2   2   2   2   3   1   2 </span></span>
+<span id="cb115-8"><a href="an%C3%A1lisis-cluster.html#cb115-8" tabindex="-1"></a><span class="co">#&gt;  38  40  41  42  43  44  46  47  48  49  50  52  53  54  55 </span></span>
+<span id="cb115-9"><a href="an%C3%A1lisis-cluster.html#cb115-9" tabindex="-1"></a><span class="co">#&gt;   2   3   3   3   3   3   3   1   2   2   2   3   2   3   3 </span></span>
+<span id="cb115-10"><a href="an%C3%A1lisis-cluster.html#cb115-10" tabindex="-1"></a><span class="co">#&gt;  56  57  58  59  60  61  62  63  64  65  66  68  69  70  71 </span></span>
+<span id="cb115-11"><a href="an%C3%A1lisis-cluster.html#cb115-11" tabindex="-1"></a><span class="co">#&gt;   2   3   1   2   2   2   3   1   1   2   2   2   2   2   2 </span></span>
+<span id="cb115-12"><a href="an%C3%A1lisis-cluster.html#cb115-12" tabindex="-1"></a><span class="co">#&gt;  72  74  77  78  80  81  82  83  84  85  86  87  88  89  90 </span></span>
+<span id="cb115-13"><a href="an%C3%A1lisis-cluster.html#cb115-13" tabindex="-1"></a><span class="co">#&gt;   2   3   3   3   1   2   2   2   2   2   2   2   2   2   3 </span></span>
+<span id="cb115-14"><a href="an%C3%A1lisis-cluster.html#cb115-14" tabindex="-1"></a><span class="co">#&gt;  91  92  93  94  95  96 102 103 104 105 106 109 112 113 114 </span></span>
+<span id="cb115-15"><a href="an%C3%A1lisis-cluster.html#cb115-15" tabindex="-1"></a><span class="co">#&gt;   2   3   2   2   3   3   1   2   2   3   2   2   3   2   3 </span></span>
+<span id="cb115-16"><a href="an%C3%A1lisis-cluster.html#cb115-16" tabindex="-1"></a><span class="co">#&gt; 115 116 117 119 120 121 122 123 125 126 127 130 131 132 137 </span></span>
+<span id="cb115-17"><a href="an%C3%A1lisis-cluster.html#cb115-17" tabindex="-1"></a><span class="co">#&gt;   1   2   3   2   2   2   2   2   2   3   3   1   1   1   1 </span></span>
+<span id="cb115-18"><a href="an%C3%A1lisis-cluster.html#cb115-18" tabindex="-1"></a><span class="co">#&gt; 138 139 140 141 143 144 145 146 147 148 149 150 </span></span>
+<span id="cb115-19"><a href="an%C3%A1lisis-cluster.html#cb115-19" tabindex="-1"></a><span class="co">#&gt;   2   2   1   1   1   2   3   1   1   2   1   1</span></span>
+<span id="cb115-20"><a href="an%C3%A1lisis-cluster.html#cb115-20" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb115-21"><a href="an%C3%A1lisis-cluster.html#cb115-21" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Corta el árbol diana() en 3 grupos</span></span>
+<span id="cb115-22"><a href="an%C3%A1lisis-cluster.html#cb115-22" tabindex="-1"></a><span class="er">&gt;</span> hc_d <span class="ot">&lt;-</span> <span class="fu">diana</span>(df)</span>
+<span id="cb115-23"><a href="an%C3%A1lisis-cluster.html#cb115-23" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cutree</span>(<span class="fu">as.hclust</span>(hc_d), <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb115-24"><a href="an%C3%A1lisis-cluster.html#cb115-24" tabindex="-1"></a><span class="co">#&gt;   1   2   4   5   6   7   9  10  11  12  13  14  15  17  18 </span></span>
+<span id="cb115-25"><a href="an%C3%A1lisis-cluster.html#cb115-25" tabindex="-1"></a><span class="co">#&gt;   1   1   2   1   1   2   1   1   1   1   2   1   2   2   1 </span></span>
+<span id="cb115-26"><a href="an%C3%A1lisis-cluster.html#cb115-26" tabindex="-1"></a><span class="co">#&gt;  20  21  22  23  24  25  26  27  29  30  31  32  33  36  37 </span></span>
+<span id="cb115-27"><a href="an%C3%A1lisis-cluster.html#cb115-27" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   1   2   1   1   1   1   1   1   1   1   1 </span></span>
+<span id="cb115-28"><a href="an%C3%A1lisis-cluster.html#cb115-28" tabindex="-1"></a><span class="co">#&gt;  38  40  41  42  43  44  46  47  48  49  50  52  53  54  55 </span></span>
+<span id="cb115-29"><a href="an%C3%A1lisis-cluster.html#cb115-29" tabindex="-1"></a><span class="co">#&gt;   1   2   3   2   2   1   1   1   1   1   1   2   1   2   2 </span></span>
+<span id="cb115-30"><a href="an%C3%A1lisis-cluster.html#cb115-30" tabindex="-1"></a><span class="co">#&gt;  56  57  58  59  60  61  62  63  64  65  66  68  69  70  71 </span></span>
+<span id="cb115-31"><a href="an%C3%A1lisis-cluster.html#cb115-31" tabindex="-1"></a><span class="co">#&gt;   1   3   1   1   1   1   2   1   1   1   1   1   1   1   1 </span></span>
+<span id="cb115-32"><a href="an%C3%A1lisis-cluster.html#cb115-32" tabindex="-1"></a><span class="co">#&gt;  72  74  77  78  80  81  82  83  84  85  86  87  88  89  90 </span></span>
+<span id="cb115-33"><a href="an%C3%A1lisis-cluster.html#cb115-33" tabindex="-1"></a><span class="co">#&gt;   1   2   2   2   1   1   1   1   1   2   1   1   1   1   2 </span></span>
+<span id="cb115-34"><a href="an%C3%A1lisis-cluster.html#cb115-34" tabindex="-1"></a><span class="co">#&gt;  91  92  93  94  95  96 102 103 104 105 106 109 112 113 114 </span></span>
+<span id="cb115-35"><a href="an%C3%A1lisis-cluster.html#cb115-35" tabindex="-1"></a><span class="co">#&gt;   1   1   1   2   2   2   1   1   1   1   1   1   2   1   2 </span></span>
+<span id="cb115-36"><a href="an%C3%A1lisis-cluster.html#cb115-36" tabindex="-1"></a><span class="co">#&gt; 115 116 117 119 120 121 122 123 125 126 127 130 131 132 137 </span></span>
+<span id="cb115-37"><a href="an%C3%A1lisis-cluster.html#cb115-37" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   1   1   1   1   1   2   2   1   1   1   1 </span></span>
+<span id="cb115-38"><a href="an%C3%A1lisis-cluster.html#cb115-38" tabindex="-1"></a><span class="co">#&gt; 138 139 140 141 143 144 145 146 147 148 149 150 </span></span>
+<span id="cb115-39"><a href="an%C3%A1lisis-cluster.html#cb115-39" tabindex="-1"></a><span class="co">#&gt;   1   1   1   1   1   1   2   1   1   1   1   1</span></span></code></pre></div>
 <p>Finalmente podemos comparar dos dendrogramas. Aqui comparamos el cluster jerárquico con complete linkage versus el método de Ward. La función <strong>tanglegram</strong> dibuja dos dendrogramas a cada lado con las etiquetas conectadas por lineas.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="análisis-cluster.html#cb116-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Calcula la matriz de distancia</span></span>
-<span id="cb116-2"><a href="análisis-cluster.html#cb116-2" tabindex="-1"></a><span class="er">&gt;</span> res.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(df, <span class="at">method =</span> <span class="st">&quot;euclidean&quot;</span>)</span>
-<span id="cb116-3"><a href="análisis-cluster.html#cb116-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb116-4"><a href="análisis-cluster.html#cb116-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Calculamos 2 cluster jerárquicos</span></span>
-<span id="cb116-5"><a href="análisis-cluster.html#cb116-5" tabindex="-1"></a><span class="er">&gt;</span> hc1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(res.dist, <span class="at">method =</span> <span class="st">&quot;complete&quot;</span>)</span>
-<span id="cb116-6"><a href="análisis-cluster.html#cb116-6" tabindex="-1"></a><span class="sc">&gt;</span> hc2 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(res.dist, <span class="at">method =</span> <span class="st">&quot;ward.D2&quot;</span>)</span>
-<span id="cb116-7"><a href="análisis-cluster.html#cb116-7" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb116-8"><a href="análisis-cluster.html#cb116-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Creamos dos dendrogramas</span></span>
-<span id="cb116-9"><a href="análisis-cluster.html#cb116-9" tabindex="-1"></a><span class="er">&gt;</span> dend1 <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span> (hc1)</span>
-<span id="cb116-10"><a href="análisis-cluster.html#cb116-10" tabindex="-1"></a><span class="sc">&gt;</span> dend2 <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span> (hc2)</span>
-<span id="cb116-11"><a href="análisis-cluster.html#cb116-11" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb116-12"><a href="análisis-cluster.html#cb116-12" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">tanglegram</span>(dend1, dend2)</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="an%C3%A1lisis-cluster.html#cb116-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Calcula la matriz de distancia</span></span>
+<span id="cb116-2"><a href="an%C3%A1lisis-cluster.html#cb116-2" tabindex="-1"></a><span class="er">&gt;</span> res.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(df, <span class="at">method =</span> <span class="st">"euclidean"</span>)</span>
+<span id="cb116-3"><a href="an%C3%A1lisis-cluster.html#cb116-3" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb116-4"><a href="an%C3%A1lisis-cluster.html#cb116-4" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Calculamos 2 cluster jerárquicos</span></span>
+<span id="cb116-5"><a href="an%C3%A1lisis-cluster.html#cb116-5" tabindex="-1"></a><span class="er">&gt;</span> hc1 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(res.dist, <span class="at">method =</span> <span class="st">"complete"</span>)</span>
+<span id="cb116-6"><a href="an%C3%A1lisis-cluster.html#cb116-6" tabindex="-1"></a><span class="sc">&gt;</span> hc2 <span class="ot">&lt;-</span> <span class="fu">hclust</span>(res.dist, <span class="at">method =</span> <span class="st">"ward.D2"</span>)</span>
+<span id="cb116-7"><a href="an%C3%A1lisis-cluster.html#cb116-7" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb116-8"><a href="an%C3%A1lisis-cluster.html#cb116-8" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Creamos dos dendrogramas</span></span>
+<span id="cb116-9"><a href="an%C3%A1lisis-cluster.html#cb116-9" tabindex="-1"></a><span class="er">&gt;</span> dend1 <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span> (hc1)</span>
+<span id="cb116-10"><a href="an%C3%A1lisis-cluster.html#cb116-10" tabindex="-1"></a><span class="sc">&gt;</span> dend2 <span class="ot">&lt;-</span> <span class="fu">as.dendrogram</span> (hc2)</span>
+<span id="cb116-11"><a href="an%C3%A1lisis-cluster.html#cb116-11" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb116-12"><a href="an%C3%A1lisis-cluster.html#cb116-12" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">tanglegram</span>(dend1, dend2)</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-28-1.png" width="672"></div>
 <p>La salida muestra la union mediante líneas de los mismos nodos en ambos árboles. La calidad de la alineación de los dos árboles se puede medir utilizando la función “entanglement” (enredo). El <strong>entanglement</strong> es una medida entre 1 (entrelazamiento completo) y 0 (sin entrelazamiento). Un coeficiente de entrelazamiento más bajo corresponde a una buena alineación. La salida de <strong>tanglegram</strong> se puede personalizar utilizando muchas otras opciones de la siguiente manera:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="análisis-cluster.html#cb117-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(dendextend)) {<span class="fu">install.packages</span>(<span class="st">&quot;dendextend&quot;</span>)}</span>
-<span id="cb117-2"><a href="análisis-cluster.html#cb117-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dendextend)</span>
-<span id="cb117-3"><a href="análisis-cluster.html#cb117-3" tabindex="-1"></a><span class="sc">&gt;</span> dend_list <span class="ot">&lt;-</span> <span class="fu">dendlist</span>(dend1, dend2)</span>
-<span id="cb117-4"><a href="análisis-cluster.html#cb117-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tanglegram</span>(dend1, dend2,</span>
-<span id="cb117-5"><a href="análisis-cluster.html#cb117-5" tabindex="-1"></a><span class="sc">+</span>   <span class="at">highlight_distinct_edges =</span> <span class="cn">FALSE</span>, <span class="co"># Turn-off dashed lines</span></span>
-<span id="cb117-6"><a href="análisis-cluster.html#cb117-6" tabindex="-1"></a><span class="sc">+</span>   <span class="at">common_subtrees_color_lines =</span> <span class="cn">FALSE</span>, <span class="co"># Turn-off line colors</span></span>
-<span id="cb117-7"><a href="análisis-cluster.html#cb117-7" tabindex="-1"></a><span class="sc">+</span>   <span class="at">common_subtrees_color_branches =</span> <span class="cn">TRUE</span>, <span class="co"># Color common branches </span></span>
-<span id="cb117-8"><a href="análisis-cluster.html#cb117-8" tabindex="-1"></a><span class="sc">+</span>   <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Entrelazamiento =&quot;</span>, <span class="fu">round</span>(<span class="fu">entanglement</span>(dend_list), <span class="dv">2</span>))</span>
-<span id="cb117-9"><a href="análisis-cluster.html#cb117-9" tabindex="-1"></a><span class="sc">+</span>   )</span></code></pre></div>
-<p><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="an%C3%A1lisis-cluster.html#cb117-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(dendextend)) {<span class="fu">install.packages</span>(<span class="st">"dendextend"</span>)}</span>
+<span id="cb117-2"><a href="an%C3%A1lisis-cluster.html#cb117-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dendextend)</span>
+<span id="cb117-3"><a href="an%C3%A1lisis-cluster.html#cb117-3" tabindex="-1"></a><span class="sc">&gt;</span> dend_list <span class="ot">&lt;-</span> <span class="fu">dendlist</span>(dend1, dend2)</span>
+<span id="cb117-4"><a href="an%C3%A1lisis-cluster.html#cb117-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">tanglegram</span>(dend1, dend2,</span>
+<span id="cb117-5"><a href="an%C3%A1lisis-cluster.html#cb117-5" tabindex="-1"></a><span class="sc">+</span>   <span class="at">highlight_distinct_edges =</span> <span class="cn">FALSE</span>, <span class="co"># Turn-off dashed lines</span></span>
+<span id="cb117-6"><a href="an%C3%A1lisis-cluster.html#cb117-6" tabindex="-1"></a><span class="sc">+</span>   <span class="at">common_subtrees_color_lines =</span> <span class="cn">FALSE</span>, <span class="co"># Turn-off line colors</span></span>
+<span id="cb117-7"><a href="an%C3%A1lisis-cluster.html#cb117-7" tabindex="-1"></a><span class="sc">+</span>   <span class="at">common_subtrees_color_branches =</span> <span class="cn">TRUE</span>, <span class="co"># Color common branches </span></span>
+<span id="cb117-8"><a href="an%C3%A1lisis-cluster.html#cb117-8" tabindex="-1"></a><span class="sc">+</span>   <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Entrelazamiento ="</span>, <span class="fu">round</span>(<span class="fu">entanglement</span>(dend_list), <span class="dv">2</span>))</span>
+<span id="cb117-9"><a href="an%C3%A1lisis-cluster.html#cb117-9" tabindex="-1"></a><span class="sc">+</span>   )</span></code></pre></div>
+<div class="inline-figure"><img src="05-Sesion5-Analisis-Cluster_files/figure-html/unnamed-chunk-29-1.png" width="672"></div>
 
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="an%C3%A1lisis-de-componentes-principales.html"><span class="header-section-number">5</span> Análisis de Componentes Principales</a></div>
+<div class="next"><a href="m%C3%A9todos-basados-en-%C3%A1rboles.html"><span class="header-section-number">7</span> Métodos basados en árboles</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#an%C3%A1lisis-cluster"><span class="header-section-number">6</span> Análisis Cluster</a></li>
+<li><a class="nav-link" href="#medidas-de-distancia"><span class="header-section-number">6.1</span> Medidas de distancia</a></li>
+<li>
+<a class="nav-link" href="#an%C3%A1lisis-cluster-con-el-algoritmo-k-medias."><span class="header-section-number">6.2</span> Análisis cluster con el algoritmo K-medias.</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#k-medias"><span class="header-section-number">6.2.1</span> K-medias</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#un-ejemplo-de-an%C3%A1lisis-cl%C3%BAster-con-r"><span class="header-section-number">6.3</span> Un ejemplo de análisis clúster con R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#funciones-b%C3%A1sicas-de-r-para-usar-k-medias"><span class="header-section-number">6.3.1</span> Funciones básicas de R para usar K-medias</a></li>
+<li><a class="nav-link" href="#selecci%C3%B3n-del-n%C3%BAmero-de-cl%C3%BAsteres"><span class="header-section-number">6.3.2</span> Selección del número de clústeres</a></li>
+<li><a class="nav-link" href="#visualizaci%C3%B3n-del-cl%C3%BAster-%C3%B3ptimo"><span class="header-section-number">6.3.3</span> Visualización del clúster óptimo</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#comentarios-finales-sobre-el-algoritmo-k-medias"><span class="header-section-number">6.4</span> Comentarios finales sobre el algoritmo k-medias</a></li>
+<li>
+<a class="nav-link" href="#an%C3%A1lisis-cl%C3%BAster-jer%C3%A1rquico"><span class="header-section-number">6.5</span> Análisis clúster jerárquico</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#an%C3%A1lsis-cl%C3%BAster-jer%C3%A1rquico-con-r"><span class="header-section-number">6.5.1</span> Análsis clúster jerárquico con R</a></li>
+<li><a class="nav-link" href="#trabajando-con-dendrogramas"><span class="header-section-number">6.5.2</span> Trabajando con dendrogramas</a></li>
+</ul>
+</li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="análisis-de-componentes-principales.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="métodos-basados-en-árboles.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/05-Sesion5-Analisis-Cluster.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/05-Sesion5-Analisis-Cluster.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Herramientas… MBA</strong>" was written by Fernando López <br> Manuel Reuz. It was last built on 2024-08-09.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -889,7 +640,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

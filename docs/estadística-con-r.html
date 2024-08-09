@@ -1,390 +1,119 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 3 Estadística con R | Herramientas… MBA</title>
-  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Capítulo 3 Estadística con R | Herramientas… MBA" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 3 Estadística con R | Herramientas… MBA" />
-  
-  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-
-<meta name="author" content="Fernando López   Manuel Reuz" />
-
-
-<meta name="date" content="2024-08-09" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="introducción-a-r.html"/>
-<link rel="next" href="regresión-lineal-múltiple.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
-<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
-<script src="libs/typedarray-0.1/typedarray.min.js"></script>
-<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
-<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
-<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
-<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 3 Estadística con R | Herramientas… MBA</title>
+<meta name="author" content="Fernando López   Manuel Reuz">
+<meta name="description" content="R es un lenguaje especializado en implementar técnicas estadísticas. Utilizaremos R para realizar un análisis estadístico básico.  3.1 Resumen estadístico El archivo “datos de empleados.sav” de...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="Capítulo 3 Estadística con R | Herramientas… MBA">
+<meta property="og:type" content="book">
+<meta property="og:description" content="R es un lenguaje especializado en implementar técnicas estadísticas. Utilizaremos R para realizar un análisis estadístico básico.  3.1 Resumen estadístico El archivo “datos de empleados.sav” de...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 3 Estadística con R | Herramientas… MBA">
+<meta name="twitter:description" content="R es un lenguaje especializado en implementar técnicas estadísticas. Utilizaremos R para realizar un análisis estadístico básico.  3.1 Resumen estadístico El archivo “datos de empleados.sav” de...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.4.2/transition.js"></script><script src="libs/bs3compat-0.4.2/tabs.js"></script><script src="libs/bs3compat-0.4.2/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><script src="libs/plotly-binding-4.10.1/plotly.js"></script><script src="libs/typedarray-0.1/typedarray.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script><script>
+        $(function() {
+            $("#toc h2").html("En este tema");
+        });
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
-
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Presentación</a></li>
-<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
-<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#el-lenguaje-r"><i class="fa fa-check"></i><b>2.2</b> El lenguaje R</a></li>
-<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#por-qué-aprender-r"><i class="fa fa-check"></i><b>2.3</b> ¿Por qué aprender R?</a></li>
-<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#rstudio"><i class="fa fa-check"></i><b>2.4</b> RStudio</a></li>
-<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-cosas-hago-con-r"><i class="fa fa-check"></i><b>2.5</b> Qué cosas hago con R</a></li>
-<li class="chapter" data-level="2.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#creando-el-entorno-de-trabajo-en-rstudio."><i class="fa fa-check"></i><b>2.6</b> Creando el entorno de trabajo en RStudio.</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consola"><i class="fa fa-check"></i><b>2.6.1</b> Consola</a></li>
-<li class="chapter" data-level="2.6.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#scripts"><i class="fa fa-check"></i><b>2.6.2</b> Scripts</a></li>
-<li class="chapter" data-level="2.6.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#entorno"><i class="fa fa-check"></i><b>2.6.3</b> Entorno</a></li>
-<li class="chapter" data-level="2.6.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#miscelánea-archivos-gráficos-paquetes-ayuda-visor"><i class="fa fa-check"></i><b>2.6.4</b> Miscelánea: Archivos, Gráficos, Paquetes, Ayuda, Visor</a></li>
-<li class="chapter" data-level="2.6.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#configuración-del-directorio-de-trabajo."><i class="fa fa-check"></i><b>2.6.5</b> Configuración del directorio de trabajo.</a></li>
-<li class="chapter" data-level="2.6.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#instalar-y-cargar-paquetes."><i class="fa fa-check"></i><b>2.6.6</b> Instalar y cargar paquetes.</a></li>
-<li class="chapter" data-level="2.6.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ayuda-en-r."><i class="fa fa-check"></i><b>2.6.7</b> Ayuda en R.</a></li>
-</ul></li>
-<li class="chapter" data-level="2.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#primeros-pasos"><i class="fa fa-check"></i><b>2.7</b> Primeros pasos</a>
-<ul>
-<li class="chapter" data-level="2.7.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#script-básico-para-apreder-r"><i class="fa fa-check"></i><b>2.7.1</b> Script básico para apreder R</a></li>
-<li class="chapter" data-level="2.7.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#tipos-de-datos-en-r"><i class="fa fa-check"></i><b>2.7.2</b> Tipos de Datos en R</a></li>
-<li class="chapter" data-level="2.7.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#la-importancia-de-los-objetos-en-r"><i class="fa fa-check"></i><b>2.7.3</b> La Importancia de los Objetos en R</a></li>
-<li class="chapter" data-level="2.7.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#dataframes-en-r"><i class="fa fa-check"></i><b>2.7.4</b> DataFrames en R</a></li>
-<li class="chapter" data-level="2.7.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ejemplo-de-dataframe"><i class="fa fa-check"></i><b>2.7.5</b> Ejemplo de DataFrame</a></li>
-</ul></li>
-<li class="chapter" data-level="2.8" data-path="introducción-a-r.html"><a href="introducción-a-r.html#un-for-en-r"><i class="fa fa-check"></i><b>2.8</b> Un <code>for</code> en R</a></li>
-<li class="chapter" data-level="2.9" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-excel"><i class="fa fa-check"></i><b>2.9</b> Leer un Excel</a>
-<ul>
-<li class="chapter" data-level="2.9.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#datos-empleados"><i class="fa fa-check"></i><b>2.9.1</b> Datos Empleados</a></li>
-<li class="chapter" data-level="2.9.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-csv"><i class="fa fa-check"></i><b>2.9.2</b> Leer un csv</a></li>
-</ul></li>
-<li class="chapter" data-level="2.10" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-1"><i class="fa fa-check"></i><b>2.10</b> Actividad 1:</a></li>
-<li class="chapter" data-level="2.11" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-2"><i class="fa fa-check"></i><b>2.11</b> Actividad 2:</a></li>
-<li class="chapter" data-level="2.12" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-3"><i class="fa fa-check"></i><b>2.12</b> Actividad 3:</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="estadística-con-r.html"><a href="estadística-con-r.html"><i class="fa fa-check"></i><b>3</b> Estadística con R</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>3.1</b> Resumen estadístico</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-posición-central"><i class="fa fa-check"></i><b>3.1.1</b> Medidas de posición central</a></li>
-<li class="chapter" data-level="3.1.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-dispersión-absolutas"><i class="fa fa-check"></i><b>3.1.2</b> Medidas de dispersión absolutas</a></li>
-<li class="chapter" data-level="3.1.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-asimetría-y-curtosis"><i class="fa fa-check"></i><b>3.1.3</b> Medidas de asimetría y curtosis</a></li>
-<li class="chapter" data-level="3.1.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#la-función-summary"><i class="fa fa-check"></i><b>3.1.4</b> La función ‘summary()’</a></li>
-<li class="chapter" data-level="3.1.5" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad"><i class="fa fa-check"></i><b>3.1.5</b> Actividad</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#gráficos-con-r"><i class="fa fa-check"></i><b>3.2</b> Gráficos con R</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> ggplot2</a></li>
-<li class="chapter" data-level="3.2.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad-4"><i class="fa fa-check"></i><b>3.2.2</b> Actividad</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-hipótesis"><i class="fa fa-check"></i><b>3.3</b> Test Hipótesis</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.3.1</b> Un simple t-test de igualdad de medias</a></li>
-<li class="chapter" data-level="3.3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias-pareadas"><i class="fa fa-check"></i><b>3.3.2</b> Un simple t-test de igualdad de medias pareadas</a></li>
-<li class="chapter" data-level="3.3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-de-normalidad-paramétricos"><i class="fa fa-check"></i><b>3.3.3</b> Test de normalidad paramétricos</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#distribuciones-bivariadas"><i class="fa fa-check"></i><b>3.4</b> Distribuciones bivariadas</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>3.4.1</b> Tablas de contingencia</a></li>
-<li class="chapter" data-level="3.4.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#algo-de-test-de-independencia"><i class="fa fa-check"></i><b>3.4.2</b> Algo de test de independencia</a></li>
-<li class="chapter" data-level="3.4.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#correlaciones"><i class="fa fa-check"></i><b>3.4.3</b> Correlaciones</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html"><i class="fa fa-check"></i><b>4</b> Regresión Lineal Múltiple</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados."><i class="fa fa-check"></i><b>4.1</b> Estimación de los parámetros. Método de los mínimos cuadrados.</a></li>
-<li class="chapter" data-level="4.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#descomposición-de-la-varianza-y-bondad-del-ajuste."><i class="fa fa-check"></i><b>4.2</b> Descomposición de la Varianza y bondad del ajuste.</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-y-correlación."><i class="fa fa-check"></i><b>4.2.1</b> Coeficientes de determinación y correlación.</a></li>
-<li class="chapter" data-level="4.2.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-semi-parcial-y-parcial"><i class="fa fa-check"></i><b>4.2.2</b> Coeficientes de determinación semi-parcial y parcial</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#ejemplo-de-regresión-lineal-múltiple-con-r"><i class="fa fa-check"></i><b>4.3</b> Ejemplo de regresión lineal múltiple con R</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>5</b> Análisis de Componentes Principales</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
-<li class="chapter" data-level="5.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#antes-de-empezar"><i class="fa fa-check"></i><b>5.2</b> Antes de empezar</a></li>
-<li class="chapter" data-level="5.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-acp"><i class="fa fa-check"></i><b>5.3</b> El ACP</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#escalado-de-las-variables"><i class="fa fa-check"></i><b>5.3.1</b> Escalado de las variables</a></li>
-<li class="chapter" data-level="5.3.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#influencia-de-outliers"><i class="fa fa-check"></i><b>5.3.2</b> Influencia de outliers</a></li>
-<li class="chapter" data-level="5.3.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-varianza-explicada"><i class="fa fa-check"></i><b>5.3.3</b> Proporción de varianza explicada</a></li>
-<li class="chapter" data-level="5.3.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#número-óptimo-de-componentes-principales"><i class="fa fa-check"></i><b>5.3.4</b> Número óptimo de componentes principales</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-iniciales"><i class="fa fa-check"></i><b>5.4</b> Test iniciales</a>
-<ul>
-<li class="chapter" data-level="5.4.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#pruebas-esfericidad-de-bartlett"><i class="fa fa-check"></i><b>5.4.1</b> Pruebas esfericidad de Bartlett</a></li>
-<li class="chapter" data-level="5.4.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#prueba-del-kmo"><i class="fa fa-check"></i><b>5.4.2</b> Prueba del KMO</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#una-aplicación-con-datos-de-empleados"><i class="fa fa-check"></i><b>5.5</b> Una aplicación con “Datos de Empleados”</a></li>
-<li class="chapter" data-level="5.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#paquetes-de-r-para-el-acp"><i class="fa fa-check"></i><b>5.6</b> Paquetes de R para el ACP</a></li>
-<li class="chapter" data-level="5.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-la-varianza-explicada"><i class="fa fa-check"></i><b>5.7</b> Proporción de la varianza explicada</a></li>
-<li class="chapter" data-level="5.8" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-gráfico-de-sedimentación"><i class="fa fa-check"></i><b>5.8</b> El gráfico de sedimentación</a></li>
-<li class="chapter" data-level="5.9" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#las-componentes"><i class="fa fa-check"></i><b>5.9</b> Las componentes</a></li>
-<li class="chapter" data-level="5.10" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#ejercicio-acp-como-indicador-sintético"><i class="fa fa-check"></i><b>5.10</b> Ejercicio: ACP como indicador sintético</a>
-<ul>
-<li class="chapter" data-level="5.10.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#los-datos"><i class="fa fa-check"></i><b>5.10.1</b> Los datos</a></li>
-</ul></li>
-<li class="chapter" data-level="5.11" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#aplicación-regresión-y-acp"><i class="fa fa-check"></i><b>5.11</b> Aplicación: Regresión y ACP</a>
-<ul>
-<li class="chapter" data-level="5.11.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#lectura-y-sumario-de-los-datos"><i class="fa fa-check"></i><b>5.11.1</b> Lectura y sumario de los datos</a></li>
-<li class="chapter" data-level="5.11.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#eliminación-de-datos-perdidos"><i class="fa fa-check"></i><b>5.11.2</b> Eliminación de datos perdidos</a></li>
-<li class="chapter" data-level="5.11.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#un-modelo-de-regresión-básico"><i class="fa fa-check"></i><b>5.11.3</b> Un modelo de regresión básico</a></li>
-<li class="chapter" data-level="5.11.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#evaluamos-matriz-de-correlaciones"><i class="fa fa-check"></i><b>5.11.4</b> Evaluamos matriz de correlaciones</a></li>
-<li class="chapter" data-level="5.11.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-de-adecuación-del-acp"><i class="fa fa-check"></i><b>5.11.5</b> Test de adecuación del ACP</a></li>
-<li class="chapter" data-level="5.11.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#cálculo-de-las-componentes"><i class="fa fa-check"></i><b>5.11.6</b> Cálculo de las componentes</a></li>
-<li class="chapter" data-level="5.11.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#interpretación-de-las-cps"><i class="fa fa-check"></i><b>5.11.7</b> Interpretación de las CPs</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="análisis-cluster.html"><a href="análisis-cluster.html"><i class="fa fa-check"></i><b>6</b> Análisis Cluster</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#medidas-de-distancia"><i class="fa fa-check"></i><b>6.1</b> Medidas de distancia</a></li>
-<li class="chapter" data-level="6.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-cluster-con-el-algoritmo-k-medias."><i class="fa fa-check"></i><b>6.2</b> Análisis cluster con el algoritmo K-medias.</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#k-medias"><i class="fa fa-check"></i><b>6.2.1</b> K-medias</a></li>
-</ul></li>
-<li class="chapter" data-level="6.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#un-ejemplo-de-análisis-clúster-con-r"><i class="fa fa-check"></i><b>6.3</b> Un ejemplo de análisis clúster con R</a>
-<ul>
-<li class="chapter" data-level="6.3.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#funciones-básicas-de-r-para-usar-k-medias"><i class="fa fa-check"></i><b>6.3.1</b> Funciones básicas de R para usar K-medias</a></li>
-<li class="chapter" data-level="6.3.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#selección-del-número-de-clústeres"><i class="fa fa-check"></i><b>6.3.2</b> Selección del número de clústeres</a></li>
-<li class="chapter" data-level="6.3.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#visualización-del-clúster-óptimo"><i class="fa fa-check"></i><b>6.3.3</b> Visualización del clúster óptimo</a></li>
-</ul></li>
-<li class="chapter" data-level="6.4" data-path="análisis-cluster.html"><a href="análisis-cluster.html#comentarios-finales-sobre-el-algoritmo-k-medias"><i class="fa fa-check"></i><b>6.4</b> Comentarios finales sobre el algoritmo k-medias</a></li>
-<li class="chapter" data-level="6.5" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-clúster-jerárquico"><i class="fa fa-check"></i><b>6.5</b> Análisis clúster jerárquico</a>
-<ul>
-<li class="chapter" data-level="6.5.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análsis-clúster-jerárquico-con-r"><i class="fa fa-check"></i><b>6.5.1</b> Análsis clúster jerárquico con R</a></li>
-<li class="chapter" data-level="6.5.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#trabajando-con-dendrogramas"><i class="fa fa-check"></i><b>6.5.2</b> Trabajando con dendrogramas</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html"><i class="fa fa-check"></i><b>7</b> Métodos basados en árboles</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#introducción-1"><i class="fa fa-check"></i><b>7.1</b> Introducción</a></li>
-<li class="chapter" data-level="7.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#origen-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.2</b> Origen de los Árboles de Decisión</a></li>
-<li class="chapter" data-level="7.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#los-árboles-de-decisión-en-las-técnicas-de-machine-learning"><i class="fa fa-check"></i><b>7.3</b> Los Árboles de Decisión en las técnicas de Machine Learning</a></li>
-<li class="chapter" data-level="7.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-regresión"><i class="fa fa-check"></i><b>7.4</b> Árboles de regresión</a>
-<ul>
-<li class="chapter" data-level="7.4.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#un-ejemplo-de-juguete"><i class="fa fa-check"></i><b>7.4.1</b> Un ejemplo de juguete</a></li>
-<li class="chapter" data-level="7.4.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#sec:terminologia"><i class="fa fa-check"></i><b>7.4.2</b> Terminología</a></li>
-<li class="chapter" data-level="7.4.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#como-se-crea-un-árbol"><i class="fa fa-check"></i><b>7.4.3</b> Como se crea un árbol</a></li>
-<li class="chapter" data-level="7.4.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#evitar-el-overfitting"><i class="fa fa-check"></i><b>7.4.4</b> Evitar el overfitting</a></li>
-<li class="chapter" data-level="7.4.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#validación-cruzada"><i class="fa fa-check"></i><b>7.4.5</b> Validación cruzada</a></li>
-<li class="chapter" data-level="7.4.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#algoritmo-para-crear-un-árbol-de-regresión-con-pruning"><i class="fa fa-check"></i><b>7.4.6</b> Algoritmo para crear un árbol de regresión con pruning</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-clasificación"><i class="fa fa-check"></i><b>7.5</b> Árboles de clasificación</a>
-<ul>
-<li class="chapter" data-level="7.5.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#cómo-se-crea-un-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.5.1</b> Cómo se crea un árbol de clasificación</a></li>
-<li class="chapter" data-level="7.5.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-del-árbol"><i class="fa fa-check"></i><b>7.5.2</b> Predicción del árbol</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-y-desventajas-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.6</b> Ventajas y desventajas de los Árboles de Decisión</a>
-<ul>
-<li class="chapter" data-level="7.6.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-algunas"><i class="fa fa-check"></i><b>7.6.1</b> Ventajas (algunas)</a></li>
-<li class="chapter" data-level="7.6.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#desventajas-algunas"><i class="fa fa-check"></i><b>7.6.2</b> Desventajas (algunas)</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#paquetes-de-r"><i class="fa fa-check"></i><b>7.7</b> Paquetes de R</a></li>
-<li class="chapter" data-level="7.8" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.8</b> Ejemplo Árbol de Clasificación</a>
-<ul>
-<li class="chapter" data-level="7.8.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#pre-podado"><i class="fa fa-check"></i><b>7.8.1</b> Pre-podado</a></li>
-<li class="chapter" data-level="7.8.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#entrenamiento-y-test"><i class="fa fa-check"></i><b>7.8.2</b> Entrenamiento y test</a></li>
-</ul></li>
-<li class="chapter" data-level="7.9" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-regresión"><i class="fa fa-check"></i><b>7.9</b> Ejemplo Árbol de Regresión</a>
-<ul>
-<li class="chapter" data-level="7.9.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#datos"><i class="fa fa-check"></i><b>7.9.1</b> Datos</a></li>
-<li class="chapter" data-level="7.9.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ajuste-del-modelo-con-la-librería-tree"><i class="fa fa-check"></i><b>7.9.2</b> Ajuste del modelo con la librería ‘tree’</a></li>
-<li class="chapter" data-level="7.9.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#podado-del-árbol-pruning"><i class="fa fa-check"></i><b>7.9.3</b> Podado del árbol (pruning)</a></li>
-<li class="chapter" data-level="7.9.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-y-evaluación-del-modelo"><i class="fa fa-check"></i><b>7.9.4</b> Predicción y evaluación del modelo</a></li>
-</ul></li>
-<li class="chapter" data-level="7.10" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#webs"><i class="fa fa-check"></i><b>7.10</b> Webs</a></li>
-<li class="chapter" data-level="7.11" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#referencias"><i class="fa fa-check"></i><b>7.11</b> Referencias</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Herramientas… MBA</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Herramientas… MBA</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Presentación</a></li>
+<li><a class="" href="introducci%C3%B3n-a-r.html"><span class="header-section-number">2</span> Introducción a R</a></li>
+<li><a class="active" href="estad%C3%ADstica-con-r.html"><span class="header-section-number">3</span> Estadística con R</a></li>
+<li><a class="" href="regresi%C3%B3n-lineal-m%C3%BAltiple.html"><span class="header-section-number">4</span> Regresión Lineal Múltiple</a></li>
+<li><a class="" href="an%C3%A1lisis-de-componentes-principales.html"><span class="header-section-number">5</span> Análisis de Componentes Principales</a></li>
+<li><a class="" href="an%C3%A1lisis-cluster.html"><span class="header-section-number">6</span> Análisis Cluster</a></li>
+<li><a class="" href="m%C3%A9todos-basados-en-%C3%A1rboles.html"><span class="header-section-number">7</span> Métodos basados en árboles</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/rstudio/bookdown-demo">View book source <i class="fab fa-github"></i></a></p>
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="estadística-con-r" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Capítulo 3</span> Estadística con R<a href="estadística-con-r.html#estadística-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="estadística-con-r" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Capítulo 3</span> Estadística con R<a class="anchor" aria-label="anchor" href="#estad%C3%ADstica-con-r"><i class="fas fa-link"></i></a>
+</h1>
 <ul>
 <li><p>R es un lenguaje especializado en implementar técnicas estadísticas.</p></li>
 <li><p>Utilizaremos R para realizar un análisis estadístico básico.</p></li>
 </ul>
-<div id="resumen-estadístico" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Resumen estadístico<a href="estadística-con-r.html#resumen-estadístico" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="resumen-estadístico" class="section level2" number="3.1">
+<h2>
+<span class="header-section-number">3.1</span> Resumen estadístico<a class="anchor" aria-label="anchor" href="#resumen-estad%C3%ADstico"><i class="fas fa-link"></i></a>
+</h2>
 <p>El archivo “datos de empleados.sav” de SPSS es un conjunto de datos ampliamente utilizado en análisis estadísticos y gestión de recursos humanos. Este archivo contiene información detallada sobre los empleados de una organización, abarcando diversas variables como edad, género, departamento, puesto de trabajo, salario, años de servicio, nivel educativo y rendimiento laboral. Gracias a esta riqueza de datos, los analistas pueden explorar patrones y tendencias dentro de la fuerza laboral, lo que facilita la toma de decisiones informadas en áreas cruciales como la contratación, capacitación, evaluación del desempeño y retención de empleados.</p>
 <p>Por ejemplo, los datos pueden utilizarse para identificar diferencias salariales entre distintos géneros o departamentos, analizar la relación entre la antigüedad y el rendimiento laboral, o evaluar el impacto de la formación en el desarrollo profesional. Además, la estructura del archivo “datos de empleados.sav” permite la aplicación de diversas técnicas estadísticas y métodos de análisis, como regresión, análisis de varianza y pruebas de hipótesis, proporcionando un enfoque robusto para abordar cuestiones complejas en la gestión de recursos humanos.</p>
 <div class="float">
-<img src="Figures/Datos_empleados.png" style="width:100.0%" alt="Datos Empleados" />
-<div class="figcaption">Datos Empleados</div>
+<img src="Figures/Datos_empleados.png" style="width:100.0%" alt="Datos Empleados"><div class="figcaption">Datos Empleados</div>
 </div>
 <p><strong>Las funciones más elementales tienen una sintaxis muy intuitiva</strong></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="estadística-con-r.html#cb15-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb15-2"><a href="estadística-con-r.html#cb15-2" tabindex="-1"></a>bbdd <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;Datos/Datos_de_empleados.xlsx&quot;</span>)</span>
-<span id="cb15-3"><a href="estadística-con-r.html#cb15-3" tabindex="-1"></a><span class="co"># bbdd$fechnac &lt;- as.Date(as.numeric(bbdd$fechnac),format = &quot;%Y%m%d&quot;)</span></span>
-<span id="cb15-4"><a href="estadística-con-r.html#cb15-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(bbdd[,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)],<span class="dv">6</span>))</span></code></pre></div>
-<table>
-<thead>
-<tr class="header">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
+<span><span class="va">bbdd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_xlsx</a></span><span class="op">(</span><span class="st">"Datos/Datos_de_empleados.xlsx"</span><span class="op">)</span></span>
+<span><span class="co"># bbdd$fechnac &lt;- as.Date(as.numeric(bbdd$fechnac),format = "%Y%m%d")</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">]</span>,<span class="fl">6</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
 <th align="left">sexo</th>
 <th align="right">salario</th>
 <th align="right">salini</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td align="left">h</td>
@@ -417,116 +146,131 @@ div.csl-indent {
 <td align="right">13500</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p><strong>Para calcular algunos indicadores básicos se utilizan comandos sencillos</strong></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estadística-con-r.html#cb16-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Min, max,...</span></span>
-<span id="cb16-2"><a href="estadística-con-r.html#cb16-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">min</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb16-3"><a href="estadística-con-r.html#cb16-3" tabindex="-1"></a><span class="co">#&gt; [1] 15750</span></span>
-<span id="cb16-4"><a href="estadística-con-r.html#cb16-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">max</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb16-5"><a href="estadística-con-r.html#cb16-5" tabindex="-1"></a><span class="co">#&gt; [1] 135000</span></span>
-<span id="cb16-6"><a href="estadística-con-r.html#cb16-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">which.max</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb16-7"><a href="estadística-con-r.html#cb16-7" tabindex="-1"></a><span class="co">#&gt; [1] 29</span></span>
-<span id="cb16-8"><a href="estadística-con-r.html#cb16-8" tabindex="-1"></a><span class="sc">&gt;</span> bbdd<span class="sc">$</span>salario[<span class="fu">which.max</span>(bbdd<span class="sc">$</span>salario)]</span>
-<span id="cb16-9"><a href="estadística-con-r.html#cb16-9" tabindex="-1"></a><span class="co">#&gt; [1] 135000</span></span>
-<span id="cb16-10"><a href="estadística-con-r.html#cb16-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sum</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb16-11"><a href="estadística-con-r.html#cb16-11" tabindex="-1"></a><span class="co">#&gt; [1] 16314875</span></span></code></pre></div>
-<div id="medidas-de-posición-central" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Medidas de posición central<a href="estadística-con-r.html#medidas-de-posición-central" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="estad%C3%ADstica-con-r.html#cb16-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Min, max,...</span></span>
+<span id="cb16-2"><a href="estad%C3%ADstica-con-r.html#cb16-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">min</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb16-3"><a href="estad%C3%ADstica-con-r.html#cb16-3" tabindex="-1"></a><span class="co">#&gt; [1] 15750</span></span>
+<span id="cb16-4"><a href="estad%C3%ADstica-con-r.html#cb16-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">max</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb16-5"><a href="estad%C3%ADstica-con-r.html#cb16-5" tabindex="-1"></a><span class="co">#&gt; [1] 135000</span></span>
+<span id="cb16-6"><a href="estad%C3%ADstica-con-r.html#cb16-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">which.max</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb16-7"><a href="estad%C3%ADstica-con-r.html#cb16-7" tabindex="-1"></a><span class="co">#&gt; [1] 29</span></span>
+<span id="cb16-8"><a href="estad%C3%ADstica-con-r.html#cb16-8" tabindex="-1"></a><span class="sc">&gt;</span> bbdd<span class="sc">$</span>salario[<span class="fu">which.max</span>(bbdd<span class="sc">$</span>salario)]</span>
+<span id="cb16-9"><a href="estad%C3%ADstica-con-r.html#cb16-9" tabindex="-1"></a><span class="co">#&gt; [1] 135000</span></span>
+<span id="cb16-10"><a href="estad%C3%ADstica-con-r.html#cb16-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sum</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb16-11"><a href="estad%C3%ADstica-con-r.html#cb16-11" tabindex="-1"></a><span class="co">#&gt; [1] 16314875</span></span></code></pre></div>
+<div id="medidas-de-posición-central" class="section level3" number="3.1.1">
+<h3>
+<span class="header-section-number">3.1.1</span> Medidas de posición central<a class="anchor" aria-label="anchor" href="#medidas-de-posici%C3%B3n-central"><i class="fas fa-link"></i></a>
+</h3>
 <p>Las medidas de tendencia central son estadísticas fundamentales que describen el punto medio o típico de un conjunto de datos. Entre las más utilizadas se encuentran la media aritmética, la mediana y la moda. La media aritmética, o promedio, se calcula sumando todos los valores y dividiéndolos por el número total de observaciones, proporcionando una medida del centro basada en todos los datos. La mediana, en cambio, es el valor que divide el conjunto de datos en dos mitades iguales, siendo especialmente útil cuando hay valores atípicos o distribuciones sesgadas, ya que no se ve afectada por extremos. La moda es el valor que aparece con mayor frecuencia en el conjunto de datos y puede ser útil para identificar el valor más común en una distribución. Cada una de estas medidas ofrece una perspectiva diferente sobre la centralidad de los datos y se elige según las características del conjunto de datos y el contexto del análisis</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estadística-con-r.html#cb17-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Media y Mediana de Salario</span></span>
-<span id="cb17-2"><a href="estadística-con-r.html#cb17-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">mean</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb17-3"><a href="estadística-con-r.html#cb17-3" tabindex="-1"></a><span class="co">#&gt; [1] 34419.57</span></span>
-<span id="cb17-4"><a href="estadística-con-r.html#cb17-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">median</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb17-5"><a href="estadística-con-r.html#cb17-5" tabindex="-1"></a><span class="co">#&gt; [1] 28875</span></span>
-<span id="cb17-6"><a href="estadística-con-r.html#cb17-6" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb17-7"><a href="estadística-con-r.html#cb17-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Es fácil calcular la media geométrica</span></span>
-<span id="cb17-8"><a href="estadística-con-r.html#cb17-8" tabindex="-1"></a><span class="er">&gt;</span> x <span class="ot">&lt;-</span> bbdd<span class="sc">$</span>salario</span>
-<span id="cb17-9"><a href="estadística-con-r.html#cb17-9" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
-<span id="cb17-10"><a href="estadística-con-r.html#cb17-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">prod</span>(x)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>n)</span>
-<span id="cb17-11"><a href="estadística-con-r.html#cb17-11" tabindex="-1"></a><span class="co">#&gt; [1] Inf</span></span>
-<span id="cb17-12"><a href="estadística-con-r.html#cb17-12" tabindex="-1"></a><span class="sc">&gt;</span> geom <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(x)))</span>
-<span id="cb17-13"><a href="estadística-con-r.html#cb17-13" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(geom)</span>
-<span id="cb17-14"><a href="estadística-con-r.html#cb17-14" tabindex="-1"></a><span class="co">#&gt; [1] 31470.09</span></span>
-<span id="cb17-15"><a href="estadística-con-r.html#cb17-15" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb17-16"><a href="estadística-con-r.html#cb17-16" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># También la media armónica</span></span>
-<span id="cb17-17"><a href="estadística-con-r.html#cb17-17" tabindex="-1"></a><span class="er">&gt;</span> armo <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">/</span>x)</span>
-<span id="cb17-18"><a href="estadística-con-r.html#cb17-18" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(armo)</span>
-<span id="cb17-19"><a href="estadística-con-r.html#cb17-19" tabindex="-1"></a><span class="co">#&gt; [1] 29366.07</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="estad%C3%ADstica-con-r.html#cb17-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Media y Mediana de Salario</span></span>
+<span id="cb17-2"><a href="estad%C3%ADstica-con-r.html#cb17-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">mean</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb17-3"><a href="estad%C3%ADstica-con-r.html#cb17-3" tabindex="-1"></a><span class="co">#&gt; [1] 34419.57</span></span>
+<span id="cb17-4"><a href="estad%C3%ADstica-con-r.html#cb17-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">median</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb17-5"><a href="estad%C3%ADstica-con-r.html#cb17-5" tabindex="-1"></a><span class="co">#&gt; [1] 28875</span></span>
+<span id="cb17-6"><a href="estad%C3%ADstica-con-r.html#cb17-6" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb17-7"><a href="estad%C3%ADstica-con-r.html#cb17-7" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Es fácil calcular la media geométrica</span></span>
+<span id="cb17-8"><a href="estad%C3%ADstica-con-r.html#cb17-8" tabindex="-1"></a><span class="er">&gt;</span> x <span class="ot">&lt;-</span> bbdd<span class="sc">$</span>salario</span>
+<span id="cb17-9"><a href="estad%C3%ADstica-con-r.html#cb17-9" tabindex="-1"></a><span class="sc">&gt;</span> n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb17-10"><a href="estad%C3%ADstica-con-r.html#cb17-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">prod</span>(x)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span>n)</span>
+<span id="cb17-11"><a href="estad%C3%ADstica-con-r.html#cb17-11" tabindex="-1"></a><span class="co">#&gt; [1] Inf</span></span>
+<span id="cb17-12"><a href="estad%C3%ADstica-con-r.html#cb17-12" tabindex="-1"></a><span class="sc">&gt;</span> geom <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(x)))</span>
+<span id="cb17-13"><a href="estad%C3%ADstica-con-r.html#cb17-13" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(geom)</span>
+<span id="cb17-14"><a href="estad%C3%ADstica-con-r.html#cb17-14" tabindex="-1"></a><span class="co">#&gt; [1] 31470.09</span></span>
+<span id="cb17-15"><a href="estad%C3%ADstica-con-r.html#cb17-15" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb17-16"><a href="estad%C3%ADstica-con-r.html#cb17-16" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># También la media armónica</span></span>
+<span id="cb17-17"><a href="estad%C3%ADstica-con-r.html#cb17-17" tabindex="-1"></a><span class="er">&gt;</span> armo <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(<span class="dv">1</span><span class="sc">/</span>x)</span>
+<span id="cb17-18"><a href="estad%C3%ADstica-con-r.html#cb17-18" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(armo)</span>
+<span id="cb17-19"><a href="estad%C3%ADstica-con-r.html#cb17-19" tabindex="-1"></a><span class="co">#&gt; [1] 29366.07</span></span></code></pre></div>
 <p><strong>Algunos detalles sobre valores perdidos</strong></p>
 <p>En R, los valores faltantes están representados por el símbolo NA (no disponible).
 Los valores imposibles (por ejemplo, la división por cero) están representados por el símbolo NaN (no es un número)</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="estadística-con-r.html#cb18-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">3</span>)</span>
-<span id="cb18-2"><a href="estadística-con-r.html#cb18-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(x) <span class="co"># devuelve NA</span></span>
-<span id="cb18-3"><a href="estadística-con-r.html#cb18-3" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
-<span id="cb18-4"><a href="estadística-con-r.html#cb18-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sum</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="co"># devuelve 2</span></span>
-<span id="cb18-5"><a href="estadística-con-r.html#cb18-5" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
-<span id="cb18-6"><a href="estadística-con-r.html#cb18-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="co"># devuelve 2</span></span>
-<span id="cb18-7"><a href="estadística-con-r.html#cb18-7" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="estad%C3%ADstica-con-r.html#cb18-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">3</span>)</span>
+<span id="cb18-2"><a href="estad%C3%ADstica-con-r.html#cb18-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(x) <span class="co"># devuelve NA</span></span>
+<span id="cb18-3"><a href="estad%C3%ADstica-con-r.html#cb18-3" tabindex="-1"></a><span class="co">#&gt; [1] NA</span></span>
+<span id="cb18-4"><a href="estad%C3%ADstica-con-r.html#cb18-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sum</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="co"># devuelve 2</span></span>
+<span id="cb18-5"><a href="estad%C3%ADstica-con-r.html#cb18-5" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span>
+<span id="cb18-6"><a href="estad%C3%ADstica-con-r.html#cb18-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(x, <span class="at">na.rm=</span><span class="cn">TRUE</span>) <span class="co"># devuelve 2</span></span>
+<span id="cb18-7"><a href="estad%C3%ADstica-con-r.html#cb18-7" tabindex="-1"></a><span class="co">#&gt; [1] 2</span></span></code></pre></div>
 <p><strong>Igualmente se obtien en medidas de posición no central</strong></p>
 <p>Las medidas de posición no central, como los cuartiles, deciles y percentiles, son herramientas estadísticas que dividen un conjunto de datos en partes iguales para analizar su distribución. Los cuartiles dividen los datos en cuatro partes: el primer cuartil (Q1) indica el 25% inferior, el segundo cuartil (Q2) es la mediana, y el tercer cuartil (Q3) representa el 75% inferior. Los deciles y percentiles proporcionan divisiones más finas, en diez y cien partes, respectivamente.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="estadística-con-r.html#cb19-1" tabindex="-1"></a><span class="fu">quantile</span>(bbdd<span class="sc">$</span>salario)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span></span></code></pre></div>
 <pre><code>  0%      25%      50%      75%     100% </code></pre>
 <p>15750.0 24000.0 28875.0 36937.5 135000.0</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="estadística-con-r.html#cb21-1" tabindex="-1"></a><span class="fu">quantile</span>(bbdd<span class="sc">$</span>salario,<span class="fu">c</span>(<span class="dv">0</span>,.<span class="dv">15</span>,.<span class="dv">85</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">.15</span>,<span class="fl">.85</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code> 0%     15%     85% </code></pre>
 <p>15750.0 22050.0 50027.5</p>
 </div>
-<div id="medidas-de-dispersión-absolutas" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Medidas de dispersión absolutas<a href="estadística-con-r.html#medidas-de-dispersión-absolutas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="medidas-de-dispersión-absolutas" class="section level3" number="3.1.2">
+<h3>
+<span class="header-section-number">3.1.2</span> Medidas de dispersión absolutas<a class="anchor" aria-label="anchor" href="#medidas-de-dispersi%C3%B3n-absolutas"><i class="fas fa-link"></i></a>
+</h3>
 <p>Las medidas de dispersión absolutas cuantifican la variabilidad o dispersión de un conjunto de datos respecto a su centro. Entre las más comunes se encuentran el rango, la desviación media y la desviación estándar. El rango es la diferencia entre el valor máximo y el mínimo, proporcionando una medida simple de la extensión de los datos. La desviación media calcula el promedio de las diferencias absolutas entre cada dato y la media, ofreciendo una visión general de la dispersión. La desviación estándar mide la dispersión de los datos respecto a la media.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="estadística-con-r.html#cb23-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Medidas de dispersión absolutas</span></span>
-<span id="cb23-2"><a href="estadística-con-r.html#cb23-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">range</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb23-3"><a href="estadística-con-r.html#cb23-3" tabindex="-1"></a><span class="co">#&gt; [1]  15750 135000</span></span>
-<span id="cb23-4"><a href="estadística-con-r.html#cb23-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">IQR</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Rango intercuartílico</span></span>
-<span id="cb23-5"><a href="estadística-con-r.html#cb23-5" tabindex="-1"></a><span class="co">#&gt; [1] 12937.5</span></span>
-<span id="cb23-6"><a href="estadística-con-r.html#cb23-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sd</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Desviación estándar</span></span>
-<span id="cb23-7"><a href="estadística-con-r.html#cb23-7" tabindex="-1"></a><span class="co">#&gt; [1] 17075.66</span></span>
-<span id="cb23-8"><a href="estadística-con-r.html#cb23-8" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">var</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Varianza</span></span>
-<span id="cb23-9"><a href="estadística-con-r.html#cb23-9" tabindex="-1"></a><span class="co">#&gt; [1] 291578214</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="estad%C3%ADstica-con-r.html#cb23-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Medidas de dispersión absolutas</span></span>
+<span id="cb23-2"><a href="estad%C3%ADstica-con-r.html#cb23-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">range</span>(bbdd<span class="sc">$</span>salario)</span>
+<span id="cb23-3"><a href="estad%C3%ADstica-con-r.html#cb23-3" tabindex="-1"></a><span class="co">#&gt; [1]  15750 135000</span></span>
+<span id="cb23-4"><a href="estad%C3%ADstica-con-r.html#cb23-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">IQR</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Rango intercuartílico</span></span>
+<span id="cb23-5"><a href="estad%C3%ADstica-con-r.html#cb23-5" tabindex="-1"></a><span class="co">#&gt; [1] 12937.5</span></span>
+<span id="cb23-6"><a href="estad%C3%ADstica-con-r.html#cb23-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">sd</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Desviación estándar</span></span>
+<span id="cb23-7"><a href="estad%C3%ADstica-con-r.html#cb23-7" tabindex="-1"></a><span class="co">#&gt; [1] 17075.66</span></span>
+<span id="cb23-8"><a href="estad%C3%ADstica-con-r.html#cb23-8" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">var</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Varianza</span></span>
+<span id="cb23-9"><a href="estad%C3%ADstica-con-r.html#cb23-9" tabindex="-1"></a><span class="co">#&gt; [1] 291578214</span></span></code></pre></div>
 </div>
-<div id="medidas-de-asimetría-y-curtosis" class="section level3 hasAnchor" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Medidas de asimetría y curtosis<a href="estadística-con-r.html#medidas-de-asimetría-y-curtosis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="medidas-de-asimetría-y-curtosis" class="section level3" number="3.1.3">
+<h3>
+<span class="header-section-number">3.1.3</span> Medidas de asimetría y curtosis<a class="anchor" aria-label="anchor" href="#medidas-de-asimetr%C3%ADa-y-curtosis"><i class="fas fa-link"></i></a>
+</h3>
 <p>Las medidas de asimetría y curtosis evalúan la forma y la distribución de un conjunto de datos. La asimetría indica si los datos están sesgados hacia un lado: una asimetría positiva sugiere una cola larga a la derecha, mientras que una negativa indica una cola larga a la izquierda. La curtosis mide la “agudeza” de la distribución: una curtosis alta (leptocúrtica) indica colas más pesadas y un pico más pronunciado, mientras que una baja (platicúrtica) señala colas más ligeras y un pico más plano. Estas medidas son cruciales para comprender la distribución de los datos más allá de la media y la dispersión</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="estadística-con-r.html#cb24-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(moments)) {<span class="fu">install.packages</span>(<span class="st">&quot;moments&quot;</span>)}</span>
-<span id="cb24-2"><a href="estadística-con-r.html#cb24-2" tabindex="-1"></a><span class="co">#&gt; Loading required package: moments</span></span>
-<span id="cb24-3"><a href="estadística-con-r.html#cb24-3" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
-<span id="cb24-4"><a href="estadística-con-r.html#cb24-4" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="estadística-con-r.html#cb24-5" tabindex="-1"></a><span class="fu">skewness</span>(bbdd<span class="sc">$</span>salario) <span class="co">#nos da el valor de la asimetria de los datos de la variable x</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span><span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"moments"</span><span class="op">)</span><span class="op">}</span></span>
+<span><span class="co">#&gt; Loading required package: moments</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.r-project.org">moments</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span> <span class="co">#nos da el valor de la asimetria de los datos de la variable x</span></span></code></pre></div>
 <p>[1] 2.117877</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="estadística-con-r.html#cb25-1" tabindex="-1"></a><span class="fu">kurtosis</span>(bbdd<span class="sc">$</span>salario) <span class="co">#nos da el achatamiento de la distribucion de los datos de la variable x.</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span> <span class="co">#nos da el achatamiento de la distribucion de los datos de la variable x.</span></span></code></pre></div>
 <p>[1] 8.30863</p>
 </div>
-<div id="la-función-summary" class="section level3 hasAnchor" number="3.1.4">
-<h3><span class="header-section-number">3.1.4</span> La función ‘summary()’<a href="estadística-con-r.html#la-función-summary" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="la-función-summary" class="section level3" number="3.1.4">
+<h3>
+<span class="header-section-number">3.1.4</span> La función ‘summary()’<a class="anchor" aria-label="anchor" href="#la-funci%C3%B3n-summary"><i class="fas fa-link"></i></a>
+</h3>
 <p>La función ‘summary()’ en R proporciona un resumen estadístico de un objeto, como un conjunto de datos o un modelo. Para data frames, incluye medidas como la media, mediana, mínimos, máximos y cuartiles, ofreciendo una visión rápida y completa de las características clave del conjunto de datos</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="estadística-con-r.html#cb26-1" tabindex="-1"></a><span class="co"># Resumen de la variable</span></span>
-<span id="cb26-2"><a href="estadística-con-r.html#cb26-2" tabindex="-1"></a><span class="fu">summary</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb26-3"><a href="estadística-con-r.html#cb26-3" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb26-4"><a href="estadística-con-r.html#cb26-4" tabindex="-1"></a><span class="co">#&gt;   15750   24000   28875   34420   36938  135000</span></span>
-<span id="cb26-5"><a href="estadística-con-r.html#cb26-5" tabindex="-1"></a><span class="co"># También para una data frame</span></span>
-<span id="cb26-6"><a href="estadística-con-r.html#cb26-6" tabindex="-1"></a>BBDD <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(bbdd[,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span><span class="sc">:</span><span class="dv">7</span>)])</span>
-<span id="cb26-7"><a href="estadística-con-r.html#cb26-7" tabindex="-1"></a><span class="fu">summary</span>(BBDD)</span>
-<span id="cb26-8"><a href="estadística-con-r.html#cb26-8" tabindex="-1"></a><span class="co">#&gt;    fechnac             salario           salini     </span></span>
-<span id="cb26-9"><a href="estadística-con-r.html#cb26-9" tabindex="-1"></a><span class="co">#&gt;  Length:474         Min.   : 15750   Min.   : 9000  </span></span>
-<span id="cb26-10"><a href="estadística-con-r.html#cb26-10" tabindex="-1"></a><span class="co">#&gt;  Class :character   1st Qu.: 24000   1st Qu.:12488  </span></span>
-<span id="cb26-11"><a href="estadística-con-r.html#cb26-11" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Median : 28875   Median :15000  </span></span>
-<span id="cb26-12"><a href="estadística-con-r.html#cb26-12" tabindex="-1"></a><span class="co">#&gt;                     Mean   : 34420   Mean   :17016  </span></span>
-<span id="cb26-13"><a href="estadística-con-r.html#cb26-13" tabindex="-1"></a><span class="co">#&gt;                     3rd Qu.: 36938   3rd Qu.:17490  </span></span>
-<span id="cb26-14"><a href="estadística-con-r.html#cb26-14" tabindex="-1"></a><span class="co">#&gt;                     Max.   :135000   Max.   :79980</span></span>
-<span id="cb26-15"><a href="estadística-con-r.html#cb26-15" tabindex="-1"></a><span class="co"># Un summary por categorías</span></span>
-<span id="cb26-16"><a href="estadística-con-r.html#cb26-16" tabindex="-1"></a><span class="co"># Añadimos variable al data frame</span></span>
-<span id="cb26-17"><a href="estadística-con-r.html#cb26-17" tabindex="-1"></a>bbdd<span class="sc">$</span>MiVariable <span class="ot">&lt;-</span> <span class="fu">floor</span>(bbdd<span class="sc">$</span>tiempemp<span class="sc">/</span><span class="dv">30</span>)</span>
-<span id="cb26-18"><a href="estadística-con-r.html#cb26-18" tabindex="-1"></a><span class="fu">by</span>(bbdd<span class="sc">$</span>salario, bbdd<span class="sc">$</span>MiVariable, summary)</span>
-<span id="cb26-19"><a href="estadística-con-r.html#cb26-19" tabindex="-1"></a><span class="co">#&gt; bbdd$MiVariable: 2</span></span>
-<span id="cb26-20"><a href="estadística-con-r.html#cb26-20" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb26-21"><a href="estadística-con-r.html#cb26-21" tabindex="-1"></a><span class="co">#&gt;   15750   23438   27900   33087   35250  103500 </span></span>
-<span id="cb26-22"><a href="estadística-con-r.html#cb26-22" tabindex="-1"></a><span class="co">#&gt; --------------------------------------------- </span></span>
-<span id="cb26-23"><a href="estadística-con-r.html#cb26-23" tabindex="-1"></a><span class="co">#&gt; bbdd$MiVariable: 3</span></span>
-<span id="cb26-24"><a href="estadística-con-r.html#cb26-24" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb26-25"><a href="estadística-con-r.html#cb26-25" tabindex="-1"></a><span class="co">#&gt;   16200   25200   30825   38021   40875  135000</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Resumen de la variable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">#&gt;   15750   24000   28875   34420   36938  135000</span></span>
+<span><span class="co"># También para una data frame</span></span>
+<span><span class="va">BBDD</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">BBDD</span><span class="op">)</span></span>
+<span><span class="co">#&gt;    fechnac             salario           salini     </span></span>
+<span><span class="co">#&gt;  Length:474         Min.   : 15750   Min.   : 9000  </span></span>
+<span><span class="co">#&gt;  Class :character   1st Qu.: 24000   1st Qu.:12488  </span></span>
+<span><span class="co">#&gt;  Mode  :character   Median : 28875   Median :15000  </span></span>
+<span><span class="co">#&gt;                     Mean   : 34420   Mean   :17016  </span></span>
+<span><span class="co">#&gt;                     3rd Qu.: 36938   3rd Qu.:17490  </span></span>
+<span><span class="co">#&gt;                     Max.   :135000   Max.   :79980</span></span>
+<span><span class="co"># Un summary por categorías</span></span>
+<span><span class="co"># Añadimos variable al data frame</span></span>
+<span><span class="va">bbdd</span><span class="op">$</span><span class="va">MiVariable</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">tiempemp</span><span class="op">/</span><span class="fl">30</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/by.html">by</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>, <span class="va">bbdd</span><span class="op">$</span><span class="va">MiVariable</span>, <span class="va">summary</span><span class="op">)</span></span>
+<span><span class="co">#&gt; bbdd$MiVariable: 2</span></span>
+<span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">#&gt;   15750   23438   27900   33087   35250  103500 </span></span>
+<span><span class="co">#&gt; --------------------------------------------- </span></span>
+<span><span class="co">#&gt; bbdd$MiVariable: 3</span></span>
+<span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span><span class="co">#&gt;   16200   25200   30825   38021   40875  135000</span></span></code></pre></div>
 </div>
-<div id="actividad" class="section level3 hasAnchor" number="3.1.5">
-<h3><span class="header-section-number">3.1.5</span> Actividad<a href="estadística-con-r.html#actividad" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="actividad" class="section level3" number="3.1.5">
+<h3>
+<span class="header-section-number">3.1.5</span> Actividad<a class="anchor" aria-label="anchor" href="#actividad"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li><p>Importar datos del archivo “datos de empleados”:</p></li>
 <li><p>Calcular medidas de tendencia central (media y mediana) y de dispersión (rango, desviación estándar) para una variable numérica, por ejemplo, el salario.</p></li>
@@ -534,8 +278,10 @@ Los valores imposibles (por ejemplo, la división por cero) están representados
 </ol>
 </div>
 </div>
-<div id="gráficos-con-r" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Gráficos con R<a href="estadística-con-r.html#gráficos-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="gráficos-con-r" class="section level2" number="3.2">
+<h2>
+<span class="header-section-number">3.2</span> Gráficos con R<a class="anchor" aria-label="anchor" href="#gr%C3%A1ficos-con-r"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Las gráficas son la mejor forma de simplificar lo complejo.</li>
 <li>Un buen gráfico suele ser más accesible que una tabla. Sin embargo es muy importante tener claro qué gráfico queremos hacer.</li>
@@ -549,101 +295,130 @@ Los valores imposibles (por ejemplo, la división por cero) están representados
 </ul>
 <p><strong>La función plot()</strong></p>
 <p>La función plot() en R se utiliza para crear gráficos básicos. Es fundamental para visualizar datos, permitiendo la generación de gráficos de dispersión, líneas, barras, y más. Con diversos argumentos y opciones de personalización, plot() facilita el análisis visual y la interpretación de conjuntos de datos complejos.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="estadística-con-r.html#cb27-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">/</span><span class="dv">10</span></span>
-<span id="cb27-2"><a href="estadística-con-r.html#cb27-2" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
-<span id="cb27-3"><a href="estadística-con-r.html#cb27-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="st">&quot;Función Seno&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="estad%C3%ADstica-con-r.html#cb27-1" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> (<span class="dv">0</span><span class="sc">:</span><span class="dv">100</span>)<span class="sc">/</span><span class="dv">10</span></span>
+<span id="cb27-2"><a href="estad%C3%ADstica-con-r.html#cb27-2" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb27-3"><a href="estad%C3%ADstica-con-r.html#cb27-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="st">"Función Seno"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
 <p>** Algunas opciones de la función plot()**</p>
 <ul>
-<li><strong>main:</strong> Cambia el título del gráfico</li>
-<li><strong>sub:</strong> Cambia el subtítulo del gráfico</li>
-<li><strong>type:</strong> Tipo de gráfico (puntos, líneas, etc.)</li>
-<li><strong>xlab, ylab:</strong> Cambia las etiquetas de los ejes</li>
-<li><strong>xlim, ylim:</strong> Cambia el rango de valores de los ejes</li>
-<li><strong>lty:</strong> Cambia el tipo de línea; lwd: Cambia el grosor de línea</li>
-<li><strong>col:</strong> Color con el que dibuja</li>
+<li>
+<strong>main:</strong> Cambia el título del gráfico</li>
+<li>
+<strong>sub:</strong> Cambia el subtítulo del gráfico</li>
+<li>
+<strong>type:</strong> Tipo de gráfico (puntos, líneas, etc.)</li>
+<li>
+<strong>xlab, ylab:</strong> Cambia las etiquetas de los ejes</li>
+<li>
+<strong>xlim, ylim:</strong> Cambia el rango de valores de los ejes</li>
+<li>
+<strong>lty:</strong> Cambia el tipo de línea; lwd: Cambia el grosor de línea</li>
+<li>
+<strong>col:</strong> Color con el que dibuja</li>
 </ul>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="estadística-con-r.html#cb28-1" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="st">&quot;Seno&quot;</span>, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="estadística-con-r.html#cb29-1" tabindex="-1"></a><span class="fu">plot</span>(x, y, <span class="at">main=</span><span class="st">&quot;Función Seno&quot;</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">type=</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="estadística-con-r.html#cb30-1" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">cos</span>(x), <span class="at">main=</span><span class="st">&quot;Función Coseno&quot;</span>, <span class="at">lty=</span><span class="dv">3</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>, <span class="at">type=</span><span class="st">&quot;l&quot;</span>,<span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">2</span>), <span class="at">ylab=</span><span class="st">&quot;cos(x)&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-10-3.png" width="672" /></p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, main<span class="op">=</span><span class="st">"Seno"</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-10-1.png" width="672"></div>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, main<span class="op">=</span><span class="st">"Función Seno"</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span>, type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-10-2.png" width="672"></div>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">cos</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, main<span class="op">=</span><span class="st">"Función Coseno"</span>, lty<span class="op">=</span><span class="fl">3</span>, col<span class="op">=</span><span class="st">"blue"</span>, type<span class="op">=</span><span class="st">"l"</span>,xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">2</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"cos(x)"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-10-3.png" width="672"></div>
 <p><strong>Gráfico de sectores</strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="estadística-con-r.html#cb31-1" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>))</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="estadística-con-r.html#cb32-1" tabindex="-1"></a><span class="fu">pie</span>(<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">8</span>), <span class="at">labels=</span><span class="fu">c</span>(<span class="st">&quot;Uno&quot;</span>,<span class="st">&quot;Dos&quot;</span>,<span class="st">&quot;Tres&quot;</span>),<span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>,<span class="st">&quot;red&quot;</span>,<span class="st">&quot;green&quot;</span>),<span class="at">main=</span><span class="st">&quot;Mi gráfico&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pie.html">pie</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">8</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-11-1.png" width="672"></div>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/pie.html">pie</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">8</span><span class="op">)</span>, labels<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Uno"</span>,<span class="st">"Dos"</span>,<span class="st">"Tres"</span><span class="op">)</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span><span class="op">)</span>,main<span class="op">=</span><span class="st">"Mi gráfico"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-11-2.png" width="672"></div>
 <p><strong>La función boxplot realiza este clásico gráfico</strong></p>
 <p>La función boxplot() en R se usa para crear gráficos de caja, que visualizan la distribución de un conjunto de datos a través de sus cuartiles. Muestra la mediana, los cuartiles y los posibles valores atípicos, permitiendo identificar la dispersión, simetría y anomalías en los datos</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="estadística-con-r.html#cb33-1" tabindex="-1"></a><span class="co"># Con una sola variable</span></span>
-<span id="cb33-2"><a href="estadística-con-r.html#cb33-2" tabindex="-1"></a><span class="fu">boxplot</span>(bbdd<span class="sc">$</span>salario,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;powderblue&#39;</span>))</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="estadística-con-r.html#cb34-1" tabindex="-1"></a><span class="co"># Con las tres variables a la vez</span></span>
-<span id="cb34-2"><a href="estadística-con-r.html#cb34-2" tabindex="-1"></a><span class="fu">boxplot</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;powderblue&#39;</span>,<span class="st">&#39;#FF6D0099&#39;</span>))</span>
-<span id="cb34-3"><a href="estadística-con-r.html#cb34-3" tabindex="-1"></a><span class="co"># Los dos juntos</span></span>
-<span id="cb34-4"><a href="estadística-con-r.html#cb34-4" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb34-5"><a href="estadística-con-r.html#cb34-5" tabindex="-1"></a><span class="fu">boxplot</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;powderblue&#39;</span>,<span class="st">&#39;#FF6D0099&#39;</span>))</span>
-<span id="cb34-6"><a href="estadística-con-r.html#cb34-6" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">log</span>(bbdd<span class="sc">$</span>salario),<span class="fu">log</span>(bbdd<span class="sc">$</span>salini),<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;powderblue&#39;</span>,<span class="st">&#39;#FF6D0099&#39;</span>))</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
-<p><strong>Escribe <code>colors()</code> para una lista de colores</strong></p>
-<div id="ggplot2" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> ggplot2<a href="estadística-con-r.html#ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Con una sola variable</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'powderblue'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Con las tres variables a la vez</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,<span class="va">bbdd</span><span class="op">$</span><span class="va">salini</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'powderblue'</span>,<span class="st">'#FF6D0099'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Los dos juntos</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,<span class="va">bbdd</span><span class="op">$</span><span class="va">salini</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'powderblue'</span>,<span class="st">'#FF6D0099'</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salini</span><span class="op">)</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'powderblue'</span>,<span class="st">'#FF6D0099'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-12-2.png" width="672"></div>
+<p><strong>Escribe <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code> para una lista de colores</strong></p>
+<div id="ggplot2" class="section level3" number="3.2.1">
+<h3>
+<span class="header-section-number">3.2.1</span> ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
+</h3>
 <p>El paquete ggplot2 en R es una herramienta poderosa para la creación de gráficos y visualizaciones de datos. Basado en la gramática de gráficos de Hadley Wickham, ggplot2 permite construir visualizaciones complejas de manera flexible y coherente. Utiliza un sistema de capas, donde cada capa representa una parte del gráfico, como los datos, los estéticos, y los elementos geométricos. Los usuarios pueden personalizar gráficos con facilidad, añadiendo títulos, etiquetas, y temas. Además, ggplot2 facilita la visualización de relaciones entre variables, distribuciones, y patrones, convirtiéndose en una opción popular para el análisis exploratorio de datos y la comunicación de resultados</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="estadística-con-r.html#cb35-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb35-2"><a href="estadística-con-r.html#cb35-2" tabindex="-1"></a>Distr <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(bbdd<span class="sc">$</span>sexo)</span>
-<span id="cb35-3"><a href="estadística-con-r.html#cb35-3" tabindex="-1"></a><span class="fu">qplot</span>( <span class="at">x=</span>Distr , <span class="at">y=</span>salario , <span class="at">data=</span>bbdd , <span class="at">geom=</span><span class="fu">c</span>(<span class="st">&quot;boxplot&quot;</span>,<span class="st">&quot;jitter&quot;</span>) , <span class="at">fill=</span>Distr) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
-<span id="cb35-4"><a href="estadística-con-r.html#cb35-4" tabindex="-1"></a><span class="co">#&gt; Warning: `qplot()` was deprecated in ggplot2 3.4.0.</span></span>
-<span id="cb35-5"><a href="estadística-con-r.html#cb35-5" tabindex="-1"></a><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
-<span id="cb35-6"><a href="estadística-con-r.html#cb35-6" tabindex="-1"></a><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where</span></span>
-<span id="cb35-7"><a href="estadística-con-r.html#cb35-7" tabindex="-1"></a><span class="co">#&gt; this warning was generated.</span></span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="estadística-con-r.html#cb36-1" tabindex="-1"></a>Distr <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(bbdd<span class="sc">$</span>catlab)</span>
-<span id="cb36-2"><a href="estadística-con-r.html#cb36-2" tabindex="-1"></a><span class="fu">qplot</span>( <span class="at">x=</span>Distr , <span class="at">y=</span>salario , <span class="at">data=</span>bbdd , <span class="at">geom=</span><span class="fu">c</span>(<span class="st">&quot;boxplot&quot;</span>,<span class="st">&quot;jitter&quot;</span>) , <span class="at">fill=</span>Distr) <span class="sc">+</span></span>
-<span id="cb36-3"><a href="estadística-con-r.html#cb36-3" tabindex="-1"></a><span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">Distr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">sexo</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot</a></span><span class="op">(</span> x<span class="op">=</span><span class="va">Distr</span> , y<span class="op">=</span><span class="va">salario</span> , data<span class="op">=</span><span class="va">bbdd</span> , geom<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"boxplot"</span>,<span class="st">"jitter"</span><span class="op">)</span> , fill<span class="op">=</span><span class="va">Distr</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `qplot()` was deprecated in ggplot2 3.4.0.</span></span>
+<span><span class="co">#&gt; This warning is displayed once every 8 hours.</span></span>
+<span><span class="co">#&gt; Call `lifecycle::last_lifecycle_warnings()` to see where</span></span>
+<span><span class="co">#&gt; this warning was generated.</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">Distr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">catlab</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/qplot.html">qplot</a></span><span class="op">(</span> x<span class="op">=</span><span class="va">Distr</span> , y<span class="op">=</span><span class="va">salario</span> , data<span class="op">=</span><span class="va">bbdd</span> , geom<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"boxplot"</span>,<span class="st">"jitter"</span><span class="op">)</span> , fill<span class="op">=</span><span class="va">Distr</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-13-2.png" width="672"></div>
 <p><strong>Con ggplot se pueden hacer boxplots muy bonitos</strong></p>
 <p>[<a href="https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf" class="uri">https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf</a>]</p>
 <p>También violin-plots</p>
 <p>[<a href="https://www.data-to-viz.com/caveat/boxplot.html" class="uri">https://www.data-to-viz.com/caveat/boxplot.html</a>]</p>
 <p><strong>Histograma</strong></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="estadística-con-r.html#cb37-1" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log</span>(bbdd<span class="sc">$</span>salario), <span class="at">breaks=</span><span class="dv">20</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span>, breaks<span class="op">=</span><span class="fl">20</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
 <p><strong>Se puede incluir la curva normal sobre el histograma</strong></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="estadística-con-r.html#cb38-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">log</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb38-2"><a href="estadística-con-r.html#cb38-2" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">mean</span>(g)</span>
-<span id="cb38-3"><a href="estadística-con-r.html#cb38-3" tabindex="-1"></a>std<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">var</span>(g))</span>
-<span id="cb38-4"><a href="estadística-con-r.html#cb38-4" tabindex="-1"></a><span class="fu">hist</span>(g, <span class="at">density=</span><span class="dv">10</span>, <span class="at">breaks=</span><span class="dv">20</span>, <span class="at">prob=</span><span class="cn">TRUE</span>,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>, </span>
-<span id="cb38-5"><a href="estadística-con-r.html#cb38-5" tabindex="-1"></a>     <span class="at">xlab=</span><span class="st">&quot;log(Renta)&quot;</span>, </span>
-<span id="cb38-6"><a href="estadística-con-r.html#cb38-6" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;Curva normal sobre histograma&quot;</span>)</span>
-<span id="cb38-7"><a href="estadística-con-r.html#cb38-7" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span>m, <span class="at">sd=</span>std), </span>
-<span id="cb38-8"><a href="estadística-con-r.html#cb38-8" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">4</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span></span>
+<span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span>
+<span><span class="va">std</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">g</span>, density<span class="op">=</span><span class="fl">10</span>, breaks<span class="op">=</span><span class="fl">20</span>, prob<span class="op">=</span><span class="cn">TRUE</span>,col<span class="op">=</span><span class="st">"blue"</span>, </span>
+<span>     xlab<span class="op">=</span><span class="st">"log(Renta)"</span>, </span>
+<span>     main<span class="op">=</span><span class="st">"Curva normal sobre histograma"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/curve.html">curve</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">x</span>, mean<span class="op">=</span><span class="va">m</span>, sd<span class="op">=</span><span class="va">std</span><span class="op">)</span>, </span>
+<span>      col<span class="op">=</span><span class="st">"red"</span>, lwd<span class="op">=</span><span class="fl">4</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 </div>
-<div id="actividad-4" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Actividad<a href="estadística-con-r.html#actividad-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="actividad-4" class="section level3" number="3.2.2">
+<h3>
+<span class="header-section-number">3.2.2</span> Actividad<a class="anchor" aria-label="anchor" href="#actividad-4"><i class="fas fa-link"></i></a>
+</h3>
 <ol style="list-style-type: decimal">
 <li>Crear un histograma</li>
 </ol>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="estadística-con-r.html#cb39-1" tabindex="-1"></a><span class="fu">ggplot</span>(empleados, <span class="fu">aes</span>(<span class="at">x =</span> salario)) <span class="sc">+</span></span>
-<span id="cb39-2"><a href="estadística-con-r.html#cb39-2" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1000</span>, <span class="at">fill =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">color =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb39-3"><a href="estadística-con-r.html#cb39-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribución del Salario de los Empleados&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Salario&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frecuencia&quot;</span>) <span class="sc">+</span>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">empleados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">salario</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1000</span>, fill <span class="op">=</span> <span class="st">"blue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribución del Salario de los Empleados"</span>, x <span class="op">=</span> <span class="st">"Salario"</span>, y <span class="op">=</span> <span class="st">"Frecuencia"</span><span class="op">)</span> <span class="op">+</span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>Crear un gráfico de caja (boxplot) para comparar los salarios por departamento</li>
 </ol>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="estadística-con-r.html#cb40-1" tabindex="-1"></a><span class="fu">ggplot</span>(empleados, <span class="fu">aes</span>(<span class="at">x =</span> departamento, <span class="at">y =</span> salario, <span class="at">fill =</span> departamento)) <span class="sc">+</span></span>
-<span id="cb40-2"><a href="estadística-con-r.html#cb40-2" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb40-3"><a href="estadística-con-r.html#cb40-3" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribución del Salario por Departamento&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Departamento&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Salario&quot;</span>) <span class="sc">+</span></span>
-<span id="cb40-4"><a href="estadística-con-r.html#cb40-4" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">empleados</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">departamento</span>, y <span class="op">=</span> <span class="va">salario</span>, fill <span class="op">=</span> <span class="va">departamento</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribución del Salario por Departamento"</span>, x <span class="op">=</span> <span class="st">"Departamento"</span>, y <span class="op">=</span> <span class="st">"Salario"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div id="test-hipótesis" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Test Hipótesis<a href="estadística-con-r.html#test-hipótesis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="un-simple-t-test-de-igualdad-de-medias" class="section level3 hasAnchor" number="3.3.1">
-<h3><span class="header-section-number">3.3.1</span> Un simple t-test de igualdad de medias<a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-hipótesis" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Test Hipótesis<a class="anchor" aria-label="anchor" href="#test-hip%C3%B3tesis"><i class="fas fa-link"></i></a>
+</h2>
+<div id="un-simple-t-test-de-igualdad-de-medias" class="section level3" number="3.3.1">
+<h3>
+<span class="header-section-number">3.3.1</span> Un simple t-test de igualdad de medias<a class="anchor" aria-label="anchor" href="#un-simple-t-test-de-igualdad-de-medias"><i class="fas fa-link"></i></a>
+</h3>
 <p>El contraste de medias basado en la t de Student es una técnica estadística para comparar las medias de dos grupos y determinar si hay una diferencia significativa entre ellas. Se utiliza cuando los datos siguen una distribución normal y el tamaño de la muestra es pequeño. La prueba t calcula el valor t, que se compara con un valor crítico de la distribución t para decidir si se rechaza la hipótesis nula de igualdad de medias. Existen dos tipos principales: la prueba t para muestras independientes, que compara dos grupos distintos, y la prueba t para muestras dependientes, que compara dos mediciones en el mismo grupo</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="estadística-con-r.html#cb41-1" tabindex="-1"></a><span class="co"># Contrastar si la Renta media de 2015 es 40000 euros</span></span>
-<span id="cb41-2"><a href="estadística-con-r.html#cb41-2" tabindex="-1"></a><span class="fu">t.test</span>(bbdd<span class="sc">$</span>salario,<span class="at">mu=</span><span class="dv">40000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Contrastar si la Renta media de 2015 es 40000 euros</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,mu<span class="op">=</span><span class="fl">40000</span><span class="op">)</span></span></code></pre></div>
 <pre><code>One Sample t-test</code></pre>
 <p>data: bbdd$salario
 t = -7.1151, df = 473, p-value = 4.168e-12
@@ -653,7 +428,8 @@ alternative hypothesis: true mean is not equal to 40000
 sample estimates:
 mean of x
 34419.57</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="estadística-con-r.html#cb43-1" tabindex="-1"></a><span class="fu">t.test</span>(bbdd<span class="sc">$</span>salario,<span class="at">mu=</span><span class="dv">35000</span>,<span class="at">alternative=</span><span class="st">&quot;greater&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,mu<span class="op">=</span><span class="fl">35000</span>,alternative<span class="op">=</span><span class="st">"greater"</span><span class="op">)</span></span></code></pre></div>
 <pre><code>One Sample t-test</code></pre>
 <p>data: bbdd$salario
 t = -0.74005, df = 473, p-value = 0.7702
@@ -665,228 +441,244 @@ mean of x
 34419.57</p>
 <p>Puede usar la opción var.equal = TRUE para especificar varianzas iguales y una estimación de varianza agrupada. Puede usar la opción alternative = “less” o alternative = “greater” para especificar una prueba de una cola</p>
 </div>
-<div id="un-simple-t-test-de-igualdad-de-medias-pareadas" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Un simple t-test de igualdad de medias pareadas<a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias-pareadas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="estadística-con-r.html#cb45-1" tabindex="-1"></a><span class="fu">t.test</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini)</span>
-<span id="cb45-2"><a href="estadística-con-r.html#cb45-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb45-3"><a href="estadística-con-r.html#cb45-3" tabindex="-1"></a><span class="co">#&gt;  Welch Two Sample t-test</span></span>
-<span id="cb45-4"><a href="estadística-con-r.html#cb45-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb45-5"><a href="estadística-con-r.html#cb45-5" tabindex="-1"></a><span class="co">#&gt; data:  bbdd$salario and bbdd$salini</span></span>
-<span id="cb45-6"><a href="estadística-con-r.html#cb45-6" tabindex="-1"></a><span class="co">#&gt; t = 20.152, df = 665.3, p-value &lt; 2.2e-16</span></span>
-<span id="cb45-7"><a href="estadística-con-r.html#cb45-7" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span id="cb45-8"><a href="estadística-con-r.html#cb45-8" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb45-9"><a href="estadística-con-r.html#cb45-9" tabindex="-1"></a><span class="co">#&gt;  15707.74 19099.22</span></span>
-<span id="cb45-10"><a href="estadística-con-r.html#cb45-10" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb45-11"><a href="estadística-con-r.html#cb45-11" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
-<span id="cb45-12"><a href="estadística-con-r.html#cb45-12" tabindex="-1"></a><span class="co">#&gt;  34419.57  17016.09</span></span>
-<span id="cb45-13"><a href="estadística-con-r.html#cb45-13" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">log</span>(bbdd<span class="sc">$</span>salario),<span class="fu">log</span>(bbdd<span class="sc">$</span>salini))</span>
-<span id="cb45-14"><a href="estadística-con-r.html#cb45-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb45-15"><a href="estadística-con-r.html#cb45-15" tabindex="-1"></a><span class="co">#&gt;  Welch Two Sample t-test</span></span>
-<span id="cb45-16"><a href="estadística-con-r.html#cb45-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb45-17"><a href="estadística-con-r.html#cb45-17" tabindex="-1"></a><span class="co">#&gt; data:  log(bbdd$salario) and log(bbdd$salini)</span></span>
-<span id="cb45-18"><a href="estadística-con-r.html#cb45-18" tabindex="-1"></a><span class="co">#&gt; t = 28.163, df = 932.96, p-value &lt; 2.2e-16</span></span>
-<span id="cb45-19"><a href="estadística-con-r.html#cb45-19" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
-<span id="cb45-20"><a href="estadística-con-r.html#cb45-20" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb45-21"><a href="estadística-con-r.html#cb45-21" tabindex="-1"></a><span class="co">#&gt;  0.6394884 0.7352878</span></span>
-<span id="cb45-22"><a href="estadística-con-r.html#cb45-22" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb45-23"><a href="estadística-con-r.html#cb45-23" tabindex="-1"></a><span class="co">#&gt; mean of x mean of y </span></span>
-<span id="cb45-24"><a href="estadística-con-r.html#cb45-24" tabindex="-1"></a><span class="co">#&gt; 10.356793  9.669405</span></span></code></pre></div>
+<div id="un-simple-t-test-de-igualdad-de-medias-pareadas" class="section level3" number="3.3.2">
+<h3>
+<span class="header-section-number">3.3.2</span> Un simple t-test de igualdad de medias pareadas<a class="anchor" aria-label="anchor" href="#un-simple-t-test-de-igualdad-de-medias-pareadas"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span>,<span class="va">bbdd</span><span class="op">$</span><span class="va">salini</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  bbdd$salario and bbdd$salini</span></span>
+<span><span class="co">#&gt; t = 20.152, df = 665.3, p-value &lt; 2.2e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  15707.74 19099.22</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x mean of y </span></span>
+<span><span class="co">#&gt;  34419.57  17016.09</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salini</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Welch Two Sample t-test</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; data:  log(bbdd$salario) and log(bbdd$salini)</span></span>
+<span><span class="co">#&gt; t = 28.163, df = 932.96, p-value &lt; 2.2e-16</span></span>
+<span><span class="co">#&gt; alternative hypothesis: true difference in means is not equal to 0</span></span>
+<span><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span><span class="co">#&gt;  0.6394884 0.7352878</span></span>
+<span><span class="co">#&gt; sample estimates:</span></span>
+<span><span class="co">#&gt; mean of x mean of y </span></span>
+<span><span class="co">#&gt; 10.356793  9.669405</span></span></code></pre></div>
 <p><strong>Un poco mas complicado: ANOVA de un factor</strong></p>
 <p>El ANOVA de un factor (Análisis de Varianza) es una técnica estadística utilizada para comparar las medias de tres o más grupos independientes y determinar si existen diferencias significativas entre ellas. Este análisis evalúa si la variabilidad entre las medias de los grupos es mayor que la variabilidad dentro de los grupos. El ANOVA de un factor calcula un estadístico F, que compara la variabilidad entre los grupos con la variabilidad dentro de los grupos. Si el valor F es suficientemente alto, se rechaza la hipótesis nula de igualdad de medias. Es útil para experimentos con un único factor categórico y múltiples niveles.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="estadística-con-r.html#cb46-1" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(bbdd<span class="sc">$</span>catlab)</span>
-<span id="cb46-2"><a href="estadística-con-r.html#cb46-2" tabindex="-1"></a><span class="fu">levels</span>(group) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;asa&quot;</span>,<span class="st">&quot;aaas&quot;</span>,<span class="st">&quot;asddd&quot;</span>)</span>
-<span id="cb46-3"><a href="estadística-con-r.html#cb46-3" tabindex="-1"></a>anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(bbdd<span class="sc">$</span>salario <span class="sc">~</span> group, <span class="at">data =</span> bbdd)</span>
-<span id="cb46-4"><a href="estadística-con-r.html#cb46-4" tabindex="-1"></a><span class="fu">summary</span>(anova)</span>
-<span id="cb46-5"><a href="estadística-con-r.html#cb46-5" tabindex="-1"></a><span class="co">#&gt;              Df    Sum Sq   Mean Sq F value Pr(&gt;F)    </span></span>
-<span id="cb46-6"><a href="estadística-con-r.html#cb46-6" tabindex="-1"></a><span class="co">#&gt; group         2 8.944e+10 4.472e+10   434.5 &lt;2e-16 ***</span></span>
-<span id="cb46-7"><a href="estadística-con-r.html#cb46-7" tabindex="-1"></a><span class="co">#&gt; Residuals   471 4.848e+10 1.029e+08                   </span></span>
-<span id="cb46-8"><a href="estadística-con-r.html#cb46-8" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb46-9"><a href="estadística-con-r.html#cb46-9" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb46-10"><a href="estadística-con-r.html#cb46-10" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb46-11"><a href="estadística-con-r.html#cb46-11" tabindex="-1"></a><span class="fu">TukeyHSD</span>(anova)</span>
-<span id="cb46-12"><a href="estadística-con-r.html#cb46-12" tabindex="-1"></a><span class="co">#&gt;   Tukey multiple comparisons of means</span></span>
-<span id="cb46-13"><a href="estadística-con-r.html#cb46-13" tabindex="-1"></a><span class="co">#&gt;     95% family-wise confidence level</span></span>
-<span id="cb46-14"><a href="estadística-con-r.html#cb46-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb46-15"><a href="estadística-con-r.html#cb46-15" tabindex="-1"></a><span class="co">#&gt; Fit: aov(formula = bbdd$salario ~ group, data = bbdd)</span></span>
-<span id="cb46-16"><a href="estadística-con-r.html#cb46-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb46-17"><a href="estadística-con-r.html#cb46-17" tabindex="-1"></a><span class="co">#&gt; $group</span></span>
-<span id="cb46-18"><a href="estadística-con-r.html#cb46-18" tabindex="-1"></a><span class="co">#&gt;                 diff       lwr       upr     p adj</span></span>
-<span id="cb46-19"><a href="estadística-con-r.html#cb46-19" tabindex="-1"></a><span class="co">#&gt; aaas-asa    3100.349 -1657.805  7858.503 0.2768689</span></span>
-<span id="cb46-20"><a href="estadística-con-r.html#cb46-20" tabindex="-1"></a><span class="co">#&gt; asddd-asa  36139.258 33251.225 39027.291 0.0000000</span></span>
-<span id="cb46-21"><a href="estadística-con-r.html#cb46-21" tabindex="-1"></a><span class="co">#&gt; asddd-aaas 33038.909 27761.979 38315.839 0.0000000</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">catlab</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"asa"</span>,<span class="st">"aaas"</span>,<span class="st">"asddd"</span><span class="op">)</span></span>
+<span><span class="va">anova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span> <span class="op">~</span> <span class="va">group</span>, data <span class="op">=</span> <span class="va">bbdd</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova</span><span class="op">)</span></span>
+<span><span class="co">#&gt;              Df    Sum Sq   Mean Sq F value Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; group         2 8.944e+10 4.472e+10   434.5 &lt;2e-16 ***</span></span>
+<span><span class="co">#&gt; Residuals   471 4.848e+10 1.029e+08                   </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  </span></span>
+<span><span class="co">#&gt; 0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/TukeyHSD.html">TukeyHSD</a></span><span class="op">(</span><span class="va">anova</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   Tukey multiple comparisons of means</span></span>
+<span><span class="co">#&gt;     95% family-wise confidence level</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Fit: aov(formula = bbdd$salario ~ group, data = bbdd)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $group</span></span>
+<span><span class="co">#&gt;                 diff       lwr       upr     p adj</span></span>
+<span><span class="co">#&gt; aaas-asa    3100.349 -1657.805  7858.503 0.2768689</span></span>
+<span><span class="co">#&gt; asddd-asa  36139.258 33251.225 39027.291 0.0000000</span></span>
+<span><span class="co">#&gt; asddd-aaas 33038.909 27761.979 38315.839 0.0000000</span></span></code></pre></div>
 </div>
-<div id="test-de-normalidad-paramétricos" class="section level3 hasAnchor" number="3.3.3">
-<h3><span class="header-section-number">3.3.3</span> Test de normalidad paramétricos<a href="estadística-con-r.html#test-de-normalidad-paramétricos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="test-de-normalidad-paramétricos" class="section level3" number="3.3.3">
+<h3>
+<span class="header-section-number">3.3.3</span> Test de normalidad paramétricos<a class="anchor" aria-label="anchor" href="#test-de-normalidad-param%C3%A9tricos"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>Test Paramétricos: K-S y Shapiro</strong></p>
 <p>Los test de normalidad Kolmogorov-Smirnov (KS) y Shapiro-Wilk son utilizados para evaluar si un conjunto de datos sigue una distribución normal. El test KS compara la distribución empírica de los datos con una distribución normal teórica, evaluando las diferencias entre las funciones de distribución acumulada observada y esperada. El test Shapiro-Wilk, en cambio, evalúa la normalidad ajustando una estadística basada en los valores ordenados de la muestra. Mientras que el test KS es más general y se aplica a cualquier distribución, el Shapiro-Wilk es más específico para la normalidad y suele ser más potente para muestras pequeñas. Ambos test ayudan a validar supuestos en análisis estadísticos.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="estadística-con-r.html#cb47-1" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">log</span>(bbdd<span class="sc">$</span>salario)</span>
-<span id="cb47-2"><a href="estadística-con-r.html#cb47-2" tabindex="-1"></a><span class="fu">ks.test</span>(g, pnorm, <span class="fu">mean</span>(g), <span class="fu">sd</span>(g))</span>
-<span id="cb47-3"><a href="estadística-con-r.html#cb47-3" tabindex="-1"></a><span class="co">#&gt; Warning in ks.test.default(g, pnorm, mean(g), sd(g)): ties</span></span>
-<span id="cb47-4"><a href="estadística-con-r.html#cb47-4" tabindex="-1"></a><span class="co">#&gt; should not be present for the Kolmogorov-Smirnov test</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">bbdd</span><span class="op">$</span><span class="va">salario</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/ks.test.html">ks.test</a></span><span class="op">(</span><span class="va">g</span>, <span class="va">pnorm</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in ks.test.default(g, pnorm, mean(g), sd(g)): ties</span></span>
+<span><span class="co">#&gt; should not be present for the Kolmogorov-Smirnov test</span></span></code></pre></div>
 <pre><code>Asymptotic one-sample Kolmogorov-Smirnov test</code></pre>
 <p>data: g
 D = 0.13563, p-value = 5.343e-08
 alternative hypothesis: two-sided</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="estadística-con-r.html#cb49-1" tabindex="-1"></a><span class="fu">shapiro.test</span>(g)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/shapiro.test.html">shapiro.test</a></span><span class="op">(</span><span class="va">g</span><span class="op">)</span></span></code></pre></div>
 <pre><code>Shapiro-Wilk normality test</code></pre>
 <p>data: g
 W = 0.92568, p-value = 1.438e-14</p>
 <p>Tenga en cuenta que, la prueba de normalidad es sensible al tamaño de la muestra. Las muestras pequeñas con mayor frecuencia pasan las pruebas de normalidad. Por lo tanto, es importante combinar la inspección visual y la prueba de significación para tomar la decisión correcta.</p>
 </div>
 </div>
-<div id="distribuciones-bivariadas" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Distribuciones bivariadas<a href="estadística-con-r.html#distribuciones-bivariadas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="tablas-de-contingencia" class="section level3 hasAnchor" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Tablas de contingencia<a href="estadística-con-r.html#tablas-de-contingencia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="distribuciones-bivariadas" class="section level2" number="3.4">
+<h2>
+<span class="header-section-number">3.4</span> Distribuciones bivariadas<a class="anchor" aria-label="anchor" href="#distribuciones-bivariadas"><i class="fas fa-link"></i></a>
+</h2>
+<div id="tablas-de-contingencia" class="section level3" number="3.4.1">
+<h3>
+<span class="header-section-number">3.4.1</span> Tablas de contingencia<a class="anchor" aria-label="anchor" href="#tablas-de-contingencia"><i class="fas fa-link"></i></a>
+</h3>
 <p>Una tabla de correlación muestra las relaciones entre variables cuantitativas, indicando la fuerza y dirección de la asociación mediante coeficientes de correlación, como Pearson o Spearman. Permite identificar patrones de dependencia lineal o no lineal entre pares de variables. Por otro lado, una tabla de contingencia, también conocida como tabla de frecuencia cruzada, se utiliza para analizar la relación entre dos variables categóricas. Muestra la frecuencia de ocurrencia conjunta de las categorías de las variables, facilitando el análisis de asociaciones y la prueba de independencia mediante chi-cuadrado. Ambas tablas son herramientas fundamentales para la exploración y análisis de datos en estadística.</p>
 <ol style="list-style-type: decimal">
 <li>La función <strong>table()</strong> calcula tablas de frecuencias a partir de factores.</li>
 </ol>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="estadística-con-r.html#cb51-1" tabindex="-1"></a><span class="sc">&gt;</span> msa <span class="ot">&lt;-</span> <span class="fu">mean</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Salario</span></span>
-<span id="cb51-2"><a href="estadística-con-r.html#cb51-2" tabindex="-1"></a><span class="sc">&gt;</span> msi <span class="ot">&lt;-</span> <span class="fu">mean</span>(bbdd<span class="sc">$</span>salini) <span class="co"># SAl ini</span></span>
-<span id="cb51-3"><a href="estadística-con-r.html#cb51-3" tabindex="-1"></a><span class="sc">&gt;</span> Ricos <span class="ot">&lt;-</span> bbdd<span class="sc">$</span>salario <span class="sc">&gt;</span> msa <span class="co"># ricos/pobres</span></span>
-<span id="cb51-4"><a href="estadística-con-r.html#cb51-4" tabindex="-1"></a><span class="sc">&gt;</span> Ricosi <span class="ot">&lt;-</span> bbdd<span class="sc">$</span>salini <span class="sc">&gt;</span> msi <span class="co"># densos/no dendos</span></span>
-<span id="cb51-5"><a href="estadística-con-r.html#cb51-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Distribuciones de frecuencia unidimensional</span></span>
-<span id="cb51-6"><a href="estadística-con-r.html#cb51-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">table</span>(Ricos)</span>
-<span id="cb51-7"><a href="estadística-con-r.html#cb51-7" tabindex="-1"></a><span class="co">#&gt; Ricos</span></span>
-<span id="cb51-8"><a href="estadística-con-r.html#cb51-8" tabindex="-1"></a><span class="co">#&gt; FALSE  TRUE </span></span>
-<span id="cb51-9"><a href="estadística-con-r.html#cb51-9" tabindex="-1"></a><span class="co">#&gt;   329   145</span></span>
-<span id="cb51-10"><a href="estadística-con-r.html#cb51-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(Ricosi)</span>
-<span id="cb51-11"><a href="estadística-con-r.html#cb51-11" tabindex="-1"></a><span class="co">#&gt; Ricosi</span></span>
-<span id="cb51-12"><a href="estadística-con-r.html#cb51-12" tabindex="-1"></a><span class="co">#&gt; FALSE  TRUE </span></span>
-<span id="cb51-13"><a href="estadística-con-r.html#cb51-13" tabindex="-1"></a><span class="co">#&gt;   345   129</span></span>
-<span id="cb51-14"><a href="estadística-con-r.html#cb51-14" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Distribuciones de frecuencia bidimensionales</span></span>
-<span id="cb51-15"><a href="estadística-con-r.html#cb51-15" tabindex="-1"></a><span class="er">&gt;</span> TaRiRi <span class="ot">&lt;-</span> <span class="fu">table</span>(Ricos,Ricosi)</span>
-<span id="cb51-16"><a href="estadística-con-r.html#cb51-16" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(TaRiRi)</span>
-<span id="cb51-17"><a href="estadística-con-r.html#cb51-17" tabindex="-1"></a><span class="co">#&gt;        Ricosi</span></span>
-<span id="cb51-18"><a href="estadística-con-r.html#cb51-18" tabindex="-1"></a><span class="co">#&gt; Ricos   FALSE TRUE</span></span>
-<span id="cb51-19"><a href="estadística-con-r.html#cb51-19" tabindex="-1"></a><span class="co">#&gt;   FALSE   310   19</span></span>
-<span id="cb51-20"><a href="estadística-con-r.html#cb51-20" tabindex="-1"></a><span class="co">#&gt;   TRUE     35  110</span></span>
-<span id="cb51-21"><a href="estadística-con-r.html#cb51-21" tabindex="-1"></a><span class="sc">&gt;</span> TaRiSx <span class="ot">&lt;-</span> <span class="fu">table</span>(Ricos,bbdd<span class="sc">$</span>sexo)</span>
-<span id="cb51-22"><a href="estadística-con-r.html#cb51-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(TaRiSx)</span>
-<span id="cb51-23"><a href="estadística-con-r.html#cb51-23" tabindex="-1"></a><span class="co">#&gt;        </span></span>
-<span id="cb51-24"><a href="estadística-con-r.html#cb51-24" tabindex="-1"></a><span class="co">#&gt; Ricos     h   m</span></span>
-<span id="cb51-25"><a href="estadística-con-r.html#cb51-25" tabindex="-1"></a><span class="co">#&gt;   FALSE 138 191</span></span>
-<span id="cb51-26"><a href="estadística-con-r.html#cb51-26" tabindex="-1"></a><span class="co">#&gt;   TRUE  120  25</span></span>
-<span id="cb51-27"><a href="estadística-con-r.html#cb51-27" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb51-28"><a href="estadística-con-r.html#cb51-28" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Como siempre, hay gráficos informativos</span></span>
-<span id="cb51-29"><a href="estadística-con-r.html#cb51-29" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(graphics)</span>
-<span id="cb51-30"><a href="estadística-con-r.html#cb51-30" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mosaicplot</span>(TaRiRi,<span class="at">main =</span> <span class="st">&quot;Ricos vs Ricosi&quot;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="estadística-con-r.html#cb52-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mosaicplot</span>(TaRiSx,<span class="at">main =</span> <span class="st">&quot;Ricos vs Sexo&quot;</span>,<span class="at">color =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="estad%C3%ADstica-con-r.html#cb51-1" tabindex="-1"></a><span class="sc">&gt;</span> msa <span class="ot">&lt;-</span> <span class="fu">mean</span>(bbdd<span class="sc">$</span>salario) <span class="co"># Salario</span></span>
+<span id="cb51-2"><a href="estad%C3%ADstica-con-r.html#cb51-2" tabindex="-1"></a><span class="sc">&gt;</span> msi <span class="ot">&lt;-</span> <span class="fu">mean</span>(bbdd<span class="sc">$</span>salini) <span class="co"># SAl ini</span></span>
+<span id="cb51-3"><a href="estad%C3%ADstica-con-r.html#cb51-3" tabindex="-1"></a><span class="sc">&gt;</span> Ricos <span class="ot">&lt;-</span> bbdd<span class="sc">$</span>salario <span class="sc">&gt;</span> msa <span class="co"># ricos/pobres</span></span>
+<span id="cb51-4"><a href="estad%C3%ADstica-con-r.html#cb51-4" tabindex="-1"></a><span class="sc">&gt;</span> Ricosi <span class="ot">&lt;-</span> bbdd<span class="sc">$</span>salini <span class="sc">&gt;</span> msi <span class="co"># densos/no dendos</span></span>
+<span id="cb51-5"><a href="estad%C3%ADstica-con-r.html#cb51-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Distribuciones de frecuencia unidimensional</span></span>
+<span id="cb51-6"><a href="estad%C3%ADstica-con-r.html#cb51-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">table</span>(Ricos)</span>
+<span id="cb51-7"><a href="estad%C3%ADstica-con-r.html#cb51-7" tabindex="-1"></a><span class="co">#&gt; Ricos</span></span>
+<span id="cb51-8"><a href="estad%C3%ADstica-con-r.html#cb51-8" tabindex="-1"></a><span class="co">#&gt; FALSE  TRUE </span></span>
+<span id="cb51-9"><a href="estad%C3%ADstica-con-r.html#cb51-9" tabindex="-1"></a><span class="co">#&gt;   329   145</span></span>
+<span id="cb51-10"><a href="estad%C3%ADstica-con-r.html#cb51-10" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(Ricosi)</span>
+<span id="cb51-11"><a href="estad%C3%ADstica-con-r.html#cb51-11" tabindex="-1"></a><span class="co">#&gt; Ricosi</span></span>
+<span id="cb51-12"><a href="estad%C3%ADstica-con-r.html#cb51-12" tabindex="-1"></a><span class="co">#&gt; FALSE  TRUE </span></span>
+<span id="cb51-13"><a href="estad%C3%ADstica-con-r.html#cb51-13" tabindex="-1"></a><span class="co">#&gt;   345   129</span></span>
+<span id="cb51-14"><a href="estad%C3%ADstica-con-r.html#cb51-14" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Distribuciones de frecuencia bidimensionales</span></span>
+<span id="cb51-15"><a href="estad%C3%ADstica-con-r.html#cb51-15" tabindex="-1"></a><span class="er">&gt;</span> TaRiRi <span class="ot">&lt;-</span> <span class="fu">table</span>(Ricos,Ricosi)</span>
+<span id="cb51-16"><a href="estad%C3%ADstica-con-r.html#cb51-16" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(TaRiRi)</span>
+<span id="cb51-17"><a href="estad%C3%ADstica-con-r.html#cb51-17" tabindex="-1"></a><span class="co">#&gt;        Ricosi</span></span>
+<span id="cb51-18"><a href="estad%C3%ADstica-con-r.html#cb51-18" tabindex="-1"></a><span class="co">#&gt; Ricos   FALSE TRUE</span></span>
+<span id="cb51-19"><a href="estad%C3%ADstica-con-r.html#cb51-19" tabindex="-1"></a><span class="co">#&gt;   FALSE   310   19</span></span>
+<span id="cb51-20"><a href="estad%C3%ADstica-con-r.html#cb51-20" tabindex="-1"></a><span class="co">#&gt;   TRUE     35  110</span></span>
+<span id="cb51-21"><a href="estad%C3%ADstica-con-r.html#cb51-21" tabindex="-1"></a><span class="sc">&gt;</span> TaRiSx <span class="ot">&lt;-</span> <span class="fu">table</span>(Ricos,bbdd<span class="sc">$</span>sexo)</span>
+<span id="cb51-22"><a href="estad%C3%ADstica-con-r.html#cb51-22" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(TaRiSx)</span>
+<span id="cb51-23"><a href="estad%C3%ADstica-con-r.html#cb51-23" tabindex="-1"></a><span class="co">#&gt;        </span></span>
+<span id="cb51-24"><a href="estad%C3%ADstica-con-r.html#cb51-24" tabindex="-1"></a><span class="co">#&gt; Ricos     h   m</span></span>
+<span id="cb51-25"><a href="estad%C3%ADstica-con-r.html#cb51-25" tabindex="-1"></a><span class="co">#&gt;   FALSE 138 191</span></span>
+<span id="cb51-26"><a href="estad%C3%ADstica-con-r.html#cb51-26" tabindex="-1"></a><span class="co">#&gt;   TRUE  120  25</span></span>
+<span id="cb51-27"><a href="estad%C3%ADstica-con-r.html#cb51-27" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb51-28"><a href="estad%C3%ADstica-con-r.html#cb51-28" tabindex="-1"></a><span class="er">&gt;</span> <span class="co"># Como siempre, hay gráficos informativos</span></span>
+<span id="cb51-29"><a href="estad%C3%ADstica-con-r.html#cb51-29" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(graphics)</span>
+<span id="cb51-30"><a href="estad%C3%ADstica-con-r.html#cb51-30" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mosaicplot</span>(TaRiRi,<span class="at">main =</span> <span class="st">"Ricos vs Ricosi"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="estad%C3%ADstica-con-r.html#cb52-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mosaicplot</span>(TaRiSx,<span class="at">main =</span> <span class="st">"Ricos vs Sexo"</span>,<span class="at">color =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-22-2.png" width="672"></div>
 </div>
-<div id="algo-de-test-de-independencia" class="section level3 hasAnchor" number="3.4.2">
-<h3><span class="header-section-number">3.4.2</span> Algo de test de independencia<a href="estadística-con-r.html#algo-de-test-de-independencia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="algo-de-test-de-independencia" class="section level3" number="3.4.2">
+<h3>
+<span class="header-section-number">3.4.2</span> Algo de test de independencia<a class="anchor" aria-label="anchor" href="#algo-de-test-de-independencia"><i class="fas fa-link"></i></a>
+</h3>
 <p>El test de independencia chi-cuadrado (<span class="math inline">\(\chi^2\)</span>) se utiliza para evaluar si dos variables categóricas están asociadas o son independientes entre sí. Se basa en la comparación entre las frecuencias observadas en una tabla de contingencia y las frecuencias esperadas si las variables fueran independientes. Calcula un estadístico <span class="math inline">\(\chi^2\)</span> que se compara con un valor crítico de la distribución chi-cuadrado, considerando el número de grados de libertad. Si el estadístico <span class="math inline">\(\chi^2\)</span> es mayor que el valor crítico, se rechaza la hipótesis nula de independencia, indicando una asociación significativa entre las variables. Este test es útil para analizar relaciones en datos categóricos.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="estadística-con-r.html#cb53-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Contrastes Chi2 de independencia</span></span>
-<span id="cb53-2"><a href="estadística-con-r.html#cb53-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">chisq.test</span>(TaRiRi)</span>
-<span id="cb53-3"><a href="estadística-con-r.html#cb53-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-4"><a href="estadística-con-r.html#cb53-4" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test with Yates&#39; continuity</span></span>
-<span id="cb53-5"><a href="estadística-con-r.html#cb53-5" tabindex="-1"></a><span class="co">#&gt;  correction</span></span>
-<span id="cb53-6"><a href="estadística-con-r.html#cb53-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-7"><a href="estadística-con-r.html#cb53-7" tabindex="-1"></a><span class="co">#&gt; data:  TaRiRi</span></span>
-<span id="cb53-8"><a href="estadística-con-r.html#cb53-8" tabindex="-1"></a><span class="co">#&gt; X-squared = 246.05, df = 1, p-value &lt; 2.2e-16</span></span>
-<span id="cb53-9"><a href="estadística-con-r.html#cb53-9" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">chisq.test</span>(TaRiSx)</span>
-<span id="cb53-10"><a href="estadística-con-r.html#cb53-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-11"><a href="estadística-con-r.html#cb53-11" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test with Yates&#39; continuity</span></span>
-<span id="cb53-12"><a href="estadística-con-r.html#cb53-12" tabindex="-1"></a><span class="co">#&gt;  correction</span></span>
-<span id="cb53-13"><a href="estadística-con-r.html#cb53-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb53-14"><a href="estadística-con-r.html#cb53-14" tabindex="-1"></a><span class="co">#&gt; data:  TaRiSx</span></span>
-<span id="cb53-15"><a href="estadística-con-r.html#cb53-15" tabindex="-1"></a><span class="co">#&gt; X-squared = 65.953, df = 1, p-value = 4.618e-16</span></span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="estad%C3%ADstica-con-r.html#cb53-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Contrastes Chi2 de independencia</span></span>
+<span id="cb53-2"><a href="estad%C3%ADstica-con-r.html#cb53-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">chisq.test</span>(TaRiRi)</span>
+<span id="cb53-3"><a href="estad%C3%ADstica-con-r.html#cb53-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb53-4"><a href="estad%C3%ADstica-con-r.html#cb53-4" tabindex="-1"></a><span class="co">#&gt;  Pearson's Chi-squared test with Yates' continuity</span></span>
+<span id="cb53-5"><a href="estad%C3%ADstica-con-r.html#cb53-5" tabindex="-1"></a><span class="co">#&gt;  correction</span></span>
+<span id="cb53-6"><a href="estad%C3%ADstica-con-r.html#cb53-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb53-7"><a href="estad%C3%ADstica-con-r.html#cb53-7" tabindex="-1"></a><span class="co">#&gt; data:  TaRiRi</span></span>
+<span id="cb53-8"><a href="estad%C3%ADstica-con-r.html#cb53-8" tabindex="-1"></a><span class="co">#&gt; X-squared = 246.05, df = 1, p-value &lt; 2.2e-16</span></span>
+<span id="cb53-9"><a href="estad%C3%ADstica-con-r.html#cb53-9" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">chisq.test</span>(TaRiSx)</span>
+<span id="cb53-10"><a href="estad%C3%ADstica-con-r.html#cb53-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb53-11"><a href="estad%C3%ADstica-con-r.html#cb53-11" tabindex="-1"></a><span class="co">#&gt;  Pearson's Chi-squared test with Yates' continuity</span></span>
+<span id="cb53-12"><a href="estad%C3%ADstica-con-r.html#cb53-12" tabindex="-1"></a><span class="co">#&gt;  correction</span></span>
+<span id="cb53-13"><a href="estad%C3%ADstica-con-r.html#cb53-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb53-14"><a href="estad%C3%ADstica-con-r.html#cb53-14" tabindex="-1"></a><span class="co">#&gt; data:  TaRiSx</span></span>
+<span id="cb53-15"><a href="estad%C3%ADstica-con-r.html#cb53-15" tabindex="-1"></a><span class="co">#&gt; X-squared = 65.953, df = 1, p-value = 4.618e-16</span></span></code></pre></div>
 </div>
-<div id="correlaciones" class="section level3 hasAnchor" number="3.4.3">
-<h3><span class="header-section-number">3.4.3</span> Correlaciones<a href="estadística-con-r.html#correlaciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="correlaciones" class="section level3" number="3.4.3">
+<h3>
+<span class="header-section-number">3.4.3</span> Correlaciones<a class="anchor" aria-label="anchor" href="#correlaciones"><i class="fas fa-link"></i></a>
+</h3>
 <p>Una matriz de correlaciones es una tabla que muestra las correlaciones entre múltiples variables cuantitativas. Cada celda indica el coeficiente de correlación entre un par de variables, facilitando la identificación de relaciones lineales y patrones de asociación en grandes conjuntos de datos.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="estadística-con-r.html#cb54-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cor</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini)</span>
-<span id="cb54-2"><a href="estadística-con-r.html#cb54-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.8801175</span></span>
-<span id="cb54-3"><a href="estadística-con-r.html#cb54-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cor</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>expprev)</span>
-<span id="cb54-4"><a href="estadística-con-r.html#cb54-4" tabindex="-1"></a><span class="co">#&gt; [1] -0.09746693</span></span>
-<span id="cb54-5"><a href="estadística-con-r.html#cb54-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Un plot con correlaciones</span></span>
-<span id="cb54-6"><a href="estadística-con-r.html#cb54-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(ggcorrplot)</span>
-<span id="cb54-7"><a href="estadística-con-r.html#cb54-7" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggcorrplot</span>(<span class="fu">cor</span>(bbdd[,<span class="dv">6</span><span class="sc">:</span><span class="dv">9</span>]),<span class="at">lab_size =</span> <span class="dv">3</span>,<span class="at">hc.order =</span> <span class="cn">TRUE</span>,<span class="at">method =</span> <span class="st">&quot;circle&quot;</span>,<span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="estadística-con-r.html#cb55-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># para saber si es significativamente distinta de cero</span></span>
-<span id="cb55-2"><a href="estadística-con-r.html#cb55-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">cor.test</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini)</span>
-<span id="cb55-3"><a href="estadística-con-r.html#cb55-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb55-4"><a href="estadística-con-r.html#cb55-4" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s product-moment correlation</span></span>
-<span id="cb55-5"><a href="estadística-con-r.html#cb55-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb55-6"><a href="estadística-con-r.html#cb55-6" tabindex="-1"></a><span class="co">#&gt; data:  bbdd$salario and bbdd$salini</span></span>
-<span id="cb55-7"><a href="estadística-con-r.html#cb55-7" tabindex="-1"></a><span class="co">#&gt; t = 40.276, df = 472, p-value &lt; 2.2e-16</span></span>
-<span id="cb55-8"><a href="estadística-con-r.html#cb55-8" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true correlation is not equal to 0</span></span>
-<span id="cb55-9"><a href="estadística-con-r.html#cb55-9" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
-<span id="cb55-10"><a href="estadística-con-r.html#cb55-10" tabindex="-1"></a><span class="co">#&gt;  0.8580696 0.8989267</span></span>
-<span id="cb55-11"><a href="estadística-con-r.html#cb55-11" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
-<span id="cb55-12"><a href="estadística-con-r.html#cb55-12" tabindex="-1"></a><span class="co">#&gt;       cor </span></span>
-<span id="cb55-13"><a href="estadística-con-r.html#cb55-13" tabindex="-1"></a><span class="co">#&gt; 0.8801175</span></span>
-<span id="cb55-14"><a href="estadística-con-r.html#cb55-14" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini, <span class="at">main=</span><span class="st">&quot;Salario vs Salario Inicial&quot;</span>, <span class="at">col=</span><span class="st">&#39;red&#39;</span>)</span></code></pre></div>
-<p><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="estad%C3%ADstica-con-r.html#cb54-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cor</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini)</span>
+<span id="cb54-2"><a href="estad%C3%ADstica-con-r.html#cb54-2" tabindex="-1"></a><span class="co">#&gt; [1] 0.8801175</span></span>
+<span id="cb54-3"><a href="estad%C3%ADstica-con-r.html#cb54-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cor</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>expprev)</span>
+<span id="cb54-4"><a href="estad%C3%ADstica-con-r.html#cb54-4" tabindex="-1"></a><span class="co">#&gt; [1] -0.09746693</span></span>
+<span id="cb54-5"><a href="estad%C3%ADstica-con-r.html#cb54-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># Un plot con correlaciones</span></span>
+<span id="cb54-6"><a href="estad%C3%ADstica-con-r.html#cb54-6" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb54-7"><a href="estad%C3%ADstica-con-r.html#cb54-7" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggcorrplot</span>(<span class="fu">cor</span>(bbdd[,<span class="dv">6</span><span class="sc">:</span><span class="dv">9</span>]),<span class="at">lab_size =</span> <span class="dv">3</span>,<span class="at">hc.order =</span> <span class="cn">TRUE</span>,<span class="at">method =</span> <span class="st">"circle"</span>,<span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-24-1.png" width="672"></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="estad%C3%ADstica-con-r.html#cb55-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># para saber si es significativamente distinta de cero</span></span>
+<span id="cb55-2"><a href="estad%C3%ADstica-con-r.html#cb55-2" tabindex="-1"></a><span class="er">&gt;</span> <span class="fu">cor.test</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini)</span>
+<span id="cb55-3"><a href="estad%C3%ADstica-con-r.html#cb55-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb55-4"><a href="estad%C3%ADstica-con-r.html#cb55-4" tabindex="-1"></a><span class="co">#&gt;  Pearson's product-moment correlation</span></span>
+<span id="cb55-5"><a href="estad%C3%ADstica-con-r.html#cb55-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb55-6"><a href="estad%C3%ADstica-con-r.html#cb55-6" tabindex="-1"></a><span class="co">#&gt; data:  bbdd$salario and bbdd$salini</span></span>
+<span id="cb55-7"><a href="estad%C3%ADstica-con-r.html#cb55-7" tabindex="-1"></a><span class="co">#&gt; t = 40.276, df = 472, p-value &lt; 2.2e-16</span></span>
+<span id="cb55-8"><a href="estad%C3%ADstica-con-r.html#cb55-8" tabindex="-1"></a><span class="co">#&gt; alternative hypothesis: true correlation is not equal to 0</span></span>
+<span id="cb55-9"><a href="estad%C3%ADstica-con-r.html#cb55-9" tabindex="-1"></a><span class="co">#&gt; 95 percent confidence interval:</span></span>
+<span id="cb55-10"><a href="estad%C3%ADstica-con-r.html#cb55-10" tabindex="-1"></a><span class="co">#&gt;  0.8580696 0.8989267</span></span>
+<span id="cb55-11"><a href="estad%C3%ADstica-con-r.html#cb55-11" tabindex="-1"></a><span class="co">#&gt; sample estimates:</span></span>
+<span id="cb55-12"><a href="estad%C3%ADstica-con-r.html#cb55-12" tabindex="-1"></a><span class="co">#&gt;       cor </span></span>
+<span id="cb55-13"><a href="estad%C3%ADstica-con-r.html#cb55-13" tabindex="-1"></a><span class="co">#&gt; 0.8801175</span></span>
+<span id="cb55-14"><a href="estad%C3%ADstica-con-r.html#cb55-14" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini, <span class="at">main=</span><span class="st">"Salario vs Salario Inicial"</span>, <span class="at">col=</span><span class="st">'red'</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="02-Sesion2-Estadistica-Basica-con-R_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
 
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="introducci%C3%B3n-a-r.html"><span class="header-section-number">2</span> Introducción a R</a></div>
+<div class="next"><a href="regresi%C3%B3n-lineal-m%C3%BAltiple.html"><span class="header-section-number">4</span> Regresión Lineal Múltiple</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#estad%C3%ADstica-con-r"><span class="header-section-number">3</span> Estadística con R</a></li>
+<li>
+<a class="nav-link" href="#resumen-estad%C3%ADstico"><span class="header-section-number">3.1</span> Resumen estadístico</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#medidas-de-posici%C3%B3n-central"><span class="header-section-number">3.1.1</span> Medidas de posición central</a></li>
+<li><a class="nav-link" href="#medidas-de-dispersi%C3%B3n-absolutas"><span class="header-section-number">3.1.2</span> Medidas de dispersión absolutas</a></li>
+<li><a class="nav-link" href="#medidas-de-asimetr%C3%ADa-y-curtosis"><span class="header-section-number">3.1.3</span> Medidas de asimetría y curtosis</a></li>
+<li><a class="nav-link" href="#la-funci%C3%B3n-summary"><span class="header-section-number">3.1.4</span> La función ‘summary()’</a></li>
+<li><a class="nav-link" href="#actividad"><span class="header-section-number">3.1.5</span> Actividad</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#gr%C3%A1ficos-con-r"><span class="header-section-number">3.2</span> Gráficos con R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ggplot2"><span class="header-section-number">3.2.1</span> ggplot2</a></li>
+<li><a class="nav-link" href="#actividad-4"><span class="header-section-number">3.2.2</span> Actividad</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#test-hip%C3%B3tesis"><span class="header-section-number">3.3</span> Test Hipótesis</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#un-simple-t-test-de-igualdad-de-medias"><span class="header-section-number">3.3.1</span> Un simple t-test de igualdad de medias</a></li>
+<li><a class="nav-link" href="#un-simple-t-test-de-igualdad-de-medias-pareadas"><span class="header-section-number">3.3.2</span> Un simple t-test de igualdad de medias pareadas</a></li>
+<li><a class="nav-link" href="#test-de-normalidad-param%C3%A9tricos"><span class="header-section-number">3.3.3</span> Test de normalidad paramétricos</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#distribuciones-bivariadas"><span class="header-section-number">3.4</span> Distribuciones bivariadas</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tablas-de-contingencia"><span class="header-section-number">3.4.1</span> Tablas de contingencia</a></li>
+<li><a class="nav-link" href="#algo-de-test-de-independencia"><span class="header-section-number">3.4.2</span> Algo de test de independencia</a></li>
+<li><a class="nav-link" href="#correlaciones"><span class="header-section-number">3.4.3</span> Correlaciones</a></li>
+</ul>
+</li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="introducción-a-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="regresión-lineal-múltiple.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/rstudio/bookdown-demo/blob/master/02-Sesion2-Estadistica-Basica-con-R.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/rstudio/bookdown-demo/edit/master/02-Sesion2-Estadistica-Basica-con-R.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Herramientas… MBA</strong>" was written by Fernando López <br> Manuel Reuz. It was last built on 2024-08-09.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -898,7 +690,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>
