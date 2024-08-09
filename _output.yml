@@ -1,0 +1,27 @@
+bookdown::bs4_book:
+  css: style.css
+  theme:
+    primary: "#8D6A19"
+  includes:
+      in_header: config.html
+  repo: https://github.com/rstudio/bookdown-demo
+config:
+  toc:
+    before: |
+        <li><a href="./">Estadística Espacial con R</a></li>
+    after: |
+        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    edit: https://github.com/rubenfcasal/estadistica_espacial/edit/master/%s
+    sharing:
+      github: yes
+      facebook: no
+      twitter: no
+    download: "pdf"
+    # download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default

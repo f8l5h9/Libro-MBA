@@ -1,0 +1,52 @@
+p.caption {
+  color: DarkRed;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+h1.title {
+  color: DarkRed;
+}
+h1 { /* Header 1 */
+  color: DarkBlue;
+}
+h2 { /* Header 2 */
+  color: DarkBlue;
+}
+h3 { /* Header 3 */
+  color: DarkBlue;
+}
+body{
+  font-size: 14pt;
+  text-align: justify
+}
+
+.infobox {
+  padding: 1em 1em 1em 4em;
+  margin-bottom: 10px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  background: #ecf7fd 5px center/3em no-repeat;
+}
+
+
+.infobox_resume {
+  padding: 1em 1em 1em 1em;
+  margin-bottom: 10px;
+  border: 2px solid orange;
+  border-radius: 10px;
+  background: #FAC0C0 5px center/3em no-repeat;
+}
+
+div.csl-entry {
+  clear: both;
+  margin-bottom: 10px;
+}

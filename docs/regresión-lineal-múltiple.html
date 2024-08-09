@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 Regresión Lineal Múltiple | Herramientas… MBA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 Regresión Lineal Múltiple | Herramientas… MBA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 Regresión Lineal Múltiple | Herramientas… MBA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Fernando López   Manuel Reuz" />
+
+
+<meta name="date" content="2024-08-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estadística-con-r.html"/>
+<link rel="next" href="análisis-de-componentes-principales.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Presentación</a></li>
+<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#el-lenguaje-r"><i class="fa fa-check"></i><b>2.2</b> El lenguaje R</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#por-qué-aprender-r"><i class="fa fa-check"></i><b>2.3</b> ¿Por qué aprender R?</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#rstudio"><i class="fa fa-check"></i><b>2.4</b> RStudio</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-cosas-hago-con-r"><i class="fa fa-check"></i><b>2.5</b> Qué cosas hago con R</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#creando-el-entorno-de-trabajo-en-rstudio."><i class="fa fa-check"></i><b>2.6</b> Creando el entorno de trabajo en RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consola"><i class="fa fa-check"></i><b>2.6.1</b> Consola</a></li>
+<li class="chapter" data-level="2.6.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#scripts"><i class="fa fa-check"></i><b>2.6.2</b> Scripts</a></li>
+<li class="chapter" data-level="2.6.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#entorno"><i class="fa fa-check"></i><b>2.6.3</b> Entorno</a></li>
+<li class="chapter" data-level="2.6.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#miscelánea-archivos-gráficos-paquetes-ayuda-visor"><i class="fa fa-check"></i><b>2.6.4</b> Miscelánea: Archivos, Gráficos, Paquetes, Ayuda, Visor</a></li>
+<li class="chapter" data-level="2.6.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#configuración-del-directorio-de-trabajo."><i class="fa fa-check"></i><b>2.6.5</b> Configuración del directorio de trabajo.</a></li>
+<li class="chapter" data-level="2.6.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#instalar-y-cargar-paquetes."><i class="fa fa-check"></i><b>2.6.6</b> Instalar y cargar paquetes.</a></li>
+<li class="chapter" data-level="2.6.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ayuda-en-r."><i class="fa fa-check"></i><b>2.6.7</b> Ayuda en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#primeros-pasos"><i class="fa fa-check"></i><b>2.7</b> Primeros pasos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#script-básico-para-apreder-r"><i class="fa fa-check"></i><b>2.7.1</b> Script básico para apreder R</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#tipos-de-datos-en-r"><i class="fa fa-check"></i><b>2.7.2</b> Tipos de Datos en R</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#la-importancia-de-los-objetos-en-r"><i class="fa fa-check"></i><b>2.7.3</b> La Importancia de los Objetos en R</a></li>
+<li class="chapter" data-level="2.7.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#dataframes-en-r"><i class="fa fa-check"></i><b>2.7.4</b> DataFrames en R</a></li>
+<li class="chapter" data-level="2.7.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ejemplo-de-dataframe"><i class="fa fa-check"></i><b>2.7.5</b> Ejemplo de DataFrame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introducción-a-r.html"><a href="introducción-a-r.html#un-for-en-r"><i class="fa fa-check"></i><b>2.8</b> Un <code>for</code> en R</a></li>
+<li class="chapter" data-level="2.9" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-excel"><i class="fa fa-check"></i><b>2.9</b> Leer un Excel</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#datos-empleados"><i class="fa fa-check"></i><b>2.9.1</b> Datos Empleados</a></li>
+<li class="chapter" data-level="2.9.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-csv"><i class="fa fa-check"></i><b>2.9.2</b> Leer un csv</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-1"><i class="fa fa-check"></i><b>2.10</b> Actividad 1:</a></li>
+<li class="chapter" data-level="2.11" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-2"><i class="fa fa-check"></i><b>2.11</b> Actividad 2:</a></li>
+<li class="chapter" data-level="2.12" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-3"><i class="fa fa-check"></i><b>2.12</b> Actividad 3:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-con-r.html"><a href="estadística-con-r.html"><i class="fa fa-check"></i><b>3</b> Estadística con R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>3.1</b> Resumen estadístico</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-posición-central"><i class="fa fa-check"></i><b>3.1.1</b> Medidas de posición central</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-dispersión-absolutas"><i class="fa fa-check"></i><b>3.1.2</b> Medidas de dispersión absolutas</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-asimetría-y-curtosis"><i class="fa fa-check"></i><b>3.1.3</b> Medidas de asimetría y curtosis</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#la-función-summary"><i class="fa fa-check"></i><b>3.1.4</b> La función ‘summary()’</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad"><i class="fa fa-check"></i><b>3.1.5</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#gráficos-con-r"><i class="fa fa-check"></i><b>3.2</b> Gráficos con R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> ggplot2</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad-4"><i class="fa fa-check"></i><b>3.2.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-hipótesis"><i class="fa fa-check"></i><b>3.3</b> Test Hipótesis</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.3.1</b> Un simple t-test de igualdad de medias</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias-pareadas"><i class="fa fa-check"></i><b>3.3.2</b> Un simple t-test de igualdad de medias pareadas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-de-normalidad-paramétricos"><i class="fa fa-check"></i><b>3.3.3</b> Test de normalidad paramétricos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#distribuciones-bivariadas"><i class="fa fa-check"></i><b>3.4</b> Distribuciones bivariadas</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>3.4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#algo-de-test-de-independencia"><i class="fa fa-check"></i><b>3.4.2</b> Algo de test de independencia</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#correlaciones"><i class="fa fa-check"></i><b>3.4.3</b> Correlaciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html"><i class="fa fa-check"></i><b>4</b> Regresión Lineal Múltiple</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados."><i class="fa fa-check"></i><b>4.1</b> Estimación de los parámetros. Método de los mínimos cuadrados.</a></li>
+<li class="chapter" data-level="4.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#descomposición-de-la-varianza-y-bondad-del-ajuste."><i class="fa fa-check"></i><b>4.2</b> Descomposición de la Varianza y bondad del ajuste.</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-y-correlación."><i class="fa fa-check"></i><b>4.2.1</b> Coeficientes de determinación y correlación.</a></li>
+<li class="chapter" data-level="4.2.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-semi-parcial-y-parcial"><i class="fa fa-check"></i><b>4.2.2</b> Coeficientes de determinación semi-parcial y parcial</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#ejemplo-de-regresión-lineal-múltiple-con-r"><i class="fa fa-check"></i><b>4.3</b> Ejemplo de regresión lineal múltiple con R</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>5</b> Análisis de Componentes Principales</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#antes-de-empezar"><i class="fa fa-check"></i><b>5.2</b> Antes de empezar</a></li>
+<li class="chapter" data-level="5.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-acp"><i class="fa fa-check"></i><b>5.3</b> El ACP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#escalado-de-las-variables"><i class="fa fa-check"></i><b>5.3.1</b> Escalado de las variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#influencia-de-outliers"><i class="fa fa-check"></i><b>5.3.2</b> Influencia de outliers</a></li>
+<li class="chapter" data-level="5.3.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-varianza-explicada"><i class="fa fa-check"></i><b>5.3.3</b> Proporción de varianza explicada</a></li>
+<li class="chapter" data-level="5.3.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#número-óptimo-de-componentes-principales"><i class="fa fa-check"></i><b>5.3.4</b> Número óptimo de componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-iniciales"><i class="fa fa-check"></i><b>5.4</b> Test iniciales</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#pruebas-esfericidad-de-bartlett"><i class="fa fa-check"></i><b>5.4.1</b> Pruebas esfericidad de Bartlett</a></li>
+<li class="chapter" data-level="5.4.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#prueba-del-kmo"><i class="fa fa-check"></i><b>5.4.2</b> Prueba del KMO</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#una-aplicación-con-datos-de-empleados"><i class="fa fa-check"></i><b>5.5</b> Una aplicación con “Datos de Empleados”</a></li>
+<li class="chapter" data-level="5.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#paquetes-de-r-para-el-acp"><i class="fa fa-check"></i><b>5.6</b> Paquetes de R para el ACP</a></li>
+<li class="chapter" data-level="5.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-la-varianza-explicada"><i class="fa fa-check"></i><b>5.7</b> Proporción de la varianza explicada</a></li>
+<li class="chapter" data-level="5.8" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-gráfico-de-sedimentación"><i class="fa fa-check"></i><b>5.8</b> El gráfico de sedimentación</a></li>
+<li class="chapter" data-level="5.9" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#las-componentes"><i class="fa fa-check"></i><b>5.9</b> Las componentes</a></li>
+<li class="chapter" data-level="5.10" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#ejercicio-acp-como-indicador-sintético"><i class="fa fa-check"></i><b>5.10</b> Ejercicio: ACP como indicador sintético</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#los-datos"><i class="fa fa-check"></i><b>5.10.1</b> Los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#aplicación-regresión-y-acp"><i class="fa fa-check"></i><b>5.11</b> Aplicación: Regresión y ACP</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#lectura-y-sumario-de-los-datos"><i class="fa fa-check"></i><b>5.11.1</b> Lectura y sumario de los datos</a></li>
+<li class="chapter" data-level="5.11.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#eliminación-de-datos-perdidos"><i class="fa fa-check"></i><b>5.11.2</b> Eliminación de datos perdidos</a></li>
+<li class="chapter" data-level="5.11.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#un-modelo-de-regresión-básico"><i class="fa fa-check"></i><b>5.11.3</b> Un modelo de regresión básico</a></li>
+<li class="chapter" data-level="5.11.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#evaluamos-matriz-de-correlaciones"><i class="fa fa-check"></i><b>5.11.4</b> Evaluamos matriz de correlaciones</a></li>
+<li class="chapter" data-level="5.11.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-de-adecuación-del-acp"><i class="fa fa-check"></i><b>5.11.5</b> Test de adecuación del ACP</a></li>
+<li class="chapter" data-level="5.11.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#cálculo-de-las-componentes"><i class="fa fa-check"></i><b>5.11.6</b> Cálculo de las componentes</a></li>
+<li class="chapter" data-level="5.11.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#interpretación-de-las-cps"><i class="fa fa-check"></i><b>5.11.7</b> Interpretación de las CPs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-cluster.html"><a href="análisis-cluster.html"><i class="fa fa-check"></i><b>6</b> Análisis Cluster</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#medidas-de-distancia"><i class="fa fa-check"></i><b>6.1</b> Medidas de distancia</a></li>
+<li class="chapter" data-level="6.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-cluster-con-el-algoritmo-k-medias."><i class="fa fa-check"></i><b>6.2</b> Análisis cluster con el algoritmo K-medias.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#k-medias"><i class="fa fa-check"></i><b>6.2.1</b> K-medias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#un-ejemplo-de-análisis-clúster-con-r"><i class="fa fa-check"></i><b>6.3</b> Un ejemplo de análisis clúster con R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#funciones-básicas-de-r-para-usar-k-medias"><i class="fa fa-check"></i><b>6.3.1</b> Funciones básicas de R para usar K-medias</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#selección-del-número-de-clústeres"><i class="fa fa-check"></i><b>6.3.2</b> Selección del número de clústeres</a></li>
+<li class="chapter" data-level="6.3.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#visualización-del-clúster-óptimo"><i class="fa fa-check"></i><b>6.3.3</b> Visualización del clúster óptimo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análisis-cluster.html"><a href="análisis-cluster.html#comentarios-finales-sobre-el-algoritmo-k-medias"><i class="fa fa-check"></i><b>6.4</b> Comentarios finales sobre el algoritmo k-medias</a></li>
+<li class="chapter" data-level="6.5" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-clúster-jerárquico"><i class="fa fa-check"></i><b>6.5</b> Análisis clúster jerárquico</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análsis-clúster-jerárquico-con-r"><i class="fa fa-check"></i><b>6.5.1</b> Análsis clúster jerárquico con R</a></li>
+<li class="chapter" data-level="6.5.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#trabajando-con-dendrogramas"><i class="fa fa-check"></i><b>6.5.2</b> Trabajando con dendrogramas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html"><i class="fa fa-check"></i><b>7</b> Métodos basados en árboles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#introducción-1"><i class="fa fa-check"></i><b>7.1</b> Introducción</a></li>
+<li class="chapter" data-level="7.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#origen-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.2</b> Origen de los Árboles de Decisión</a></li>
+<li class="chapter" data-level="7.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#los-árboles-de-decisión-en-las-técnicas-de-machine-learning"><i class="fa fa-check"></i><b>7.3</b> Los Árboles de Decisión en las técnicas de Machine Learning</a></li>
+<li class="chapter" data-level="7.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-regresión"><i class="fa fa-check"></i><b>7.4</b> Árboles de regresión</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#un-ejemplo-de-juguete"><i class="fa fa-check"></i><b>7.4.1</b> Un ejemplo de juguete</a></li>
+<li class="chapter" data-level="7.4.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#sec:terminologia"><i class="fa fa-check"></i><b>7.4.2</b> Terminología</a></li>
+<li class="chapter" data-level="7.4.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#como-se-crea-un-árbol"><i class="fa fa-check"></i><b>7.4.3</b> Como se crea un árbol</a></li>
+<li class="chapter" data-level="7.4.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#evitar-el-overfitting"><i class="fa fa-check"></i><b>7.4.4</b> Evitar el overfitting</a></li>
+<li class="chapter" data-level="7.4.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#validación-cruzada"><i class="fa fa-check"></i><b>7.4.5</b> Validación cruzada</a></li>
+<li class="chapter" data-level="7.4.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#algoritmo-para-crear-un-árbol-de-regresión-con-pruning"><i class="fa fa-check"></i><b>7.4.6</b> Algoritmo para crear un árbol de regresión con pruning</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-clasificación"><i class="fa fa-check"></i><b>7.5</b> Árboles de clasificación</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#cómo-se-crea-un-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.5.1</b> Cómo se crea un árbol de clasificación</a></li>
+<li class="chapter" data-level="7.5.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-del-árbol"><i class="fa fa-check"></i><b>7.5.2</b> Predicción del árbol</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-y-desventajas-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.6</b> Ventajas y desventajas de los Árboles de Decisión</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-algunas"><i class="fa fa-check"></i><b>7.6.1</b> Ventajas (algunas)</a></li>
+<li class="chapter" data-level="7.6.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#desventajas-algunas"><i class="fa fa-check"></i><b>7.6.2</b> Desventajas (algunas)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#paquetes-de-r"><i class="fa fa-check"></i><b>7.7</b> Paquetes de R</a></li>
+<li class="chapter" data-level="7.8" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.8</b> Ejemplo Árbol de Clasificación</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#pre-podado"><i class="fa fa-check"></i><b>7.8.1</b> Pre-podado</a></li>
+<li class="chapter" data-level="7.8.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#entrenamiento-y-test"><i class="fa fa-check"></i><b>7.8.2</b> Entrenamiento y test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-regresión"><i class="fa fa-check"></i><b>7.9</b> Ejemplo Árbol de Regresión</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#datos"><i class="fa fa-check"></i><b>7.9.1</b> Datos</a></li>
+<li class="chapter" data-level="7.9.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ajuste-del-modelo-con-la-librería-tree"><i class="fa fa-check"></i><b>7.9.2</b> Ajuste del modelo con la librería ‘tree’</a></li>
+<li class="chapter" data-level="7.9.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#podado-del-árbol-pruning"><i class="fa fa-check"></i><b>7.9.3</b> Podado del árbol (pruning)</a></li>
+<li class="chapter" data-level="7.9.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-y-evaluación-del-modelo"><i class="fa fa-check"></i><b>7.9.4</b> Predicción y evaluación del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#webs"><i class="fa fa-check"></i><b>7.10</b> Webs</a></li>
+<li class="chapter" data-level="7.11" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#referencias"><i class="fa fa-check"></i><b>7.11</b> Referencias</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Herramientas… MBA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="regresión-lineal-múltiple" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> Regresión Lineal Múltiple<a href="regresión-lineal-múltiple.html#regresión-lineal-múltiple" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Esta sesión trata sobre la regresión lineal, que es un enfoque sencillo dentro de los algoritmos de aprendizaje supervisado y que se utiliza principalmente para predecir respuestas cuantitativas. Aunque puede parecer menos emocionante que otros métodos estadísticos más modernos, la regresión lineal sigue siendo una herramienta ampliamente utilizada y útil. Queremos destacar que es una base importante para comprender métodos más complejos, ya que muchos de estos métodos se pueden ver como extensiones de la regresión lineal. Por lo tanto es importante comprender la regresión lineal antes de abordar métodos de aprendizaje más avanzados. El enfoque principal de esta sesión es revisar las ideas clave detrás del modelo de regresión lineal y el método de mínimos cuadrados utilizado para ajustar este modelo.</p>
+<p>La regresión múltiple tiene como objetivo analizar un modelo que pretende explicar el comportamiento de una variable (endógena, explicada o dependiente), que se denota como <span class="math inline">\(Y\)</span>, utilizando la información proporcionada por los valores tomados por un conjunto de variables explicativas (exógenas o independientes), que se denotan por <span class="math inline">\(X_1, X_2,\dots, X_p\)</span>. El modelo lineal (modelo econométrico) viene dado de la forma:</p>
+<span class="math display">\[\begin{equation}\label{eq:modelo}
+Y=\beta_0+\beta_1 X_1+\beta_2 X_2+\dots+\beta_p X_p +e
+\end{equation}\]</span>
+<p>donde <span class="math inline">\(\beta_0,\beta_1,\dots,\beta_p\)</span> son parámetros desconocidos (o coeficientes) y <span class="math inline">\(e\)</span> es un termino aleatorio de error, que es independiente de las variables explicativas <span class="math inline">\(X_1, X_2,\dots, X_p\)</span> y tiene media cero.</p>
+<div class="float">
+<img src="Figures/MLR.JPG" style="width:100.0%" alt="Regresión lineal múltiple con una variable respuesta (Y) y dos variables predictoras (X_1,X_2)" />
+<div class="figcaption">Regresión lineal múltiple con una variable respuesta (<span class="math inline">\(Y\)</span>) y dos variables predictoras (<span class="math inline">\(X_1,X_2)\)</span></div>
+</div>
+<div id="estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados." class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Estimación de los parámetros. Método de los mínimos cuadrados.<a href="regresión-lineal-múltiple.html#estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Supongamos que tenemos una muestra de tamaño <span class="math inline">\(n\)</span> en la que hemos observado las variables
+<span class="math display">\[Y=\begin{pmatrix}y_1\\y_2\\ \vdots\\y_n \end{pmatrix};\quad X=(1, X_1, X_2,\dots, X_p)=\begin{pmatrix}
+1&amp;x_{11}&amp;x_{12}&amp;\dots&amp;x_{1p}\\
+1&amp;x_{21}&amp;x_{22}&amp;\dots&amp;x_{2p}\\
+&amp;&amp;&amp;\vdots&amp;\\
+1&amp;x_{n1}&amp;x_{n2}&amp;\dots&amp;x_{np}
+\end{pmatrix}\]</span></p>
+<p>Si denotamos por <span class="math display">\[\beta=\begin{pmatrix}\beta_0\\\beta_1\\\vdots\\\beta_p\end{pmatrix}\]</span>
+el modelo econométrico se puede expresar en forma matricial como
+<span class="math display">\[Y=X\beta+E\]</span>
+<strong>Teorema</strong></p>
+<p>Si las columnas de <span class="math inline">\(X\)</span> son linealmente independientes, entonces el estimador mínimo cuadrático de los coeficientes del modelo sería
+<span class="math display">\[\widehat{\beta}=(X^tX)^{-1}X^tY\]</span>
+donde <span class="math inline">\(X^t\)</span> denota la matriz traspuesta de X.</p>
+<p><strong>Demostración: </strong>
+Denotemos por <span class="math inline">\(\widehat{Y}=X\widehat{\beta}\)</span> tenemois que los terminos de error (o residuos) se pueden escribir como <span class="math inline">\(e_i=y_i-\widehat{y}_i=y_i-\widehat{\beta_0}+\widehat{\beta_1}x_{i1}-\widehat{\beta_2}x_{i2}-\dots-\widehat{\beta_p}x_{ip}\)</span>. El método de estimación mínimo cuadrático consiste en obtener el vector de coeficientes <span class="math inline">\(\widehat{\beta}\)</span> que minimiza la suma de los errores al cuadrado. Teniendo en cuenta que al ser escalares <span class="math inline">\(Y^tX\widehat{\beta}=\widehat{\beta}^tX^tY\)</span>, se verifica que la suma de los errores al cuadrado se puede escribir como</p>
+<span class="math display">\[\begin{eqnarray}
+RSS&amp;=&amp;\sum_{i=1}^ne_i^2=[Y-X\widehat{\beta}]^t[Y-X\widehat{\beta}]=\\
+&amp;=&amp;Y^tY-Y^tX\widehat{\beta}-\widehat{\beta}^tX^tY+\widehat{\beta}^tX^tX\widehat{\beta}=\\
+&amp;=&amp;Y^tY-2Y^tX\widehat{\beta}+\widehat{\beta}^tX^tX\widehat{\beta}.
+\end{eqnarray}\]</span>
+<p>Para minimizar <span class="math inline">\(RSS\)</span> tenemos que resolver la ecuación
+<span class="math display">\[\frac{\partial RSS}{\partial \widehat{\beta}}=-2Y^tX+2\widehat{\beta}^tX^tX=0\]</span>
+y por tanto como las columnas de <span class="math inline">\(X\)</span> son linealmente independientes existe la inversa de la matriz <span class="math inline">\(X^tX\)</span> obteniendo <span class="math display">\[\widehat{\beta}=(X^tX)^{-1}X^tY\]</span> tal y como queriamos demostrar.<span class="math inline">\(\square\)</span></p>
+<p>Obsérvese que <span class="math inline">\(\widehat{\beta}_i\)</span> midel el cambbio en <span class="math inline">\(Y\)</span> por cada cambio unitario en <span class="math inline">\(X_i\)</span> para todo <span class="math inline">\(i=1, 2,\dots, p\)</span>.
+Además si comprobamos que los residuos son homocedásticos, independientes e identicamente distribuidos como una distribución <span class="math inline">\(N(0,\sigma^2)\)</span>, tenemos que <span class="math inline">\(Y\)</span> se distribuye como <span class="math inline">\(N(X\widehat{\beta},\sigma^2 I)\)</span>. Un estimador de la varianza del error sería:
+<span class="math display">\[\sigma^2=\frac{1}{n-(p+1)}\sum_{i=1}^ne_i^2=\frac{1}{n-(p+1)}\sum_{i=1}^n(y_i-\widehat{y}_i)^2\]</span></p>
+<p>Como <span class="math inline">\(\widehat{\beta}=(X^tX)^{-1}X^tY\)</span> se verifica que su media es <span class="math display">\[\mathbb{E}(\widehat{\beta})=(X^tX)^{-1}X^tE(Y)=(X^tX)^{-1}X^tX\beta=\beta.\]</span> Si queremos hacer inferencia para contrastar una hipotesis nula del estilo <span class="math inline">\(H_0: \, \beta=0\)</span> tenemos que <span class="math display">\[Var(\widehat{\beta})=(X^tX)^{-1}X^tVar(Y)X(X^tX)^{-1}=(X^tX)^{-1}X^t\sigma^2X(X^tX)^{-1}=\sigma^2(X^tX)^{-1}\]</span> y como <span class="math inline">\(\widehat{\beta}\)</span> es una combinmacion lineal de elementos de <span class="math inline">\(Y\)</span> bajo <span class="math inline">\(H_0\)</span> se verifica que <span class="math display">\[\widehat{\beta}\sim N(0,\sigma^2(X^tX)^{-1}).\]</span> Esto nos permite hacer inferencia sobre la significatividad de los parámetros estimados <span class="math inline">\(\widehat{\beta}\)</span>, contrastando si significativamente distintos de cero, así como calcular intervalos de confianza para los mismos.</p>
+<p>Los coeficientes estimados <span class="math inline">\(\widehat{\beta}\)</span> nos proporcionan información sobre cuanto aporta cada variable independiente <span class="math inline">\(X_1, X_2,\dots, X_p\)</span> a la estimación de <span class="math inline">\(Y\)</span>.</p>
+</div>
+<div id="descomposición-de-la-varianza-y-bondad-del-ajuste." class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Descomposición de la Varianza y bondad del ajuste.<a href="regresión-lineal-múltiple.html#descomposición-de-la-varianza-y-bondad-del-ajuste." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Basado en la ley del valor esperado total que dice <span class="math inline">\(\mathbb{E}(Y)=\mathbb{E}(\mathbb{E}(Y|X))\)</span> podemos demostrar el siguiente resultado.</p>
+<p><strong>Proposición:</strong>
+Si <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son dos variables aleatorias definidas en el mismo espacio de probabilidad y suponemos que <span class="math inline">\(Y\)</span> tiene varianza finita, entonces
+<span class="math display">\[Var(Y)=\mathbb{E}(Var(Y|X))+Var(\mathbb{E}(Y|X))\]</span></p>
+<p><strong>Demostración:</strong>
+Sabemos que <span class="math inline">\(Var(Y)=\mathbb{E}(Y^2)-\mathbb{E}(Y)^2\)</span> y por tanto <span class="math inline">\(\mathbb{E}(Y^2)=Var(Y)+\mathbb{E}(Y)^2\)</span>. Luego aplicando la ley del valor esperado total a la expresion anterior tenemos que
+<span class="math display">\[\mathbb{E}(Y^2)=\mathbb{E}(Var(Y|X)+\mathbb{E}(Y|X)^2)=\mathbb{E}(Var(Y|X))+\mathbb{E}(\mathbb{E}(Y|X))^2.\]</span> Restando <span class="math inline">\(\mathbb{E}(Y)^2\)</span> en ambos lados de la igualdad anterior y applicando de nuevo ley del valor esperado total a <span class="math inline">\(\mathbb{E}(Y)^2=\mathbb{E}(\mathbb{E}(Y|X))^2\)</span> tenemos que</p>
+<span class="math display">\[\begin{eqnarray}
+Var(Y)&amp;=&amp;\mathbb{E}(Y^2)-\mathbb{E}(Y)^2=\mathbb{E}(Var(Y|X))+\mathbb{E}(\mathbb{E}(Y|X))^2-\mathbb{E}(Y)^2=\\
+&amp;=&amp;\mathbb{E}(Var(Y|X))+\mathbb{E}(\mathbb{E}(Y|X)^2)-\mathbb{E}(\mathbb{E}(Y|X))^2=\mathbb{E}(Var(Y|X))+Var(\mathbb{E}(Y|X))
+\end{eqnarray}\]</span>
+<p>tal y como queriamos demostrar. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corolario</strong>
+Dado el modelo de regresión lineal <span class="math inline">\(Y=X\beta+E\)</span> se verifica que <span class="math inline">\(Var(Y)=Var(E)+Var(\widehat{Y})\)</span></p>
+<p><strong>Demostración:</strong>
+Obsérvese que <span class="math inline">\(Var(Y|X)=Var(E)=\sigma^2\)</span> y <span class="math inline">\(\mathbb{E}(Y|X)=\widehat{Y}\)</span>. Por lo tanto como consecuencia de la proposición anterior tenemos que <span class="math inline">\(Var(Y)=\sigma^2+Var(\widehat{Y})\)</span>, es decir la varianza total de <span class="math inline">\(Y\)</span> se descompone como la suma de la varianza explicada por <span class="math inline">\(\widehat{Y}\)</span> y la varianza de los errores. <span class="math inline">\(\square\)</span></p>
+<div id="coeficientes-de-determinación-y-correlación." class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Coeficientes de determinación y correlación.<a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-y-correlación." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se define el coeficiente de determinación <span class="math inline">\(R^2\)</span> como la proporcion de la varianza total que es recogida por la varianza de la variable ajustada, es decir <span class="math display">\[R^2=\frac{Var(\widehat{Y})}{Var(Y)}=1-\frac{Var(E)}{Var(Y)}\]</span>
+De esta última expresión es inmediato ver que <span class="math inline">\(0\leq R^2\leq 1\)</span>. Observese que si <span class="math inline">\(R^2=0\)</span> significa que <span class="math inline">\(Var(E)=Var(Y)\)</span> y por la proposición anterior <span class="math inline">\(Var(\widehat{Y})=0\)</span>, por tanto <span class="math inline">\(\widehat{Y}=E(Y)\)</span> y el modelo no recoge nada de la variabilidad total y como consecuencia el ajuste es malo. En el otro extremo, si <span class="math inline">\(R^2=1\)</span> se sigue que <span class="math inline">\(Var(\widehat{Y})=Var(Y)\)</span> y <span class="math inline">\(Var(E)=0\)</span> y por tanto el modelo recoge toda la variabilidad obteniendo <span class="math inline">\(Y=\widehat{Y}\)</span> y <span class="math inline">\(E=0\)</span>.
+De esta manera concluimos que cuanto más cercano esté <span class="math inline">\(R^2\)</span> a 1 mejor será el ajuste del modelo.</p>
+<p><strong>Proposición:</strong> Dado el modelo de regresión <span class="math inline">\(Y=X\beta+E\)</span> se verifica que <span class="math display">\[Cov(\widehat{Y},E)=\widehat{Y}^tE=0\]</span></p>
+<p><strong>Demostración:</strong> Como <span class="math inline">\(E\)</span> tiene media cero, se sigue que <span class="math inline">\(Cov(\widehat{Y},E)=\mathbb{E}(\widehat{Y}^tE)=\mathbb{E}(\widehat{\beta}^tX^t(Y-\widehat{Y}))=\\=\mathbb{E}(Y^tX(X^tX)^{-1}X^tY-Y^tX(X^tX)^{-1}X^tX(X^tX)^{-1}X^tY)=0 \quad\square\)</span></p>
+<p><strong>Definition</strong> Dadas dos variables estadísticas <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span>, se define el <strong>coefficiente de correlacion de Pearson</strong> de <span class="math inline">\(U\)</span> y <span class="math inline">\(V\)</span> como
+<span class="math display">\[Cor(U,V)=\rho_{UV}=\frac{Cov(U,V)}{\sqrt{Var(U)Var(V)}}\]</span></p>
+<p><strong>Teorema:</strong>El coeficiente de determinacion <span class="math inline">\(R^2\)</span> coincide con el coeficiente de correlacion dde Pearson de las variables <span class="math inline">\(Y\)</span> e <span class="math inline">\(\widehat{Y}\)</span> al cuadrado:
+<span class="math display">\[R^2=Cor(\widehat{Y},Y)^2\]</span></p>
+<p><strong>Demostración:</strong> Como <span class="math inline">\(\mathbb{E}(\widehat{Y})=\mathbb{E}(Y)\)</span> y <span class="math inline">\(Cov(\widehat{Y},E)=0\)</span> tenemos que</p>
+<span class="math display">\[\begin{eqnarray}
+Cor(\widehat{Y},Y)&amp;=&amp;\frac{(\widehat{Y}-\mathbb{E}(Y))^t(Y-\mathbb{E}(Y))}{\sqrt{Var(Y)Var(\widehat{Y})}}=\frac{(\widehat{Y}-\mathbb{E}(Y))^t(Y-\widehat{Y}+\widehat{Y}-\mathbb{E}(Y))}{\sqrt{Var(Y)Var(\widehat{Y})}}=\\
+&amp;=&amp;\frac{(\widehat{Y}-\mathbb{E}(Y))^t(E+\widehat{Y}-\mathbb{E}(Y))}{\sqrt{Var(Y)Var(\widehat{Y})}}=\frac{(\widehat{Y}-\mathbb{E}(Y))^t(\widehat{Y}-\mathbb{E}(Y))}{\sqrt{Var(Y)Var(\widehat{Y})}}=\\
+&amp;=&amp;\frac{\sqrt{Var(\widehat{Y})}}{\sqrt{Var(Y)}}
+\end{eqnarray}\]</span>
+<p>y por tanto <span class="math inline">\(Cor(\widehat{Y},Y)=R^2\)</span> tal y como queríamos demostrar.<span class="math inline">\(\quad \square\)</span></p>
+</div>
+<div id="coeficientes-de-determinación-semi-parcial-y-parcial" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Coeficientes de determinación semi-parcial y parcial<a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-semi-parcial-y-parcial" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para conocer cuanto contribuye la variable <span class="math inline">\(X_k\)</span> de manera única al modelo de regresión, podemos pensar en cuanto se modifica el coeficiente de determinación al excluir esta variable en la regresión lineal. De esta manera si denotamos por <span class="math inline">\(R_{-k}^2\)</span> el coefficiente de determinación del modelo de regresión lineal omitiendo la variable <span class="math inline">\(X_k\)</span> la cantidad <span class="math display">\[R^2-R_{-k}^2\]</span> es una manera de cuantificar cuanta información única sobre <span class="math inline">\(Y\)</span> en <span class="math inline">\(X_k\)</span> no está explicada por el resto de variables indeependientes. Esta cantidad es conocida como <strong>coeficiente de determinación semi-parcial</strong>. Se define el <strong>coefficiente de determinacion parcial </strong> como <span class="math display">\[\frac{R^2-R^2_{-k}}{1-R^2_{-k}}\]</span></p>
+<p><strong>Teorema:</strong> Sea <span class="math inline">\(U\)</span> el residuo de la regresión lineal de una variable independiente <span class="math inline">\(X_k\)</span> sobre el resto de las variables independientes <span class="math inline">\(X_i\)</span> con <span class="math inline">\(i\neq k\)</span>. Denotemos por <span class="math inline">\(\widehat{Y}_{-k}\)</span> y <span class="math inline">\(V\)</span> los valores ajustados de <span class="math inline">\(Y\)</span> y los residuos cuando hacemos la resgesion de <span class="math inline">\(Y\)</span> sobre todas las variables independientes excepto <span class="math inline">\(X_k\)</span> respectivamente. Entonces el coeficiente de determinación semi-parcial y el coeficiente de determinación parcial se pueden calcular como:</p>
+<p><span class="math display">\[R^2-R^2_{-k}=Cor(Y,U)^2 \quad\quad\quad\quad\frac{R^2-R^2_{-k}}{1-R^2_{-k}}=Cor(U,V)^2\]</span>
+<strong>Demostración:</strong> La demostración la haremos utilizando algebra lineal. Para ello utilizaremos algunos conceptos básicos. Denotamos el producto escalar de dos vectores <span class="math inline">\(S\)</span> y <span class="math inline">\(W\)</span> por <span class="math inline">\(\langle S, W \rangle=S^tW=\sum_{i=1}^n s_iw_i\)</span> y su norma por <span class="math inline">\(||S||=\sqrt{\langle S, S\rangle}\)</span>. Sabemos que si <span class="math inline">\(S\)</span> y <span class="math inline">\(W\)</span> son ortogonales entonves <span class="math inline">\(\langle S,W\rangle=0\)</span>. Sea la matriz <span class="math inline">\(P_{-k}\)</span> la proyección ortogonal en el espacio generado por todas las variables independientes excepto <span class="math inline">\(X_k\)</span>. Es conocido que la matriz <span class="math inline">\(P_{-k}\)</span> es simétrica e idempotente, es decir <span class="math inline">\(P_{-k}^2=P_{-k}\)</span>. Entonces se tiene que <span class="math inline">\(P_{-k}Y=\widehat{Y}_{-k}\)</span> y <span class="math inline">\(U=X_k-\widehat{X}_k=(I-P_{-k})X_k\)</span>. Además <span class="math inline">\(U\)</span> es ortogonal a todos los <span class="math inline">\(X_i\)</span> con <span class="math inline">\(i\neq k\)</span> ya que <span class="math inline">\(\langle U,X_i\rangle=U^tX_i=X_k^t(I-P_{-k})X_i=X_k^t(X_i-X_i)=0\)</span>. Por lo tanto, <span class="math inline">\(\widehat{Y}\)</span> que es la proyeccion ortogonal de <span class="math inline">\(Y\)</span> en el espacio generado por todas las variables predictoras se puede descomponer como la suma de la proyección ortogonal sobre el espacio generado por todas la variables excepto <span class="math inline">\(X_k\)</span> y uno ortogonal a este, e.g. el generado por <span class="math inline">\(U\)</span>. Pero la proyeccion de <span class="math inline">\(Y\)</span> en el espacio generado por <span class="math inline">\(U\)</span> es el valor estimado de la recta de regrsion de <span class="math inline">\(Y\)</span> sobre <span class="math inline">\(U\)</span>, es decir <span class="math inline">\(\frac{\langle Y,U\rangle}{||U||}U\)</span>. Por tanto tenemos que <span class="math display">\[\widehat{Y}=\widehat{Y}_{-k}+\frac{\langle Y,U\rangle}{||U||^2}U\]</span> y teniendo en cuenta que <span class="math inline">\(Y_{-k}\)</span> y <span class="math inline">\(U\)</span> son oryogonales calculando la norma al cuadrado en la expresion anterior <span class="math display">\[||Y||^2=||Y_{-k}||^2+\frac{\langle Y,U\rangle^2}{||U||^2}.\]</span> Utilizando estas expresiones y que <span class="math inline">\(\mathbb{E}(Y)=\mathbb{E}(\widehat{Y})\)</span> tenemos que</p>
+<span class="math display">\[\begin{eqnarray}
+R^2&amp;=&amp;1-\frac{Var(E)}{Var(Y)}=1-\frac{Var(Y)-Var(\widehat{Y})}{Var(Y)}=1-\frac{||Y||^2-||\widehat{Y}||^2}{||Y-\mathbb{E}(Y)||^2}\\
+&amp;=&amp;1-\frac{||Y||^2-||\widehat{Y}_{-k}||^2-\frac{\langle Y,U\rangle^2}{||U||^2}}{||Y-\mathbb{E}(Y)||^2}\\
+&amp;=&amp;1-\frac{||Y-\widehat{Y}_{-k}||^2}{||Y-\mathbb{E}(Y)||^2}+\frac{\frac{\langle Y,U\rangle^2}{||U||^2}}{||Y-\mathbb{E}(Y)||^2}=R^2_{-k}+\frac{\langle Y,U\rangle^2}{||Y-\mathbb{E}(Y)||^2||U||^2}\\
+&amp;=&amp;R^2_{-k}+ Cor(Y,U)
+\end{eqnarray}\]</span>
+<p>Luego el coeficiente de determinación semi-parcial queda <span class="math inline">\(R^2-R^2_{-k}=Cor(Y,U)^2\)</span>.</p>
+<p>Por otro lado como <span class="math inline">\(1-R^2_{-k}=1-(1-\frac{Var(V)}{Var(Y)})=\frac{||V||^2}{||Y-\mathbb{E}(Y)||^2}\)</span> y <span class="math inline">\(\widehat{Y}_{-k}\)</span> es ortogonal a <span class="math inline">\(U\)</span>, tenemos que el coeficiente de determinación parcial es</p>
+<p><span class="math display">\[\frac{R^2-R^2_{-k}}{1-R^2_{-k}}=\frac{\frac{\langle Y,U\rangle^2}{||Y-\mathbb{E}(Y)||^2||U||^2}}{\frac{||V||^2}{||Y-\mathbb{E}(Y)||^2}}=\frac{\langle Y,U\rangle^2}{||U||^2||V||^2}=\\
+=\frac{\langle Y-\widehat{Y}_{-k},U\rangle^2}{||U||^2||V||^2}=\frac{\langle V,U\rangle^2}{||U||^2||V||^2}=Cor(U,V)^2\]</span>
+tal y como queríamos demostrar.<span class="math inline">\(\,\square\)</span></p>
+<p>Como consecuencia el coeficiente de determinación semi-parcial tiene dos interpretaciones:</p>
+<p>1.- La mejora en <span class="math inline">\(R^2\)</span> que resulta de introducir la variable <span class="math inline">\(X_k\)</span> en el modelo de regresión que ya incluía al resto de variables independientes.</p>
+<p>2.- Es el coeficiente de determinación de la regresión lineal simple de <span class="math inline">\(Y\)</span> sobre <span class="math inline">\(U\)</span>.</p>
+<p>Asimismo, el coeficiente de determinación parcial se puede interpretar como:</p>
+<p>1.- La fracción de la máxima mejorta posible en <span class="math inline">\(R^2\)</span> al que contribuye la variable <span class="math inline">\(X_k\)</span>.</p>
+<p>2.- Es el coeficiente de determinación de la regresión simple de <span class="math inline">\(V\)</span> sobre <span class="math inline">\(U\)</span>.</p>
+</div>
+</div>
+<div id="ejemplo-de-regresión-lineal-múltiple-con-r" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Ejemplo de regresión lineal múltiple con R<a href="regresión-lineal-múltiple.html#ejemplo-de-regresión-lineal-múltiple-con-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Carguemos la base de datos de empleados</p>
+<div class="float">
+<img src="Figures/Datos_empleados.png" style="width:100.0%" alt="Base de datos de empleados" />
+<div class="figcaption">Base de datos de empleados</div>
+</div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="regresión-lineal-múltiple.html#cb56-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(readxl)</span>
+<span id="cb56-2"><a href="regresión-lineal-múltiple.html#cb56-2" tabindex="-1"></a><span class="sc">&gt;</span> datos <span class="ot">&lt;-</span> <span class="fu">read_xlsx</span>(<span class="st">&quot;Datos/Datos_de_empleados.xlsx&quot;</span>)</span></code></pre></div>
+<p>Expliquemos con un modelo de regresión lineal el salario de los trabajadores como función del salario inicial, el nivel educativo del trabajador y los meses de experiencia previa. Para ello en R tenemos que indicar las variables a relacionar de la siguiente manera:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="regresión-lineal-múltiple.html#cb57-1" tabindex="-1"></a><span class="sc">&gt;</span> formula<span class="ot">&lt;-</span> datos<span class="sc">$</span>salario<span class="sc">~</span>datos<span class="sc">$</span>salini<span class="sc">+</span>datos<span class="sc">$</span>educ<span class="sc">+</span>datos<span class="sc">$</span>expprev</span></code></pre></div>
+<p>El modelo de regresión se estima utilizando el comando <strong>lm</strong> y un resumen del modelo aparece con el comando <strong>summary</strong> tal y como mostramos a continuación:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="regresión-lineal-múltiple.html#cb58-1" tabindex="-1"></a><span class="sc">&gt;</span> modols<span class="ot">&lt;-</span><span class="fu">lm</span>(formula)</span>
+<span id="cb58-2"><a href="regresión-lineal-múltiple.html#cb58-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(modols)</span>
+<span id="cb58-3"><a href="regresión-lineal-múltiple.html#cb58-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb58-4"><a href="regresión-lineal-múltiple.html#cb58-4" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb58-5"><a href="regresión-lineal-múltiple.html#cb58-5" tabindex="-1"></a><span class="co">#&gt; lm(formula = formula)</span></span>
+<span id="cb58-6"><a href="regresión-lineal-múltiple.html#cb58-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb58-7"><a href="regresión-lineal-múltiple.html#cb58-7" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb58-8"><a href="regresión-lineal-múltiple.html#cb58-8" tabindex="-1"></a><span class="co">#&gt;    Min     1Q Median     3Q    Max </span></span>
+<span id="cb58-9"><a href="regresión-lineal-múltiple.html#cb58-9" tabindex="-1"></a><span class="co">#&gt; -28853  -4167  -1172   2724  48701 </span></span>
+<span id="cb58-10"><a href="regresión-lineal-múltiple.html#cb58-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb58-11"><a href="regresión-lineal-múltiple.html#cb58-11" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb58-12"><a href="regresión-lineal-múltiple.html#cb58-12" tabindex="-1"></a><span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb58-13"><a href="regresión-lineal-múltiple.html#cb58-13" tabindex="-1"></a><span class="co">#&gt; (Intercept)   -3.662e+03  1.935e+03  -1.892   0.0591 .  </span></span>
+<span id="cb58-14"><a href="regresión-lineal-múltiple.html#cb58-14" tabindex="-1"></a><span class="co">#&gt; datos$salini   1.749e+00  5.989e-02  29.198  &lt; 2e-16 ***</span></span>
+<span id="cb58-15"><a href="regresión-lineal-múltiple.html#cb58-15" tabindex="-1"></a><span class="co">#&gt; datos$educ     7.360e+02  1.687e+02   4.363 1.58e-05 ***</span></span>
+<span id="cb58-16"><a href="regresión-lineal-múltiple.html#cb58-16" tabindex="-1"></a><span class="co">#&gt; datos$expprev -1.673e+01  3.605e+00  -4.641 4.51e-06 ***</span></span>
+<span id="cb58-17"><a href="regresión-lineal-múltiple.html#cb58-17" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb58-18"><a href="regresión-lineal-múltiple.html#cb58-18" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb58-19"><a href="regresión-lineal-múltiple.html#cb58-19" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb58-20"><a href="regresión-lineal-múltiple.html#cb58-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb58-21"><a href="regresión-lineal-múltiple.html#cb58-21" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 7632 on 470 degrees of freedom</span></span>
+<span id="cb58-22"><a href="regresión-lineal-múltiple.html#cb58-22" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.8015, Adjusted R-squared:  0.8002 </span></span>
+<span id="cb58-23"><a href="regresión-lineal-múltiple.html#cb58-23" tabindex="-1"></a><span class="co">#&gt; F-statistic: 632.6 on 3 and 470 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<p>Obsérvese, que el salario inicial y el nivel educativo tienen un impacto positivo y significativo en el salario de la persona, mientras que los años de experiencia, a pesar de ser significativo en el modelo, tiene un impacto negativo en el salario del empleado. EL coeficiente de determinación del modelo es de <span class="math inline">\(R^2=0.8015\)</span> y por tanto podemos decir que el modelo recoge aproximadamente el <span class="math inline">\(80\%\)</span> de la varianza de la variable dependiente lo que significa que es un ajuste bueno.</p>
+<p>Podemos obtener los valores predichos por el modelo y representarlos graficamente.</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="regresión-lineal-múltiple.html#cb59-1" tabindex="-1"></a><span class="sc">&gt;</span> Yfit<span class="ot">=</span>modols<span class="sc">$</span>fitted.values</span>
+<span id="cb59-2"><a href="regresión-lineal-múltiple.html#cb59-2" tabindex="-1"></a><span class="sc">&gt;</span> xx<span class="ot">=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(Yfit))</span>
+<span id="cb59-3"><a href="regresión-lineal-múltiple.html#cb59-3" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(xx,modols<span class="sc">$</span>fitted.values,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">col=</span><span class="st">&#39;red&#39;</span>,<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">8500</span>,<span class="dv">136000</span>),<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Salario&quot;</span>, <span class="at">xaxt=</span><span class="st">&quot;n&quot;</span>)</span>
+<span id="cb59-4"><a href="regresión-lineal-múltiple.html#cb59-4" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">axis</span>(<span class="dv">1</span>, <span class="at">at =</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(Yfit),<span class="dv">20</span>))</span>
+<span id="cb59-5"><a href="regresión-lineal-múltiple.html#cb59-5" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">par</span>(<span class="at">new=</span><span class="cn">TRUE</span>)</span>
+<span id="cb59-6"><a href="regresión-lineal-múltiple.html#cb59-6" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(datos<span class="sc">$</span>salario,<span class="at">pch=</span><span class="dv">19</span>,<span class="at">col=</span><span class="st">&#39;blue&#39;</span>,<span class="at">xlab=</span><span class="st">&quot;&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Salario&quot;</span>,<span class="at">axes=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="03-Sesion3-Regresion-Lineal-multiple_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="regresión-lineal-múltiple.html#cb60-1" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">par</span>(<span class="at">new=</span><span class="cn">FALSE</span>)</span></code></pre></div>
+<p>Podemos ahora calcular las correlaciones parciales de todas las variables intervinientes en el modelo. Por ejemplo calculemos el coeficiente de correlación parcial de la variable <em>expprev</em> en el modelo *modols. Para ello calculamos <span class="math inline">\(R^2\)</span> y <span class="math inline">\(R^2_{-expprev}\)</span> tal y como sigue</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="regresión-lineal-múltiple.html#cb61-1" tabindex="-1"></a><span class="sc">&gt;</span> restot<span class="ot">=</span><span class="fu">summary</span>(modols)</span>
+<span id="cb61-2"><a href="regresión-lineal-múltiple.html#cb61-2" tabindex="-1"></a><span class="sc">&gt;</span> R2<span class="ot">=</span>restot<span class="sc">$</span>r.squared</span>
+<span id="cb61-3"><a href="regresión-lineal-múltiple.html#cb61-3" tabindex="-1"></a><span class="sc">&gt;</span> modsinexpprev<span class="ot">=</span><span class="fu">lm</span>(datos<span class="sc">$</span>salario<span class="sc">~</span>datos<span class="sc">$</span>salini<span class="sc">+</span>datos<span class="sc">$</span>educ)<span class="co"># modelo sin la variable expprev</span></span>
+<span id="cb61-4"><a href="regresión-lineal-múltiple.html#cb61-4" tabindex="-1"></a><span class="sc">&gt;</span> resexpprev<span class="ot">=</span><span class="fu">summary</span>(modsinexpprev)</span>
+<span id="cb61-5"><a href="regresión-lineal-múltiple.html#cb61-5" tabindex="-1"></a><span class="sc">&gt;</span> R2expprev<span class="ot">=</span>resexpprev<span class="sc">$</span>r.squared</span>
+<span id="cb61-6"><a href="regresión-lineal-múltiple.html#cb61-6" tabindex="-1"></a><span class="sc">&gt;</span> PartialrR2expprev<span class="ot">=</span>(R2<span class="sc">-</span>R2expprev)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>R2expprev)</span>
+<span id="cb61-7"><a href="regresión-lineal-múltiple.html#cb61-7" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(PartialrR2expprev)</span>
+<span id="cb61-8"><a href="regresión-lineal-múltiple.html#cb61-8" tabindex="-1"></a><span class="co">#&gt; [1] 0.04381444</span></span></code></pre></div>
+<p>Otra forma de calcularlo sería calculando <span class="math inline">\(1-SR_{full}/SR_{expprev}\)</span> donde <span class="math inline">\(SR_{full}\)</span> y <span class="math inline">\(SR_{expprev}\)</span> son la suma de los cuadrados de los residuos del modelo con todas las variables <span class="math inline">\(modols\)</span> y el modelo reducido sin la variable <em>expprev</em>, <span class="math inline">\(modsibexpprev\)</span> respectuivamente.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="regresión-lineal-múltiple.html#cb62-1" tabindex="-1"></a><span class="sc">&gt;</span> PartialrR2expprev2<span class="ot">=</span><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>(modols<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(modsinexpprev<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb62-2"><a href="regresión-lineal-múltiple.html#cb62-2" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(PartialrR2expprev2)</span>
+<span id="cb62-3"><a href="regresión-lineal-múltiple.html#cb62-3" tabindex="-1"></a><span class="co">#&gt; [1] 0.04381444</span></span></code></pre></div>
+<p>Por tanto tenemos que la mejora máxima en el coeficiente de determinación, <span class="math inline">\(R^2\)</span>, que produce la incorporación de la variable <em>expprev</em> es del <span class="math inline">\(4.38\%\)</span>.</p>
+<p><strong>Ejercicio:</strong></p>
+<p>1.- Calcula e interpreta los coeficientes de correlación parcial del resto de variables del modelo <em>modols</em>.</p>
+<p>2.- Investiga el efecto que puede tener el género del empleado en el salario.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estadística-con-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análisis-de-componentes-principales.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

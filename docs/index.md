@@ -1,0 +1,30 @@
+--- 
+title: "Herramientas... MBA"
+author: "Fernando López <br> Manuel Reuz"
+date: "2024-08-09"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a minimal example of using the bookdown package to write a book.
+  The HTML output format for this example is bookdown::bs4_book,
+  set in the _output.yml file.
+biblio-style: apalike
+csl: chicago-fullnote-bibliography.csl
+---
+
+# Presentación 
+
+En el mundo dinámico y competitivo de los negocios, la capacidad de tomar decisiones informadas basadas en datos es crucial. La asignatura "Herramientas Cuantitativo Informáticas para la Toma de Decisiones en la Empresa" está diseñada para equipar a los estudiantes del MBA con las habilidades y conocimientos necesarios para analizar, interpretar y aplicar datos estadísticos de manera efectiva en diversas áreas empresariales.
+
+El análisis de la información cuantitativa es una herramienta poderosa que permite a los gerentes y profesionales tomar decisiones basadas en evidencia, identificando tendencias, patrones y relaciones significativas en los datos. Esta asignatura se centra en proporcionar una comprensión sólida de los conceptos estadísticos fundamentales, así como en la aplicación práctica de estas herramientas utilizando software informático especializado.
+
+A lo largo esta asignatura, los estudiantes explorarán una amplia gama de temas estadísticos, comenzando con los principios básicos de la estadística descriptiva y la inferencia estadística. Aprenderán a calcular y interpretar medidas de tendencia central y dispersión, a realizar pruebas de hipótesis y a construir intervalos de confianza. Además, se abordarán técnicas más avanzadas como el análisis de regresión, la correlación y la estadística multivariante, proporcionando a los estudiantes una comprensión profunda de cómo estas herramientas pueden ser aplicadas en contextos empresariales.
+
+Una parte esencial del curso es la integración de herramientas informáticas cuantitativas, como R, Python y Excel. Estas plataformas no solo facilitan el análisis de grandes volúmenes de datos, sino que también permiten la visualización de resultados de manera clara y concisa. Los estudiantes tendrán la oportunidad de trabajar con datos reales y desarrollar sus habilidades prácticas a través de ejercicios y proyectos que simulan situaciones del mundo real.
+
+El lenguaje R, en particular, se destaca como una herramienta potente y versátil para impartir esta asignatura. R es ampliamente reconocido por su capacidad para manejar grandes conjuntos de datos y realizar análisis estadísticos complejos con una eficiencia notable. Además, su vasto ecosistema de paquetes y bibliotecas especializadas permite a los estudiantes aplicar una variedad de técnicas estadísticas avanzadas con facilidad. R también ofrece robustas capacidades de visualización de datos, permitiendo la creación de gráficos y reportes altamente personalizados y de gran impacto visual. La combinación de estas características hace de R una herramienta ideal para enseñar y aplicar estadísticas en un entorno académico y profesional, asegurando que los estudiantes adquieran habilidades prácticas y relevantes para sus futuras carreras.
+
+La asignatura también enfatiza la interpretación y comunicación de los resultados estadísticos. Es fundamental que los profesionales no solo sepan cómo realizar análisis, sino también cómo presentar sus hallazgos de manera que sean comprensibles y útiles para la toma de decisiones estratégicas.

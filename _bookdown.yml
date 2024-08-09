@@ -1,0 +1,15 @@
+book_filename: "LibroMBA"
+new_session: true
+before_chapter_script: _common.R
+delete_merged_file: true
+output_dir: "docs"
+rmd_files: ["index.Rmd",
+"01-Sesion1-Introduccion-R.Rmd",
+"02-Sesion2-Estadistica-Basica-con-R.Rmd",
+"03-Sesion3-Regresion-Lineal-multiple.Rmd",
+"04-Sesion4-Analisis-de-Componentes-Principales.Rmd",
+"05-Sesion5-Analisis-Cluster.Rmd",
+"06-Sesion6-Arboles-de-Decision.Rmd"]
+language:
+  ui:
+    chapter_name: "Capítulo "

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Análisis de Componentes Principales | Herramientas… MBA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Análisis de Componentes Principales | Herramientas… MBA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Análisis de Componentes Principales | Herramientas… MBA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Fernando López   Manuel Reuz" />
+
+
+<meta name="date" content="2024-08-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regresión-lineal-múltiple.html"/>
+<link rel="next" href="análisis-cluster.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Presentación</a></li>
+<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#el-lenguaje-r"><i class="fa fa-check"></i><b>2.2</b> El lenguaje R</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#por-qué-aprender-r"><i class="fa fa-check"></i><b>2.3</b> ¿Por qué aprender R?</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#rstudio"><i class="fa fa-check"></i><b>2.4</b> RStudio</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-cosas-hago-con-r"><i class="fa fa-check"></i><b>2.5</b> Qué cosas hago con R</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#creando-el-entorno-de-trabajo-en-rstudio."><i class="fa fa-check"></i><b>2.6</b> Creando el entorno de trabajo en RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consola"><i class="fa fa-check"></i><b>2.6.1</b> Consola</a></li>
+<li class="chapter" data-level="2.6.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#scripts"><i class="fa fa-check"></i><b>2.6.2</b> Scripts</a></li>
+<li class="chapter" data-level="2.6.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#entorno"><i class="fa fa-check"></i><b>2.6.3</b> Entorno</a></li>
+<li class="chapter" data-level="2.6.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#miscelánea-archivos-gráficos-paquetes-ayuda-visor"><i class="fa fa-check"></i><b>2.6.4</b> Miscelánea: Archivos, Gráficos, Paquetes, Ayuda, Visor</a></li>
+<li class="chapter" data-level="2.6.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#configuración-del-directorio-de-trabajo."><i class="fa fa-check"></i><b>2.6.5</b> Configuración del directorio de trabajo.</a></li>
+<li class="chapter" data-level="2.6.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#instalar-y-cargar-paquetes."><i class="fa fa-check"></i><b>2.6.6</b> Instalar y cargar paquetes.</a></li>
+<li class="chapter" data-level="2.6.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ayuda-en-r."><i class="fa fa-check"></i><b>2.6.7</b> Ayuda en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#primeros-pasos"><i class="fa fa-check"></i><b>2.7</b> Primeros pasos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#script-básico-para-apreder-r"><i class="fa fa-check"></i><b>2.7.1</b> Script básico para apreder R</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#tipos-de-datos-en-r"><i class="fa fa-check"></i><b>2.7.2</b> Tipos de Datos en R</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#la-importancia-de-los-objetos-en-r"><i class="fa fa-check"></i><b>2.7.3</b> La Importancia de los Objetos en R</a></li>
+<li class="chapter" data-level="2.7.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#dataframes-en-r"><i class="fa fa-check"></i><b>2.7.4</b> DataFrames en R</a></li>
+<li class="chapter" data-level="2.7.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ejemplo-de-dataframe"><i class="fa fa-check"></i><b>2.7.5</b> Ejemplo de DataFrame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introducción-a-r.html"><a href="introducción-a-r.html#un-for-en-r"><i class="fa fa-check"></i><b>2.8</b> Un <code>for</code> en R</a></li>
+<li class="chapter" data-level="2.9" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-excel"><i class="fa fa-check"></i><b>2.9</b> Leer un Excel</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#datos-empleados"><i class="fa fa-check"></i><b>2.9.1</b> Datos Empleados</a></li>
+<li class="chapter" data-level="2.9.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-csv"><i class="fa fa-check"></i><b>2.9.2</b> Leer un csv</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-1"><i class="fa fa-check"></i><b>2.10</b> Actividad 1:</a></li>
+<li class="chapter" data-level="2.11" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-2"><i class="fa fa-check"></i><b>2.11</b> Actividad 2:</a></li>
+<li class="chapter" data-level="2.12" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-3"><i class="fa fa-check"></i><b>2.12</b> Actividad 3:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-con-r.html"><a href="estadística-con-r.html"><i class="fa fa-check"></i><b>3</b> Estadística con R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>3.1</b> Resumen estadístico</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-posición-central"><i class="fa fa-check"></i><b>3.1.1</b> Medidas de posición central</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-dispersión-absolutas"><i class="fa fa-check"></i><b>3.1.2</b> Medidas de dispersión absolutas</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-asimetría-y-curtosis"><i class="fa fa-check"></i><b>3.1.3</b> Medidas de asimetría y curtosis</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#la-función-summary"><i class="fa fa-check"></i><b>3.1.4</b> La función ‘summary()’</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad"><i class="fa fa-check"></i><b>3.1.5</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#gráficos-con-r"><i class="fa fa-check"></i><b>3.2</b> Gráficos con R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> ggplot2</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad-4"><i class="fa fa-check"></i><b>3.2.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-hipótesis"><i class="fa fa-check"></i><b>3.3</b> Test Hipótesis</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.3.1</b> Un simple t-test de igualdad de medias</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias-pareadas"><i class="fa fa-check"></i><b>3.3.2</b> Un simple t-test de igualdad de medias pareadas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-de-normalidad-paramétricos"><i class="fa fa-check"></i><b>3.3.3</b> Test de normalidad paramétricos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#distribuciones-bivariadas"><i class="fa fa-check"></i><b>3.4</b> Distribuciones bivariadas</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>3.4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#algo-de-test-de-independencia"><i class="fa fa-check"></i><b>3.4.2</b> Algo de test de independencia</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#correlaciones"><i class="fa fa-check"></i><b>3.4.3</b> Correlaciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html"><i class="fa fa-check"></i><b>4</b> Regresión Lineal Múltiple</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados."><i class="fa fa-check"></i><b>4.1</b> Estimación de los parámetros. Método de los mínimos cuadrados.</a></li>
+<li class="chapter" data-level="4.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#descomposición-de-la-varianza-y-bondad-del-ajuste."><i class="fa fa-check"></i><b>4.2</b> Descomposición de la Varianza y bondad del ajuste.</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-y-correlación."><i class="fa fa-check"></i><b>4.2.1</b> Coeficientes de determinación y correlación.</a></li>
+<li class="chapter" data-level="4.2.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-semi-parcial-y-parcial"><i class="fa fa-check"></i><b>4.2.2</b> Coeficientes de determinación semi-parcial y parcial</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#ejemplo-de-regresión-lineal-múltiple-con-r"><i class="fa fa-check"></i><b>4.3</b> Ejemplo de regresión lineal múltiple con R</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>5</b> Análisis de Componentes Principales</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#antes-de-empezar"><i class="fa fa-check"></i><b>5.2</b> Antes de empezar</a></li>
+<li class="chapter" data-level="5.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-acp"><i class="fa fa-check"></i><b>5.3</b> El ACP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#escalado-de-las-variables"><i class="fa fa-check"></i><b>5.3.1</b> Escalado de las variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#influencia-de-outliers"><i class="fa fa-check"></i><b>5.3.2</b> Influencia de outliers</a></li>
+<li class="chapter" data-level="5.3.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-varianza-explicada"><i class="fa fa-check"></i><b>5.3.3</b> Proporción de varianza explicada</a></li>
+<li class="chapter" data-level="5.3.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#número-óptimo-de-componentes-principales"><i class="fa fa-check"></i><b>5.3.4</b> Número óptimo de componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-iniciales"><i class="fa fa-check"></i><b>5.4</b> Test iniciales</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#pruebas-esfericidad-de-bartlett"><i class="fa fa-check"></i><b>5.4.1</b> Pruebas esfericidad de Bartlett</a></li>
+<li class="chapter" data-level="5.4.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#prueba-del-kmo"><i class="fa fa-check"></i><b>5.4.2</b> Prueba del KMO</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#una-aplicación-con-datos-de-empleados"><i class="fa fa-check"></i><b>5.5</b> Una aplicación con “Datos de Empleados”</a></li>
+<li class="chapter" data-level="5.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#paquetes-de-r-para-el-acp"><i class="fa fa-check"></i><b>5.6</b> Paquetes de R para el ACP</a></li>
+<li class="chapter" data-level="5.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-la-varianza-explicada"><i class="fa fa-check"></i><b>5.7</b> Proporción de la varianza explicada</a></li>
+<li class="chapter" data-level="5.8" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-gráfico-de-sedimentación"><i class="fa fa-check"></i><b>5.8</b> El gráfico de sedimentación</a></li>
+<li class="chapter" data-level="5.9" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#las-componentes"><i class="fa fa-check"></i><b>5.9</b> Las componentes</a></li>
+<li class="chapter" data-level="5.10" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#ejercicio-acp-como-indicador-sintético"><i class="fa fa-check"></i><b>5.10</b> Ejercicio: ACP como indicador sintético</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#los-datos"><i class="fa fa-check"></i><b>5.10.1</b> Los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#aplicación-regresión-y-acp"><i class="fa fa-check"></i><b>5.11</b> Aplicación: Regresión y ACP</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#lectura-y-sumario-de-los-datos"><i class="fa fa-check"></i><b>5.11.1</b> Lectura y sumario de los datos</a></li>
+<li class="chapter" data-level="5.11.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#eliminación-de-datos-perdidos"><i class="fa fa-check"></i><b>5.11.2</b> Eliminación de datos perdidos</a></li>
+<li class="chapter" data-level="5.11.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#un-modelo-de-regresión-básico"><i class="fa fa-check"></i><b>5.11.3</b> Un modelo de regresión básico</a></li>
+<li class="chapter" data-level="5.11.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#evaluamos-matriz-de-correlaciones"><i class="fa fa-check"></i><b>5.11.4</b> Evaluamos matriz de correlaciones</a></li>
+<li class="chapter" data-level="5.11.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-de-adecuación-del-acp"><i class="fa fa-check"></i><b>5.11.5</b> Test de adecuación del ACP</a></li>
+<li class="chapter" data-level="5.11.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#cálculo-de-las-componentes"><i class="fa fa-check"></i><b>5.11.6</b> Cálculo de las componentes</a></li>
+<li class="chapter" data-level="5.11.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#interpretación-de-las-cps"><i class="fa fa-check"></i><b>5.11.7</b> Interpretación de las CPs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-cluster.html"><a href="análisis-cluster.html"><i class="fa fa-check"></i><b>6</b> Análisis Cluster</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#medidas-de-distancia"><i class="fa fa-check"></i><b>6.1</b> Medidas de distancia</a></li>
+<li class="chapter" data-level="6.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-cluster-con-el-algoritmo-k-medias."><i class="fa fa-check"></i><b>6.2</b> Análisis cluster con el algoritmo K-medias.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#k-medias"><i class="fa fa-check"></i><b>6.2.1</b> K-medias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#un-ejemplo-de-análisis-clúster-con-r"><i class="fa fa-check"></i><b>6.3</b> Un ejemplo de análisis clúster con R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#funciones-básicas-de-r-para-usar-k-medias"><i class="fa fa-check"></i><b>6.3.1</b> Funciones básicas de R para usar K-medias</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#selección-del-número-de-clústeres"><i class="fa fa-check"></i><b>6.3.2</b> Selección del número de clústeres</a></li>
+<li class="chapter" data-level="6.3.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#visualización-del-clúster-óptimo"><i class="fa fa-check"></i><b>6.3.3</b> Visualización del clúster óptimo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análisis-cluster.html"><a href="análisis-cluster.html#comentarios-finales-sobre-el-algoritmo-k-medias"><i class="fa fa-check"></i><b>6.4</b> Comentarios finales sobre el algoritmo k-medias</a></li>
+<li class="chapter" data-level="6.5" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-clúster-jerárquico"><i class="fa fa-check"></i><b>6.5</b> Análisis clúster jerárquico</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análsis-clúster-jerárquico-con-r"><i class="fa fa-check"></i><b>6.5.1</b> Análsis clúster jerárquico con R</a></li>
+<li class="chapter" data-level="6.5.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#trabajando-con-dendrogramas"><i class="fa fa-check"></i><b>6.5.2</b> Trabajando con dendrogramas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html"><i class="fa fa-check"></i><b>7</b> Métodos basados en árboles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#introducción-1"><i class="fa fa-check"></i><b>7.1</b> Introducción</a></li>
+<li class="chapter" data-level="7.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#origen-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.2</b> Origen de los Árboles de Decisión</a></li>
+<li class="chapter" data-level="7.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#los-árboles-de-decisión-en-las-técnicas-de-machine-learning"><i class="fa fa-check"></i><b>7.3</b> Los Árboles de Decisión en las técnicas de Machine Learning</a></li>
+<li class="chapter" data-level="7.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-regresión"><i class="fa fa-check"></i><b>7.4</b> Árboles de regresión</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#un-ejemplo-de-juguete"><i class="fa fa-check"></i><b>7.4.1</b> Un ejemplo de juguete</a></li>
+<li class="chapter" data-level="7.4.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#sec:terminologia"><i class="fa fa-check"></i><b>7.4.2</b> Terminología</a></li>
+<li class="chapter" data-level="7.4.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#como-se-crea-un-árbol"><i class="fa fa-check"></i><b>7.4.3</b> Como se crea un árbol</a></li>
+<li class="chapter" data-level="7.4.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#evitar-el-overfitting"><i class="fa fa-check"></i><b>7.4.4</b> Evitar el overfitting</a></li>
+<li class="chapter" data-level="7.4.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#validación-cruzada"><i class="fa fa-check"></i><b>7.4.5</b> Validación cruzada</a></li>
+<li class="chapter" data-level="7.4.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#algoritmo-para-crear-un-árbol-de-regresión-con-pruning"><i class="fa fa-check"></i><b>7.4.6</b> Algoritmo para crear un árbol de regresión con pruning</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-clasificación"><i class="fa fa-check"></i><b>7.5</b> Árboles de clasificación</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#cómo-se-crea-un-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.5.1</b> Cómo se crea un árbol de clasificación</a></li>
+<li class="chapter" data-level="7.5.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-del-árbol"><i class="fa fa-check"></i><b>7.5.2</b> Predicción del árbol</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-y-desventajas-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.6</b> Ventajas y desventajas de los Árboles de Decisión</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-algunas"><i class="fa fa-check"></i><b>7.6.1</b> Ventajas (algunas)</a></li>
+<li class="chapter" data-level="7.6.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#desventajas-algunas"><i class="fa fa-check"></i><b>7.6.2</b> Desventajas (algunas)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#paquetes-de-r"><i class="fa fa-check"></i><b>7.7</b> Paquetes de R</a></li>
+<li class="chapter" data-level="7.8" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.8</b> Ejemplo Árbol de Clasificación</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#pre-podado"><i class="fa fa-check"></i><b>7.8.1</b> Pre-podado</a></li>
+<li class="chapter" data-level="7.8.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#entrenamiento-y-test"><i class="fa fa-check"></i><b>7.8.2</b> Entrenamiento y test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-regresión"><i class="fa fa-check"></i><b>7.9</b> Ejemplo Árbol de Regresión</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#datos"><i class="fa fa-check"></i><b>7.9.1</b> Datos</a></li>
+<li class="chapter" data-level="7.9.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ajuste-del-modelo-con-la-librería-tree"><i class="fa fa-check"></i><b>7.9.2</b> Ajuste del modelo con la librería ‘tree’</a></li>
+<li class="chapter" data-level="7.9.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#podado-del-árbol-pruning"><i class="fa fa-check"></i><b>7.9.3</b> Podado del árbol (pruning)</a></li>
+<li class="chapter" data-level="7.9.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-y-evaluación-del-modelo"><i class="fa fa-check"></i><b>7.9.4</b> Predicción y evaluación del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#webs"><i class="fa fa-check"></i><b>7.10</b> Webs</a></li>
+<li class="chapter" data-level="7.11" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#referencias"><i class="fa fa-check"></i><b>7.11</b> Referencias</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Herramientas… MBA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="análisis-de-componentes-principales" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Análisis de Componentes Principales<a href="análisis-de-componentes-principales.html#análisis-de-componentes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introducción" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Introducción<a href="análisis-de-componentes-principales.html#introducción" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El análisis de componentes principales (ACP) es una técnica fundamental en estadística y análisis multivariado que se utiliza para simplificar y entender la estructura subyacente en conjuntos de datos complejos. Esta metodología tiene aplicaciones en diversas disciplinas, como la estadística, la ingeniería, la biología, la economía y la ciencia de datos.</p>
+<p>En esencia, el ACP busca transformar un conjunto de variables correlacionadas en un nuevo conjunto de variables no correlacionadas, conocidas como componentes principales. Estos componentes se ordenan en función de la cantidad de varianza que explican en los datos originales, lo que permite destacar las direcciones principales de variabilidad en el conjunto de datos.</p>
+<p>La idea central detrás del ACP es reducir la dimensionalidad del conjunto de datos, manteniendo la mayor cantidad posible de información. Al proyectar los datos en un espacio de menor dimensión definido por los componentes principales, se facilita la visualización y la interpretación de patrones y tendencias en los datos, lo que puede ser crucial para la toma de decisiones informada.</p>
+<p>A lo largo de este proceso, el ACP proporciona una herramienta valiosa para identificar patrones subyacentes, eliminar redundancias y resaltar las relaciones más importantes entre las variables, lo que contribuye significativamente a la simplificación y comprensión de conjuntos de datos complejos.</p>
+</div>
+<div id="antes-de-empezar" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Antes de empezar<a href="análisis-de-componentes-principales.html#antes-de-empezar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Antes de aplicar el ACP, es importante considerar algunas condiciones y realizar ciertos pasos:</p>
+<p><strong>Tipo de Variables:</strong> El ACP se utiliza comúnmente con variables cuantitativas. Las variables deben ser de escala numérica, ya que el método implica operaciones algebraicas y estadísticas que requieren números. Si tienes variables categóricas, es posible que necesites realizar alguna transformación o utilizar técnicas diferentes.</p>
+<p><strong>Escalas de Medición:</strong> Las variables deben tener escalas de medición comparables. Si las unidades de medida son muy diferentes entre las variables, es recomendable estandarizar o normalizar las variables antes de aplicar el ACP para evitar que una variable con una escala más grande domine la variabilidad.</p>
+<p><strong>Correlación entre Variables:</strong> El ACP asume que existe cierta correlación entre las variables originales. Si las variables están completamente incorrelacionadas, el análisis no aportará información significativa.</p>
+<p><strong>Linealidad:</strong> El ACP asume linealidad entre las variables. Si la relación entre las variables es altamente no lineal, el ACP puede no capturar adecuadamente la estructura subyacente de los datos.</p>
+</div>
+<div id="el-acp" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> El ACP<a href="análisis-de-componentes-principales.html#el-acp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="escalado-de-las-variables" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> Escalado de las variables<a href="análisis-de-componentes-principales.html#escalado-de-las-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El proceso de PCA identifica aquellas direcciones en las que la varianza es mayor. Como la varianza de una variable se mide en su misma escala elevada al cuadrado, si antes de calcular las componentes no se estandarizan todas las variables para que tengan media 0 y desviación estándar 1, aquellas variables cuya escala sea mayor dominarán al resto. De ahí que sea recomendable estandarizar siempre los datos.</p>
+</div>
+<div id="influencia-de-outliers" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> Influencia de outliers<a href="análisis-de-componentes-principales.html#influencia-de-outliers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Al trabajar con varianzas, el método PCA es altamente sensible a outliers, por lo que es altamente recomendable estudiar si los hay. La detección de valores atípicos con respecto a una determinada dimensión es algo relativamente sencillo de hacer mediante comprobaciones gráficas. Sin embargo, cuando se trata con múltiples dimensiones el proceso se complica. Por ejemplo, considérese un hombre que mide 2 metros y pesa 50 kg. Ninguno de los dos valores es atípico de forma individual, pero en conjunto se trataría de un caso muy excepcional. La distancia de Mahalanobis es una medida de distancia entre un punto y la media que se ajusta en función de la correlación entre dimensiones y que permite encontrar potenciales outliers en distribuciones multivariante.</p>
+</div>
+<div id="proporción-de-varianza-explicada" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Proporción de varianza explicada<a href="análisis-de-componentes-principales.html#proporción-de-varianza-explicada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Una de las preguntas más frecuentes que surge tras realizar un PCA es: ¿Cuánta información presente en el set de datos original se pierde al proyectar las observaciones en un espacio de menor dimensión? o lo que es lo mismo ¿Cuanta información es capaz de capturar cada una de las componentes principales obtenidas? Para contestar a estas preguntas se recurre a la proporción de varianza explicada por cada componente principal.</p>
+</div>
+<div id="número-óptimo-de-componentes-principales" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Número óptimo de componentes principales<a href="análisis-de-componentes-principales.html#número-óptimo-de-componentes-principales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Por lo general, dada una matriz de datos de dimensiones n x p, el número de componentes principales que se pueden calcular es como máximo de n-1 o p (el menor de los dos valores es el limitante). Sin embargo, siendo el objetivo del PCA reducir la dimensionalidad, suelen ser de interés utilizar el número mínimo de componentes que resultan suficientes para explicar los datos. No existe una respuesta o método único que permita identificar cual es el número óptimo de componentes principales a utilizar. Una forma de proceder muy extendida consiste en evaluar la proporción de varianza explicada acumulada y seleccionar el número de componentes mínimo a partir del cual el incremento deja de ser sustancial.</p>
+</div>
+</div>
+<div id="test-iniciales" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Test iniciales<a href="análisis-de-componentes-principales.html#test-iniciales" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pruebas-esfericidad-de-bartlett" class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Pruebas esfericidad de Bartlett<a href="análisis-de-componentes-principales.html#pruebas-esfericidad-de-bartlett" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Se utiliza para probar la Hipótesis Nula que afirma que las variables no están correlacionadas en la población. Es decir, comprueba si la matriz de correlaciones es una matriz de identidad. Se puede dar como válidos aquellos resultados que nos presenten un valor elevado del test y cuya fiabilidad sea menor a 0.05. En este caso se rechaza la Hipótesis Nula y se continúa con el Análisis.</p>
+<p>Prueba de esfericidad de Bartlett:</p>
+<div class="infobox_resume">
+<p>Si Sig. (p-valor) &lt; 0.05 aceptamos <span class="math inline">\(H_0\)</span> (hipótesis nula) =&gt; se puede aplicar el análisis factorial.</p>
+<p>Si Sig. (p-valor) &gt; 0.05 rechazamos <span class="math inline">\(H_0\)</span> =&gt; no se puede aplicar el análisis factorial.</p>
+</div>
+</div>
+<div id="prueba-del-kmo" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Prueba del KMO<a href="análisis-de-componentes-principales.html#prueba-del-kmo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El test KMO (Kaiser, Meyer y Olkin) relaciona los coeficientes de correlación, <span class="math inline">\(r_{jh}\)</span>, observados entre las variables <span class="math inline">\(X_j\)</span> y <span class="math inline">\(X_h\)</span>, y <span class="math inline">\(a_{jh}\)</span> son los coeficientes de correlación parcial entre las variables <span class="math inline">\(X_j\)</span> y <span class="math inline">\(X_h\)</span>. Cuanto más cerca de 1 tenga el valor obtenido del test KMO, implica que la relación entres las variables es alta. Si KMO ≥ 0.9, el test es muy bueno; notable para KMO ≥ 0.8; mediano para KMO ≥ 0.7; bajo para KMO ≥ 0.6; y muy bajo para KMO &lt; 0.5.</p>
+<p>La prueba de evalúa la aplicabilidad del análisis factorial de las variables estudiadas. El modelo es significativo (aceptamos la hipótesis nula, H0) cuando se puede aplicar el análisis factorial</p>
+</div>
+</div>
+<div id="una-aplicación-con-datos-de-empleados" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Una aplicación con “Datos de Empleados”<a href="análisis-de-componentes-principales.html#una-aplicación-con-datos-de-empleados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El objetivo es aplicar el ACP a los datos “Datos de Empleados”. Debemos seleccionar solo las variables cuantitativas a las que vamos a añadir la edad del empleado.</p>
+<p>Lectura de datos y cálculo de matriz de correlaciones</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="análisis-de-componentes-principales.html#cb63-1" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb63-2"><a href="análisis-de-componentes-principales.html#cb63-2" tabindex="-1"></a>bbdd <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Datos/Datos_de_empleados.xlsx&quot;</span>)</span>
+<span id="cb63-3"><a href="análisis-de-componentes-principales.html#cb63-3" tabindex="-1"></a><span class="fu">cor</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>salini)</span>
+<span id="cb63-4"><a href="análisis-de-componentes-principales.html#cb63-4" tabindex="-1"></a><span class="co">#&gt; [1] 0.8801175</span></span>
+<span id="cb63-5"><a href="análisis-de-componentes-principales.html#cb63-5" tabindex="-1"></a><span class="fu">cor</span>(bbdd<span class="sc">$</span>salario,bbdd<span class="sc">$</span>expprev)</span>
+<span id="cb63-6"><a href="análisis-de-componentes-principales.html#cb63-6" tabindex="-1"></a><span class="co">#&gt; [1] -0.09746693</span></span>
+<span id="cb63-7"><a href="análisis-de-componentes-principales.html#cb63-7" tabindex="-1"></a><span class="co"># Un plot con correlaciones</span></span>
+<span id="cb63-8"><a href="análisis-de-componentes-principales.html#cb63-8" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb63-9"><a href="análisis-de-componentes-principales.html#cb63-9" tabindex="-1"></a><span class="co">#&gt; Loading required package: ggplot2</span></span>
+<span id="cb63-10"><a href="análisis-de-componentes-principales.html#cb63-10" tabindex="-1"></a><span class="fu">ggcorrplot</span>(<span class="fu">cor</span>(bbdd[,<span class="dv">6</span><span class="sc">:</span><span class="dv">9</span>]),<span class="at">lab_size =</span> <span class="dv">3</span>,<span class="at">hc.order =</span> <span class="cn">TRUE</span>,<span class="at">method =</span> <span class="st">&quot;circle&quot;</span>,<span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<blockquote>
+<p><strong>Ejercicio: Incluir nueva variable: Edad del empleado</strong></p>
+</blockquote>
+<p>Buscar información para calcular la edad de cada empleado e introducirla como una nueva variable</p>
+<p>Normalizamos datos</p>
+<p>El cálculo de los componentes principales depende de las unidades de medida empleadas en las variables. Es importante, antes de aplicar el PCA, estandarizar las variables para que tengan media 0 y desviación estándar 1.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="análisis-de-componentes-principales.html#cb64-1" tabindex="-1"></a>de <span class="ot">&lt;-</span> bbdd[,<span class="fu">c</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">9</span>,<span class="dv">11</span>)]</span>
+<span id="cb64-2"><a href="análisis-de-componentes-principales.html#cb64-2" tabindex="-1"></a>de.n <span class="ot">&lt;-</span> <span class="fu">scale</span>(de)</span>
+<span id="cb64-3"><a href="análisis-de-componentes-principales.html#cb64-3" tabindex="-1"></a>corr_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(de.n)</span>
+<span id="cb64-4"><a href="análisis-de-componentes-principales.html#cb64-4" tabindex="-1"></a><span class="fu">ggcorrplot</span>(corr_matrix,<span class="at">lab =</span> <span class="cn">TRUE</span>,<span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="análisis-de-componentes-principales.html#cb65-1" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb65-2"><a href="análisis-de-componentes-principales.html#cb65-2" tabindex="-1"></a><span class="co">#&gt; corrplot 0.92 loaded</span></span>
+<span id="cb65-3"><a href="análisis-de-componentes-principales.html#cb65-3" tabindex="-1"></a><span class="fu">corrplot</span>(<span class="fu">cor</span>(de.n))</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Test de adecuación del ACP</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="análisis-de-componentes-principales.html#cb66-1" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb66-2"><a href="análisis-de-componentes-principales.html#cb66-2" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(<span class="fu">cor</span>(de.n),<span class="at">n=</span><span class="dv">474</span>)</span>
+<span id="cb66-3"><a href="análisis-de-componentes-principales.html#cb66-3" tabindex="-1"></a><span class="co">#&gt; $chisq</span></span>
+<span id="cb66-4"><a href="análisis-de-componentes-principales.html#cb66-4" tabindex="-1"></a><span class="co">#&gt; [1] 1266.164</span></span>
+<span id="cb66-5"><a href="análisis-de-componentes-principales.html#cb66-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb66-6"><a href="análisis-de-componentes-principales.html#cb66-6" tabindex="-1"></a><span class="co">#&gt; $p.value</span></span>
+<span id="cb66-7"><a href="análisis-de-componentes-principales.html#cb66-7" tabindex="-1"></a><span class="co">#&gt; [1] 7.662669e-266</span></span>
+<span id="cb66-8"><a href="análisis-de-componentes-principales.html#cb66-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb66-9"><a href="análisis-de-componentes-principales.html#cb66-9" tabindex="-1"></a><span class="co">#&gt; $df</span></span>
+<span id="cb66-10"><a href="análisis-de-componentes-principales.html#cb66-10" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<p>Con este test podemos ver la relación de coeficientes de correlación entre variables si el valor es cercano a 1, mayor será la relación entre variables, dado los valores, se puede decir que es apto para la realización del análisis de componentes.</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="análisis-de-componentes-principales.html#cb67-1" tabindex="-1"></a><span class="fu">KMO</span>(de.n)</span>
+<span id="cb67-2"><a href="análisis-de-componentes-principales.html#cb67-2" tabindex="-1"></a><span class="co">#&gt; Kaiser-Meyer-Olkin factor adequacy</span></span>
+<span id="cb67-3"><a href="análisis-de-componentes-principales.html#cb67-3" tabindex="-1"></a><span class="co">#&gt; Call: KMO(r = de.n)</span></span>
+<span id="cb67-4"><a href="análisis-de-componentes-principales.html#cb67-4" tabindex="-1"></a><span class="co">#&gt; Overall MSA =  0.48</span></span>
+<span id="cb67-5"><a href="análisis-de-componentes-principales.html#cb67-5" tabindex="-1"></a><span class="co">#&gt; MSA for each item = </span></span>
+<span id="cb67-6"><a href="análisis-de-componentes-principales.html#cb67-6" tabindex="-1"></a><span class="co">#&gt;  salario   salini tiempemp  expprev     edad </span></span>
+<span id="cb67-7"><a href="análisis-de-componentes-principales.html#cb67-7" tabindex="-1"></a><span class="co">#&gt;     0.48     0.47     0.08     0.50     0.51</span></span></code></pre></div>
+</div>
+<div id="paquetes-de-r-para-el-acp" class="section level2 hasAnchor" number="5.6">
+<h2><span class="header-section-number">5.6</span> Paquetes de R para el ACP<a href="análisis-de-componentes-principales.html#paquetes-de-r-para-el-acp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p><strong>library(stats)</strong></p>
+</blockquote>
+<ul>
+<li><p>prcomp() -&gt; Forma rápida de implementar PCA sobre una matriz de datos.</p></li>
+<li><p>princomp()</p></li>
+</ul>
+<blockquote>
+<p><strong>library(FactoMineR)</strong></p>
+</blockquote>
+<ul>
+<li>PCA() -&gt; PCA con resultados más detallados. Los valores ausentes se reemplazan por la media de cada columna. Pueden incluirse variables categóricas suplementarias. Estandariza automáticamente los datos.</li>
+</ul>
+<blockquote>
+<p><strong>library(factoextra)</strong></p>
+</blockquote>
+<ul>
+<li><p>fviz_pca_ind() -&gt; Representación de observaciones sobre componentes principales.</p></li>
+<li><p>fviz_pca_var() -&gt; Representación de variables sobre componentes principales.</p></li>
+<li><p>fviz_screeplot() -&gt; Representación (gráfico barras) de eigenvalores.</p></li>
+<li><p>fviz_contrib() -&gt; Representa la contribución de filas/columnas de los resultados de un pca.</p></li>
+<li><p>get_pca() -&gt; Extrae la información sobre las observaciones y variables de un análisis PCA.</p></li>
+<li><p>get_pca_var() -&gt; Extrae la información sobre las variables.</p></li>
+<li><p>get_pca_ind() -&gt; Extrae la información sobre las observaciones.</p></li>
+</ul>
+</div>
+<div id="proporción-de-la-varianza-explicada" class="section level2 hasAnchor" number="5.7">
+<h2><span class="header-section-number">5.7</span> Proporción de la varianza explicada<a href="análisis-de-componentes-principales.html#proporción-de-la-varianza-explicada" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>¿Cuánta información presente en el set de datos original se pierde al proyectar las observaciones en un espacio de menor dimensión?</p>
+<p>¿Cuánta información es capaz de capturar cada una de las componentes principales obtenidas?</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="análisis-de-componentes-principales.html#cb68-1" tabindex="-1"></a><span class="co"># https://rpubs.com/laurarojasmar/ACP</span></span>
+<span id="cb68-2"><a href="análisis-de-componentes-principales.html#cb68-2" tabindex="-1"></a>pca <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(de, <span class="at">scale =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb68-3"><a href="análisis-de-componentes-principales.html#cb68-3" tabindex="-1"></a><span class="fu">print</span>(pca)</span>
+<span id="cb68-4"><a href="análisis-de-componentes-principales.html#cb68-4" tabindex="-1"></a><span class="co">#&gt; Standard deviations (1, .., p=5):</span></span>
+<span id="cb68-5"><a href="análisis-de-componentes-principales.html#cb68-5" tabindex="-1"></a><span class="co">#&gt; [1] 1.3993033 1.3197040 1.0021060 0.4405821 0.3193784</span></span>
+<span id="cb68-6"><a href="análisis-de-componentes-principales.html#cb68-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb68-7"><a href="análisis-de-componentes-principales.html#cb68-7" tabindex="-1"></a><span class="co">#&gt; Rotation (n x k) = (5 x 5):</span></span>
+<span id="cb68-8"><a href="análisis-de-componentes-principales.html#cb68-8" tabindex="-1"></a><span class="co">#&gt;                  PC1         PC2          PC3         PC4</span></span>
+<span id="cb68-9"><a href="análisis-de-componentes-principales.html#cb68-9" tabindex="-1"></a><span class="co">#&gt; salario  -0.60483585 -0.36493800  0.025204955  0.02748384</span></span>
+<span id="cb68-10"><a href="análisis-de-componentes-principales.html#cb68-10" tabindex="-1"></a><span class="co">#&gt; salini   -0.54214209 -0.45751707 -0.101152801  0.01888093</span></span>
+<span id="cb68-11"><a href="análisis-de-componentes-principales.html#cb68-11" tabindex="-1"></a><span class="co">#&gt; tiempemp -0.01592624 -0.07314815  0.992391695 -0.04844080</span></span>
+<span id="cb68-12"><a href="análisis-de-componentes-principales.html#cb68-12" tabindex="-1"></a><span class="co">#&gt; expprev   0.39509934 -0.58382909 -0.065339258 -0.70311587</span></span>
+<span id="cb68-13"><a href="análisis-de-componentes-principales.html#cb68-13" tabindex="-1"></a><span class="co">#&gt; edad      0.42883379 -0.55793488  0.004724985  0.70863934</span></span>
+<span id="cb68-14"><a href="análisis-de-componentes-principales.html#cb68-14" tabindex="-1"></a><span class="co">#&gt;                  PC5</span></span>
+<span id="cb68-15"><a href="análisis-de-componentes-principales.html#cb68-15" tabindex="-1"></a><span class="co">#&gt; salario   0.70682615</span></span>
+<span id="cb68-16"><a href="análisis-de-componentes-principales.html#cb68-16" tabindex="-1"></a><span class="co">#&gt; salini   -0.69726014</span></span>
+<span id="cb68-17"><a href="análisis-de-componentes-principales.html#cb68-17" tabindex="-1"></a><span class="co">#&gt; tiempemp -0.08489944</span></span>
+<span id="cb68-18"><a href="análisis-de-componentes-principales.html#cb68-18" tabindex="-1"></a><span class="co">#&gt; expprev   0.06632468</span></span>
+<span id="cb68-19"><a href="análisis-de-componentes-principales.html#cb68-19" tabindex="-1"></a><span class="co">#&gt; edad      0.05116844</span></span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="análisis-de-componentes-principales.html#cb69-1" tabindex="-1"></a>de.pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(de.n)</span>
+<span id="cb69-2"><a href="análisis-de-componentes-principales.html#cb69-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">princomp</span>(de.n))</span>
+<span id="cb69-3"><a href="análisis-de-componentes-principales.html#cb69-3" tabindex="-1"></a><span class="co">#&gt; Importance of components:</span></span>
+<span id="cb69-4"><a href="análisis-de-componentes-principales.html#cb69-4" tabindex="-1"></a><span class="co">#&gt;                          Comp.1    Comp.2    Comp.3</span></span>
+<span id="cb69-5"><a href="análisis-de-componentes-principales.html#cb69-5" tabindex="-1"></a><span class="co">#&gt; Standard deviation     1.397826 1.3183112 1.0010484</span></span>
+<span id="cb69-6"><a href="análisis-de-componentes-principales.html#cb69-6" tabindex="-1"></a><span class="co">#&gt; Proportion of Variance 0.391610 0.3483237 0.2008433</span></span>
+<span id="cb69-7"><a href="análisis-de-componentes-principales.html#cb69-7" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion  0.391610 0.7399337 0.9407770</span></span>
+<span id="cb69-8"><a href="análisis-de-componentes-principales.html#cb69-8" tabindex="-1"></a><span class="co">#&gt;                            Comp.4     Comp.5</span></span>
+<span id="cb69-9"><a href="análisis-de-componentes-principales.html#cb69-9" tabindex="-1"></a><span class="co">#&gt; Standard deviation     0.44011714 0.31904129</span></span>
+<span id="cb69-10"><a href="análisis-de-componentes-principales.html#cb69-10" tabindex="-1"></a><span class="co">#&gt; Proportion of Variance 0.03882252 0.02040051</span></span>
+<span id="cb69-11"><a href="análisis-de-componentes-principales.html#cb69-11" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion  0.97959949 1.00000000</span></span></code></pre></div>
+</div>
+<div id="el-gráfico-de-sedimentación" class="section level2 hasAnchor" number="5.8">
+<h2><span class="header-section-number">5.8</span> El gráfico de sedimentación<a href="análisis-de-componentes-principales.html#el-gráfico-de-sedimentación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El gráfico de sedimentación se obtiene al representar en ordenadas las raíces características y en abscisas los números de las componentes principales correspondientes a cada raíz característica en orden decreciente.Uniendo todos los puntos se obtiene una Figura que, en general, se parece al perfil de una montaña con una fuerte pendiente hasta llegar a la base, formada por una meseta con una ligera inclinación.En este símil establecido de la montaña, en la meseta es donde se acumulan los guijarros caídos desde la cumbre, es decir, donde se sedimentan. Este es el motivo por lo que al gráfico se le conoce con el nombre de gráfico de sedimentación, su denominación en ingléses scree plot. De acuerdo con el criterio gráfico se retienen todas aquellas componentes previas a la zona de sedimentación.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="análisis-de-componentes-principales.html#cb70-1" tabindex="-1"></a><span class="fu">scree</span>(de.n)</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="análisis-de-componentes-principales.html#cb71-1" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb71-2"><a href="análisis-de-componentes-principales.html#cb71-2" tabindex="-1"></a><span class="fu">library</span>(FactoMineR)</span>
+<span id="cb71-3"><a href="análisis-de-componentes-principales.html#cb71-3" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span>
+<span id="cb71-4"><a href="análisis-de-componentes-principales.html#cb71-4" tabindex="-1"></a>de.pca <span class="ot">&lt;-</span> <span class="fu">PCA</span>(de.n, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb71-5"><a href="análisis-de-componentes-principales.html#cb71-5" tabindex="-1"></a><span class="fu">fviz_eig</span>(de.pca, <span class="at">addlabels=</span>T)</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="las-componentes" class="section level2 hasAnchor" number="5.9">
+<h2><span class="header-section-number">5.9</span> Las componentes<a href="análisis-de-componentes-principales.html#las-componentes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="análisis-de-componentes-principales.html#cb72-1" tabindex="-1"></a><span class="fu">biplot</span>(<span class="at">x =</span> pca, <span class="at">scale =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue4&quot;</span>, <span class="st">&quot;brown3&quot;</span>))</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="análisis-de-componentes-principales.html#cb73-1" tabindex="-1"></a>de.pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(de.n)</span>
+<span id="cb73-2"><a href="análisis-de-componentes-principales.html#cb73-2" tabindex="-1"></a>a <span class="ot">&lt;-</span> de.pca<span class="sc">$</span>scores</span>
+<span id="cb73-3"><a href="análisis-de-componentes-principales.html#cb73-3" tabindex="-1"></a>bbdd<span class="sc">$</span>cp1 <span class="ot">&lt;-</span> a[,<span class="dv">1</span>]</span>
+<span id="cb73-4"><a href="análisis-de-componentes-principales.html#cb73-4" tabindex="-1"></a>bbdd<span class="sc">$</span>cp2 <span class="ot">&lt;-</span> a[,<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="análisis-de-componentes-principales.html#cb74-1" tabindex="-1"></a><span class="fu">plot</span>(bbdd<span class="sc">$</span>cp1,bbdd<span class="sc">$</span>cp2,<span class="at">col=</span><span class="fu">as.factor</span>(bbdd<span class="sc">$</span>sexo))</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="análisis-de-componentes-principales.html#cb75-1" tabindex="-1"></a><span class="fu">plot</span>(bbdd<span class="sc">$</span>cp1,bbdd<span class="sc">$</span>cp2,<span class="at">col=</span><span class="fu">as.factor</span>(bbdd<span class="sc">$</span>catlab))</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-13-2.png" width="672" /></p>
+</div>
+<div id="ejercicio-acp-como-indicador-sintético" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Ejercicio: ACP como indicador sintético<a href="análisis-de-componentes-principales.html#ejercicio-acp-como-indicador-sintético" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>El ACP puede utilizarse para crear un indicador sintético al considerar los primeros componentes principales como resúmenes o representaciones condensadas del conjunto de datos original. Si bien cada componente principal es una combinación lineal de las variables originales, los primeros componentes suelen capturar las características más importantes o patrones de variabilidad presentes en los datos.</p>
+<div id="los-datos" class="section level3 hasAnchor" number="5.10.1">
+<h3><span class="header-section-number">5.10.1</span> Los datos<a href="análisis-de-componentes-principales.html#los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El siguiente conjunto de datos corresponde a calificaciones de 20 estudiantes en 5 materias Ciencias Natuales (CNa), Matemáticas (Mat), Francés (Fra), Latín (Lat) y Literatura (Lit)</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="análisis-de-componentes-principales.html#cb76-1" tabindex="-1"></a><span class="co"># https://bookdown.org/victor_morales/TecnicasML/an%C3%A1lisis-de-componentes-principales.html</span></span>
+<span id="cb76-2"><a href="análisis-de-componentes-principales.html#cb76-2" tabindex="-1"></a>CNa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>)</span>
+<span id="cb76-3"><a href="análisis-de-componentes-principales.html#cb76-3" tabindex="-1"></a>Mat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">7</span>)</span>
+<span id="cb76-4"><a href="análisis-de-componentes-principales.html#cb76-4" tabindex="-1"></a>Fra <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb76-5"><a href="análisis-de-componentes-principales.html#cb76-5" tabindex="-1"></a>Lat <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">8</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">7</span>)</span>
+<span id="cb76-6"><a href="análisis-de-componentes-principales.html#cb76-6" tabindex="-1"></a>Lit <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">4</span>,<span class="dv">6</span>)</span>
+<span id="cb76-7"><a href="análisis-de-componentes-principales.html#cb76-7" tabindex="-1"></a>Notas <span class="ot">&lt;-</span> <span class="fu">cbind</span>(CNa,Mat,Fra,Lat,Lit)</span>
+<span id="cb76-8"><a href="análisis-de-componentes-principales.html#cb76-8" tabindex="-1"></a>Notas</span>
+<span id="cb76-9"><a href="análisis-de-componentes-principales.html#cb76-9" tabindex="-1"></a><span class="co">#&gt;       CNa Mat Fra Lat Lit</span></span>
+<span id="cb76-10"><a href="análisis-de-componentes-principales.html#cb76-10" tabindex="-1"></a><span class="co">#&gt;  [1,]   7   7   5   5   6</span></span>
+<span id="cb76-11"><a href="análisis-de-componentes-principales.html#cb76-11" tabindex="-1"></a><span class="co">#&gt;  [2,]   5   5   6   6   5</span></span>
+<span id="cb76-12"><a href="análisis-de-componentes-principales.html#cb76-12" tabindex="-1"></a><span class="co">#&gt;  [3,]   5   6   5   7   5</span></span>
+<span id="cb76-13"><a href="análisis-de-componentes-principales.html#cb76-13" tabindex="-1"></a><span class="co">#&gt;  [4,]   6   8   5   6   6</span></span>
+<span id="cb76-14"><a href="análisis-de-componentes-principales.html#cb76-14" tabindex="-1"></a><span class="co">#&gt;  [5,]   7   6   6   7   6</span></span>
+<span id="cb76-15"><a href="análisis-de-componentes-principales.html#cb76-15" tabindex="-1"></a><span class="co">#&gt;  [6,]   4   4   6   7   6</span></span>
+<span id="cb76-16"><a href="análisis-de-componentes-principales.html#cb76-16" tabindex="-1"></a><span class="co">#&gt;  [7,]   5   5   5   5   6</span></span>
+<span id="cb76-17"><a href="análisis-de-componentes-principales.html#cb76-17" tabindex="-1"></a><span class="co">#&gt;  [8,]   5   6   5   5   5</span></span>
+<span id="cb76-18"><a href="análisis-de-componentes-principales.html#cb76-18" tabindex="-1"></a><span class="co">#&gt;  [9,]   6   5   7   6   6</span></span>
+<span id="cb76-19"><a href="análisis-de-componentes-principales.html#cb76-19" tabindex="-1"></a><span class="co">#&gt; [10,]   6   5   6   6   6</span></span>
+<span id="cb76-20"><a href="análisis-de-componentes-principales.html#cb76-20" tabindex="-1"></a><span class="co">#&gt; [11,]   6   7   5   6   5</span></span>
+<span id="cb76-21"><a href="análisis-de-componentes-principales.html#cb76-21" tabindex="-1"></a><span class="co">#&gt; [12,]   5   5   4   5   4</span></span>
+<span id="cb76-22"><a href="análisis-de-componentes-principales.html#cb76-22" tabindex="-1"></a><span class="co">#&gt; [13,]   6   6   6   6   5</span></span>
+<span id="cb76-23"><a href="análisis-de-componentes-principales.html#cb76-23" tabindex="-1"></a><span class="co">#&gt; [14,]   8   7   8   8   8</span></span>
+<span id="cb76-24"><a href="análisis-de-componentes-principales.html#cb76-24" tabindex="-1"></a><span class="co">#&gt; [15,]   6   7   5   6   6</span></span>
+<span id="cb76-25"><a href="análisis-de-componentes-principales.html#cb76-25" tabindex="-1"></a><span class="co">#&gt; [16,]   4   3   4   4   4</span></span>
+<span id="cb76-26"><a href="análisis-de-componentes-principales.html#cb76-26" tabindex="-1"></a><span class="co">#&gt; [17,]   6   4   7   8   7</span></span>
+<span id="cb76-27"><a href="análisis-de-componentes-principales.html#cb76-27" tabindex="-1"></a><span class="co">#&gt; [18,]   6   6   7   7   7</span></span>
+<span id="cb76-28"><a href="análisis-de-componentes-principales.html#cb76-28" tabindex="-1"></a><span class="co">#&gt; [19,]   6   5   4   4   4</span></span>
+<span id="cb76-29"><a href="análisis-de-componentes-principales.html#cb76-29" tabindex="-1"></a><span class="co">#&gt; [20,]   7   7   6   7   6</span></span></code></pre></div>
+<ul>
+<li>Obtener un sumario de la información</li>
+<li>Obtener la matriz de correlaciones</li>
+<li>Obtener test de adecuación</li>
+<li>Obtener CPs</li>
+<li>Interpretarlas</li>
+</ul>
+</div>
+</div>
+<div id="aplicación-regresión-y-acp" class="section level2 hasAnchor" number="5.11">
+<h2><span class="header-section-number">5.11</span> Aplicación: Regresión y ACP<a href="análisis-de-componentes-principales.html#aplicación-regresión-y-acp" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>En esta sección realizaremos un ejercicio en el que se combina la Regresión Lineal Múltiple (RLM) con el ACP. El objetivo es reducir los problemas de multicolinealidad en la RLM al incluir variables altamente correlacionadas.</p>
+<p>El ACP se utiliza principalmente para abordar problemas de multicolinealidad o reducción de dimensionalidad en conjuntos de datos, lo que puede tener implicaciones en modelos de regresión múltiple. Sin embargo, es importante tener en cuenta que al usar el ACP de esta manera, la interpretación de los coeficientes en términos de las variables originales puede volverse más complicada.</p>
+<div id="lectura-y-sumario-de-los-datos" class="section level3 hasAnchor" number="5.11.1">
+<h3><span class="header-section-number">5.11.1</span> Lectura y sumario de los datos<a href="análisis-de-componentes-principales.html#lectura-y-sumario-de-los-datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Utilizaremos la base de datos de venta de vehículos. El objetivo es predecir el precio en base a sus características. Un sumario de los datos se muestra a continuación.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="análisis-de-componentes-principales.html#cb77-1" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb77-2"><a href="análisis-de-componentes-principales.html#cb77-2" tabindex="-1"></a>CarSales <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(<span class="st">&quot;Datos/CarSAles.xlsx&quot;</span>)</span>
+<span id="cb77-3"><a href="análisis-de-componentes-principales.html#cb77-3" tabindex="-1"></a><span class="fu">summary</span>(CarSales)</span>
+<span id="cb77-4"><a href="análisis-de-componentes-principales.html#cb77-4" tabindex="-1"></a><span class="co">#&gt;   fabricante           modelo              ventas      </span></span>
+<span id="cb77-5"><a href="análisis-de-componentes-principales.html#cb77-5" tabindex="-1"></a><span class="co">#&gt;  Length:157         Length:157         Min.   :  0.11  </span></span>
+<span id="cb77-6"><a href="análisis-de-componentes-principales.html#cb77-6" tabindex="-1"></a><span class="co">#&gt;  Class :character   Class :character   1st Qu.: 14.11  </span></span>
+<span id="cb77-7"><a href="análisis-de-componentes-principales.html#cb77-7" tabindex="-1"></a><span class="co">#&gt;  Mode  :character   Mode  :character   Median : 29.45  </span></span>
+<span id="cb77-8"><a href="análisis-de-componentes-principales.html#cb77-8" tabindex="-1"></a><span class="co">#&gt;                                        Mean   : 53.00  </span></span>
+<span id="cb77-9"><a href="análisis-de-componentes-principales.html#cb77-9" tabindex="-1"></a><span class="co">#&gt;                                        3rd Qu.: 67.96  </span></span>
+<span id="cb77-10"><a href="análisis-de-componentes-principales.html#cb77-10" tabindex="-1"></a><span class="co">#&gt;                                        Max.   :540.56  </span></span>
+<span id="cb77-11"><a href="análisis-de-componentes-principales.html#cb77-11" tabindex="-1"></a><span class="co">#&gt;                                                        </span></span>
+<span id="cb77-12"><a href="análisis-de-componentes-principales.html#cb77-12" tabindex="-1"></a><span class="co">#&gt;     reventa           tipo            precio      </span></span>
+<span id="cb77-13"><a href="análisis-de-componentes-principales.html#cb77-13" tabindex="-1"></a><span class="co">#&gt;  Min.   : 5.16   Min.   :0.0000   Min.   : 9.235  </span></span>
+<span id="cb77-14"><a href="análisis-de-componentes-principales.html#cb77-14" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:11.26   1st Qu.:0.0000   1st Qu.:18.017  </span></span>
+<span id="cb77-15"><a href="análisis-de-componentes-principales.html#cb77-15" tabindex="-1"></a><span class="co">#&gt;  Median :14.18   Median :0.0000   Median :22.799  </span></span>
+<span id="cb77-16"><a href="análisis-de-componentes-principales.html#cb77-16" tabindex="-1"></a><span class="co">#&gt;  Mean   :18.07   Mean   :0.2611   Mean   :27.391  </span></span>
+<span id="cb77-17"><a href="análisis-de-componentes-principales.html#cb77-17" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:19.88   3rd Qu.:1.0000   3rd Qu.:31.948  </span></span>
+<span id="cb77-18"><a href="análisis-de-componentes-principales.html#cb77-18" tabindex="-1"></a><span class="co">#&gt;  Max.   :67.55   Max.   :1.0000   Max.   :85.500  </span></span>
+<span id="cb77-19"><a href="análisis-de-componentes-principales.html#cb77-19" tabindex="-1"></a><span class="co">#&gt;  NA&#39;s   :36                       NA&#39;s   :2       </span></span>
+<span id="cb77-20"><a href="análisis-de-componentes-principales.html#cb77-20" tabindex="-1"></a><span class="co">#&gt;     motor_s         caballos     BaseNeumatico  </span></span>
+<span id="cb77-21"><a href="análisis-de-componentes-principales.html#cb77-21" tabindex="-1"></a><span class="co">#&gt;  Min.   :1.000   Min.   : 55.0   Min.   : 92.6  </span></span>
+<span id="cb77-22"><a href="análisis-de-componentes-principales.html#cb77-22" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:2.300   1st Qu.:149.5   1st Qu.:103.0  </span></span>
+<span id="cb77-23"><a href="análisis-de-componentes-principales.html#cb77-23" tabindex="-1"></a><span class="co">#&gt;  Median :3.000   Median :177.5   Median :107.0  </span></span>
+<span id="cb77-24"><a href="análisis-de-componentes-principales.html#cb77-24" tabindex="-1"></a><span class="co">#&gt;  Mean   :3.061   Mean   :185.9   Mean   :107.5  </span></span>
+<span id="cb77-25"><a href="análisis-de-componentes-principales.html#cb77-25" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:3.575   3rd Qu.:215.0   3rd Qu.:112.2  </span></span>
+<span id="cb77-26"><a href="análisis-de-componentes-principales.html#cb77-26" tabindex="-1"></a><span class="co">#&gt;  Max.   :8.000   Max.   :450.0   Max.   :138.7  </span></span>
+<span id="cb77-27"><a href="análisis-de-componentes-principales.html#cb77-27" tabindex="-1"></a><span class="co">#&gt;  NA&#39;s   :1       NA&#39;s   :1       NA&#39;s   :1      </span></span>
+<span id="cb77-28"><a href="análisis-de-componentes-principales.html#cb77-28" tabindex="-1"></a><span class="co">#&gt;     anchura         longitud     peso_revestimiento</span></span>
+<span id="cb77-29"><a href="análisis-de-componentes-principales.html#cb77-29" tabindex="-1"></a><span class="co">#&gt;  Min.   :62.60   Min.   :149.4   Min.   :1.895     </span></span>
+<span id="cb77-30"><a href="análisis-de-componentes-principales.html#cb77-30" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:68.40   1st Qu.:177.6   1st Qu.:2.971     </span></span>
+<span id="cb77-31"><a href="análisis-de-componentes-principales.html#cb77-31" tabindex="-1"></a><span class="co">#&gt;  Median :70.55   Median :187.9   Median :3.342     </span></span>
+<span id="cb77-32"><a href="análisis-de-componentes-principales.html#cb77-32" tabindex="-1"></a><span class="co">#&gt;  Mean   :71.15   Mean   :187.3   Mean   :3.378     </span></span>
+<span id="cb77-33"><a href="análisis-de-componentes-principales.html#cb77-33" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:73.42   3rd Qu.:196.1   3rd Qu.:3.800     </span></span>
+<span id="cb77-34"><a href="análisis-de-componentes-principales.html#cb77-34" tabindex="-1"></a><span class="co">#&gt;  Max.   :79.90   Max.   :224.5   Max.   :5.572     </span></span>
+<span id="cb77-35"><a href="análisis-de-componentes-principales.html#cb77-35" tabindex="-1"></a><span class="co">#&gt;  NA&#39;s   :1       NA&#39;s   :1       NA&#39;s   :2         </span></span>
+<span id="cb77-36"><a href="análisis-de-componentes-principales.html#cb77-36" tabindex="-1"></a><span class="co">#&gt;  tapón_combustible      kpl       </span></span>
+<span id="cb77-37"><a href="análisis-de-componentes-principales.html#cb77-37" tabindex="-1"></a><span class="co">#&gt;  Min.   :10.30     Min.   :15.00  </span></span>
+<span id="cb77-38"><a href="análisis-de-componentes-principales.html#cb77-38" tabindex="-1"></a><span class="co">#&gt;  1st Qu.:15.80     1st Qu.:21.00  </span></span>
+<span id="cb77-39"><a href="análisis-de-componentes-principales.html#cb77-39" tabindex="-1"></a><span class="co">#&gt;  Median :17.20     Median :24.00  </span></span>
+<span id="cb77-40"><a href="análisis-de-componentes-principales.html#cb77-40" tabindex="-1"></a><span class="co">#&gt;  Mean   :17.95     Mean   :23.84  </span></span>
+<span id="cb77-41"><a href="análisis-de-componentes-principales.html#cb77-41" tabindex="-1"></a><span class="co">#&gt;  3rd Qu.:19.57     3rd Qu.:26.00  </span></span>
+<span id="cb77-42"><a href="análisis-de-componentes-principales.html#cb77-42" tabindex="-1"></a><span class="co">#&gt;  Max.   :32.00     Max.   :45.00  </span></span>
+<span id="cb77-43"><a href="análisis-de-componentes-principales.html#cb77-43" tabindex="-1"></a><span class="co">#&gt;  NA&#39;s   :1         NA&#39;s   :3</span></span></code></pre></div>
+</div>
+<div id="eliminación-de-datos-perdidos" class="section level3 hasAnchor" number="5.11.2">
+<h3><span class="header-section-number">5.11.2</span> Eliminación de datos perdidos<a href="análisis-de-componentes-principales.html#eliminación-de-datos-perdidos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Por simplicidad en el ejercicio se eliminan algunos datos en los que hay datos faltantes. En general estos valores podrian ser sustituidos por valores medios.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="análisis-de-componentes-principales.html#cb78-1" tabindex="-1"></a>CarSales <span class="ot">&lt;-</span> CarSales[<span class="sc">!</span><span class="fu">is.na</span>(CarSales<span class="sc">$</span>peso_revestimiento),]</span>
+<span id="cb78-2"><a href="análisis-de-componentes-principales.html#cb78-2" tabindex="-1"></a>CarSales <span class="ot">&lt;-</span> CarSales[<span class="sc">!</span><span class="fu">is.na</span>(CarSales<span class="sc">$</span>precio),]</span>
+<span id="cb78-3"><a href="análisis-de-componentes-principales.html#cb78-3" tabindex="-1"></a>CarSales <span class="ot">&lt;-</span> CarSales[<span class="sc">!</span><span class="fu">is.na</span>(CarSales<span class="sc">$</span>kpl),]</span></code></pre></div>
+</div>
+<div id="un-modelo-de-regresión-básico" class="section level3 hasAnchor" number="5.11.3">
+<h3><span class="header-section-number">5.11.3</span> Un modelo de regresión básico<a href="análisis-de-componentes-principales.html#un-modelo-de-regresión-básico" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="análisis-de-componentes-principales.html#cb79-1" tabindex="-1"></a>formula <span class="ot">&lt;-</span> precio <span class="sc">~</span> motor_s <span class="sc">+</span> caballos <span class="sc">+</span> BaseNeumatico <span class="sc">+</span> anchura <span class="sc">+</span> longitud <span class="sc">+</span> peso_revestimiento <span class="sc">+</span> tapón_combustible <span class="sc">+</span> kpl</span>
+<span id="cb79-2"><a href="análisis-de-componentes-principales.html#cb79-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(formula , <span class="at">data=</span>CarSales))</span>
+<span id="cb79-3"><a href="análisis-de-componentes-principales.html#cb79-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb79-4"><a href="análisis-de-componentes-principales.html#cb79-4" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb79-5"><a href="análisis-de-componentes-principales.html#cb79-5" tabindex="-1"></a><span class="co">#&gt; lm(formula = formula, data = CarSales)</span></span>
+<span id="cb79-6"><a href="análisis-de-componentes-principales.html#cb79-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb79-7"><a href="análisis-de-componentes-principales.html#cb79-7" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb79-8"><a href="análisis-de-componentes-principales.html#cb79-8" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb79-9"><a href="análisis-de-componentes-principales.html#cb79-9" tabindex="-1"></a><span class="co">#&gt; -14.494  -3.106  -0.469   2.547  32.108 </span></span>
+<span id="cb79-10"><a href="análisis-de-componentes-principales.html#cb79-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb79-11"><a href="análisis-de-componentes-principales.html#cb79-11" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb79-12"><a href="análisis-de-componentes-principales.html#cb79-12" tabindex="-1"></a><span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb79-13"><a href="análisis-de-componentes-principales.html#cb79-13" tabindex="-1"></a><span class="co">#&gt; (Intercept)        23.04275   17.32973   1.330  0.18575    </span></span>
+<span id="cb79-14"><a href="análisis-de-componentes-principales.html#cb79-14" tabindex="-1"></a><span class="co">#&gt; motor_s            -3.84947    1.24859  -3.083  0.00246 ** </span></span>
+<span id="cb79-15"><a href="análisis-de-componentes-principales.html#cb79-15" tabindex="-1"></a><span class="co">#&gt; caballos            0.26273    0.01825  14.397  &lt; 2e-16 ***</span></span>
+<span id="cb79-16"><a href="análisis-de-componentes-principales.html#cb79-16" tabindex="-1"></a><span class="co">#&gt; BaseNeumatico      -0.06376    0.15059  -0.423  0.67265    </span></span>
+<span id="cb79-17"><a href="análisis-de-componentes-principales.html#cb79-17" tabindex="-1"></a><span class="co">#&gt; anchura            -0.42902    0.27540  -1.558  0.12149    </span></span>
+<span id="cb79-18"><a href="análisis-de-componentes-principales.html#cb79-18" tabindex="-1"></a><span class="co">#&gt; longitud           -0.23427    0.08328  -2.813  0.00560 ** </span></span>
+<span id="cb79-19"><a href="análisis-de-componentes-principales.html#cb79-19" tabindex="-1"></a><span class="co">#&gt; peso_revestimiento  9.01935    2.15367   4.188  4.9e-05 ***</span></span>
+<span id="cb79-20"><a href="análisis-de-componentes-principales.html#cb79-20" tabindex="-1"></a><span class="co">#&gt; tapón_combustible   0.31214    0.30997   1.007  0.31563    </span></span>
+<span id="cb79-21"><a href="análisis-de-componentes-principales.html#cb79-21" tabindex="-1"></a><span class="co">#&gt; kpl                 0.52783    0.25548   2.066  0.04063 *  </span></span>
+<span id="cb79-22"><a href="análisis-de-componentes-principales.html#cb79-22" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb79-23"><a href="análisis-de-componentes-principales.html#cb79-23" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb79-24"><a href="análisis-de-componentes-principales.html#cb79-24" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb79-25"><a href="análisis-de-componentes-principales.html#cb79-25" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb79-26"><a href="análisis-de-componentes-principales.html#cb79-26" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 6.738 on 143 degrees of freedom</span></span>
+<span id="cb79-27"><a href="análisis-de-componentes-principales.html#cb79-27" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.7932, Adjusted R-squared:  0.7816 </span></span>
+<span id="cb79-28"><a href="análisis-de-componentes-principales.html#cb79-28" tabindex="-1"></a><span class="co">#&gt; F-statistic: 68.57 on 8 and 143 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<ul>
+<li>Se eliminan algunas variables no significativas. Pueden ser importantes para ontener un modelo explicativo pero no para un modelo predictivo.</li>
+</ul>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="análisis-de-componentes-principales.html#cb80-1" tabindex="-1"></a><span class="co"># Eliminamos variables no informativas</span></span>
+<span id="cb80-2"><a href="análisis-de-componentes-principales.html#cb80-2" tabindex="-1"></a>formula <span class="ot">&lt;-</span> precio <span class="sc">~</span> motor_s <span class="sc">+</span> caballos <span class="sc">+</span> anchura <span class="sc">+</span> longitud <span class="sc">+</span> peso_revestimiento <span class="sc">+</span> kpl</span>
+<span id="cb80-3"><a href="análisis-de-componentes-principales.html#cb80-3" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(formula , <span class="at">data=</span>CarSales))</span>
+<span id="cb80-4"><a href="análisis-de-componentes-principales.html#cb80-4" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-5"><a href="análisis-de-componentes-principales.html#cb80-5" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb80-6"><a href="análisis-de-componentes-principales.html#cb80-6" tabindex="-1"></a><span class="co">#&gt; lm(formula = formula, data = CarSales)</span></span>
+<span id="cb80-7"><a href="análisis-de-componentes-principales.html#cb80-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-8"><a href="análisis-de-componentes-principales.html#cb80-8" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb80-9"><a href="análisis-de-componentes-principales.html#cb80-9" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb80-10"><a href="análisis-de-componentes-principales.html#cb80-10" tabindex="-1"></a><span class="co">#&gt; -13.810  -3.132  -0.354   2.399  32.529 </span></span>
+<span id="cb80-11"><a href="análisis-de-componentes-principales.html#cb80-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-12"><a href="análisis-de-componentes-principales.html#cb80-12" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb80-13"><a href="análisis-de-componentes-principales.html#cb80-13" tabindex="-1"></a><span class="co">#&gt;                    Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb80-14"><a href="análisis-de-componentes-principales.html#cb80-14" tabindex="-1"></a><span class="co">#&gt; (Intercept)        23.95706   17.06820   1.404  0.16257    </span></span>
+<span id="cb80-15"><a href="análisis-de-componentes-principales.html#cb80-15" tabindex="-1"></a><span class="co">#&gt; motor_s            -3.82675    1.24211  -3.081  0.00247 ** </span></span>
+<span id="cb80-16"><a href="análisis-de-componentes-principales.html#cb80-16" tabindex="-1"></a><span class="co">#&gt; caballos            0.26213    0.01778  14.747  &lt; 2e-16 ***</span></span>
+<span id="cb80-17"><a href="análisis-de-componentes-principales.html#cb80-17" tabindex="-1"></a><span class="co">#&gt; anchura            -0.42581    0.27043  -1.575  0.11753    </span></span>
+<span id="cb80-18"><a href="análisis-de-componentes-principales.html#cb80-18" tabindex="-1"></a><span class="co">#&gt; longitud           -0.25383    0.06039  -4.203 4.58e-05 ***</span></span>
+<span id="cb80-19"><a href="análisis-de-componentes-principales.html#cb80-19" tabindex="-1"></a><span class="co">#&gt; peso_revestimiento  9.98519    1.85702   5.377 2.96e-07 ***</span></span>
+<span id="cb80-20"><a href="análisis-de-componentes-principales.html#cb80-20" tabindex="-1"></a><span class="co">#&gt; kpl                 0.44621    0.23777   1.877  0.06258 .  </span></span>
+<span id="cb80-21"><a href="análisis-de-componentes-principales.html#cb80-21" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb80-22"><a href="análisis-de-componentes-principales.html#cb80-22" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb80-23"><a href="análisis-de-componentes-principales.html#cb80-23" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb80-24"><a href="análisis-de-componentes-principales.html#cb80-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb80-25"><a href="análisis-de-componentes-principales.html#cb80-25" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 6.715 on 145 degrees of freedom</span></span>
+<span id="cb80-26"><a href="análisis-de-componentes-principales.html#cb80-26" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.7917, Adjusted R-squared:  0.7831 </span></span>
+<span id="cb80-27"><a href="análisis-de-componentes-principales.html#cb80-27" tabindex="-1"></a><span class="co">#&gt; F-statistic: 91.85 on 6 and 145 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+<ul>
+<li>Finalmente se seleccionan algunas variables explicativas <strong>Xs</strong></li>
+</ul>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="análisis-de-componentes-principales.html#cb81-1" tabindex="-1"></a>Xs <span class="ot">&lt;-</span> CarSales[,<span class="fu">c</span>(<span class="st">&quot;motor_s&quot;</span>,<span class="st">&quot;caballos&quot;</span>,<span class="st">&quot;anchura&quot;</span>,<span class="st">&quot;longitud&quot;</span>,<span class="st">&quot;peso_revestimiento&quot;</span>)]</span></code></pre></div>
+</div>
+<div id="evaluamos-matriz-de-correlaciones" class="section level3 hasAnchor" number="5.11.4">
+<h3><span class="header-section-number">5.11.4</span> Evaluamos matriz de correlaciones<a href="análisis-de-componentes-principales.html#evaluamos-matriz-de-correlaciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La multicolinealidad en un modelo de regresión múltiple implica la existencia de altas correlaciones entre las variables independientes, generando inestabilidad numérica y elevando la varianza de los estimadores de los coeficientes. Esto dificulta la interpretación precisa de los efectos individuales de las variables predictoras, así como la evaluación confiable de la importancia relativa de cada predictor en la predicción del resultado.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="análisis-de-componentes-principales.html#cb82-1" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb82-2"><a href="análisis-de-componentes-principales.html#cb82-2" tabindex="-1"></a><span class="fu">ggcorrplot</span>(<span class="fu">cor</span>(Xs),<span class="at">lab_size =</span> <span class="dv">5</span>,<span class="at">lab =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="test-de-adecuación-del-acp" class="section level3 hasAnchor" number="5.11.5">
+<h3><span class="header-section-number">5.11.5</span> Test de adecuación del ACP<a href="análisis-de-componentes-principales.html#test-de-adecuación-del-acp" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Test de Bartlett contrasta la hipótesis de que el determinante es distinto de la unidad (matriz identidad)</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="análisis-de-componentes-principales.html#cb83-1" tabindex="-1"></a>Xs.n <span class="ot">&lt;-</span> <span class="fu">scale</span>(Xs)</span>
+<span id="cb83-2"><a href="análisis-de-componentes-principales.html#cb83-2" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb83-3"><a href="análisis-de-componentes-principales.html#cb83-3" tabindex="-1"></a><span class="fu">cortest.bartlett</span>(<span class="fu">cor</span>(Xs.n))</span>
+<span id="cb83-4"><a href="análisis-de-componentes-principales.html#cb83-4" tabindex="-1"></a><span class="co">#&gt; $chisq</span></span>
+<span id="cb83-5"><a href="análisis-de-componentes-principales.html#cb83-5" tabindex="-1"></a><span class="co">#&gt; [1] 356.0616</span></span>
+<span id="cb83-6"><a href="análisis-de-componentes-principales.html#cb83-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb83-7"><a href="análisis-de-componentes-principales.html#cb83-7" tabindex="-1"></a><span class="co">#&gt; $p.value</span></span>
+<span id="cb83-8"><a href="análisis-de-componentes-principales.html#cb83-8" tabindex="-1"></a><span class="co">#&gt; [1] 2.059602e-70</span></span>
+<span id="cb83-9"><a href="análisis-de-componentes-principales.html#cb83-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb83-10"><a href="análisis-de-componentes-principales.html#cb83-10" tabindex="-1"></a><span class="co">#&gt; $df</span></span>
+<span id="cb83-11"><a href="análisis-de-componentes-principales.html#cb83-11" tabindex="-1"></a><span class="co">#&gt; [1] 10</span></span></code></pre></div>
+<p>Indicador KMO sugiere buena adecuación del ACP</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="análisis-de-componentes-principales.html#cb84-1" tabindex="-1"></a><span class="fu">KMO</span>(Xs.n)</span>
+<span id="cb84-2"><a href="análisis-de-componentes-principales.html#cb84-2" tabindex="-1"></a><span class="co">#&gt; Kaiser-Meyer-Olkin factor adequacy</span></span>
+<span id="cb84-3"><a href="análisis-de-componentes-principales.html#cb84-3" tabindex="-1"></a><span class="co">#&gt; Call: KMO(r = Xs.n)</span></span>
+<span id="cb84-4"><a href="análisis-de-componentes-principales.html#cb84-4" tabindex="-1"></a><span class="co">#&gt; Overall MSA =  0.81</span></span>
+<span id="cb84-5"><a href="análisis-de-componentes-principales.html#cb84-5" tabindex="-1"></a><span class="co">#&gt; MSA for each item = </span></span>
+<span id="cb84-6"><a href="análisis-de-componentes-principales.html#cb84-6" tabindex="-1"></a><span class="co">#&gt;            motor_s           caballos            anchura </span></span>
+<span id="cb84-7"><a href="análisis-de-componentes-principales.html#cb84-7" tabindex="-1"></a><span class="co">#&gt;               0.75               0.74               0.85 </span></span>
+<span id="cb84-8"><a href="análisis-de-componentes-principales.html#cb84-8" tabindex="-1"></a><span class="co">#&gt;           longitud peso_revestimiento </span></span>
+<span id="cb84-9"><a href="análisis-de-componentes-principales.html#cb84-9" tabindex="-1"></a><span class="co">#&gt;               0.84               0.88</span></span></code></pre></div>
+</div>
+<div id="cálculo-de-las-componentes" class="section level3 hasAnchor" number="5.11.6">
+<h3><span class="header-section-number">5.11.6</span> Cálculo de las componentes<a href="análisis-de-componentes-principales.html#cálculo-de-las-componentes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>la librería ‘stats’ incluye la función ‘princomp()’ que realiza el ACP.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="análisis-de-componentes-principales.html#cb85-1" tabindex="-1"></a>Xs.pca <span class="ot">&lt;-</span> <span class="fu">princomp</span>(Xs.n)</span>
+<span id="cb85-2"><a href="análisis-de-componentes-principales.html#cb85-2" tabindex="-1"></a><span class="fu">summary</span>(Xs.pca)</span>
+<span id="cb85-3"><a href="análisis-de-componentes-principales.html#cb85-3" tabindex="-1"></a><span class="co">#&gt; Importance of components:</span></span>
+<span id="cb85-4"><a href="análisis-de-componentes-principales.html#cb85-4" tabindex="-1"></a><span class="co">#&gt;                           Comp.1    Comp.2     Comp.3</span></span>
+<span id="cb85-5"><a href="análisis-de-componentes-principales.html#cb85-5" tabindex="-1"></a><span class="co">#&gt; Standard deviation     1.8864719 0.8581591 0.54305278</span></span>
+<span id="cb85-6"><a href="análisis-de-componentes-principales.html#cb85-6" tabindex="-1"></a><span class="co">#&gt; Proportion of Variance 0.7164689 0.1482628 0.05937187</span></span>
+<span id="cb85-7"><a href="análisis-de-componentes-principales.html#cb85-7" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion  0.7164689 0.8647317 0.92410355</span></span>
+<span id="cb85-8"><a href="análisis-de-componentes-principales.html#cb85-8" tabindex="-1"></a><span class="co">#&gt;                            Comp.4    Comp.5</span></span>
+<span id="cb85-9"><a href="análisis-de-componentes-principales.html#cb85-9" tabindex="-1"></a><span class="co">#&gt; Standard deviation     0.50375651 0.3510200</span></span>
+<span id="cb85-10"><a href="análisis-de-componentes-principales.html#cb85-10" tabindex="-1"></a><span class="co">#&gt; Proportion of Variance 0.05109024 0.0248062</span></span>
+<span id="cb85-11"><a href="análisis-de-componentes-principales.html#cb85-11" tabindex="-1"></a><span class="co">#&gt; Cumulative Proportion  0.97519380 1.0000000</span></span></code></pre></div>
+<p>Una o como máximo 2 CP serían necesarias para resumir la información. Con dos CPs se está recogiendo el 86% de la información.</p>
+</div>
+<div id="interpretación-de-las-cps" class="section level3 hasAnchor" number="5.11.7">
+<h3><span class="header-section-number">5.11.7</span> Interpretación de las CPs<a href="análisis-de-componentes-principales.html#interpretación-de-las-cps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="análisis-de-componentes-principales.html#cb86-1" tabindex="-1"></a>Xs.pca<span class="sc">$</span>loadings</span>
+<span id="cb86-2"><a href="análisis-de-componentes-principales.html#cb86-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb86-3"><a href="análisis-de-componentes-principales.html#cb86-3" tabindex="-1"></a><span class="co">#&gt; Loadings:</span></span>
+<span id="cb86-4"><a href="análisis-de-componentes-principales.html#cb86-4" tabindex="-1"></a><span class="co">#&gt;                    Comp.1 Comp.2 Comp.3 Comp.4 Comp.5</span></span>
+<span id="cb86-5"><a href="análisis-de-componentes-principales.html#cb86-5" tabindex="-1"></a><span class="co">#&gt; motor_s             0.482  0.345                0.804</span></span>
+<span id="cb86-6"><a href="análisis-de-componentes-principales.html#cb86-6" tabindex="-1"></a><span class="co">#&gt; caballos            0.421  0.618  0.386        -0.540</span></span>
+<span id="cb86-7"><a href="análisis-de-componentes-principales.html#cb86-7" tabindex="-1"></a><span class="co">#&gt; anchura             0.457 -0.317 -0.175 -0.803 -0.120</span></span>
+<span id="cb86-8"><a href="análisis-de-componentes-principales.html#cb86-8" tabindex="-1"></a><span class="co">#&gt; longitud            0.403 -0.628  0.563  0.356       </span></span>
+<span id="cb86-9"><a href="análisis-de-componentes-principales.html#cb86-9" tabindex="-1"></a><span class="co">#&gt; peso_revestimiento  0.468        -0.708  0.478 -0.218</span></span>
+<span id="cb86-10"><a href="análisis-de-componentes-principales.html#cb86-10" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb86-11"><a href="análisis-de-componentes-principales.html#cb86-11" tabindex="-1"></a><span class="co">#&gt;                Comp.1 Comp.2 Comp.3 Comp.4 Comp.5</span></span>
+<span id="cb86-12"><a href="análisis-de-componentes-principales.html#cb86-12" tabindex="-1"></a><span class="co">#&gt; SS loadings       1.0    1.0    1.0    1.0    1.0</span></span>
+<span id="cb86-13"><a href="análisis-de-componentes-principales.html#cb86-13" tabindex="-1"></a><span class="co">#&gt; Proportion Var    0.2    0.2    0.2    0.2    0.2</span></span>
+<span id="cb86-14"><a href="análisis-de-componentes-principales.html#cb86-14" tabindex="-1"></a><span class="co">#&gt; Cumulative Var    0.2    0.4    0.6    0.8    1.0</span></span></code></pre></div>
+<p>La CP1 es un indicador global. Todas las variables puntúan de forma positiva. La CP2 discrimina coches potentes (xon muchos CVs y cc) frente a coches pequeños.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="análisis-de-componentes-principales.html#cb87-1" tabindex="-1"></a><span class="fu">biplot</span>(Xs.pca)</span></code></pre></div>
+<p><img src="04-Sesion4-Analisis-de-Componentes-Principales_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="análisis-de-componentes-principales.html#cb88-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(CarSales<span class="sc">$</span>precio <span class="sc">~</span> Xs.pca<span class="sc">$</span>scores[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]))</span>
+<span id="cb88-2"><a href="análisis-de-componentes-principales.html#cb88-2" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb88-3"><a href="análisis-de-componentes-principales.html#cb88-3" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb88-4"><a href="análisis-de-componentes-principales.html#cb88-4" tabindex="-1"></a><span class="co">#&gt; lm(formula = CarSales$precio ~ Xs.pca$scores[, 1:2])</span></span>
+<span id="cb88-5"><a href="análisis-de-componentes-principales.html#cb88-5" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb88-6"><a href="análisis-de-componentes-principales.html#cb88-6" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb88-7"><a href="análisis-de-componentes-principales.html#cb88-7" tabindex="-1"></a><span class="co">#&gt;     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb88-8"><a href="análisis-de-componentes-principales.html#cb88-8" tabindex="-1"></a><span class="co">#&gt; -22.567  -4.051  -0.997   2.878  33.487 </span></span>
+<span id="cb88-9"><a href="análisis-de-componentes-principales.html#cb88-9" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb88-10"><a href="análisis-de-componentes-principales.html#cb88-10" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb88-11"><a href="análisis-de-componentes-principales.html#cb88-11" tabindex="-1"></a><span class="co">#&gt;                            Estimate Std. Error t value</span></span>
+<span id="cb88-12"><a href="análisis-de-componentes-principales.html#cb88-12" tabindex="-1"></a><span class="co">#&gt; (Intercept)                 27.3318     0.6601   41.40</span></span>
+<span id="cb88-13"><a href="análisis-de-componentes-principales.html#cb88-13" tabindex="-1"></a><span class="co">#&gt; Xs.pca$scores[, 1:2]Comp.1   4.4839     0.3499   12.81</span></span>
+<span id="cb88-14"><a href="análisis-de-componentes-principales.html#cb88-14" tabindex="-1"></a><span class="co">#&gt; Xs.pca$scores[, 1:2]Comp.2   9.7531     0.7692   12.68</span></span>
+<span id="cb88-15"><a href="análisis-de-componentes-principales.html#cb88-15" tabindex="-1"></a><span class="co">#&gt;                            Pr(&gt;|t|)    </span></span>
+<span id="cb88-16"><a href="análisis-de-componentes-principales.html#cb88-16" tabindex="-1"></a><span class="co">#&gt; (Intercept)                  &lt;2e-16 ***</span></span>
+<span id="cb88-17"><a href="análisis-de-componentes-principales.html#cb88-17" tabindex="-1"></a><span class="co">#&gt; Xs.pca$scores[, 1:2]Comp.1   &lt;2e-16 ***</span></span>
+<span id="cb88-18"><a href="análisis-de-componentes-principales.html#cb88-18" tabindex="-1"></a><span class="co">#&gt; Xs.pca$scores[, 1:2]Comp.2   &lt;2e-16 ***</span></span>
+<span id="cb88-19"><a href="análisis-de-componentes-principales.html#cb88-19" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb88-20"><a href="análisis-de-componentes-principales.html#cb88-20" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb88-21"><a href="análisis-de-componentes-principales.html#cb88-21" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb88-22"><a href="análisis-de-componentes-principales.html#cb88-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb88-23"><a href="análisis-de-componentes-principales.html#cb88-23" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 8.138 on 149 degrees of freedom</span></span>
+<span id="cb88-24"><a href="análisis-de-componentes-principales.html#cb88-24" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.6856, Adjusted R-squared:  0.6814 </span></span>
+<span id="cb88-25"><a href="análisis-de-componentes-principales.html#cb88-25" tabindex="-1"></a><span class="co">#&gt; F-statistic: 162.5 on 2 and 149 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresión-lineal-múltiple.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="análisis-cluster.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

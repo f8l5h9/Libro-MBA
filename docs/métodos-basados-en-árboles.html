@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 7 Métodos basados en árboles | Herramientas… MBA</title>
+  <meta name="description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 7 Métodos basados en árboles | Herramientas… MBA" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 7 Métodos basados en árboles | Herramientas… MBA" />
+  
+  <meta name="twitter:description" content="<p>This is a minimal example of using the bookdown package to write a book.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+
+<meta name="author" content="Fernando López   Manuel Reuz" />
+
+
+<meta name="date" content="2024-08-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="análisis-cluster.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Presentación</a></li>
+<li class="chapter" data-level="2" data-path="introducción-a-r.html"><a href="introducción-a-r.html"><i class="fa fa-check"></i><b>2</b> Introducción a R</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#objetivos"><i class="fa fa-check"></i><b>2.1</b> Objetivos</a></li>
+<li class="chapter" data-level="2.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#el-lenguaje-r"><i class="fa fa-check"></i><b>2.2</b> El lenguaje R</a></li>
+<li class="chapter" data-level="2.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#por-qué-aprender-r"><i class="fa fa-check"></i><b>2.3</b> ¿Por qué aprender R?</a></li>
+<li class="chapter" data-level="2.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#rstudio"><i class="fa fa-check"></i><b>2.4</b> RStudio</a></li>
+<li class="chapter" data-level="2.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#qué-cosas-hago-con-r"><i class="fa fa-check"></i><b>2.5</b> Qué cosas hago con R</a></li>
+<li class="chapter" data-level="2.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#creando-el-entorno-de-trabajo-en-rstudio."><i class="fa fa-check"></i><b>2.6</b> Creando el entorno de trabajo en RStudio.</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#consola"><i class="fa fa-check"></i><b>2.6.1</b> Consola</a></li>
+<li class="chapter" data-level="2.6.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#scripts"><i class="fa fa-check"></i><b>2.6.2</b> Scripts</a></li>
+<li class="chapter" data-level="2.6.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#entorno"><i class="fa fa-check"></i><b>2.6.3</b> Entorno</a></li>
+<li class="chapter" data-level="2.6.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#miscelánea-archivos-gráficos-paquetes-ayuda-visor"><i class="fa fa-check"></i><b>2.6.4</b> Miscelánea: Archivos, Gráficos, Paquetes, Ayuda, Visor</a></li>
+<li class="chapter" data-level="2.6.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#configuración-del-directorio-de-trabajo."><i class="fa fa-check"></i><b>2.6.5</b> Configuración del directorio de trabajo.</a></li>
+<li class="chapter" data-level="2.6.6" data-path="introducción-a-r.html"><a href="introducción-a-r.html#instalar-y-cargar-paquetes."><i class="fa fa-check"></i><b>2.6.6</b> Instalar y cargar paquetes.</a></li>
+<li class="chapter" data-level="2.6.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ayuda-en-r."><i class="fa fa-check"></i><b>2.6.7</b> Ayuda en R.</a></li>
+</ul></li>
+<li class="chapter" data-level="2.7" data-path="introducción-a-r.html"><a href="introducción-a-r.html#primeros-pasos"><i class="fa fa-check"></i><b>2.7</b> Primeros pasos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#script-básico-para-apreder-r"><i class="fa fa-check"></i><b>2.7.1</b> Script básico para apreder R</a></li>
+<li class="chapter" data-level="2.7.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#tipos-de-datos-en-r"><i class="fa fa-check"></i><b>2.7.2</b> Tipos de Datos en R</a></li>
+<li class="chapter" data-level="2.7.3" data-path="introducción-a-r.html"><a href="introducción-a-r.html#la-importancia-de-los-objetos-en-r"><i class="fa fa-check"></i><b>2.7.3</b> La Importancia de los Objetos en R</a></li>
+<li class="chapter" data-level="2.7.4" data-path="introducción-a-r.html"><a href="introducción-a-r.html#dataframes-en-r"><i class="fa fa-check"></i><b>2.7.4</b> DataFrames en R</a></li>
+<li class="chapter" data-level="2.7.5" data-path="introducción-a-r.html"><a href="introducción-a-r.html#ejemplo-de-dataframe"><i class="fa fa-check"></i><b>2.7.5</b> Ejemplo de DataFrame</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="introducción-a-r.html"><a href="introducción-a-r.html#un-for-en-r"><i class="fa fa-check"></i><b>2.8</b> Un <code>for</code> en R</a></li>
+<li class="chapter" data-level="2.9" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-excel"><i class="fa fa-check"></i><b>2.9</b> Leer un Excel</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="introducción-a-r.html"><a href="introducción-a-r.html#datos-empleados"><i class="fa fa-check"></i><b>2.9.1</b> Datos Empleados</a></li>
+<li class="chapter" data-level="2.9.2" data-path="introducción-a-r.html"><a href="introducción-a-r.html#leer-un-csv"><i class="fa fa-check"></i><b>2.9.2</b> Leer un csv</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-1"><i class="fa fa-check"></i><b>2.10</b> Actividad 1:</a></li>
+<li class="chapter" data-level="2.11" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-2"><i class="fa fa-check"></i><b>2.11</b> Actividad 2:</a></li>
+<li class="chapter" data-level="2.12" data-path="introducción-a-r.html"><a href="introducción-a-r.html#actividad-3"><i class="fa fa-check"></i><b>2.12</b> Actividad 3:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estadística-con-r.html"><a href="estadística-con-r.html"><i class="fa fa-check"></i><b>3</b> Estadística con R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#resumen-estadístico"><i class="fa fa-check"></i><b>3.1</b> Resumen estadístico</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-posición-central"><i class="fa fa-check"></i><b>3.1.1</b> Medidas de posición central</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-dispersión-absolutas"><i class="fa fa-check"></i><b>3.1.2</b> Medidas de dispersión absolutas</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#medidas-de-asimetría-y-curtosis"><i class="fa fa-check"></i><b>3.1.3</b> Medidas de asimetría y curtosis</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#la-función-summary"><i class="fa fa-check"></i><b>3.1.4</b> La función ‘summary()’</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad"><i class="fa fa-check"></i><b>3.1.5</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#gráficos-con-r"><i class="fa fa-check"></i><b>3.2</b> Gráficos con R</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#ggplot2"><i class="fa fa-check"></i><b>3.2.1</b> ggplot2</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#actividad-4"><i class="fa fa-check"></i><b>3.2.2</b> Actividad</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-hipótesis"><i class="fa fa-check"></i><b>3.3</b> Test Hipótesis</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias"><i class="fa fa-check"></i><b>3.3.1</b> Un simple t-test de igualdad de medias</a></li>
+<li class="chapter" data-level="3.3.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#un-simple-t-test-de-igualdad-de-medias-pareadas"><i class="fa fa-check"></i><b>3.3.2</b> Un simple t-test de igualdad de medias pareadas</a></li>
+<li class="chapter" data-level="3.3.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#test-de-normalidad-paramétricos"><i class="fa fa-check"></i><b>3.3.3</b> Test de normalidad paramétricos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estadística-con-r.html"><a href="estadística-con-r.html#distribuciones-bivariadas"><i class="fa fa-check"></i><b>3.4</b> Distribuciones bivariadas</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="estadística-con-r.html"><a href="estadística-con-r.html#tablas-de-contingencia"><i class="fa fa-check"></i><b>3.4.1</b> Tablas de contingencia</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estadística-con-r.html"><a href="estadística-con-r.html#algo-de-test-de-independencia"><i class="fa fa-check"></i><b>3.4.2</b> Algo de test de independencia</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estadística-con-r.html"><a href="estadística-con-r.html#correlaciones"><i class="fa fa-check"></i><b>3.4.3</b> Correlaciones</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html"><i class="fa fa-check"></i><b>4</b> Regresión Lineal Múltiple</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#estimación-de-los-parámetros.-método-de-los-mínimos-cuadrados."><i class="fa fa-check"></i><b>4.1</b> Estimación de los parámetros. Método de los mínimos cuadrados.</a></li>
+<li class="chapter" data-level="4.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#descomposición-de-la-varianza-y-bondad-del-ajuste."><i class="fa fa-check"></i><b>4.2</b> Descomposición de la Varianza y bondad del ajuste.</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-y-correlación."><i class="fa fa-check"></i><b>4.2.1</b> Coeficientes de determinación y correlación.</a></li>
+<li class="chapter" data-level="4.2.2" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#coeficientes-de-determinación-semi-parcial-y-parcial"><i class="fa fa-check"></i><b>4.2.2</b> Coeficientes de determinación semi-parcial y parcial</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="regresión-lineal-múltiple.html"><a href="regresión-lineal-múltiple.html#ejemplo-de-regresión-lineal-múltiple-con-r"><i class="fa fa-check"></i><b>4.3</b> Ejemplo de regresión lineal múltiple con R</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html"><i class="fa fa-check"></i><b>5</b> Análisis de Componentes Principales</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#introducción"><i class="fa fa-check"></i><b>5.1</b> Introducción</a></li>
+<li class="chapter" data-level="5.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#antes-de-empezar"><i class="fa fa-check"></i><b>5.2</b> Antes de empezar</a></li>
+<li class="chapter" data-level="5.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-acp"><i class="fa fa-check"></i><b>5.3</b> El ACP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#escalado-de-las-variables"><i class="fa fa-check"></i><b>5.3.1</b> Escalado de las variables</a></li>
+<li class="chapter" data-level="5.3.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#influencia-de-outliers"><i class="fa fa-check"></i><b>5.3.2</b> Influencia de outliers</a></li>
+<li class="chapter" data-level="5.3.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-varianza-explicada"><i class="fa fa-check"></i><b>5.3.3</b> Proporción de varianza explicada</a></li>
+<li class="chapter" data-level="5.3.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#número-óptimo-de-componentes-principales"><i class="fa fa-check"></i><b>5.3.4</b> Número óptimo de componentes principales</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-iniciales"><i class="fa fa-check"></i><b>5.4</b> Test iniciales</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#pruebas-esfericidad-de-bartlett"><i class="fa fa-check"></i><b>5.4.1</b> Pruebas esfericidad de Bartlett</a></li>
+<li class="chapter" data-level="5.4.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#prueba-del-kmo"><i class="fa fa-check"></i><b>5.4.2</b> Prueba del KMO</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#una-aplicación-con-datos-de-empleados"><i class="fa fa-check"></i><b>5.5</b> Una aplicación con “Datos de Empleados”</a></li>
+<li class="chapter" data-level="5.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#paquetes-de-r-para-el-acp"><i class="fa fa-check"></i><b>5.6</b> Paquetes de R para el ACP</a></li>
+<li class="chapter" data-level="5.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#proporción-de-la-varianza-explicada"><i class="fa fa-check"></i><b>5.7</b> Proporción de la varianza explicada</a></li>
+<li class="chapter" data-level="5.8" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#el-gráfico-de-sedimentación"><i class="fa fa-check"></i><b>5.8</b> El gráfico de sedimentación</a></li>
+<li class="chapter" data-level="5.9" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#las-componentes"><i class="fa fa-check"></i><b>5.9</b> Las componentes</a></li>
+<li class="chapter" data-level="5.10" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#ejercicio-acp-como-indicador-sintético"><i class="fa fa-check"></i><b>5.10</b> Ejercicio: ACP como indicador sintético</a>
+<ul>
+<li class="chapter" data-level="5.10.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#los-datos"><i class="fa fa-check"></i><b>5.10.1</b> Los datos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#aplicación-regresión-y-acp"><i class="fa fa-check"></i><b>5.11</b> Aplicación: Regresión y ACP</a>
+<ul>
+<li class="chapter" data-level="5.11.1" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#lectura-y-sumario-de-los-datos"><i class="fa fa-check"></i><b>5.11.1</b> Lectura y sumario de los datos</a></li>
+<li class="chapter" data-level="5.11.2" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#eliminación-de-datos-perdidos"><i class="fa fa-check"></i><b>5.11.2</b> Eliminación de datos perdidos</a></li>
+<li class="chapter" data-level="5.11.3" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#un-modelo-de-regresión-básico"><i class="fa fa-check"></i><b>5.11.3</b> Un modelo de regresión básico</a></li>
+<li class="chapter" data-level="5.11.4" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#evaluamos-matriz-de-correlaciones"><i class="fa fa-check"></i><b>5.11.4</b> Evaluamos matriz de correlaciones</a></li>
+<li class="chapter" data-level="5.11.5" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#test-de-adecuación-del-acp"><i class="fa fa-check"></i><b>5.11.5</b> Test de adecuación del ACP</a></li>
+<li class="chapter" data-level="5.11.6" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#cálculo-de-las-componentes"><i class="fa fa-check"></i><b>5.11.6</b> Cálculo de las componentes</a></li>
+<li class="chapter" data-level="5.11.7" data-path="análisis-de-componentes-principales.html"><a href="análisis-de-componentes-principales.html#interpretación-de-las-cps"><i class="fa fa-check"></i><b>5.11.7</b> Interpretación de las CPs</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="análisis-cluster.html"><a href="análisis-cluster.html"><i class="fa fa-check"></i><b>6</b> Análisis Cluster</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#medidas-de-distancia"><i class="fa fa-check"></i><b>6.1</b> Medidas de distancia</a></li>
+<li class="chapter" data-level="6.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-cluster-con-el-algoritmo-k-medias."><i class="fa fa-check"></i><b>6.2</b> Análisis cluster con el algoritmo K-medias.</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#k-medias"><i class="fa fa-check"></i><b>6.2.1</b> K-medias</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#un-ejemplo-de-análisis-clúster-con-r"><i class="fa fa-check"></i><b>6.3</b> Un ejemplo de análisis clúster con R</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#funciones-básicas-de-r-para-usar-k-medias"><i class="fa fa-check"></i><b>6.3.1</b> Funciones básicas de R para usar K-medias</a></li>
+<li class="chapter" data-level="6.3.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#selección-del-número-de-clústeres"><i class="fa fa-check"></i><b>6.3.2</b> Selección del número de clústeres</a></li>
+<li class="chapter" data-level="6.3.3" data-path="análisis-cluster.html"><a href="análisis-cluster.html#visualización-del-clúster-óptimo"><i class="fa fa-check"></i><b>6.3.3</b> Visualización del clúster óptimo</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="análisis-cluster.html"><a href="análisis-cluster.html#comentarios-finales-sobre-el-algoritmo-k-medias"><i class="fa fa-check"></i><b>6.4</b> Comentarios finales sobre el algoritmo k-medias</a></li>
+<li class="chapter" data-level="6.5" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análisis-clúster-jerárquico"><i class="fa fa-check"></i><b>6.5</b> Análisis clúster jerárquico</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="análisis-cluster.html"><a href="análisis-cluster.html#análsis-clúster-jerárquico-con-r"><i class="fa fa-check"></i><b>6.5.1</b> Análsis clúster jerárquico con R</a></li>
+<li class="chapter" data-level="6.5.2" data-path="análisis-cluster.html"><a href="análisis-cluster.html#trabajando-con-dendrogramas"><i class="fa fa-check"></i><b>6.5.2</b> Trabajando con dendrogramas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html"><i class="fa fa-check"></i><b>7</b> Métodos basados en árboles</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#introducción-1"><i class="fa fa-check"></i><b>7.1</b> Introducción</a></li>
+<li class="chapter" data-level="7.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#origen-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.2</b> Origen de los Árboles de Decisión</a></li>
+<li class="chapter" data-level="7.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#los-árboles-de-decisión-en-las-técnicas-de-machine-learning"><i class="fa fa-check"></i><b>7.3</b> Los Árboles de Decisión en las técnicas de Machine Learning</a></li>
+<li class="chapter" data-level="7.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-regresión"><i class="fa fa-check"></i><b>7.4</b> Árboles de regresión</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#un-ejemplo-de-juguete"><i class="fa fa-check"></i><b>7.4.1</b> Un ejemplo de juguete</a></li>
+<li class="chapter" data-level="7.4.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#sec:terminologia"><i class="fa fa-check"></i><b>7.4.2</b> Terminología</a></li>
+<li class="chapter" data-level="7.4.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#como-se-crea-un-árbol"><i class="fa fa-check"></i><b>7.4.3</b> Como se crea un árbol</a></li>
+<li class="chapter" data-level="7.4.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#evitar-el-overfitting"><i class="fa fa-check"></i><b>7.4.4</b> Evitar el overfitting</a></li>
+<li class="chapter" data-level="7.4.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#validación-cruzada"><i class="fa fa-check"></i><b>7.4.5</b> Validación cruzada</a></li>
+<li class="chapter" data-level="7.4.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#algoritmo-para-crear-un-árbol-de-regresión-con-pruning"><i class="fa fa-check"></i><b>7.4.6</b> Algoritmo para crear un árbol de regresión con pruning</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#árboles-de-clasificación"><i class="fa fa-check"></i><b>7.5</b> Árboles de clasificación</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#cómo-se-crea-un-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.5.1</b> Cómo se crea un árbol de clasificación</a></li>
+<li class="chapter" data-level="7.5.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-del-árbol"><i class="fa fa-check"></i><b>7.5.2</b> Predicción del árbol</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-y-desventajas-de-los-árboles-de-decisión"><i class="fa fa-check"></i><b>7.6</b> Ventajas y desventajas de los Árboles de Decisión</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ventajas-algunas"><i class="fa fa-check"></i><b>7.6.1</b> Ventajas (algunas)</a></li>
+<li class="chapter" data-level="7.6.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#desventajas-algunas"><i class="fa fa-check"></i><b>7.6.2</b> Desventajas (algunas)</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#paquetes-de-r"><i class="fa fa-check"></i><b>7.7</b> Paquetes de R</a></li>
+<li class="chapter" data-level="7.8" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-clasificación"><i class="fa fa-check"></i><b>7.8</b> Ejemplo Árbol de Clasificación</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#pre-podado"><i class="fa fa-check"></i><b>7.8.1</b> Pre-podado</a></li>
+<li class="chapter" data-level="7.8.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#entrenamiento-y-test"><i class="fa fa-check"></i><b>7.8.2</b> Entrenamiento y test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-regresión"><i class="fa fa-check"></i><b>7.9</b> Ejemplo Árbol de Regresión</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#datos"><i class="fa fa-check"></i><b>7.9.1</b> Datos</a></li>
+<li class="chapter" data-level="7.9.2" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#ajuste-del-modelo-con-la-librería-tree"><i class="fa fa-check"></i><b>7.9.2</b> Ajuste del modelo con la librería ‘tree’</a></li>
+<li class="chapter" data-level="7.9.3" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#podado-del-árbol-pruning"><i class="fa fa-check"></i><b>7.9.3</b> Podado del árbol (pruning)</a></li>
+<li class="chapter" data-level="7.9.4" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#predicción-y-evaluación-del-modelo"><i class="fa fa-check"></i><b>7.9.4</b> Predicción y evaluación del modelo</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#webs"><i class="fa fa-check"></i><b>7.10</b> Webs</a></li>
+<li class="chapter" data-level="7.11" data-path="métodos-basados-en-árboles.html"><a href="métodos-basados-en-árboles.html#referencias"><i class="fa fa-check"></i><b>7.11</b> Referencias</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Herramientas… MBA</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="métodos-basados-en-árboles" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Capítulo 7</span> Métodos basados en árboles<a href="métodos-basados-en-árboles.html#métodos-basados-en-árboles" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="introducción-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Introducción<a href="métodos-basados-en-árboles.html#introducción-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<!-- En esta sección, se describen métodos basados en árboles de decisión para regresión y clasificación. Estos métodos tienen como objetivo estratificar o segmentar el espacio predictor en varias regiones simples. La predicciones para cada observación se asignarán dependiendo de la región que le corresponda, asignándole un mismo valor (media, mediana, moda) a todas las observaciones que pertenezcan a la misma zona. -->
+<!-- de Para hacer una predicción para una observación dada, normalmente usamos la media o la moda de las observaciones de entrenamiento en la región a la que pertenece. Dado que el conjunto de reglas de división utilizadas para segmentar el espacio predictor se puede resumir en un árbol, este tipo de enfoques se conocen como métodos de árbol de decisión. -->
+<p>Los árboles de decisión son modelos predictivos formados por reglas binarias (si/no) con las que se consigue repartir las observaciones en función de sus atributos y predecir así el valor de la variable respuesta.</p>
+<blockquote>
+<p><strong>Los métodos basados en árboles se han convertido en uno de los referentes dentro del ámbito predictivo debido a los buenos resultados que generan en problemas muy diversos.</strong></p>
+</blockquote>
+<p>Los árboles de decisión son uno de los métodos más simples y fáciles de interpretar para realizar predicciones en problemas de clasificación y de regresión. Estos métodos fueron desarrollados a partir de los años 70 del siglo XX como una alternativa versátil a los métodos clásicos de la estadística, fuertemente basados en las hipótesis de linealidad y de normalidad, y enseguida se convierten en una técnica básica del aprendizaje automático. Aunque su calidad predictiva es mediocre (especialmente en el caso de regresión), constituyen la base de otros métodos altamente competitivos (métodos de ensamblado en paralelo o en serie) en los que se combinan múltiples árboles para mejorar la predicción, pagando el precio, eso sí, de hacer más difícil la interpretación del modelo resultante.</p>
+<p>Los métodos basados en árboles son simples y útiles para la interpretación. Sin embargo, por lo general no son competitivos con los mejores enfoques de aprendizaje supervisado en términos de precisión de predicción. Por lo tanto, también presentamos métodos alternativos que implican la producción de múltiples árboles que luego se combinan para producir una sola predicción de consenso. Veremos que la combinación de una gran cantidad de árboles a menudo puede resultar en mejoras importantes en la precisión de la predicción.</p>
+<blockquote>
+<p><strong>Mientras que la Regresión tiene una doble función (interpretación/preducción) los árboles deshechan de forma autómatica todas aquellas variables que no son últiples para la predicción</strong></p>
+</blockquote>
+<!-- https://www.cienciadedatos.net/documentos/33_arboles_decision_random_forest_gradient_boosting_c50 -->
+</div>
+<div id="origen-de-los-árboles-de-decisión" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Origen de los Árboles de Decisión<a href="métodos-basados-en-árboles.html#origen-de-los-árboles-de-decisión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Es difícil datar el orígen de una metodología. El primer artículo que desarrolla un enfoque de “árbol de decisión” data de 1959 y un investigador británico, William Belson, en un artículo titulado <em>Matching and Prediction on the Principle of Biological Classification</em>,<span class="citation"><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></span> cuyo resumen describe su enfoque como una forma de emparejar muestras de población y desarrollar criterios para hacerlo.</p>
+<p>El uso de árboles de decisión tuvo su origen en las ciencias sociales con los trabajos de Sonquist y Morgan el año 1964 y Morgan y Messenger el año 1979, ambos realizados en la Universidad de Michigan. El programa para la “Detección de Interacciones Automáticas”, creada el año 1971 por los investigadores Sonquist, Baker y Morgan, fue uno de los primeros métodos de ajuste de los datos basados en árboles de clasificación. En estadística, el año 1980, Kass introdujo un algoritmo recursivo de clasificación no binario, llamado “Detección de Interacciones Automáticas Chi-cuadrado”. Hacia el año 1984, los investigadores Breiman, Friedman, Olshen y Stone, introdujeron un nuevo algoritmo para la construcción de árboles y los aplicaron a problemas de regresión y clasificación. El método es conocido como “Árboles de clasificación y regresión”. Casi al mismo tiempo el proceso de inducción mediante árboles de decisión comenzó a ser usado por la comunidad de “Aprendizaje automático”.</p>
+<p>Los creadores de la metodología del árbol de clasificación con aplicación al aprendizaje automático, también llamada metodología CART, fueron Leo Breiman, Jerome Friedman, Richard Olshen y Charles Stone. Su aplicación en el ámbito de la Estadística se inició en 1984.<span class="citation"><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></span></p>
+</div>
+<div id="los-árboles-de-decisión-en-las-técnicas-de-machine-learning" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Los Árboles de Decisión en las técnicas de Machine Learning<a href="métodos-basados-en-árboles.html#los-árboles-de-decisión-en-las-técnicas-de-machine-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los algoritmos de aprendizaje automático pueden clasificarse en dos grupos:</p>
+<ul>
+<li>Supervisados.</li>
+<li>No supervisados.</li>
+<li>reforzar el aprendizaje.</li>
+</ul>
+<p><strong>Aprendizaje supervisado</strong>: El aprendizaje supervisado es un tipo de paradigma de aprendizaje automático en el que un modelo es entrenado utilizando un conjunto de datos etiquetado. En este enfoque, el algoritmo recibe un conjunto de ejemplos de entrada junto con sus correspondientes salidas deseadas (etiquetas) durante la fase de entrenamiento. El objetivo del modelo es aprender una función que mapee las entradas a las salidas de manera que pueda hacer predicciones precisas sobre nuevos datos no etiquetados.</p>
+<p>En términos más simples, en el aprendizaje supervisado, el modelo aprende a partir de ejemplos conocidos y luego se le proporcionan nuevos ejemplos para hacer predicciones. La “supervisión” se refiere a la idea de que el proceso de entrenamiento del modelo está supervisado por las etiquetas proporcionadas en el conjunto de datos de entrenamiento.</p>
+<p>Este enfoque se utiliza en una variedad de tareas, como clasificación y regresión. En la clasificación, el modelo se entrena para asignar las entradas a categorías predefinidas, mientras que en la regresión, el objetivo es predecir valores numéricos continuos. El aprendizaje supervisado es fundamental en la construcción de muchos sistemas de inteligencia artificial y toma su nombre del hecho de que el modelo es “supervisado” durante el proceso de aprendizaje con la ayuda de las etiquetas.</p>
+<p>Un árbol de decisión es un <strong>algoritmo supervisado</strong> de aprendizaje automático porque para que el algoritmo aprenda es necesaria una <strong>variable dependiente</strong> y nuestra meta es obtener una ‘función’ que permita predecir, a partir de <strong>variables independientes</strong>, el valor de la variable objetivo para casos desconocidos.</p>
+<p><strong>Aprendizaje no supervisado</strong>: Los algoritmos de aprendizaje no supervisado trabajan de forma muy similar a los supervisados, con la diferencia de que éstos sólo ajustan su modelo predictivo tomando en cuenta los datos de entrada, sin importar los de salida. Es decir, a diferencia del supervisado, los datos de entrada no están clasificados ni etiquetados, y no son necesarias estas características para entrenar el modelo. Dentro de este tipo de algoritmos, el agrupamiento o clustering en inglés, es el más utilizado, ya que particiona los datos en grupos que posean características similares entre sí</p>
+<p>La Figura <span class="math inline">\(\ref{fig:algoritmos}\)</span> muestra esquemáticamente los principales algoritmos de Machine Learning.</p>
+<div class="float">
+<img src="Figures/Algoritmos%20de%20Machine%20Learning.png" width="800" alt="Algoritmos de Machine Learning según su método de aprendizaje" />
+<div class="figcaption">Algoritmos de Machine Learning según su método de aprendizaje</div>
+</div>
+</div>
+<div id="árboles-de-regresión" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Árboles de regresión<a href="métodos-basados-en-árboles.html#árboles-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los árboles de regresión se aplican cuando la variable respuesta es continua. En términos generales, en el entrenamiento de un árbol de regresión, las observaciones se van distribuyendo por bifurcaciones (nodos) generando la estructura del árbol hasta alcanzar un nodo terminal. Cuando se quiere predecir una nueva observación, se recorre el árbol acorde al valor de sus predicciones hasta alcanzar uno de los nodos terminales. La predicción del árbol es la media/mediana/moda de la variable respuesta de las observaciones de entrenamiento que están en ese mismo nodo terminal.</p>
+<div id="un-ejemplo-de-juguete" class="section level3 hasAnchor" number="7.4.1">
+<h3><span class="header-section-number">7.4.1</span> Un ejemplo de juguete<a href="métodos-basados-en-árboles.html#un-ejemplo-de-juguete" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Usaremos el mismo ejemplo que aparece en <span class="citation">James Gareth et al.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></span> (pag. 304) para ilustrar cómo funcionan los árboles. En este ejemplo, objetivo es predecir una variable cuantitativa, el salario de los jugadores de béisbol, según los Años (cantidad de años que ha jugado en las ligas principales) y la cantidad de Hits/aciertos del año anterior.</p>
+<p>El siguiente código muestra un ejemplo básico de obtención de un árbol. Nótese que antes de realizar el análisis se eliminarán las observaciones a las que les faltan valores de Salario. También se transforma logarítmicamente el Salario para que su distribución tenga una forma de campana más típica (Recuerde que el salario se mide en miles de dólares).</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="métodos-basados-en-árboles.html#cb118-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ISLR)) {<span class="fu">install.packages</span>(<span class="st">&quot;ISLR&quot;</span>)}</span>
+<span id="cb118-2"><a href="métodos-basados-en-árboles.html#cb118-2" tabindex="-1"></a><span class="co">#&gt; Loading required package: ISLR</span></span>
+<span id="cb118-3"><a href="métodos-basados-en-árboles.html#cb118-3" tabindex="-1"></a><span class="fu">library</span>(ISLR) <span class="co"># provide the collection of data-sets used in the book &#39;An Introduction to Statistical Learning with Applications in R&#39;</span></span>
+<span id="cb118-4"><a href="métodos-basados-en-árboles.html#cb118-4" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(tree)) {<span class="fu">install.packages</span>(<span class="st">&quot;tree&quot;</span>)}</span>
+<span id="cb118-5"><a href="métodos-basados-en-árboles.html#cb118-5" tabindex="-1"></a><span class="co">#&gt; Loading required package: tree</span></span>
+<span id="cb118-6"><a href="métodos-basados-en-árboles.html#cb118-6" tabindex="-1"></a><span class="fu">library</span>(tree) <span class="co"># Classification and regression trees</span></span>
+<span id="cb118-7"><a href="métodos-basados-en-árboles.html#cb118-7" tabindex="-1"></a><span class="fu">data</span>(Hitters)</span>
+<span id="cb118-8"><a href="métodos-basados-en-árboles.html#cb118-8" tabindex="-1"></a>Hitters <span class="ot">&lt;-</span> Hitters[<span class="sc">!</span><span class="fu">is.na</span>(Hitters<span class="sc">$</span>Salary),]</span>
+<span id="cb118-9"><a href="métodos-basados-en-árboles.html#cb118-9" tabindex="-1"></a>formula <span class="ot">&lt;-</span> <span class="fu">log</span>(Salary) <span class="sc">~</span> Years <span class="sc">+</span> Hits </span>
+<span id="cb118-10"><a href="métodos-basados-en-árboles.html#cb118-10" tabindex="-1"></a>myfirsttree <span class="ot">&lt;-</span> <span class="fu">tree</span>(formula, <span class="at">data =</span> Hitters, <span class="at">control=</span><span class="fu">tree.control</span>(<span class="dv">300</span>, <span class="at">mincut =</span> <span class="dv">60</span>))</span>
+<span id="cb118-11"><a href="métodos-basados-en-árboles.html#cb118-11" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> myfirsttree, <span class="at">type =</span> <span class="st">&quot;proportional&quot;</span>)</span>
+<span id="cb118-12"><a href="métodos-basados-en-árboles.html#cb118-12" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> myfirsttree, <span class="at">splits =</span> <span class="cn">TRUE</span>, <span class="at">pretty =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:myfirsttree"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/myfirsttree-1.png" alt="\label{fig:myfirsttree}Árbol de regresión" width="768" />
+<p class="caption">
+Figure 7.1: Árbol de regresión
+</p>
+</div>
+<p>La Figura <span class="math inline">\(\ref{fig:myfirsttree}\)</span> muestra un árbol de regresión ajustado a estos datos. Nótese que tiene forma de árbol (ver Sección <span class="math inline">\(\ref{sec:terminologia}\)</span>). Consiste en una serie de reglas de división <strong>binaria</strong>, comenzando en la parte superior del árbol. La división superior asigna observaciones que tienen menos de 4,5 años (Years &lt; 4.5) a la rama izquierda. El salario previsto para estos jugadores viene dado por el valor de respuesta media para los jugadores en el conjunto de datos con (Años&lt;4.5). Para tales jugadores, el salario logarítmico medio es 5,107, por lo que hacemos una predicción de 165174$, para estos jugadores. Los jugadores con (<span class="math inline">\(Years \geq 4.5\)</span>) se asignan a la rama derecha, y luego ese grupo se subdivide aún más por ‘Hits’. En general, el árbol estratifica o segmenta a los jugadores en tres regiones del espacio predictor: jugadores que han jugado durante cuatro años y medio o menos, jugadores que han jugado durante cuatro años y medio o más y que hicieron menos de 118 aciertos el año pasado y jugadores que han jugado durante cuatro años y medio o más y que hizo al menos 118 hits el año pasado.</p>
+<p>Estas tres regiones se pueden escribir como:</p>
+<ul>
+<li><p><span class="math inline">\(R_1\)</span> = { X | Años &lt; 4.5 },</p></li>
+<li><p><span class="math inline">\(R_2\)</span>={X | Años&gt;=4.5, Hits &lt; 117.5 } y</p></li>
+<li><p><span class="math inline">\(R_3\)</span> = {X | años &gt;= 4.5, Hits &gt;= 117.5 }.</p></li>
+</ul>
+<p>La Figura <span class="math inline">\(\ref{fig:particion0}\)</span> ilustra las regiones en función de Años y Hits/Aciertos. Los salarios pronosticados para estos tres grupos son 1000 × exp(5,107) = 165 174<span class="math inline">\(, 1000 × exp(5,999) = 402 834\)</span> y 1,000 × exp(6.740)=845,346$ respectivamente.</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="métodos-basados-en-árboles.html#cb119-1" tabindex="-1"></a><span class="fu">plot</span>(Hitters<span class="sc">$</span>Years, Hitters<span class="sc">$</span>Hits, <span class="at">col=</span><span class="st">&quot;orange&quot;</span>, <span class="at">pch=</span><span class="dv">16</span> ,<span class="at">xlab=</span><span class="st">&quot;Years&quot;</span>, <span class="at">ylab=</span><span class="st">&quot;Hits&quot;</span>)</span>
+<span id="cb119-2"><a href="métodos-basados-en-árboles.html#cb119-2" tabindex="-1"></a><span class="fu">partition.tree</span>(myfirsttree, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-1-1.png" alt="\label{fig:particion0}Partición del espacio con predicciones" width="480" />
+<p class="caption">
+Figure 7.2: Partición del espacio con predicciones
+</p>
+</div>
+<p>Podríamos interpretar el árbol de regresión que se muestra en la Figura <span class="math inline">\(\ref{fig:myfirsttree}\)</span> de la siguiente manera: los años son el factor más importante para determinar el salario, y los jugadores con menos experiencia ganan salarios más bajos que los jugadores más experimentados. Dado que un jugador tiene menos experiencia, la cantidad de golpes que hizo en el año anterior parece jugar un papel pequeño en su salario. Pero entre los jugadores que han estado en las ligas mayores durante cinco años o más, la cantidad de Hits/aciertos hechos el año anterior sí afecta el salario, y los jugadores que hicieron más Hits/aciertos el año pasado tienden a tener salarios más altos. El árbol de regresión que se muestra en la Figura <span class="math inline">\(\ref{fig:myfirsttree}\)</span> es probablemente una simplificación excesiva de la verdadera relación entre Aciertos, Años y Salario. Sin embargo, tiene ventajas sobre otros tipos de modelos de regresión.</p>
+</div>
+<div id="sec:terminologia" class="section level3 hasAnchor" number="7.4.2">
+<h3><span class="header-section-number">7.4.2</span> Terminología<a href="métodos-basados-en-árboles.html#sec:terminologia" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Un árbol de decisión en Machine Learning es una estructura de árbol similar a un diagrama de flujo donde un nodo interno representa una característica (o atributo), la rama representa una regla de decisión y cada nodo hoja representa el resultado.</p>
+<p>El nodo superior en un árbol de decisión en Machine Learning se conoce como el nodo raíz. Aprende a particionar en función del valor del atributo. Divide el árbol de una manera recursiva llamada partición recursiva.</p>
+<p>Cada nodo en el árbol actúa como un caso de prueba para algún atributo, y cada borde que desciende de ese nodo corresponde a una de las posibles respuestas al caso de prueba. Este proceso es recursivo y se repite para cada subárbol enraizado en los nuevos nodos.</p>
+<p>La Figura <span class="math inline">\(\ref{fig:arbol}\)</span> muestra gráficamente la estructura de árbol.</p>
+<div class="float">
+<img src="Figures/Estructura-de-un-arbol-de-decision-2.png" width="500" height="500" alt="Ramas y nodos de un árbol de decisión" />
+<div class="figcaption">Ramas y nodos de un árbol de decisión</div>
+</div>
+<ul>
+<li><p><strong>Nodo raíz (nodo de decisión superior ):</strong> Representa a toda la población o muestra y esto se divide en dos o más conjuntos homogéneos.</p></li>
+<li><p><strong>División:</strong> Es un proceso de división de un nodo en dos o más subnodos.</p></li>
+<li><p><strong>Nodo de decisión:</strong> Cuando un subnodo se divide en subnodos adicionales, se llama nodo de decisión.</p></li>
+<li><p><strong>Nodo de hoja / terminal:</strong> Los nodos sin hijos (sin división adicional) se llaman Hoja o nodo terminal.</p></li>
+<li><p><strong>Poda:</strong> Cuando reducimos el tamaño de los árboles de decisión eliminando nodos (opuesto a la división), el proceso se llama poda.</p></li>
+<li><p><strong>Rama / Subárbol:</strong> Una subsección del árbol de decisión se denomina rama o subárbol.</p></li>
+<li><p><strong>Nodo padre e hijo:</strong> Un nodo, que se divide en subnodos se denomina nodo principal de subnodos, mientras que los subnodos son hijos de un nodo principal.</p></li>
+</ul>
+</div>
+<div id="como-se-crea-un-árbol" class="section level3 hasAnchor" number="7.4.3">
+<h3><span class="header-section-number">7.4.3</span> Como se crea un árbol<a href="métodos-basados-en-árboles.html#como-se-crea-un-árbol" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En esta sección se presenta el proceso de construcción de un árbol de decisión. Básicamente, los árboles se construyen en dos dos pasos:</p>
+<ul>
+<li><p><strong>Paso 1:</strong> Se divide el espacio de predicciones, es decir, el conjunto de valores posibles para <span class="math inline">\(X_1, X_2,..., X_p\)</span>, en J regiones distintas y no solapadas, <span class="math inline">\(R_1, R_2,..., R_J\)</span>.</p></li>
+<li><p><strong>Paso 2:</strong> Para cada observación que cae en la región <span class="math inline">\(R_j\)</span>, se hace <strong>la misma predicción</strong>, que simplemente es la media (o la mediana o la moda) de los valores de respuesta para las observaciones de entrenamiento en <span class="math inline">\(R_j\)</span>.</p></li>
+</ul>
+<p>¿Cómo se construyen las regiones <span class="math inline">\(R_1, R_2,..., R_J\)</span>? En teoría, podrían tener cualquier forma. Sin embargo, por simplicidad se divide el espacio de predicciones en rectángulos o cajas (Figura <span class="math inline">\(\ref{fig:cajas}\)</span>). Esta división también ayuda en la interpretación del modelo predictivo resultante. Hay también posibilidad de realizar divisiones oblicuas<span class="citation"><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></span> o flexibles.<span class="citation"><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></span></p>
+<div class="float">
+<img src="Figures/Cajas%20Arboles%20Decision.png" width="800" alt="División binaria recursiva" />
+<div class="figcaption">División binaria recursiva</div>
+</div>
+<p>En el caso de los árboles de regresión, el criterio empleado con más frecuencia para identificar las divisiones es el observar la suma de los residuos al cuadrado (Residual Sum of Squares, <span class="math inline">\(RSS\)</span>) que es una medida de la discrepancia entre los datos reales y los predichos por el modelo. El objetivo es encontrar las J regiones <span class="math inline">\((R_1,…, R_j)\)</span> que minimizan el <span class="math inline">\(RSS\)</span> total. Un <span class="math inline">\(RSS\)</span> bajo indica un buen ajuste del modelo a los datos. Por tanto, el objetivo es encontrar cajas <span class="math inline">\(R_1, R_2,..., R_J\)</span>? que minimicen el <span class="math inline">\(RSS\)</span>, dado por:</p>
+<p><span class="math display">\[
+RSS=\sum_{j=1}^J{\sum_{i \in R_j} (y_i-{\hat y}_{R_j})^2}
+\]</span>
+donde <span class="math inline">\({\hat y}_{R_j}\)</span> es el valor predicho (para las observaciones de entrenamiento) dentro de la <span class="math inline">\(R_j\)</span> caja. Desafortunadamente, es computacionalmente inviable considerar cada posible partición del espacio de características en cajas J. Por esta razón, se adopta un enfoque de <em>arriba-hacia-abajo</em> (top-down) que se conoce como división binaria recursiva. El enfoque es de arriba-hacia-abajo porque comienza en la parte superior del árbol (en cuyo punto todas las observaciones pertenecen a una sola región) y luego divide sucesivamente el espacio predictor; cada división se indica a través de dos nuevas ramas más abajo en el árbol.</p>
+<p>Para realizar la división binaria recursiva, primero seleccionamos el predictor <span class="math inline">\(X_j\)</span> y el punto de corte <span class="math inline">\(s\)</span> tal que dividiendo el espacio del predictor en las regiones <span class="math inline">\(\{X|X_j &lt; s\}\)</span> y <span class="math inline">\(\{X|X_j \geq s\}\)</span> conduce a la mayor reducción posible en <span class="math inline">\(RSS\)</span>. (La notación <span class="math inline">\(\{X|X_j &lt; s\}\)</span> significa la región del predictor espacio en el que <span class="math inline">\(X_j\)</span> toma un valor menor que <span class="math inline">\(s\)</span>). Es decir, consideramos todos los predictores <span class="math inline">\(X_1,..., X_p\)</span> y todos los valores posibles del punto de corte s para cada uno de los predictores, y luego elegimos el predictor y el punto de corte tales que el árbol resultante tiene el <span class="math inline">\(RSS\)</span> más bajo. Con mayor detalle, para cualquier j y s, definimos el par de semiplanos</p>
+<p><span class="math display">\[
+R_1(j,s)=\{X|X_j &lt; s\} \ \ y \ \ R_2(j,s)=\{X|X_j \geq s\}
+\]</span></p>
+<p>y se buscan los valores de j y s que minimizan la ecuación</p>
+<p><span class="math display">\[
+RSS={\sum_{i \in R_1} (y_i-{\hat y}_{R_1})^2} + {\sum_{i \in R_2} (y_i-{\hat y}_{R_2})^2}
+\]</span></p>
+</div>
+<div id="evitar-el-overfitting" class="section level3 hasAnchor" number="7.4.4">
+<h3><span class="header-section-number">7.4.4</span> Evitar el overfitting<a href="métodos-basados-en-árboles.html#evitar-el-overfitting" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El proceso de construcción de árboles tiende a reducir rápidamente el error <span class="math inline">\(SSR\)</span>, de tal forma que el modelo se ajusta muy bien a las observaciones empleadas como entrenamiento. Como consecuencia, se genera un sobreajuste (<strong><em>overfitting</em></strong>) que <strong>reduce su capacidad predictiva al aplicarlo a nuevos datos</strong>. La razón de este comportamiento radica en la facilidad con la que los árboles se ramifican adquiriendo estructuras complejas. De hecho, si no se limitan las divisiones, todo árbol termina ajustándose perfectamente a las observaciones de entrenamiento creando un nodo terminal por observación. Existen dos estrategias para prevenir el problema de overfitting de los árboles:
+- limitar el tamaño del árbol (parada temprana o <em>early stopping</em>) y
+- el proceso de podado ( <em>pruning</em>).</p>
+<p>La Figura <span class="math inline">\(\ref{fig:sobreajuste}\)</span> muestra el comportamiento del overffiting.</p>
+<div class="float">
+<img src="Figures/pruning.png" width="600" alt="Sobre-ajuste" />
+<div class="figcaption">Sobre-ajuste</div>
+</div>
+<div id="controlar-el-tamaño-del-árbol-parada-temprana" class="section level4 hasAnchor" number="7.4.4.1">
+<h4><span class="header-section-number">7.4.4.1</span> Controlar el tamaño del árbol (parada temprana)<a href="métodos-basados-en-árboles.html#controlar-el-tamaño-del-árbol-parada-temprana" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El tamaño final que adquiere un árbol puede controlarse mediante reglas de parada que detengan la división de los nodos dependiendo de si se cumplen o no determinadas condiciones. El nombre de estas condiciones puede variar dependiendo del software o librería empleada, pero suelen estar presentes en todos ellos.</p>
+<blockquote>
+<p><strong>Observaciones mínimas para división:</strong> define el número mínimo de observaciones que debe tener un nodo para poder ser dividido. Cuanto mayor el valor, menos flexible es el modelo.</p>
+</blockquote>
+<blockquote>
+<p><strong>Observaciones mínimas de nodo terminal:</strong> define el número mínimo de observaciones que deben tener los nodos terminales. Su efecto es muy similar al de observaciones mínimas para división.</p>
+</blockquote>
+<blockquote>
+<p><strong>Profundidad máxima del árbol:</strong> define la profundidad máxima del árbol, entendiendo por profundidad máxima el número de divisiones de la rama más larga (en sentido descendente) del árbol.</p>
+</blockquote>
+<blockquote>
+<p><strong>Número máximo de nodos terminales:</strong> define el número máximo de nodos terminales que puede tener el árbol. Una vez alcanzado el límite, se detienen las divisiones. Su efecto es similar al de controlar la profundidad máxima del árbol.</p>
+</blockquote>
+<blockquote>
+<p><strong>Reducción mínima de error:</strong> define la reducción mínima de error que tiene que conseguir una división para que se lleve a cabo.</p>
+</blockquote>
+<p>A todos estos parámetros se les conoce como <strong>hiperparámetros</strong> porque no se aprenden durante el entrenamiento del modelo. Su valor tiene que ser especificado por el usuario en base a su conocimiento del problema y mediante el uso de validación cruzada.</p>
+</div>
+<div id="post-pruning" class="section level4 hasAnchor" number="7.4.4.2">
+<h4><span class="header-section-number">7.4.4.2</span> Post-pruning<a href="métodos-basados-en-árboles.html#post-pruning" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El proceso descrito anteriormente puede producir buenas predicciones en el conjunto de entrenamiento, pero es probable que se produzca un sobreajuste los datos, lo que conducirá a un rendimiento deficiente del conjunto de prueba. Esto se debe a que el árbol resultante puede ser demasiado complejo. Un árbol más pequeño con menos divisiones (menos regiones <span class="math inline">\(R_1,... , R_J\)</span>) podría generar una aceptable predicción y una mejor interpretación a costa de un pequeño sesgo. Una posible alternativa al proceso descrito anteriormente es construir el árbol solo mientras la disminución en el <span class="math inline">\(RSS\)</span> debido a cada división exceda algún umbral (<em>threshold</em>). Esta estrategia dará como resultado árboles más pequeños, <strong>pero es demasiado miope, ya que una división aparentemente sin valor en un nodo al principio del árbol podría ser seguida por una muy buena división en otro nodo posterior que conduzca a una gran reducción en <span class="math inline">\(RSS\)</span>.</strong></p>
+<p>Una estrategia mejor sería hacer crecer un árbol <span class="math inline">\(T_0\)</span> muy grande y luego podarlo para obtener un subárbol. La cuestión es: <strong>¿Cómo determinamos la mejor manera de podar el árbol?</strong> Intuitivamente, nuestro objetivo es seleccionar un subárbol que conduzca a la tasa de error más baja.</p>
+<p>Dado un subárbol, se podría por ejemplo estimar su error utilizando un proceso de validación cruzada. Sin embargo, aplicar este procedimiento para cada posible subárbol sería demasiado engorroso, ya que es posible identificar una cantidad extremadamente grande de subárboles. En su lugar, es necesario encontrar una forma de seleccionar un pequeño conjunto de subárboles para su consideración/evaluación. La reducción de la complejidad de los costos, también conocida como reducción del eslabón más débil, brinda una manera de hacer precisamente esto. En lugar de considerar todos los subárboles posibles, consideramos una secuencia de árboles indexados por un parámetro de ajuste no negativo <span class="math inline">\(\alpha\)</span>.</p>
+<p>En este caso, se busca el sub-árbol T que minimiza la ecuación (<strong><em>Cost complexity pruning</em></strong>)</p>
+<p><span class="math display">\[
+\sum_{j=1}^{|T|}{\sum_{i \in R_j} (y_i-{\hat y}_{R_j})^2} + \alpha|T|
+\]</span>
+es lo más pequeño posible.</p>
+<p>Aquí |T| indica el número de nodos terminales del árbol T.</p>
+<p>El primer término de la ecuación se corresponde con el sumatorio total de los residuos cuadrados RSS. Por definición, cuantos más nodos terminales tenga el modelo menor será esta parte de la ecuación. El segundo término es la restricción, que penaliza al modelo en función del número de nodos terminales (a mayor número, mayor penalización). El grado de penalización se determina mediante el parámetro <span class="math inline">\(\alpha\)</span> que es la <strong>medida de costo-complejidad</strong> (<strong>cost complexity</strong>). Cuando <span class="math inline">\(\alpha\)</span>=0, la penalización es nula y el árbol resultante es equivalente al árbol original. A medida que se incrementa <span class="math inline">\(\alpha\)</span> la penalización es mayor y, como consecuencia, los árboles resultantes son de menor tamaño. El valor óptimo de <span class="math inline">\(\alpha\)</span> puede identificarse mediante cross validation.</p>
+<p>El parámetro <span class="math inline">\(\alpha\)</span> controla un equilibrio entre la complejidad del subárbol y su ajuste a los datos de entrenamiento. Cuando <span class="math inline">\(\alpha\)</span>= 0, entonces el subárbol T simplemente será igual a <span class="math inline">\(T_0\)</span>, porque entonces solo mide el error de entrenamiento. Sin embargo, a medida que aumenta <span class="math inline">\(\alpha\)</span>, hay que pagar un precio por tener un árbol con muchos nodos terminales, por lo que la cantidad tenderá a minimizarse para un subárbol más pequeño.</p>
+<p>Resulta que a medida que se aumentea el valor de <span class="math inline">\(\alpha\)</span> desde cero, las ramas se eliminan del árbol de forma anidada y predecible, por lo que es fácil obtener la secuencia completa de subárboles en función de <span class="math inline">\(\alpha\)</span>.</p>
+<p>Es posible seleccionar un valor de <span class="math inline">\(\alpha\)</span> usando un conjunto de validación o usando validación cruzada.</p>
+</div>
+</div>
+<div id="validación-cruzada" class="section level3 hasAnchor" number="7.4.5">
+<h3><span class="header-section-number">7.4.5</span> Validación cruzada<a href="métodos-basados-en-árboles.html#validación-cruzada" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La validación cruzada o cross-validation es una técnica utilizada para evaluar los resultados de un análisis estadístico cuando el conjunto de datos se ha segmentado en una muestra de entrenamiento y otra de prueba, la validación cruzada (Figura ) comprueba si los resultados del análisis son independientes de la partición. Aunque la validación cruzada es una técnica diseñada para modelos de regresión y predicción, su uso se ha extendido a muchos otros ejercicios de Machine Learning.</p>
+<div class="float">
+<img src="Figures/Esquema_validacion_cruzada.jpg" width="400" alt="Esquema de validación cruzada https://commons.wikimedia.org/w/index.php?curid=17617674" />
+<div class="figcaption">Esquema de validación cruzada <a href="https://commons.wikimedia.org/w/index.php?curid=17617674" class="uri">https://commons.wikimedia.org/w/index.php?curid=17617674</a></div>
+</div>
+<p>La manera más sencilla de realizar la validación cruzada es una vez segmentado el conjunto de datos en la muestra de entrenamiento y test, consiste en resolver el modelo con los datos de entrenamiento, y probar el modelo estimado en la muestra de test, la simple comparación del resultado obtenido en dicha muestra con las observaciones reales nos permite validar el modelo en términos de error (proceso hold-out). Una aplicación alternativa consiste en repetir el proceso anterior, seleccionando aleatoriamente distintos conjuntos de datos de entrenamiento, y calcular los estadísticos de validación a partir de la media de los valores en cada una de las repeticiones. A este método se le denomina Validación cruzada aleatoria (Figura <span class="math inline">\(\ref{fig:esquema}\)</span>). Los inconvenientes es que hay algunas muestras que quedan sin evaluar y otras que se evalúan más de una vez, es decir, los subconjuntos de prueba y entrenamiento se pueden solapar.</p>
+<div class="float">
+<img src="Figures/Random_cross_validation.jpg" width="400" alt="Esquema de validación cruzada https://commons.wikimedia.org/w/index.php?curid=17616794" />
+<div class="figcaption">Esquema de validación cruzada <a href="https://commons.wikimedia.org/w/index.php?curid=17616794" class="uri">https://commons.wikimedia.org/w/index.php?curid=17616794</a></div>
+</div>
+<!-- ver -->
+<!-- https://bookdown.org/content/2274/metodos-de-clasificacion.html#validacion-cruzada -->
+</div>
+<div id="algoritmo-para-crear-un-árbol-de-regresión-con-pruning" class="section level3 hasAnchor" number="7.4.6">
+<h3><span class="header-section-number">7.4.6</span> Algoritmo para crear un árbol de regresión con pruning<a href="métodos-basados-en-árboles.html#algoritmo-para-crear-un-árbol-de-regresión-con-pruning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li><p><em>1.</em> Se emplea <em>recursive binary splitting</em> para crear un árbol grande y complejo (<span class="math inline">\(T_0\)</span>) empleando los datos de training y reduciendo al máximo posible las condiciones de parada. Normalmente se emplea como única condición de parada el número mínimo de observaciones por nodo terminal.</p></li>
+<li><p><em>2.</em> Se aplica el cost complexity pruning al árbol <span class="math inline">\(T_0\)</span> para obtener el mejor sub-árbol en función de <span class="math inline">\(\alpha\)</span>. Es decir, se obtiene el mejor sub-árbol para un rango de valores de <span class="math inline">\(\alpha\)</span>.</p></li>
+<li><p><em>3.</em> Identificación del valor óptimo de <span class="math inline">\(\alpha\)</span> mediante k-cross-validation. Se divide la muestra de entrenamiento en K grupos. Para <span class="math inline">\(k=1,...,K\)</span>:</p></li>
+<li><p><em>4.</em> Repetir pasos 1 y 2 empleando todas las observaciones excepto las del grupo i-ésimo.</p></li>
+<li><p><em>5.</em> Evaluar el <span class="math inline">\(SSR\)</span> para el rango de valores de <span class="math inline">\(\alpha\)</span> empleando el grupo i-ésimo.</p></li>
+<li><p><em>6.</em> Obtener el promedio de los K <span class="math inline">\(SSR\)</span> calculados para cada valor <span class="math inline">\(\alpha\)</span>.</p></li>
+</ul>
+<p>Seleccionar el sub-árbol del paso 2 que se corresponde con el valor <span class="math inline">\(\alpha\)</span> que ha conseguido el menor cross-validation mean squared error en el paso 3.</p>
+<p>En el caso de los árboles de clasificación (ver más adelante), en lugar de emplear la suma de residuos cuadrados <span class="math inline">\(SSR\)</span> como criterio de selección, se emplea una medida alternativa (ver árboles de clasificación).</p>
+</div>
+</div>
+<div id="árboles-de-clasificación" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Árboles de clasificación<a href="métodos-basados-en-árboles.html#árboles-de-clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Los árboles de clasificación son el subtipo de árboles de decisión que se aplica cuando la variable respuesta es categórica.</p>
+<div id="cómo-se-crea-un-árbol-de-clasificación" class="section level3 hasAnchor" number="7.5.1">
+<h3><span class="header-section-number">7.5.1</span> Cómo se crea un árbol de clasificación<a href="métodos-basados-en-árboles.html#cómo-se-crea-un-árbol-de-clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para construir un árbol de clasificación se emplea el mismo método descrito en los árboles de regresión. Sin embargo, como la variable respuesta en cualitativa, no es posible emplear el <span class="math inline">\(RSS\)</span> como criterio de selección de las divisiones óptimas. Existen varias alternativas, todas ellas con el objetivo de encontrar nodos lo más puros/homogéneos posible. Las más empleadas son:</p>
+<ul>
+<li><p><strong>Classification Error Rate:</strong> Se define como la proporción de observaciones que no pertenecen a la clase más común en el nodo.
+<span class="math display">\[
+E_m= 1- max (\hat p_{mk})
+\]</span>
+donde <span class="math inline">\(\hat p_{mk}\)</span> representa la proporción de observaciones del nodo m que pertenecen a la clase k. A pesar de la sencillez de esta medida, no es suficientemente sensible para crear buenos árboles, por lo que, en la práctica, suelen emplearse otras medidas.</p></li>
+<li><p><strong>Gini Index:</strong> Es una medida de la varianza total en el conjunto de las K clases del nodo m. Se considera una medida de pureza del nodo.
+<span class="math display">\[
+G = \sum_{k=1}^K \hat p_{mk}(1-\hat p_{mk})
+\]</span>
+Cuando <span class="math inline">\(\hat p_{mk}\)</span> es cercano a 0 o a 1 (el nodo contiene mayoritariamente observaciones de una clase), el término <span class="math inline">\(\hat p_{mk}(1-\hat p_{mk})\)</span> es muy pequeño. Como consecuencia, cuanto mayor sea la pureza del nodo, menor el valor del índice Gini G.</p></li>
+<li><p><strong>Cross Entropy:</strong> La entropía es otra forma de cuantificar el desorden de un sistema. En el caso de los nodos, el desorden se corresponde con la impureza. Si un nodo es puro, contiene únicamente observaciones de una clase, su entropía es cero. Por el contrario, si la frecuencia de cada clase es la misma, el valor de la entropía alcanza el valor máximo de 1.
+<span class="math display">\[
+D = \sum_{k=1}^K \hat p_{mk}log(\hat p_{mk})
+\]</span></p></li>
+<li><p><strong>Chi-Square:</strong> Esta aproximación consiste en identificar si existe una diferencia significativa entre los nodos hijos y el nodo parental, es decir, si hay evidencias de que la división consigue una mejora. Para ello, se aplica un test estadístico chi-square goodness of fit empleando como distribución esperada
+<span class="math inline">\(H_0\)</span> la frecuencia de cada clase en el nodo parental. Cuanto mayor el estadístico <span class="math inline">\(\chi^2\)</span>, mayor la evidencia estadística de que existe una diferencia.
+<span class="math display">\[
+\chi^2=\sum_k{(observado_k-esperado_k) \over esperado_k}
+\]</span>
+Los árboles generados con este criterio de división reciben el nombre de CHAID (Chi-square Automatic Interaction Detector).</p></li>
+</ul>
+<p>Independientemente de la medida empleada como criterio de selección de las divisiones, el proceso siempre es el mismo.</p>
+</div>
+<div id="predicción-del-árbol" class="section level3 hasAnchor" number="7.5.2">
+<h3><span class="header-section-number">7.5.2</span> Predicción del árbol<a href="métodos-basados-en-árboles.html#predicción-del-árbol" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Tras la creación de un árbol, las observaciones de entrenamiento quedan agrupadas en los nodos terminales. Para predecir una nueva observación, se recorre el árbol en función del valor de sus predictores hasta llegar a uno de los nodos terminales. En el caso de clasificación, suele emplearse la moda de la variable respuesta como valor de predicción, es decir, la clase más frecuente del nodo. Además, puede acompañarse con el porcentaje de cada clase en el nodo terminal, lo que aporta información sobre la confianza de la predicción.</p>
+</div>
+</div>
+<div id="ventajas-y-desventajas-de-los-árboles-de-decisión" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Ventajas y desventajas de los Árboles de Decisión<a href="métodos-basados-en-árboles.html#ventajas-y-desventajas-de-los-árboles-de-decisión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ventajas-algunas" class="section level3 hasAnchor" number="7.6.1">
+<h3><span class="header-section-number">7.6.1</span> Ventajas (algunas)<a href="métodos-basados-en-árboles.html#ventajas-algunas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Fácil de entender</li>
+<li>Util en exploración de datos:identificar importancia de variables a partir de cientos de variables.</li>
+<li>Menos limpieza de datos: outliers y valores faltantes no influencian el modelo (A un cierto grado)</li>
+<li>El tipo de datos no es una restricción</li>
+<li>Es un método no paramétrico</li>
+</ul>
+</div>
+<div id="desventajas-algunas" class="section level3 hasAnchor" number="7.6.2">
+<h3><span class="header-section-number">7.6.2</span> Desventajas (algunas)<a href="métodos-basados-en-árboles.html#desventajas-algunas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Sobreajuste</li>
+<li>Pérdida de información al categorizar variables continuas</li>
+<li>Inestabilidad: un pequeño cambio en los datos puede modificar ampliamente la estructura del árbol. Por lo tanto la interpretación no es tan directa como parece.</li>
+<li>Un árbol de decisión puede llegar a ser demasiado complejo con facilidad, perdiendo su utilidad.</li>
+</ul>
+</div>
+</div>
+<div id="paquetes-de-r" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Paquetes de R<a href="métodos-basados-en-árboles.html#paquetes-de-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Algunas librerías que permiten crear y representar árboles de regresión y clasificación son: tree,<span class="citation"><a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></span> rpart<span class="citation"><a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a></span> o party:<span class="citation"><a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></span></p>
+<p><strong>rpart</strong>: Este es el primer paquete de R para árboles de clasificación y árboles de regresión. Tiene funciones de poda y gráficos muy generales. Se complementa con otro paquete <strong>rpart.plot</strong><span class="citation"><a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a></span></p>
+<p><strong>party</strong>: El núcleo del paquete es la función ctree(), una implementación de árboles de inferencia condicional que integran modelos de regresión estructurados en árbol en una teoría bien definida de procedimientos de inferencia condicional. Esta clase no paramétrica de árboles de regresión es aplicable a todo tipo de problemas de regresión, incluidas variables de respuesta nominales, ordinales, numéricas, censuradas y multivariadas y escalas de medición arbitrarias de las covariables. Una de las principales diferencias que tiene con otros métodos de partición es que no hace prunning debido a su sustento estadístico. Es decir, el árbol sigue creciendo hasta que no quede ninguna variable que posea una relación significativa con el target.</p>
+<p><strong>tree</strong>: La función para crear un árbol de regresión es tree, a continuación la estructura de la función.</p>
+<p><strong>randomForest:</strong> dispone de los principales algoritmos para crear modelos Random Forest. Destaca por su fácil uso, pero no por su rapidez.</p>
+<p><strong>ranger:</strong> algoritmos para crear modelos random forest. Es similar a randomForest pero mucho más rápido. Además, incorpora extremely randomized trees y quantile regression forests.</p>
+<p><strong>gbm:</strong> dispone de los principales algoritmos de boosting. Este paquete ya no está mantenido, aunque es útil para explicar los conceptos, no se recomienda su uso en producción.</p>
+<p><strong>XGBoost:</strong> esta librería permite acceder al algoritmo XGboost (Extra Gradient boosting). Una adaptación de gradient boosting que destaca por su eficiencia y rapidez.</p>
+<p><strong>H2O:</strong> implementaciones muy optimizadas de los principales algoritmos de machine learning, entre ellos random forest, gradient boosting y XGBoost. Para conocer más detalles sobre cómo utilizar esta librería consultar Machine Learning con H2O y R.</p>
+<p><strong>C50:</strong> implementación de los algoritmos C5.0 para árboles de clasificación.</p>
+<p>Existen otros paquetes que el lector puede consultar en la sección Recursive Partitioning de <a href="https://cran.r-project.org/web/views/MachineLearning.html">CRAN Task View: Machine Learning &amp; Statistical Learning.</a></p>
+</div>
+<div id="ejemplo-árbol-de-clasificación" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> Ejemplo Árbol de Clasificación<a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-clasificación" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Un conjunto de datos clásico en Machine Learning son los datos del <strong>Titanic</strong>. Este set de datos contiene información sobre los pasajeros del RMS Titanic, el transatlántico británico que se hundió en abril de 1912 durante su viaje inaugural desde Southampton a Nueva York. Entre la información almacenada se encuentran la edad, género, características socio-económicas de los pasajeros y si sobrevivieron o no al naufragio. Aunque pueda resultar un clásico poco original, estos datos tienen una serie de características que los hacen idóneos para ser utilizados como ejemplo introductorio. Se trata de un problema y de unos datos cuyas variables pueden entenderse de forma sencilla. Es intuitivo comprender el impacto que puede tener la edad, el sexo, la localización del camarote en la supervivencia de los pasajeros. Aunque no lo parezca, comprender a fondo el problema que se pretende modelar es lo más importante para lograr buenos resultados.</p>
+<p>En este ejemplo utilizaremos la librería <strong>rpart</strong> y <strong>rpart.plot</strong> para obtener los gráficos de árboles.</p>
+<p>En primer lugar obtendremos un simple árbol sin ningún tipo de restricciones</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="métodos-basados-en-árboles.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb120-2"><a href="métodos-basados-en-árboles.html#cb120-2" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb120-3"><a href="métodos-basados-en-árboles.html#cb120-3" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;ptitanic&quot;</span>)</span>
+<span id="cb120-4"><a href="métodos-basados-en-árboles.html#cb120-4" tabindex="-1"></a>arbol_1 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(survived <span class="sc">~</span>., <span class="at">data =</span> ptitanic, <span class="at">method =</span> <span class="st">&#39;class&#39;</span>)</span></code></pre></div>
+<p>Por defecto, rpart() usa la medida de Gini para la división de los nodos.</p>
+<p>Los resultados que ofrece el algoritmo son:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="métodos-basados-en-árboles.html#cb121-1" tabindex="-1"></a>arbol_1</span>
+<span id="cb121-2"><a href="métodos-basados-en-árboles.html#cb121-2" tabindex="-1"></a><span class="co">#&gt; n= 1309 </span></span>
+<span id="cb121-3"><a href="métodos-basados-en-árboles.html#cb121-3" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb121-4"><a href="métodos-basados-en-árboles.html#cb121-4" tabindex="-1"></a><span class="co">#&gt; node), split, n, loss, yval, (yprob)</span></span>
+<span id="cb121-5"><a href="métodos-basados-en-árboles.html#cb121-5" tabindex="-1"></a><span class="co">#&gt;       * denotes terminal node</span></span>
+<span id="cb121-6"><a href="métodos-basados-en-árboles.html#cb121-6" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb121-7"><a href="métodos-basados-en-árboles.html#cb121-7" tabindex="-1"></a><span class="co">#&gt;   1) root 1309 500 died (0.6180290 0.3819710)  </span></span>
+<span id="cb121-8"><a href="métodos-basados-en-árboles.html#cb121-8" tabindex="-1"></a><span class="co">#&gt;     2) sex=male 843 161 died (0.8090154 0.1909846)  </span></span>
+<span id="cb121-9"><a href="métodos-basados-en-árboles.html#cb121-9" tabindex="-1"></a><span class="co">#&gt;       4) age&gt;=9.5 796 136 died (0.8291457 0.1708543) *</span></span>
+<span id="cb121-10"><a href="métodos-basados-en-árboles.html#cb121-10" tabindex="-1"></a><span class="co">#&gt;       5) age&lt; 9.5 47  22 survived (0.4680851 0.5319149)  </span></span>
+<span id="cb121-11"><a href="métodos-basados-en-árboles.html#cb121-11" tabindex="-1"></a><span class="co">#&gt;        10) sibsp&gt;=2.5 20   1 died (0.9500000 0.0500000) *</span></span>
+<span id="cb121-12"><a href="métodos-basados-en-árboles.html#cb121-12" tabindex="-1"></a><span class="co">#&gt;        11) sibsp&lt; 2.5 27   3 survived (0.1111111 0.8888889) *</span></span>
+<span id="cb121-13"><a href="métodos-basados-en-árboles.html#cb121-13" tabindex="-1"></a><span class="co">#&gt;     3) sex=female 466 127 survived (0.2725322 0.7274678)  </span></span>
+<span id="cb121-14"><a href="métodos-basados-en-árboles.html#cb121-14" tabindex="-1"></a><span class="co">#&gt;       6) pclass=3rd 216 106 died (0.5092593 0.4907407)  </span></span>
+<span id="cb121-15"><a href="métodos-basados-en-árboles.html#cb121-15" tabindex="-1"></a><span class="co">#&gt;        12) sibsp&gt;=2.5 21   3 died (0.8571429 0.1428571) *</span></span>
+<span id="cb121-16"><a href="métodos-basados-en-árboles.html#cb121-16" tabindex="-1"></a><span class="co">#&gt;        13) sibsp&lt; 2.5 195  92 survived (0.4717949 0.5282051)  </span></span>
+<span id="cb121-17"><a href="métodos-basados-en-árboles.html#cb121-17" tabindex="-1"></a><span class="co">#&gt;          26) age&gt;=16.5 162  79 died (0.5123457 0.4876543)  </span></span>
+<span id="cb121-18"><a href="métodos-basados-en-árboles.html#cb121-18" tabindex="-1"></a><span class="co">#&gt;            52) parch&gt;=3.5 9   1 died (0.8888889 0.1111111) *</span></span>
+<span id="cb121-19"><a href="métodos-basados-en-árboles.html#cb121-19" tabindex="-1"></a><span class="co">#&gt;            53) parch&lt; 3.5 153  75 survived (0.4901961 0.5098039)  </span></span>
+<span id="cb121-20"><a href="métodos-basados-en-árboles.html#cb121-20" tabindex="-1"></a><span class="co">#&gt;             106) age&gt;=27.5 44  17 died (0.6136364 0.3863636) *</span></span>
+<span id="cb121-21"><a href="métodos-basados-en-árboles.html#cb121-21" tabindex="-1"></a><span class="co">#&gt;             107) age&lt; 27.5 109  48 survived (0.4403670 0.5596330)  </span></span>
+<span id="cb121-22"><a href="métodos-basados-en-árboles.html#cb121-22" tabindex="-1"></a><span class="co">#&gt;               214) age&lt; 21.5 28  11 died (0.6071429 0.3928571) *</span></span>
+<span id="cb121-23"><a href="métodos-basados-en-árboles.html#cb121-23" tabindex="-1"></a><span class="co">#&gt;               215) age&gt;=21.5 81  31 survived (0.3827160 0.6172840) *</span></span>
+<span id="cb121-24"><a href="métodos-basados-en-árboles.html#cb121-24" tabindex="-1"></a><span class="co">#&gt;          27) age&lt; 16.5 33   9 survived (0.2727273 0.7272727) *</span></span>
+<span id="cb121-25"><a href="métodos-basados-en-árboles.html#cb121-25" tabindex="-1"></a><span class="co">#&gt;       7) pclass=1st,2nd 250  17 survived (0.0680000 0.9320000) *</span></span></code></pre></div>
+<p>La librería <strong>rpart.plot</strong> muestra los resultados gráficamente lo que puede ayudar a comprender el funcionamiento del algoritmo.</p>
+<ul>
+<li>En cada nodo se indica como se clasifican los individuos</li>
+<li>En segundo lugar se muestra el error de clasificarlos como se indica en la primera fila</li>
+<li>En la tercera fila el % elementos en ese nodo</li>
+</ul>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="métodos-basados-en-árboles.html#cb122-1" tabindex="-1"></a><span class="fu">rpart.plot</span>(arbol_1)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-4-1.png" alt="\label{fig:arbol1}Árbol base." width="768" />
+<p class="caption">
+Figure 7.3: Árbol base.
+</p>
+</div>
+<p>Por ejemplo, el la primera rama de la izquierda se seleccionan “Hombres” que supone un 64% de la muestra. Todos los hombres (n=843) se clasifican como “Muertos”. La realidad es que de los 843 hombres, se salvaron 161 y por tanto el error = 161/843 = 0.19</p>
+<p>Para mejorar este resultado, esta muestra de hombres puede subdividirse dependiendo de la edad para mejorar la predicción. Si la edad es mayor o igual a 9,5 años se clasifican como “Muertos” y si la edad es menor de 9.5, se clasifican como Sobrevivientes”</p>
+<p>Conforme el arbol va “creciendo” en “ramas” cada vez se comente menores errores.</p>
+<p>La capacidad predictiva puede ser muy alta si el árbol se deja crecer sin control.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="métodos-basados-en-árboles.html#cb123-1" tabindex="-1"></a><span class="co"># Predicción con sobrajuste</span></span>
+<span id="cb123-2"><a href="métodos-basados-en-árboles.html#cb123-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb123-3"><a href="métodos-basados-en-árboles.html#cb123-3" tabindex="-1"></a>prediccion_0 <span class="ot">&lt;-</span> <span class="fu">predict</span>(arbol_1, <span class="at">type =</span> <span class="st">&quot;class&quot;</span>)</span>
+<span id="cb123-4"><a href="métodos-basados-en-árboles.html#cb123-4" tabindex="-1"></a>table_mat <span class="ot">&lt;-</span> <span class="fu">table</span>(ptitanic<span class="sc">$</span>survived, prediccion_0)</span>
+<span id="cb123-5"><a href="métodos-basados-en-árboles.html#cb123-5" tabindex="-1"></a>table_mat</span>
+<span id="cb123-6"><a href="métodos-basados-en-árboles.html#cb123-6" tabindex="-1"></a><span class="co">#&gt;           prediccion_0</span></span>
+<span id="cb123-7"><a href="métodos-basados-en-árboles.html#cb123-7" tabindex="-1"></a><span class="co">#&gt;            died survived</span></span>
+<span id="cb123-8"><a href="métodos-basados-en-árboles.html#cb123-8" tabindex="-1"></a><span class="co">#&gt;   died      749       60</span></span>
+<span id="cb123-9"><a href="métodos-basados-en-árboles.html#cb123-9" tabindex="-1"></a><span class="co">#&gt;   survived  169      331</span></span>
+<span id="cb123-10"><a href="métodos-basados-en-árboles.html#cb123-10" tabindex="-1"></a>accuracy_Test <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(table_mat)) <span class="sc">/</span> <span class="fu">sum</span>(table_mat)</span>
+<span id="cb123-11"><a href="métodos-basados-en-árboles.html#cb123-11" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&#39;Accuracy for test&#39;</span>, <span class="fu">round</span>(accuracy_Test,<span class="dv">3</span>)))</span>
+<span id="cb123-12"><a href="métodos-basados-en-árboles.html#cb123-12" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Accuracy for test 0.825&quot;</span></span></code></pre></div>
+<p>El árbol sin podado clasifica correctamente el 83% de las observaciones</p>
+<div id="pre-podado" class="section level3 hasAnchor" number="7.8.1">
+<h3><span class="header-section-number">7.8.1</span> Pre-podado<a href="métodos-basados-en-árboles.html#pre-podado" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La Figura <span class="math inline">\(\ref{fig:arbol1}\)</span> muestra un árbol sin restricciones. Se puede hacer un prepodado controlando el número mínimo de observaciones en un nodo terminal:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="métodos-basados-en-árboles.html#cb124-1" tabindex="-1"></a><span class="co"># Control de prepodado</span></span>
+<span id="cb124-2"><a href="métodos-basados-en-árboles.html#cb124-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb124-3"><a href="métodos-basados-en-árboles.html#cb124-3" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">minbucket =</span> <span class="dv">50</span>)</span>
+<span id="cb124-4"><a href="métodos-basados-en-árboles.html#cb124-4" tabindex="-1"></a>arbol_2 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(survived <span class="sc">~</span>., <span class="at">data =</span> ptitanic, <span class="at">method =</span> <span class="st">&#39;class&#39;</span>, <span class="at">control =</span> control)</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="métodos-basados-en-árboles.html#cb125-1" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb125-2"><a href="métodos-basados-en-árboles.html#cb125-2" tabindex="-1"></a><span class="fu">rpart.plot</span>(arbol_2, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-7-1.png" alt="\label{fig:arbol2}Árbol base 2." width="336" />
+<p class="caption">
+Figure 7.4: Árbol base 2.
+</p>
+</div>
+<p>Otra alternativa sería controlar tanto el número mínimo de observaciones en un nodo (“minbucket=50”) como el número mínimo de observaciones en un nodo para poder ser dividido (“minsplit = 250” si en un nodo hay 250 observaciones o menos, entoncen éste no se dividirá y el arbol no crecerá más por esa rama).</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="métodos-basados-en-árboles.html#cb126-1" tabindex="-1"></a><span class="co"># Control de prepodado</span></span>
+<span id="cb126-2"><a href="métodos-basados-en-árboles.html#cb126-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb126-3"><a href="métodos-basados-en-árboles.html#cb126-3" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">minbucket =</span> <span class="dv">50</span>, <span class="at">minsplit =</span> <span class="dv">250</span>)</span>
+<span id="cb126-4"><a href="métodos-basados-en-árboles.html#cb126-4" tabindex="-1"></a>arbol_3 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(survived <span class="sc">~</span>., <span class="at">data =</span> ptitanic, <span class="at">method =</span> <span class="st">&#39;class&#39;</span>, <span class="at">control =</span> control)</span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="métodos-basados-en-árboles.html#cb127-1" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span>
+<span id="cb127-2"><a href="métodos-basados-en-árboles.html#cb127-2" tabindex="-1"></a><span class="fu">rpart.plot</span>(arbol_3, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-9-1.png" alt="\label{fig:arbol3}Árbol base 3." width="240" />
+<p class="caption">
+Figure 7.5: Árbol base 3.
+</p>
+</div>
+</div>
+<div id="entrenamiento-y-test" class="section level3 hasAnchor" number="7.8.2">
+<h3><span class="header-section-number">7.8.2</span> Entrenamiento y test<a href="métodos-basados-en-árboles.html#entrenamiento-y-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>En esta subsección se dividirá la muestra en submuestras de entrenamiento y test y se evaluará la capacidad predictiva del árbol</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="métodos-basados-en-árboles.html#cb128-1" tabindex="-1"></a><span class="co"># División de los datos en train y test</span></span>
+<span id="cb128-2"><a href="métodos-basados-en-árboles.html#cb128-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb128-3"><a href="métodos-basados-en-árboles.html#cb128-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb128-4"><a href="métodos-basados-en-árboles.html#cb128-4" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(ptitanic), <span class="at">size =</span> .<span class="dv">7</span><span class="sc">*</span><span class="fu">nrow</span>(ptitanic))</span>
+<span id="cb128-5"><a href="métodos-basados-en-árboles.html#cb128-5" tabindex="-1"></a>ptitanic_train <span class="ot">&lt;-</span> ptitanic[train,]</span>
+<span id="cb128-6"><a href="métodos-basados-en-árboles.html#cb128-6" tabindex="-1"></a>ptitanic_test  <span class="ot">&lt;-</span> ptitanic[<span class="sc">-</span>train,]</span></code></pre></div>
+<p>El siguiente código obtiene un árbol con la muestra de entrenamiento. Los resultados se muestran en la Figura <span class="math inline">\(\ref{fig:arbol4}\)</span>.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="métodos-basados-en-árboles.html#cb129-1" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">minbucket =</span> <span class="dv">50</span>, <span class="at">minsplit =</span> <span class="dv">50</span>)</span>
+<span id="cb129-2"><a href="métodos-basados-en-árboles.html#cb129-2" tabindex="-1"></a>arbol_4 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(survived <span class="sc">~</span>., <span class="at">data =</span> ptitanic_train, <span class="at">method =</span> <span class="st">&#39;class&#39;</span>, <span class="at">control =</span> control)</span>
+<span id="cb129-3"><a href="métodos-basados-en-árboles.html#cb129-3" tabindex="-1"></a><span class="fu">rpart.plot</span>(arbol_4, <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-11"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-11-1.png" alt="\label{fig:arbol4}Árbol base 4." width="336" />
+<p class="caption">
+Figure 7.6: Árbol base 4.
+</p>
+</div>
+<p>La función predict() obtiene las predicciones para la muestra de test y la tabla muestra los resultados de la predicción</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="métodos-basados-en-árboles.html#cb130-1" tabindex="-1"></a>prediccion_1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(arbol_4, <span class="at">newdata =</span> ptitanic_test, <span class="at">type =</span> <span class="st">&#39;class&#39;</span>)</span>
+<span id="cb130-2"><a href="métodos-basados-en-árboles.html#cb130-2" tabindex="-1"></a>table_mat <span class="ot">&lt;-</span> <span class="fu">table</span>(ptitanic_test<span class="sc">$</span>survived, prediccion_1)</span>
+<span id="cb130-3"><a href="métodos-basados-en-árboles.html#cb130-3" tabindex="-1"></a>table_mat</span>
+<span id="cb130-4"><a href="métodos-basados-en-árboles.html#cb130-4" tabindex="-1"></a><span class="co">#&gt;           prediccion_1</span></span>
+<span id="cb130-5"><a href="métodos-basados-en-árboles.html#cb130-5" tabindex="-1"></a><span class="co">#&gt;            died survived</span></span>
+<span id="cb130-6"><a href="métodos-basados-en-árboles.html#cb130-6" tabindex="-1"></a><span class="co">#&gt;   died      210       20</span></span>
+<span id="cb130-7"><a href="métodos-basados-en-árboles.html#cb130-7" tabindex="-1"></a><span class="co">#&gt;   survived   68       95</span></span></code></pre></div>
+<p>La accuracy de este árbol se obtiene con el siguiente código:</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="métodos-basados-en-árboles.html#cb131-1" tabindex="-1"></a>accuracy_Test <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">diag</span>(table_mat)) <span class="sc">/</span> <span class="fu">sum</span>(table_mat)</span>
+<span id="cb131-2"><a href="métodos-basados-en-árboles.html#cb131-2" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&#39;Accuracy for test&#39;</span>, <span class="fu">round</span>(accuracy_Test,<span class="dv">3</span>)))</span>
+<span id="cb131-3"><a href="métodos-basados-en-árboles.html#cb131-3" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Accuracy for test 0.776&quot;</span></span></code></pre></div>
+<p>Lo ideal sería aplicar un proceso de validación cruzada para ajustar correctamente y encontrar así la mejor combinación de hiperparámetros.</p>
+</div>
+</div>
+<div id="ejemplo-árbol-de-regresión" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Ejemplo Árbol de Regresión<a href="métodos-basados-en-árboles.html#ejemplo-árbol-de-regresión" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="datos" class="section level3 hasAnchor" number="7.9.1">
+<h3><span class="header-section-number">7.9.1</span> Datos<a href="métodos-basados-en-árboles.html#datos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>El set de datos Boston disponible en el paquete MASS contiene precios de viviendas de la ciudad de Boston, así como información socioeconómica del barrio en el que se encuentran. Se pretende ajustar un modelo de regresión que permita predecir el precio medio de una vivienda (medv) en función de las variables disponibles.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="métodos-basados-en-árboles.html#cb132-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;MASS&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;MASS&quot;</span>)</span>
+<span id="cb132-2"><a href="métodos-basados-en-árboles.html#cb132-2" tabindex="-1"></a><span class="co">#&gt; Loading required package: MASS</span></span>
+<span id="cb132-3"><a href="métodos-basados-en-árboles.html#cb132-3" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb132-4"><a href="métodos-basados-en-árboles.html#cb132-4" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;Boston&quot;</span>, <span class="at">package =</span> <span class="st">&quot;MASS&quot;</span>)</span></code></pre></div>
+</div>
+<div id="ajuste-del-modelo-con-la-librería-tree" class="section level3 hasAnchor" number="7.9.2">
+<h3><span class="header-section-number">7.9.2</span> Ajuste del modelo con la librería ‘tree’<a href="métodos-basados-en-árboles.html#ajuste-del-modelo-con-la-librería-tree" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>La función <strong>tree()</strong> del paquete tree permite ajustar árboles de decisión. La elección entre árbol de regresión o árbol de clasificación se hace automáticamente dependiendo de si la variable respuesta es de tipo numeric o factor. Es importante tener en cuenta que solo estos dos tipos de vectores están permitidos, si se pasa uno de tipo character se devuelve un error.</p>
+<p>A continuación, se ajusta un árbol de regresión empleando como variable respuesta medv y como predictores todas las variables disponibles. Como en todo estudio de regresión, no solo es importante ajustar el modelo, sino también cuantificar su capacidad para predecir nuevas observaciones. Para poder hacer la posterior evaluación, se dividen los datos en dos grupos, uno de entrenamiento y otro de test.</p>
+<p>La función <strong>tree()</strong> crece el árbol hasta que encuentra una condición de stop. Por defecto, estas condiciones son:</p>
+<ul>
+<li><p><strong>mincut:</strong> Número mínimo de observaciones que debe de tener al menos uno de los nodos hijos para que se produzca la división. Si al dividir el nodo, uno de los subnodos tiene menos de mincut observaciones, entonces el nodo no se divide.</p></li>
+<li><p><strong>minsize:</strong> Número mínimo de observaciones que debe de tener un nodo para que pueda dividirse.</p></li>
+</ul>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="métodos-basados-en-árboles.html#cb133-1" tabindex="-1"></a><span class="co"># División de los datos en train y test equilibrando por cuartiles</span></span>
+<span id="cb133-2"><a href="métodos-basados-en-árboles.html#cb133-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb133-3"><a href="métodos-basados-en-árboles.html#cb133-3" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb133-4"><a href="métodos-basados-en-árboles.html#cb133-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb133-5"><a href="métodos-basados-en-árboles.html#cb133-5" tabindex="-1"></a>split <span class="ot">&lt;-</span> <span class="fu">initial_split</span>(Boston, <span class="at">prop =</span> <span class="fl">0.7</span>, <span class="at">strata =</span> medv)</span>
+<span id="cb133-6"><a href="métodos-basados-en-árboles.html#cb133-6" tabindex="-1"></a>Boston_train <span class="ot">&lt;-</span> <span class="fu">training</span>(split)</span>
+<span id="cb133-7"><a href="métodos-basados-en-árboles.html#cb133-7" tabindex="-1"></a>Boston_test <span class="ot">&lt;-</span> <span class="fu">testing</span>(split)</span></code></pre></div>
+<div id="prepodado" class="section level4 hasAnchor" number="7.9.2.1">
+<h4><span class="header-section-number">7.9.2.1</span> Prepodado<a href="métodos-basados-en-árboles.html#prepodado" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>El siguiente chunk muestra un código para obtener un modelo con pre-podado en función del número mínimo de observaciones</p>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="métodos-basados-en-árboles.html#cb134-1" tabindex="-1"></a><span class="co"># Creación y entrenamiento del modelo</span></span>
+<span id="cb134-2"><a href="métodos-basados-en-árboles.html#cb134-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb134-3"><a href="métodos-basados-en-árboles.html#cb134-3" tabindex="-1"></a><span class="fu">library</span>(tree)</span>
+<span id="cb134-4"><a href="métodos-basados-en-árboles.html#cb134-4" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb134-5"><a href="métodos-basados-en-árboles.html#cb134-5" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">tree.control</span>(<span class="fu">dim</span>(Boston_train)[<span class="dv">1</span>], </span>
+<span id="cb134-6"><a href="métodos-basados-en-árboles.html#cb134-6" tabindex="-1"></a>                        <span class="at">mincut =</span> <span class="dv">20</span>, </span>
+<span id="cb134-7"><a href="métodos-basados-en-árboles.html#cb134-7" tabindex="-1"></a>                        <span class="at">minsize =</span> <span class="dv">50</span>)</span>
+<span id="cb134-8"><a href="métodos-basados-en-árboles.html#cb134-8" tabindex="-1"></a>arbol_regresion <span class="ot">&lt;-</span> tree<span class="sc">::</span><span class="fu">tree</span>(<span class="at">formula =</span> medv <span class="sc">~</span> .,</span>
+<span id="cb134-9"><a href="métodos-basados-en-árboles.html#cb134-9" tabindex="-1"></a>                              <span class="at">data    =</span> Boston_train,</span>
+<span id="cb134-10"><a href="métodos-basados-en-árboles.html#cb134-10" tabindex="-1"></a>                              <span class="at">control =</span> control)</span>
+<span id="cb134-11"><a href="métodos-basados-en-árboles.html#cb134-11" tabindex="-1"></a><span class="fu">summary</span>(arbol_regresion)</span>
+<span id="cb134-12"><a href="métodos-basados-en-árboles.html#cb134-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb134-13"><a href="métodos-basados-en-árboles.html#cb134-13" tabindex="-1"></a><span class="co">#&gt; Regression tree:</span></span>
+<span id="cb134-14"><a href="métodos-basados-en-árboles.html#cb134-14" tabindex="-1"></a><span class="co">#&gt; tree::tree(formula = medv ~ ., data = Boston_train, control = control)</span></span>
+<span id="cb134-15"><a href="métodos-basados-en-árboles.html#cb134-15" tabindex="-1"></a><span class="co">#&gt; Variables actually used in tree construction:</span></span>
+<span id="cb134-16"><a href="métodos-basados-en-árboles.html#cb134-16" tabindex="-1"></a><span class="co">#&gt; [1] &quot;rm&quot;    &quot;lstat&quot; &quot;nox&quot;   &quot;crim&quot; </span></span>
+<span id="cb134-17"><a href="métodos-basados-en-árboles.html#cb134-17" tabindex="-1"></a><span class="co">#&gt; Number of terminal nodes:  7 </span></span>
+<span id="cb134-18"><a href="métodos-basados-en-árboles.html#cb134-18" tabindex="-1"></a><span class="co">#&gt; Residual mean deviance:  19.77 = 6821 / 345 </span></span>
+<span id="cb134-19"><a href="métodos-basados-en-árboles.html#cb134-19" tabindex="-1"></a><span class="co">#&gt; Distribution of residuals:</span></span>
+<span id="cb134-20"><a href="métodos-basados-en-árboles.html#cb134-20" tabindex="-1"></a><span class="co">#&gt;     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. </span></span>
+<span id="cb134-21"><a href="métodos-basados-en-árboles.html#cb134-21" tabindex="-1"></a><span class="co">#&gt; -22.1800  -2.1320   0.1656   0.0000   2.0050  27.7700</span></span></code></pre></div>
+<p>La función summary() muestra que, el árbol entrenado, tiene un total de 7 nodos terminales y que se han empleado como predictores las variables “rm”, “lstat”, “nox” y “crim”. En el contexto de árboles de regresión, el término <em>Residual mean deviance</em> es la suma de cuadrados residuales dividida entre (número de observaciones - número de nodos terminales). Cuanto menor es la ‘deviance’, mejor es el ajuste del árbol a las observaciones de entrenamiento.</p>
+<p>El paquete tree no posee una buena capacidad para representar los árboles, pero una vez creado el árbol, se puede representar mediante la combinación de las funciones plot() y text(). La función plot() dibuja la estructura del árbol, las ramas y los nodos. Mediante su argumento type se puede especificar si se quiere que todas las ramas tengan el mismo tamaño (type = “uniform”) o que su longitud sea proporcional a la reducción de impureza (heterogeneidad) de los nodos terminales (type = “proportional”). Esta segunda opción permite identificar visualmente el impacto de cada división en el modelo. La función text() añade la descripción de cada nodo interno y el valor de cada nodo terminal.</p>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="métodos-basados-en-árboles.html#cb135-1" tabindex="-1"></a><span class="co"># Estructura del árbol con prepodado</span></span>
+<span id="cb135-2"><a href="métodos-basados-en-árboles.html#cb135-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb135-3"><a href="métodos-basados-en-árboles.html#cb135-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> arbol_regresion, <span class="at">type =</span> <span class="st">&quot;proportional&quot;</span>)</span>
+<span id="cb135-4"><a href="métodos-basados-en-árboles.html#cb135-4" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> arbol_regresion, <span class="at">splits =</span> <span class="cn">TRUE</span>, <span class="at">pretty =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<p><img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+</div>
+<div id="podado-del-árbol-pruning" class="section level3 hasAnchor" number="7.9.3">
+<h3><span class="header-section-number">7.9.3</span> Podado del árbol (pruning)<a href="métodos-basados-en-árboles.html#podado-del-árbol-pruning" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Con la finalidad de reducir la varianza del modelo y así mejorar la capacidad predictiva, se somete al árbol a un proceso de podado (pruning). El proceso de podado intenta encontrar el árbol más sencillo (menor tamaño) que consigue los mejores resultados de predicción.</p>
+<p>Para podar un árbol es necesario indicar el grado de penalización por complejidad <span class="math inline">\(\alpha\)</span>. Cuanto mayor sea este valor, más agresivo es el podado y menor el tamaño del árbol resultante. Dado que no hay forma de conocer de antemano el valor óptimo de <span class="math inline">\(\alpha\)</span>, se recurre a validación cruzada para identificarlo.</p>
+<p>La función cv.tree() emplea validación cruzada (cross validation) para identificar el valor óptimo de penalización. Por defecto, esta función emplea la ‘deviance’ para guiar el proceso de pruning.</p>
+<p>El podado se realiza sobre un árbol sin apenas requisitos de prepodado como muestra el siguiente código:</p>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="métodos-basados-en-árboles.html#cb136-1" tabindex="-1"></a><span class="co"># Pruning (const complexity pruning) por validación cruzada</span></span>
+<span id="cb136-2"><a href="métodos-basados-en-árboles.html#cb136-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb136-3"><a href="métodos-basados-en-árboles.html#cb136-3" tabindex="-1"></a></span>
+<span id="cb136-4"><a href="métodos-basados-en-árboles.html#cb136-4" tabindex="-1"></a><span class="co"># El árbol se crece al máximo posible para luego aplicar el pruning</span></span>
+<span id="cb136-5"><a href="métodos-basados-en-árboles.html#cb136-5" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">tree.control</span>(<span class="fu">dim</span>(Boston_train)[<span class="dv">1</span>], </span>
+<span id="cb136-6"><a href="métodos-basados-en-árboles.html#cb136-6" tabindex="-1"></a>                        <span class="at">mincut =</span> <span class="dv">1</span>, </span>
+<span id="cb136-7"><a href="métodos-basados-en-árboles.html#cb136-7" tabindex="-1"></a>                        <span class="at">minsize =</span> <span class="dv">2</span>,</span>
+<span id="cb136-8"><a href="métodos-basados-en-árboles.html#cb136-8" tabindex="-1"></a>                        <span class="at">mindev  =</span> <span class="dv">0</span>)</span>
+<span id="cb136-9"><a href="métodos-basados-en-árboles.html#cb136-9" tabindex="-1"></a>arbol_regresion_base<span class="ot">&lt;-</span> <span class="fu">tree</span>(<span class="at">formula =</span> medv <span class="sc">~</span> .,</span>
+<span id="cb136-10"><a href="métodos-basados-en-árboles.html#cb136-10" tabindex="-1"></a>                            <span class="at">data    =</span> Boston_train,</span>
+<span id="cb136-11"><a href="métodos-basados-en-árboles.html#cb136-11" tabindex="-1"></a>                            <span class="at">control =</span> control)</span>
+<span id="cb136-12"><a href="métodos-basados-en-árboles.html#cb136-12" tabindex="-1"></a><span class="fu">summary</span>(arbol_regresion_base)</span>
+<span id="cb136-13"><a href="métodos-basados-en-árboles.html#cb136-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb136-14"><a href="métodos-basados-en-árboles.html#cb136-14" tabindex="-1"></a><span class="co">#&gt; Regression tree:</span></span>
+<span id="cb136-15"><a href="métodos-basados-en-árboles.html#cb136-15" tabindex="-1"></a><span class="co">#&gt; tree(formula = medv ~ ., data = Boston_train, control = control)</span></span>
+<span id="cb136-16"><a href="métodos-basados-en-árboles.html#cb136-16" tabindex="-1"></a><span class="co">#&gt; Variables actually used in tree construction:</span></span>
+<span id="cb136-17"><a href="métodos-basados-en-árboles.html#cb136-17" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;rm&quot;      &quot;lstat&quot;   &quot;dis&quot;     &quot;indus&quot;   &quot;black&quot;  </span></span>
+<span id="cb136-18"><a href="métodos-basados-en-árboles.html#cb136-18" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;age&quot;     &quot;crim&quot;    &quot;ptratio&quot; &quot;tax&quot;     &quot;rad&quot;    </span></span>
+<span id="cb136-19"><a href="métodos-basados-en-árboles.html#cb136-19" tabindex="-1"></a><span class="co">#&gt; [11] &quot;zn&quot;      &quot;nox&quot;    </span></span>
+<span id="cb136-20"><a href="métodos-basados-en-árboles.html#cb136-20" tabindex="-1"></a><span class="co">#&gt; Number of terminal nodes:  281 </span></span>
+<span id="cb136-21"><a href="métodos-basados-en-árboles.html#cb136-21" tabindex="-1"></a><span class="co">#&gt; Residual mean deviance:  0.008568 = 0.6083 / 71 </span></span>
+<span id="cb136-22"><a href="métodos-basados-en-árboles.html#cb136-22" tabindex="-1"></a><span class="co">#&gt; Distribution of residuals:</span></span>
+<span id="cb136-23"><a href="métodos-basados-en-árboles.html#cb136-23" tabindex="-1"></a><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb136-24"><a href="métodos-basados-en-árboles.html#cb136-24" tabindex="-1"></a><span class="co">#&gt; -0.1000  0.0000  0.0000  0.0000  0.0000  0.1333</span></span></code></pre></div>
+<p>El árbol sin restricciones de prepodado tiene 281 nodos y el valor de ‘Residual mean deviance’ ha disminuido mucho, pero obviamente hay sobreajuste.</p>
+<p>Para resucir el sobreajuste de este modelo se aplica un proceso de validación cruzada como se indicó el la Figura . En este caso se toman 5 folks.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="métodos-basados-en-árboles.html#cb137-1" tabindex="-1"></a><span class="co"># Búsqueda por validación cruzada</span></span>
+<span id="cb137-2"><a href="métodos-basados-en-árboles.html#cb137-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb137-3"><a href="métodos-basados-en-árboles.html#cb137-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb137-4"><a href="métodos-basados-en-árboles.html#cb137-4" tabindex="-1"></a>cv_arbol <span class="ot">&lt;-</span> <span class="fu">cv.tree</span>(arbol_regresion_base, <span class="at">K =</span> <span class="dv">5</span>)</span></code></pre></div>
+<p>El objeto devuelto por <strong>cv.tree()</strong> contiene:</p>
+<ul>
+<li><strong>size:</strong> el tamaño (número de nodos terminales) de cada árbol.</li>
+<li><strong>dev:</strong> la estimación de cross-validation test error para cada tamaño de árbol.</li>
+<li><strong>k:</strong> El rango de valores de penalización <span class="math inline">\(\alpha\)</span> evaluados.</li>
+<li><strong>method:</strong> El criterio empleado para seleccionar el mejor árbol.</li>
+</ul>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="métodos-basados-en-árboles.html#cb138-1" tabindex="-1"></a><span class="co"># Tamaño óptimo encontrado</span></span>
+<span id="cb138-2"><a href="métodos-basados-en-árboles.html#cb138-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb138-3"><a href="métodos-basados-en-árboles.html#cb138-3" tabindex="-1"></a>size_optimo <span class="ot">&lt;-</span> <span class="fu">rev</span>(cv_arbol<span class="sc">$</span>size)[<span class="fu">which.min</span>(<span class="fu">rev</span>(cv_arbol<span class="sc">$</span>dev))]</span>
+<span id="cb138-4"><a href="métodos-basados-en-árboles.html#cb138-4" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Tamaño óptimo encontrado:&quot;</span>, size_optimo)</span>
+<span id="cb138-5"><a href="métodos-basados-en-árboles.html#cb138-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Tamaño óptimo encontrado: 11&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="métodos-basados-en-árboles.html#cb139-1" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb139-2"><a href="métodos-basados-en-árboles.html#cb139-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb139-3"><a href="métodos-basados-en-árboles.html#cb139-3" tabindex="-1"></a>resultados_cv <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">n_nodos  =</span> cv_arbol<span class="sc">$</span>size,</span>
+<span id="cb139-4"><a href="métodos-basados-en-árboles.html#cb139-4" tabindex="-1"></a>                            <span class="at">deviance =</span> cv_arbol<span class="sc">$</span>dev,</span>
+<span id="cb139-5"><a href="métodos-basados-en-árboles.html#cb139-5" tabindex="-1"></a>                            <span class="at">alpha    =</span> cv_arbol<span class="sc">$</span>k)</span>
+<span id="cb139-6"><a href="métodos-basados-en-árboles.html#cb139-6" tabindex="-1"></a></span>
+<span id="cb139-7"><a href="métodos-basados-en-árboles.html#cb139-7" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> n_nodos, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb139-8"><a href="métodos-basados-en-árboles.html#cb139-8" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb139-9"><a href="métodos-basados-en-árboles.html#cb139-9" tabindex="-1"></a>      <span class="fu">ylim</span>(<span class="dv">8000</span>,<span class="dv">12000</span>)<span class="sc">+</span></span>
+<span id="cb139-10"><a href="métodos-basados-en-árboles.html#cb139-10" tabindex="-1"></a>      <span class="fu">xlim</span>(<span class="dv">0</span>,<span class="dv">20</span>)<span class="sc">+</span></span>
+<span id="cb139-11"><a href="métodos-basados-en-árboles.html#cb139-11" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb139-12"><a href="métodos-basados-en-árboles.html#cb139-12" tabindex="-1"></a>      <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> size_optimo, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>) <span class="sc">+</span></span>
+<span id="cb139-13"><a href="métodos-basados-en-árboles.html#cb139-13" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Error vs tamaño del árbol&quot;</span>) <span class="sc">+</span></span>
+<span id="cb139-14"><a href="métodos-basados-en-árboles.html#cb139-14" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb139-15"><a href="métodos-basados-en-árboles.html#cb139-15" tabindex="-1"></a>  </span>
+<span id="cb139-16"><a href="métodos-basados-en-árboles.html#cb139-16" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> resultados_cv, <span class="fu">aes</span>(<span class="at">x =</span> alpha, <span class="at">y =</span> deviance)) <span class="sc">+</span></span>
+<span id="cb139-17"><a href="métodos-basados-en-árboles.html#cb139-17" tabindex="-1"></a>      <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb139-18"><a href="métodos-basados-en-árboles.html#cb139-18" tabindex="-1"></a>      <span class="co"># ylim(8290,8300)+</span></span>
+<span id="cb139-19"><a href="métodos-basados-en-árboles.html#cb139-19" tabindex="-1"></a>      <span class="co"># xlim(0,1)+</span></span>
+<span id="cb139-20"><a href="métodos-basados-en-árboles.html#cb139-20" tabindex="-1"></a>      <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb139-21"><a href="métodos-basados-en-árboles.html#cb139-21" tabindex="-1"></a>      <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Error vs penalización alpha&quot;</span>) <span class="sc">+</span></span>
+<span id="cb139-22"><a href="métodos-basados-en-árboles.html#cb139-22" tabindex="-1"></a>      <span class="fu">theme_bw</span>() </span>
+<span id="cb139-23"><a href="métodos-basados-en-árboles.html#cb139-23" tabindex="-1"></a><span class="fu">grid.arrange</span>(p1, p2, <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-21"></span>
+<img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-21-1.png" alt="\label{fig:particion}Partición del espacio con predicciones" width="672" />
+<p class="caption">
+Figure 7.7: Partición del espacio con predicciones
+</p>
+</div>
+<p>Una vez identificado el valor óptimo de <span class="math inline">\(\alpha\)</span>, con la función prune.tree() se aplica el podado final. En este caso se impone la condición de que obtenga el árbol con el valor óptimo de ramas encontrado el el proceso de validación cruzada con cvtree().</p>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="métodos-basados-en-árboles.html#cb140-1" tabindex="-1"></a><span class="co"># Estructura del árbol creado final</span></span>
+<span id="cb140-2"><a href="métodos-basados-en-árboles.html#cb140-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb140-3"><a href="métodos-basados-en-árboles.html#cb140-3" tabindex="-1"></a>arbol_final <span class="ot">&lt;-</span> <span class="fu">prune.tree</span>(<span class="at">tree =</span> arbol_regresion_base,</span>
+<span id="cb140-4"><a href="métodos-basados-en-árboles.html#cb140-4" tabindex="-1"></a>                          <span class="at">best =</span> size_optimo) </span>
+<span id="cb140-5"><a href="métodos-basados-en-árboles.html#cb140-5" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> arbol_final, <span class="at">type =</span> <span class="st">&quot;uniform&quot;</span>)</span>
+<span id="cb140-6"><a href="métodos-basados-en-árboles.html#cb140-6" tabindex="-1"></a><span class="fu">text</span>(<span class="at">x =</span> arbol_final, <span class="at">splits =</span> <span class="cn">TRUE</span>, <span class="at">pretty =</span> <span class="dv">0</span>, <span class="at">cex =</span> <span class="fl">0.8</span>, <span class="at">col =</span> <span class="st">&quot;firebrick&quot;</span>)</span></code></pre></div>
+<p><img src="06-Sesion6-Arboles-de-Decision_files/figure-html/unnamed-chunk-22-1.png" width="576" /></p>
+</div>
+<div id="predicción-y-evaluación-del-modelo" class="section level3 hasAnchor" number="7.9.4">
+<h3><span class="header-section-number">7.9.4</span> Predicción y evaluación del modelo<a href="métodos-basados-en-árboles.html#predicción-y-evaluación-del-modelo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Por último, se evalúa la capacidad predictiva de los tres árboles empleando el conjunto de test.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="métodos-basados-en-árboles.html#cb141-1" tabindex="-1"></a><span class="co"># Error de test del modelo base con pre-podado y sin post-podado</span></span>
+<span id="cb141-2"><a href="métodos-basados-en-árboles.html#cb141-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb141-3"><a href="métodos-basados-en-árboles.html#cb141-3" tabindex="-1"></a>predicciones <span class="ot">&lt;-</span> <span class="fu">predict</span>(arbol_regresion, <span class="at">newdata =</span> Boston_test)</span>
+<span id="cb141-4"><a href="métodos-basados-en-árboles.html#cb141-4" tabindex="-1"></a>test_rmse    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((predicciones <span class="sc">-</span> Boston_test<span class="sc">$</span>medv)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb141-5"><a href="métodos-basados-en-árboles.html#cb141-5" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Error de test (RMSE) del árbol solo CON pre-podado:&quot;</span>, <span class="fu">round</span>(test_rmse,<span class="dv">4</span>))</span>
+<span id="cb141-6"><a href="métodos-basados-en-árboles.html#cb141-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Error de test (RMSE) del árbol solo CON pre-podado: 4.6083&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="métodos-basados-en-árboles.html#cb142-1" tabindex="-1"></a><span class="co"># Error de test del modelo base sin pre-podado y sin post-podado</span></span>
+<span id="cb142-2"><a href="métodos-basados-en-árboles.html#cb142-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb142-3"><a href="métodos-basados-en-árboles.html#cb142-3" tabindex="-1"></a>predicciones <span class="ot">&lt;-</span> <span class="fu">predict</span>(arbol_regresion_base, <span class="at">newdata =</span> Boston_test)</span>
+<span id="cb142-4"><a href="métodos-basados-en-árboles.html#cb142-4" tabindex="-1"></a>test_rmse    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((predicciones <span class="sc">-</span> Boston_test<span class="sc">$</span>medv)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb142-5"><a href="métodos-basados-en-árboles.html#cb142-5" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Error de test (RMSE) del árbol SIN pre-podado y SIN post-podado:&quot;</span>, <span class="fu">round</span>(test_rmse,<span class="dv">4</span>))</span>
+<span id="cb142-6"><a href="métodos-basados-en-árboles.html#cb142-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Error de test (RMSE) del árbol SIN pre-podado y SIN post-podado: 4.9402&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="métodos-basados-en-árboles.html#cb143-1" tabindex="-1"></a><span class="co"># Error de test del modelo final</span></span>
+<span id="cb143-2"><a href="métodos-basados-en-árboles.html#cb143-2" tabindex="-1"></a><span class="co"># ==============================================================================</span></span>
+<span id="cb143-3"><a href="métodos-basados-en-árboles.html#cb143-3" tabindex="-1"></a>predicciones <span class="ot">&lt;-</span> <span class="fu">predict</span>(arbol_final, <span class="at">newdata =</span> Boston_test)</span>
+<span id="cb143-4"><a href="métodos-basados-en-árboles.html#cb143-4" tabindex="-1"></a>test_rmse    <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((predicciones <span class="sc">-</span> Boston_test<span class="sc">$</span>medv)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb143-5"><a href="métodos-basados-en-árboles.html#cb143-5" tabindex="-1"></a><span class="fu">paste</span>(<span class="st">&quot;Error de test (RMSE) del árbol sin pre-podado y CON post-podado:&quot;</span>, <span class="fu">round</span>(test_rmse,<span class="dv">4</span>))</span>
+<span id="cb143-6"><a href="métodos-basados-en-árboles.html#cb143-6" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Error de test (RMSE) del árbol sin pre-podado y CON post-podado: 4.6198&quot;</span></span></code></pre></div>
+<p>En este caso el modelo los modelos con pre-podado y post-podado tiene un comportamiento muy similar en términos de RMSE y ambas opciones mejoran el RMSE del modelo sin podar.</p>
+</div>
+</div>
+<div id="webs" class="section level2 hasAnchor" number="7.10">
+<h2><span class="header-section-number">7.10</span> Webs<a href="métodos-basados-en-árboles.html#webs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://rpubs.com/fdvm/clase_arboles_uba_dm" class="uri">https://rpubs.com/fdvm/clase_arboles_uba_dm</a></p>
+<p><a href="https://rpubs.com/mpfoley73/529130" class="uri">https://rpubs.com/mpfoley73/529130</a></p>
+</div>
+<div id="referencias" class="section level2 hasAnchor" number="7.11">
+<h2><span class="header-section-number">7.11</span> Referencias<a href="métodos-basados-en-árboles.html#referencias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Belson, William A. <span>“Matching and Prediction on the Principle of Biological Classification.”</span> <em>Journal of the Royal Statistical Society: Series C (Applied Statistics)</em> 8, no. 2 (1959): 65–75.
+</div>
+<div class="csl-entry">
+Breiman, Leo. <em>Classification and Regression Trees</em>. Belmont, Calif: Wadsworth International Group, 1984.
+</div>
+<div class="csl-entry">
+Gareth, James, Witten Daniela, Hastie Trevor, and Tibshirani Robert. <em>An Introduction to Statistical Learning: With Applications in r</em>. Spinger, 2013.
+</div>
+<div class="csl-entry">
+Hothorn, Torsten, Kurt Hornik, Carolin Strobl, and Achim Zeileis. <span>“Party: A Laboratory for Recursive Partytioning,”</span> 2010.
+</div>
+<div class="csl-entry">
+Milborrow, Stephen. <em>Rpart.plot: Plot ’Rpart’ Models: An Enhanced Version of ’Plot.rpart’</em>, 2021. <a href="https://CRAN.R-project.org/package=rpart.plot">https://CRAN.R-project.org/package=rpart.plot</a>.
+</div>
+<div class="csl-entry">
+Paez, Antonio, Fernando López, Manuel Ruiz, and Máximo Camacho. <span>“Inducing Non-Orthogonal and Non-Linear Decision Boundaries in Decision Trees via Interactive Basis Functions.”</span> <em>Expert Systems with Applications</em> 122 (May 2019): 183–206. <a href="https://doi.org/10.1016/j.eswa.2018.12.041">https://doi.org/10.1016/j.eswa.2018.12.041</a>.
+</div>
+<div class="csl-entry">
+Ripley, Brian. <em>Tree: Classification and Regression Trees</em>, 2021. <a href="https://CRAN.R-project.org/package=tree">https://CRAN.R-project.org/package=tree</a>.
+</div>
+<div class="csl-entry">
+Therneau, Terry, and Beth Atkinson. <em>Rpart: Recursive Partitioning and Regression Trees</em>, 2019. <a href="https://CRAN.R-project.org/package=rpart">https://CRAN.R-project.org/package=rpart</a>.
+</div>
+<div class="csl-entry">
+Wickramarachchi, D. C., B. L. Robertson, M. Reale, C. J. Price, and J. Brown. <span>“<span>HHCART</span>: An Oblique Decision Tree.”</span> <em>Computational Statistics <span>&amp;</span> Data Analysis</em> 96 (April 2016): 12–23. <a href="https://doi.org/10.1016/j.csda.2015.11.006">https://doi.org/10.1016/j.csda.2015.11.006</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>William A Belson, <span>“Matching and Prediction on the Principle of Biological Classification,”</span> <em>Journal of the Royal Statistical Society: Series C (Applied Statistics)</em> 8, no. 2 (1959): 65–75.<a href="métodos-basados-en-árboles.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Leo Breiman, <em>Classification and Regression Trees</em> (Belmont, Calif: Wadsworth International Group, 1984).<a href="métodos-basados-en-árboles.html#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p><em>An Introduction to Statistical Learning: With Applications in r</em> (Spinger, 2013).<a href="métodos-basados-en-árboles.html#fnref3" class="footnote-back">↩︎</a></p></li>
+<li id="fn4"><p>D. C. Wickramarachchi et al., <span>“<span>HHCART</span>: An Oblique Decision Tree,”</span> <em>Computational Statistics <span>&amp;</span> Data Analysis</em> 96 (April 2016): 12–23, <a href="https://doi.org/10.1016/j.csda.2015.11.006">https://doi.org/10.1016/j.csda.2015.11.006</a>.<a href="métodos-basados-en-árboles.html#fnref4" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p>Antonio Paez et al., <span>“Inducing Non-Orthogonal and Non-Linear Decision Boundaries in Decision Trees via Interactive Basis Functions,”</span> <em>Expert Systems with Applications</em> 122 (May 2019): 183–206, <a href="https://doi.org/10.1016/j.eswa.2018.12.041">https://doi.org/10.1016/j.eswa.2018.12.041</a>.<a href="métodos-basados-en-árboles.html#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn6"><p>Brian Ripley, <em>Tree: Classification and Regression Trees</em>, 2021, <a href="https://CRAN.R-project.org/package=tree">https://CRAN.R-project.org/package=tree</a>.<a href="métodos-basados-en-árboles.html#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>Terry Therneau and Beth Atkinson, <em>Rpart: Recursive Partitioning and Regression Trees</em>, 2019, <a href="https://CRAN.R-project.org/package=rpart">https://CRAN.R-project.org/package=rpart</a>.<a href="métodos-basados-en-árboles.html#fnref7" class="footnote-back">↩︎</a></p></li>
+<li id="fn8"><p>Torsten Hothorn et al., <span>“Party: A Laboratory for Recursive Partytioning,”</span> 2010.<a href="métodos-basados-en-árboles.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<li id="fn9"><p>Stephen Milborrow, <em>Rpart.plot: Plot ’Rpart’ Models: An Enhanced Version of ’Plot.rpart’</em>, 2021, <a href="https://CRAN.R-project.org/package=rpart.plot">https://CRAN.R-project.org/package=rpart.plot</a>.<a href="métodos-basados-en-árboles.html#fnref9" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="análisis-cluster.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
