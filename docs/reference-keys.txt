@@ -132,3 +132,6 @@ podado-del-árbol-pruning
 predicción-y-evaluación-del-modelo
 webs
 referencias
+métodos-chingones
+introducción-2
+referencias-1

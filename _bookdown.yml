@@ -9,7 +9,8 @@ rmd_files: ["index.Rmd",
 "03-Sesion3-Regresion-Lineal-multiple.Rmd",
 "04-Sesion4-Analisis-de-Componentes-Principales.Rmd",
 "05-Sesion5-Analisis-Cluster.Rmd",
-"06-Sesion6-Arboles-de-Decision.Rmd"]
+"06-Sesion6-Arboles-de-Decision.Rmd",
+"07-Sesion7-Trabajo-Futuro.Rmd"]
 language:
   ui:
     chapter_name: "Capítulo "
